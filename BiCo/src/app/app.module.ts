@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CercaDeMiComponent } from './cerca-de-mi/cerca-de-mi.component';
+import { GoogleMapsModule } from '@angular/google-maps'
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { CercaDeMiComponent } from './cerca-de-mi/cerca-de-mi.component';
     CercaDeMiComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
