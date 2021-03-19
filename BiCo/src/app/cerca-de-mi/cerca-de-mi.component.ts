@@ -1,3 +1,4 @@
+import { NgLocaleLocalization } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -14,6 +15,10 @@ export class CercaDeMiComponent implements OnInit {
       function location(posicion) {
         let latitude = posicion.coords.latitude
         let longitude = posicion.coords.longitude
+        /*
+        Funcion que devuelva la lista de negocios
+        params: (latitud, longitude) -> Origen
+        */
         console.log(latitude)
         console.log(longitude)
       }
@@ -22,5 +27,7 @@ export class CercaDeMiComponent implements OnInit {
       }
       navigator.geolocation.getCurrentPosition(location, error)
   }
+
+
 
 }
