@@ -7,13 +7,14 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { NegociosComponent } from './components/negocios/negocios.component';
-
+import { HomeComponent } from './components/home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
     CercaDeMiComponent,
     PerfilComponent,
-    NegociosComponent
+    NegociosComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
