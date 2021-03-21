@@ -13,6 +13,111 @@ export class CercaDeMiComponent implements OnInit {
   arrayDestinos = [this.destino1, this.destino2, this.destino3];
   origen= {lat:37.385474699999996, lng:-5.979364299999999};
 
+  negocios = [
+      {
+          "nombre" : "Bar pakito",
+          "tipo" : "bar",
+          "servicios": [
+            {
+              "nombre":"Mesa para 4 máximo",
+              "precio":"Gratis (Consumición minima 4€)"
+            }
+          ]
+      },
+      {
+          "nombre" : "Plan B",
+          "tipo" : "bar",
+          "servicios": [
+            {
+              "nombre":"Mesa para 4 máximo",
+              "precio":"Gratis (Consumición minima 4€)"
+            }
+          ]
+      },
+      {
+          "nombre" : "Cien cocktelitos",
+          "tipo" : "bar",
+          "servicios": [
+            {
+              "nombre":"Mesa para 4 máximo",
+              "precio":"Gratis (Consumición minima 4€)"
+            }
+          ]
+            },
+      {
+          "nombre" : "Bar Fede",
+          "tipo" : "bar",
+          "servicios": [
+            {
+              "nombre":"Mesa para 4 máximo",
+              "precio":"Gratis (Consumición minima 4€)"
+            }
+          ]
+      },
+      {
+          "nombre": "100 montaditos",
+          "tipo": "bar",
+          "servicios": [
+            {
+              "nombre":"Mesa para 4 máximo",
+              "precio":"Gratis (Consumición minima 4€)"
+            }
+          ]
+      },
+      {
+          "nombre" : "La sureña",
+          "tipo" : "bar",
+          "servicios": [
+            {
+              "nombre":"Mesa para 4 máximo",
+              "precio":"Gratis (Consumición minima 4€)"
+            }
+          ]
+      },
+      {
+          "nombre" : "Peluquería María Teresa",
+          "tipo" : "peluquería",
+          "servicios": [
+            {
+              "nombre":"Mesa para 4 máximo",
+              "precio":"Gratis. Consumición minima 4€"
+            }
+          ]
+      },
+      {
+          "nombre" : "Navaja shop",
+          "tipo" : "peluquería",
+          "servicios": [
+            {
+              "nombre":"Pelado para hombre",
+              "precio":"8€"
+            },
+            {
+              "nombre":"Pelado para mujer",
+              "precio":"15€"
+            },
+            {
+              "nombre":"Tinte",
+              "precio":"20€"
+            }]
+      },
+      {
+          "nombre" : "Bold Monkey",
+          "tipo" : "peluquería",
+          "servicios": [
+            {
+              "nombre":"Pelado para hombre",
+              "precio":"8€"
+            },
+            {
+              "nombre":"Pelado para mujer",
+              "precio":"15€"
+            },
+            {
+              "nombre":"Tinte",
+              "precio":"20€"
+            }]}
+  ]
   constructor() { }
 
   ngOnInit() {
@@ -63,7 +168,7 @@ export class CercaDeMiComponent implements OnInit {
     }
     else{
       console.log(status);
-      alert("El servicio DistanceMatrix falló por el siguiente motivo: "+status)
+      alert("El servicio DistanceMatrix de Google falló por el siguiente motivo: "+status)
     }
   }
 
