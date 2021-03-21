@@ -4,16 +4,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { CercaDeMiComponent } from './cerca-de-mi/cerca-de-mi.component';
 import { GoogleMapsModule } from '@angular/google-maps'
-import { GeocodingService } from './geocoding.service'
+import { GeocodingService } from './geocoding.service';
+import { ViewBusinessComponent } from './business/view-business/view-business.component'
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CercaDeMiComponent
+    CercaDeMiComponent,
+    ViewBusinessComponent
   ],
   imports: [
     BrowserModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    ReactiveFormsModule
   ],
   providers: [GeocodingService],
   bootstrap: [AppComponent]
