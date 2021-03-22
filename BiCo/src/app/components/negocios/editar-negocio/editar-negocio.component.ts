@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms'
 
 @Component({
-  selector: 'app-view-business',
-  templateUrl: './view-business.component.html',
-  styleUrls: ['./view-business.component.css']
+  selector: 'app-editar-negocio',
+  templateUrl: './editar-negocio.component.html',
+  styleUrls: ['./editar-negocio.component.css']
 })
-export class ViewBusinessComponent implements OnInit {
+export class EditarNegocioComponent implements OnInit {
 
   form: FormGroup;
 
