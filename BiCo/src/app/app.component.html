@@ -1,3 +1,24 @@
-<h1>Bienvenido a {{title}}</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Bienvenido a {{title}}</a>
+      
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="/perfil">Mi Perfil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/negocio">Mis Negocios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/reservas">Mis Reservas</a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+
+<router-outlet></router-outlet>
+
 <app-cerca-de-mi></app-cerca-de-mi>
 <app-view-business></app-view-business>
+
