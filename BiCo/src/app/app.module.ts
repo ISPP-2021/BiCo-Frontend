@@ -6,15 +6,15 @@ import { CercaDeMiComponent } from './cerca-de-mi/cerca-de-mi.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PerfilComponent } from './components/perfil/perfil.component';
-import { NegociosComponent } from './components/negocios/negocios.component';
 import { HomeComponent } from './components/home/home.component';
+import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
 @NgModule({
   declarations: [
     AppComponent,
     CercaDeMiComponent,
     PerfilComponent,
-    NegociosComponent,
-    HomeComponent
+    HomeComponent,
+    VerNegocioComponent
   ],
   imports: [
     BrowserModule,

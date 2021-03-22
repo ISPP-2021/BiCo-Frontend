@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
-import { NegociosComponent } from './components/negocios/negocios.component';
 
 
 const routes: Routes = [
@@ -14,9 +14,13 @@ const routes: Routes = [
     path: 'perfil',
     component: PerfilComponent
   },
-  {
+  /*{
     path: 'negocios',
     component: NegociosComponent
+  },*/
+  {
+    path: 'negocio/:id',
+    component: VerNegocioComponent
   },
   {
     path: '',
