@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="save($event)">
+  <div id=" businessImg">
+    <input type="image" src="{{negocio.img}}" formControlName="img">
+  </div>
+  <p>
+    Nombre: <br />
+    <input type="text" formControlName="nombre">
+  </p>
+  <p>
+    Direccion: <br />
+    <input type="text" formControlName="direccion">
+  </p>
+  <p>
+    Tipo: <br />
+    <select formControlName="tipo">
+      <option value="bar">Bar</option>
+      <option value="peluqueria">Peluqueria</option>
+      <option value="otros">Otros</option>
+    </select>
+  </p>
+  <button type="submit" [disabled]="form.invalid">Guardar</button>
+</form>
