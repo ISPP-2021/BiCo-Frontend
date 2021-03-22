@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CercaDeMiComponent } from './cerca-de-mi/cerca-de-mi.component';
+import { BuscadorNegocioComponent } from './buscador-negocio/buscador-negocio.component';
+import { FilterCommercePipe } from './pipes/filter-commerce.pipe'
+import { FormsModule} from '@angular/forms'
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PerfilComponent } from './components/perfil/perfil.component';
@@ -16,9 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     CercaDeMiComponent,
-    PerfilComponent,
-    HomeComponent,
-    VerNegocioComponent
+    BuscadorNegocioComponent,
+    FilterCommercePipe
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     ViewBusinessComponent
     BrowserModule,
     GoogleMapsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PerfilComponent,
+    HomeComponent,
+    VerNegocioComponent,
+    FormsModule
   ],
   providers: [GeocodingService],
   bootstrap: [AppComponent]

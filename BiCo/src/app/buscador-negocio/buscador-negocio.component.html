@@ -1,0 +1,29 @@
+<div class="container">
+    <h1>Búsqueda de Negocios</h1>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <input type="text" class="form-control" name="filterCommercePost" placeholder="Search..." [(ngModel)]
+                ="filterCommercePost">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>nombre</th>
+                        <th>tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let negocio of negocios | filterCommerce: filterCommercePost">
+                        <td>{{negocio.nombre}}</td>
+                        <td>{{negocio.tipo}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
