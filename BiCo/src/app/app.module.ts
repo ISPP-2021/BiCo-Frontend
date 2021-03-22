@@ -8,6 +8,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { HomeComponent } from './components/home/home.component';
 import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
+import { GeocodingService } from './geocoding.service';
+import { ViewBusinessComponent } from './business/view-business/view-business.component'
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,8 +25,12 @@ import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negoc
     AppRoutingModule,
     GoogleMapsModule,
     NgbModule
+    ViewBusinessComponent
+    BrowserModule,
+    GoogleMapsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [GeocodingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

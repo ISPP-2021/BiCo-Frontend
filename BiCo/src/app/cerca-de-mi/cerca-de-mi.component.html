@@ -1,1 +1,12 @@
-<p>cerca-de-mi works!</p>
+<div id="map"></div>
+<div>
+  <ul>
+    <li *ngFor="let negocio of negocios ">
+      <strong>{{ negocio.nombre }}</strong>
+      <div class="tipo"> {{ negocio.tipo }}</div>
+      <ul>
+        <li class="servicio" *ngFor="let servicio of negocio.servicios"> {{ servicio.nombre }} : {{ servicio.precio }}</li>
+      </ul>
+    </li>
+  </ul>
+</div>
