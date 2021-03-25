@@ -23,7 +23,7 @@ const routes: Routes = [
     component: VerNegocioComponent
   },
    {
-    path: 'negocio-edit',
+    path: 'negocio-edit/:id',
     component: EditarNegocioComponent
   },
   {

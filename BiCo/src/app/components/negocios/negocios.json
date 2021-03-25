@@ -10,7 +10,8 @@
   		"horario_cierre": "10:00",
   		"horario_dias_festivos": "Los domingos",
  		"horario_dias_laborales": "To los demas",
-  		"telefono": 953621475
+  		"telefono": 953621475,
+			"foto": "https://media-cdn.tripadvisor.com/media/photo-s/14/b3/3e/cf/restaurante-ispal.jpg"
 	},
 	{
 		"id": 2,

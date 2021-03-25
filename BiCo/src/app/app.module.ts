@@ -16,6 +16,7 @@ import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negoc
 import { GeocodingService } from './services/geocoding-service/geocoding.service';
 import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component'
 import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {MatInputModule} from '@angular/material/input';
     NgbModule,
     BrowserModule,
     MatInputModule,
+    MatCardModule,
     BrowserAnimationsModule,
     MatSelectModule,
     FormsModule,
