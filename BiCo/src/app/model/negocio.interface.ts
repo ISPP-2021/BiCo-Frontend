@@ -3,7 +3,7 @@ export interface Negocio {
     descripcion: String;
     nombre: String;
     direccion: String;
-    etiqueta: String;
+    tipo: String;
     aforo: Number;
     horario_apertura: String;
     horario_cierre: String;
