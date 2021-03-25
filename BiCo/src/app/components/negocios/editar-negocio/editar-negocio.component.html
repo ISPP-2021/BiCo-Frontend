@@ -1,22 +1,40 @@
-<form [formGroup]="form" (ngSubmit)="save($event)">
-  <div id=" businessImg">
+<form class="example-form" style="padding-left: 5%; padding-top: 1%;" (ngSubmit)="save($event)">
+  <!--<div id=" businessImg">
     <input type="image" src="{{negocio.img}}" formControlName="img">
-  </div>
-  <p>
-    Nombre: <br />
-    <input type="text" formControlName="nombre">
-  </p>
-  <p>
-    Direccion: <br />
-    <input type="text" formControlName="direccion">
-  </p>
-  <p>
-    Tipo: <br />
-    <select formControlName="tipo">
-      <option value="bar">Bar</option>
-      <option value="peluqueria">Peluqueria</option>
-      <option value="otros">Otros</option>
-    </select>
-  </p>
-  <button type="submit" [disabled]="form.invalid">Guardar</button>
+  </div>-->
+  <mat-form-field class="example-full-width" required>
+    <mat-label>Nombre del Negocio</mat-label>
+    <input matInput placeholder="Introduzca el nombre de su Negocio" value="{{negocio.nombre}}">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width" required>
+    <mat-label>Direccion del Negocio</mat-label>
+    <input matInput placeholder="Introduzca la direccion de su Negocio" value="{{negocio.direccion}}">
+  </mat-form-field>
+  <br>
+  <mat-form-field required>
+    <mat-label>Tipo de Negocio</mat-label>
+    <mat-select [(value)]="selected">
+      <mat-option value="bar">Bar</mat-option>
+      <mat-option value="peluqueria">Peluqueria</mat-option>
+      <mat-option value="otros">Otros</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width">
+    <mat-label>Horario de apertura</mat-label>
+    <input matInput placeholder="Introduzca el horario de apertura de su Negocio" value="{{negocio.horario_apertura}}">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width">
+    <mat-label>Horario de cierre</mat-label>
+    <input matInput placeholder="Introduzca el horario de cierre de su Negocio" value="{{negocio.horario_cierre}}">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width">
+    <mat-label>Aforo</mat-label>
+    <input matInput placeholder="Introduzca el aforo de su Negocio" value="{{negocio.aforo}}">
+  </mat-form-field>
+  <br>
+  <button type="submit">Guardar</button>
 </form>

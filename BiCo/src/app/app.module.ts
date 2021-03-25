@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import {MatSelectModule} from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CercaDeMiComponent } from './components/cerca-de-mi/cerca-de-mi.component';
@@ -14,6 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
 import { GeocodingService } from './services/geocoding-service/geocoding.service';
 import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component'
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { EditarNegocioComponent } from './components/negocios/editar-negocio/edi
     GoogleMapsModule,
     NgbModule,
     BrowserModule,
-    GoogleMapsModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatSelectModule,
     FormsModule,
     ReactiveFormsModule
   ],

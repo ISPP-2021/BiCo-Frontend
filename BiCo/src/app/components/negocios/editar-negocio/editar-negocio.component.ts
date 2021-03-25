@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms'
+import negocios from "../negocios.json";
 
 @Component({
   selector: 'app-editar-negocio',
@@ -9,28 +10,14 @@ import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms'
 export class EditarNegocioComponent implements OnInit {
 
   form: FormGroup;
+  negocio = negocios[0]
+  selected = this.negocio.tipo
 
-  constructor(private formBuilder: FormBuilder) {
-    this.buildForm()
+  constructor() {
   }
-  negocio =
-    {
-        "nombre" : "Bar pakito",
-        "tipo" : "bar",
-        "direccion" : "Calle Prueba, nº 1",
-        "img" : "https://media-cdn.tripadvisor.com/media/photo-s/14/b3/3e/cf/restaurante-ispal.jpg"
-    }
 
   ngOnInit(){
 
-  }
-
-  private buildForm() {
-    this.form = this.formBuilder.group({
-    nombre: [this.negocio.nombre,  [Validators.required]],
-    tipo: ['', [Validators.required]],
-    direccion: [this.negocio.direccion, [Validators.required]],
-    });
   }
 
   save(event: Event) {
