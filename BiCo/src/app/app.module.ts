@@ -13,7 +13,10 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { HomeComponent } from './components/home/home.component';
 import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
 import { GeocodingService } from './services/geocoding-service/geocoding.service';
-import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component'
+import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { EditarNegocioComponent } from './components/negocios/editar-negocio/edi
     BrowserModule,
     GoogleMapsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatSelectModule,
   ],
   providers: [GeocodingService],
   bootstrap: [AppComponent]

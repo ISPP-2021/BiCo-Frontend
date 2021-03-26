@@ -12,6 +12,8 @@ export class FilterCommercePipe implements PipeTransform {
     for(const negocio of value){
       if(negocio.nombre.toLowerCase().indexOf(arg.toLowerCase()) > -1){
         result.push(negocio);
+      }else if(negocio.tipo.toLowerCase().indexOf(arg.toLowerCase()) > -1){
+        result.push(negocio);
       };
     };
     return result;
