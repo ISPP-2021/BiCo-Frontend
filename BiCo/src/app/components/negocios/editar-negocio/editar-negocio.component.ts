@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms'
 import { ActivatedRoute, Params, Router} from '@angular/router';
 import negocios from "../negocios.json";
-import { Negocio } from 'src/app/model/negocio.interface';
-import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
-import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-editar-negocio',
@@ -20,16 +18,20 @@ export class EditarNegocioComponent implements OnInit {
   /*negocio = this.negocioService.findOne(parseInt(this.negocioId)).pipe(
         map((negocio: Negocio) => negocio)
       );*/
-  negocio = negocios[this.negocioId]
+  negocio = negocios.filter(el=>{
+    return el.id == parseInt(this.negocioId);
+  })[0]
   selected = this.negocio.tipo
 
-  constructor(
-    private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute//, private negocioService: NegocioService
+  constructor(private http: HttpClient,private formBuilder: FormBuilder,
+  private router: Router, private route: ActivatedRoute
   ) {
+    this.http.get("https://stalion73.herokuapp.com/bookings").subscribe((res:any)=>{
+    console.log(this.negocio);
+  });
   }
 
   ngOnInit(){
-      console.log(this.negocioId)
       this.form = this.formBuilder.group({
       nombre: [this.negocio.nombre, [Validators.required]],
       direccion: [this.negocio.direccion, Validators.required],
@@ -37,6 +39,7 @@ export class EditarNegocioComponent implements OnInit {
       horario_apertura: [this.negocio.horario_apertura, [Validators.required]],
       horario_cierre: [this.negocio.horario_cierre, [Validators.required]],
       aforo: [this.negocio.aforo, [Validators.required]]
+
 
     });
   }

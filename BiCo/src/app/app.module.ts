@@ -19,6 +19,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { CrearNegocioComponent } from './components/negocios/crear-negocio/crear-negocio.component';
 import {MatButtonModule} from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {MatButtonModule} from '@angular/material/button';
     BrowserModule,
     AppRoutingModule,
     GoogleMapsModule,
+    HttpClientModule,
     NgbModule,
     MatButtonModule,
     BrowserModule,
