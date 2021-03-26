@@ -20,7 +20,7 @@ export class EditarNegocioComponent implements OnInit {
   /*negocio = this.negocioService.findOne(parseInt(this.negocioId)).pipe(
         map((negocio: Negocio) => negocio)
       );*/
-  negocio = negocios[0]
+  negocio = negocios[this.negocioId]
   selected = this.negocio.tipo
 
   constructor(

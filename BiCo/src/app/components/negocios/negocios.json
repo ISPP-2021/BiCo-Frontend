@@ -11,8 +11,23 @@
   		"horario_dias_festivos": "Los domingos",
  		"horario_dias_laborales": "To los demas",
   		"telefono": 953621475,
-			"foto": "https://media-cdn.tripadvisor.com/media/photo-s/14/b3/3e/cf/restaurante-ispal.jpg"
-	},
+			"foto": "https://media-cdn.tripadvisor.com/media/photo-s/14/b3/3e/cf/restaurante-ispal.jpg",
+       "options": [
+      {
+      "automatedAccept": true,
+      "limitAutomated": 10,
+      "defaultDeposit": 20,
+      "depositTimeLimit": 1
+    	}],
+      "services": [
+      {
+      "nombre": "servicio1",
+      "descripcion": "descripcion1",
+      "precio": 19.99,
+      "duracion": 1,
+      "deposit": 20
+    	}]
+},
 	{
 		"id": 2,
 		"descripcion": "Esto es una descripción",
@@ -24,7 +39,22 @@
   		"horario_cierre": "10:00",
   		"horario_dias_festivos": "Los domingos",
  		"horario_dias_laborales": "To los demas",
-  		"telefono": 953621475
+  		"telefono": 953621475,
+      "options": [
+      {
+      "automatedAccept": true,
+      "limitAutomated": 10,
+      "defaultDeposit": 20,
+      "depositTimeLimit": 1
+    	}],
+      "services": [
+      {
+      "nombre": "servicio2",
+      "descripcion": "descripcion2",
+      "precio": 10,
+      "duracion": 2,
+      "deposit": 20
+    	}]
 	},
 	{
 		"id": 3,
@@ -37,6 +67,21 @@
   		"horario_cierre": "10:00",
   		"horario_dias_festivos": "Los domingos",
  		"horario_dias_laborales": "To los demas",
-  		"telefono": 953621475
+  		"telefono": 953621475,
+      "options": [
+      {
+      "automatedAccept": true,
+      "limitAutomated": 10,
+      "defaultDeposit": 20,
+      "depositTimeLimit": 1
+    	}],
+      "services": [
+      {
+      "nombre": "servicio3",
+      "descripcion": "descripcion3",
+      "precio": 10,
+      "duracion": 0.30,
+      "deposit": 20
+    	}]
 	}
 ]

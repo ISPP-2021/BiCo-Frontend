@@ -1,9 +1,9 @@
 <form class="example-form" [formGroup]="form" (ngSubmit)="save()">
-  <h2 style="text-align: center;">Editar Negocio</h2>
-  <div>
-    <p>Imagen del Negocio:</p>
-    <img mat-card-image src="{{negocio.foto}}" alt="Imagen">
-  </div>
+  <h2 style="text-align: center;">Registrar Negocio</h2>
+  <mat-form-field class="example-full-width" required>
+    <mat-label>Foto del Negocio</mat-label>
+    <input matInput placeholder="Introduzca la URL de la imagen de su Negocio" formControlName="foto">
+  </mat-form-field>
   <br>
   <mat-form-field class="example-full-width" required>
     <mat-label>Nombre del Negocio</mat-label>
@@ -17,7 +17,7 @@
   <br>
   <mat-form-field class="example-full-width" required>
     <mat-label>Tipo de Negocio</mat-label>
-    <mat-select formControlName="tipo" [(value)]="selected">
+    <mat-select formControlName="tipo">
       <mat-option value="bar">Bar</mat-option>
       <mat-option value="peluqueria">Peluqueria</mat-option>
       <mat-option value="otros">Otros</mat-option>

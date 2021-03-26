@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { EditarNegocioComponent } from "./components/negocios/editar-negocio/editar-negocio.component";
+import { CrearNegocioComponent } from "./components/negocios/crear-negocio/crear-negocio.component";
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
    {
     path: 'negocio-edit/:id',
     component: EditarNegocioComponent
+  },
+   {
+    path: 'negocio-create',
+    component: CrearNegocioComponent
   },
   {
     path: '',

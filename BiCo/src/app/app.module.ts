@@ -17,6 +17,8 @@ import { GeocodingService } from './services/geocoding-service/geocoding.service
 import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component'
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
+import { CrearNegocioComponent } from './components/negocios/crear-negocio/crear-negocio.component';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -27,13 +29,15 @@ import {MatCardModule} from '@angular/material/card';
     HomeComponent,
     VerNegocioComponent,
     EditarNegocioComponent,
-    FilterCommercePipe
+    FilterCommercePipe,
+    CrearNegocioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     GoogleMapsModule,
     NgbModule,
+    MatButtonModule,
     BrowserModule,
     MatInputModule,
     MatCardModule,
