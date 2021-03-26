@@ -26,8 +26,8 @@ export class EditarNegocioComponent implements OnInit {
   constructor(private http: HttpClient,private formBuilder: FormBuilder,
   private router: Router, private route: ActivatedRoute
   ) {
-    this.http.get("https://stalion73.herokuapp.com/bookings").subscribe((res:any)=>{
-    console.log(this.negocio);
+    this.http.get("https://stalion73.herokuapp.com/business/"+this.negocioId).subscribe((res:any)=>{
+    console.log(res);
   });
   }
 
