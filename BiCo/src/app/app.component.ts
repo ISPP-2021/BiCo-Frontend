@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'BiCo';
+  constructor(private router: Router) {}
+
+  navigateTo(value) {
+    this.router.navigate(['../', value]);
+  }
+
 }

@@ -1,0 +1,16 @@
+.spacer {
+  flex: 1 1 auto;
+}
+mat-toolbar{
+  background-color: #D1B6BF;
+}
+.mat-button{
+  font-size: 20px;
+}
+.mat-raised-button{
+background-color: #8499B1;
+margin: 10px;
+}
+button:hover{
+background-color: #D2D9E2;
+}
