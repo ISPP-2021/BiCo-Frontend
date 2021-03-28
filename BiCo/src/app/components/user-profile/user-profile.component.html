@@ -1,0 +1,15 @@
+<div style="padding-left: 5%; padding-top: 1%;">
+    <h2>Perfil de usuario</h2>
+    <div style="padding-left: 1%; padding-top: 1%;" *ngFor="let attribute of usuario">
+        <div style="padding-left: 1%; padding-top: 1%;" >
+        <h3>{{attribute.username}}</h3>
+            <div>
+                <p>{{attribute.name}}</p>
+                <p>{{attribute.lastname}}</p>
+                <p>{{attribute.email}}</p>
+                <p>{{attribute.dni}}</p>
+            </div>
+    </div>
+</div>
+
+
