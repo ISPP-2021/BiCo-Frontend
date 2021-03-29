@@ -29,7 +29,7 @@
     </div>
     <div id="options">
       <h4>Opciones del Negocio</h4>
-      <mat-checkbox class="example-margin" formControlName="automatedAccept">Aceptacion automatica
+      <mat-checkbox (change)="disable()" class="example-margin" formControlName="automatedAccept">Aceptacion automatica
       </mat-checkbox>
       <br>
       <mat-form-field class="example-full-width">

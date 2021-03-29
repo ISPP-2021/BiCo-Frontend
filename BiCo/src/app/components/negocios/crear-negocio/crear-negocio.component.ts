@@ -28,4 +28,13 @@ export class CrearNegocioComponent implements OnInit {
     }
 
 }
+
+disable(){
+  if(this.form.get('automatedAccept').value==true){
+    this.form.get('limitAutomated').enable()
+  }else{
+    this.form.get('limitAutomated').disable()
+  }
+
+}
 }

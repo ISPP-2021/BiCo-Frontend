@@ -17,7 +17,7 @@ export class EditarNegocioComponent implements OnInit {
 //Para navegar a esta pagina, habria que crear una funcion que ejecute this.router.navigate(['/negocio-edit/',id]), pasandole a la funcion el id del negocio
 
   form: FormGroup;
-  negocioId = this.route.snapshot.paramMap.get('id');
+  negocioId = parseInt(this.route.snapshot.paramMap.get('id'));
   negocio$: Observable<Negocio> = this.route.params.pipe(
     switchMap((params: Params) => {
       const negocioId: number = parseInt(params['id']);
@@ -35,17 +35,22 @@ export class EditarNegocioComponent implements OnInit {
   }
 
   ngOnInit(): void{
-    this.form = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      address: ['', Validators.required],
-      businessType: ['', [Validators.required]],
-      automatedAccept: ['', [Validators.required]],
-      limitAutomated: [''],
-      defaultDeposit: ['', [Validators.required]],
-      depositTimeLimit: ['', [Validators.required]],
+    this.negocioService.findOne(this.negocioId).subscribe(negocio=>{
+      console.log(negocio)
+      this.form = this.formBuilder.group({
+      name: [negocio.name, [Validators.required]],
+      address: [negocio.address, Validators.required],
+      businessType: [negocio.businessType, [Validators.required]],
+      automatedAccept: [negocio.option.automatedAccept, [Validators.required]],
+      limitAutomated: [{value:negocio.option.limitAutomated, disabled:!negocio.option.automatedAccept}],
+      defaultDeposit: [negocio.option.defaultDeposit, [Validators.required]],
+      depositTimeLimit: [negocio.option.depositTimeLimit, [Validators.required]],
     });
 
-    this.negocioService.findOne(parseInt(this.negocioId)).pipe(
+    })
+
+
+    /*this.negocioService.findOne(parseInt(this.negocioId)).pipe(
         tap((negocio: Negocio) => {
             this.form.patchValue({
             name: negocio.name,
@@ -57,13 +62,22 @@ export class EditarNegocioComponent implements OnInit {
             depositTimeLimit: negocio.option.depositTimeLimit,
       })
         })
-       ).subscribe()
+       ).subscribe()*/
   }
 
   save() {
     if(this.form.valid){
     console.log(this.form.value)
     }
+}
+
+disable(){
+  if(this.form.get('automatedAccept').value==true){
+    this.form.get('limitAutomated').enable()
+  }else{
+    this.form.get('limitAutomated').disable()
+  }
+
 }
 
 }
