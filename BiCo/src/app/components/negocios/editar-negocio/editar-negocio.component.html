@@ -6,7 +6,7 @@
       <img mat-card-image src="{{negocio.foto}}" alt="Imagen">
     </div>-->
     <br>
-    <div id="neg">
+    <div>
       <h4>Datos del Negocio</h4>
       <mat-form-field class="example-full-width" required>
         <mat-label>Nombre del Negocio</mat-label>
@@ -27,9 +27,10 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div id="options">
+    <div formGroupName="option">
       <h4>Opciones del Negocio</h4>
-      <mat-checkbox (change)="disable()" class="example-margin" formControlName="automatedAccept">Aceptacion automatica
+      <mat-checkbox (change)="disable()" class="example-margin" formControlName="automatedAccept">Aceptacion
+        automatica
       </mat-checkbox>
       <br>
       <mat-form-field class="example-full-width">
@@ -51,26 +52,51 @@
       </mat-form-field>
       <br>
 
+    </div>
+
+    <div formArrayName="services" *ngFor="let servicio of negocio.services; index as i">
+      <div [formGroupName]="i">
+        <h4>Servicio del Negocio</h4>
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombre del servicio</mat-label>
+          <input matInput type="text" placeholder="Introduzca el nombre del servicio" formControlName="nameService">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Descripcion del servicio</mat-label>
+          <input matInput type="text" placeholder="Introduzca la descripcion del servicio"
+            formControlName="description">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Precio del servicio</mat-label>
+          <input matInput type="number" placeholder="Introduzca el precio del servicio" formControlName="price">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Duracion del servicio</mat-label>
+          <input matInput type="number" placeholder="Introduzcala duracion del servicio" formControlName="duration">
+        </mat-form-field>
+        <br>
+      </div>
 
     </div>
 
-    <br>
-    <!--
-  <mat-form-field class="example-full-width">
-    <mat-label>Horario de apertura</mat-label>
-    <input formControlName="horario_apertura" matInput placeholder="Introduzca el horario de apertura de su Negocio">
-  </mat-form-field>
-  <br>
-  <mat-form-field class="example-full-width">
-    <mat-label>Horario de cierre</mat-label>
-    <input formControlName="horario_cierre" matInput placeholder="Introduzca el horario de cierre de su Negocio">
-  </mat-form-field>
-  <br>
-  <mat-form-field class="example-full-width">
-    <mat-label>Aforo</mat-label>
-    <input formControlName="aforo" matInput placeholder="Introduzca el aforo de su Negocio">
-  </mat-form-field>
-  <br>-->
+    <!--<mat-form-field class="example-full-width">
+  <mat-label>Horario de apertura</mat-label>
+  <input formControlName="horario_apertura" matInput placeholder="Introduzca el horario de apertura de su Negocio">
+</mat-form-field>
+<br>
+<mat-form-field class="example-full-width">
+  <mat-label>Horario de cierre</mat-label>
+  <input formControlName="horario_cierre" matInput placeholder="Introduzca el horario de cierre de su Negocio">
+</mat-form-field>
+<br>
+<mat-form-field class="example-full-width">
+  <mat-label>Aforo</mat-label>
+  <input formControlName="aforo" matInput placeholder="Introduzca el aforo de su Negocio">
+</mat-form-field>
+<br>-->
     <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Guardar</button>
   </form>
 </div>

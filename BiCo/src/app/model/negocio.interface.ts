@@ -9,5 +9,14 @@ export interface Negocio {
       defaultDeposit: Number
       depositTimeLimit: Number
     }
+    services:{
+      name: String
+      description: String
+      price: Number
+      duration: Number
+      capacity: Number
+      deposit: Number
+      tax: Number
+    }
 
   }
