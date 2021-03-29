@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
-import { PerfilComponent } from './components/perfil/perfil.component';
+import { UsersComponent } from './components/users/users.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 
 const routes: Routes = [
@@ -11,16 +11,12 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'perfil',
-    component: PerfilComponent
+    path: 'users',
+    component: UsersComponent
   },
-  /*{
-    path: 'negocios',
-    component: NegociosComponent
-  },*/
   {
-    path: 'negocio/:id',
-    component: VerNegocioComponent
+    path: 'user',
+    component: UserProfileComponent
   },
   {
     path: '',
