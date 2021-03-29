@@ -28,6 +28,6 @@ export class VerNegocioComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  negocios: Negocio[] = negociosData;
+  n//egocios: Negocio[] = negociosData;
 
 }

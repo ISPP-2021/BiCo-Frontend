@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms'
 import { ActivatedRoute, Params, Router} from '@angular/router';
-import negocios from "../negocios.json";
+import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
+import { Negocio } from 'src/app/model/negocio.interface';
 import { HttpClient } from '@angular/common/http'
+import { Observable } from 'rxjs';
+import { map, switchMap,tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-editar-negocio',
@@ -15,33 +18,37 @@ export class EditarNegocioComponent implements OnInit {
 
   form: FormGroup;
   negocioId = this.route.snapshot.paramMap.get('id');
-  /*negocio = this.negocioService.findOne(parseInt(this.negocioId)).pipe(
+  negocio$: Observable<Negocio> = this.route.params.pipe(
+    switchMap((params: Params) => {
+      const negocioId: number = parseInt(params['id']);
+
+      return this.negocioService.findOne(negocioId).pipe(
         map((negocio: Negocio) => negocio)
-      );*/
-  negocio = negocios.filter(el=>{
-    return el.id == parseInt(this.negocioId);
-  })[0]
-  selected = this.negocio.tipo
+  )
+})
+  )
 
   constructor(private http: HttpClient,private formBuilder: FormBuilder,
-  private router: Router, private route: ActivatedRoute
+  private router: Router, private route: ActivatedRoute,
+  private negocioService: NegocioService
   ) {
-    this.http.get("https://stalion73.herokuapp.com/business/"+this.negocioId).subscribe((res:any)=>{
-    console.log(res);
-  });
   }
 
-  ngOnInit(){
-      this.form = this.formBuilder.group({
-      nombre: [this.negocio.nombre, [Validators.required]],
-      direccion: [this.negocio.direccion, Validators.required],
-      tipo: [this.negocio.tipo, [Validators.required]],
-      horario_apertura: [this.negocio.horario_apertura, [Validators.required]],
-      horario_cierre: [this.negocio.horario_cierre, [Validators.required]],
-      aforo: [this.negocio.aforo, [Validators.required]]
-
-
+  ngOnInit(): void{
+    this.form = this.formBuilder.group({
+      name: [null, [Validators.required]],
+      address: ['', Validators.required],
+      businessType: ['', [Validators.required]],
     });
+
+    this.negocioService.findOne(parseInt(this.negocioId)).pipe(
+        tap((negocio: Negocio) => {
+            this.form.patchValue({
+            name: negocio.name,
+            address: negocio.address,
+            businessType: negocio.businessType})
+        })
+       ).subscribe()
   }
 
   save() {
