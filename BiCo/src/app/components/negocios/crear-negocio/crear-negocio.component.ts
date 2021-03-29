@@ -13,13 +13,13 @@ export class CrearNegocioComponent implements OnInit {
 
   ngOnInit(){
      this.form = this.formBuilder.group({
-      foto: ['', [Validators.required]],
-      nombre: ['', [Validators.required]],
-      direccion: ['', Validators.required],
-      tipo: ['', [Validators.required]],
-      horario_apertura: ['', [Validators.required]],
-      horario_cierre: ['', [Validators.required]],
-      aforo: ['', [Validators.required]]
+      name: ['', [Validators.required]],
+      address: ['', Validators.required],
+      businessType: ['', [Validators.required]],
+      automatedAccept: ['', [Validators.required]],
+      limitAutomated: ['', [Validators.required]],
+      defaultDeposit: ['', [Validators.required]],
+      depositTimeLimit: ['', [Validators.required]],
       });
   }
   save() {

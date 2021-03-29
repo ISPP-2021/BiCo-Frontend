@@ -1,43 +1,48 @@
 <form class="example-form" [formGroup]="form" (ngSubmit)="save()">
   <h2 style="text-align: center;">Registrar Negocio</h2>
-  <mat-form-field class="example-full-width" required>
-    <mat-label>Foto del Negocio</mat-label>
-    <input matInput placeholder="Introduzca la URL de la imagen de su Negocio" formControlName="foto">
-  </mat-form-field>
-  <br>
-  <mat-form-field class="example-full-width" required>
-    <mat-label>Nombre del Negocio</mat-label>
-    <input matInput placeholder="Introduzca el nombre de su Negocio" formControlName="nombre">
-  </mat-form-field>
-  <br>
-  <mat-form-field class="example-full-width" required>
-    <mat-label>Direccion del Negocio</mat-label>
-    <input formControlName="direccion" matInput placeholder="Introduzca la direccion de su Negocio">
-  </mat-form-field>
-  <br>
-  <mat-form-field class="example-full-width" required>
-    <mat-label>Tipo de Negocio</mat-label>
-    <mat-select formControlName="tipo">
-      <mat-option value="bar">Bar</mat-option>
-      <mat-option value="peluqueria">Peluqueria</mat-option>
-      <mat-option value="otros">Otros</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <br>
-  <mat-form-field class="example-full-width">
-    <mat-label>Horario de apertura</mat-label>
-    <input formControlName="horario_apertura" matInput placeholder="Introduzca el horario de apertura de su Negocio">
-  </mat-form-field>
-  <br>
-  <mat-form-field class="example-full-width">
-    <mat-label>Horario de cierre</mat-label>
-    <input formControlName="horario_cierre" matInput placeholder="Introduzca el horario de cierre de su Negocio">
-  </mat-form-field>
-  <br>
-  <mat-form-field class="example-full-width">
-    <mat-label>Aforo</mat-label>
-    <input formControlName="aforo" matInput placeholder="Introduzca el aforo de su Negocio">
-  </mat-form-field>
-  <br>
+  <div id="neg">
+    <h4>Datos del Negocio</h4>
+    <mat-form-field class="example-full-width" required>
+      <mat-label>Nombre del Negocio</mat-label>
+      <input matInput placeholder="Introduzca el nombre de su Negocio" formControlName="name">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" required>
+      <mat-label>Direccion del Negocio</mat-label>
+      <input matInput placeholder="Introduzca la direccion de su Negocio" formControlName="address">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" required>
+      <mat-label>Tipo de Negocio</mat-label>
+      <mat-select formControlName="businessType">
+        <mat-option value="bar">Bar</mat-option>
+        <mat-option value="HAIRDRESSER">Peluqueria</mat-option>
+        <mat-option value="otros">Otros</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div id="options">
+    <h4>Opciones del Negocio</h4>
+    <mat-checkbox class="example-margin" formControlName="automatedAccept">Aceptacion automatica</mat-checkbox>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Limite de Reservas Automaticas</mat-label>
+      <input matInput type="number" placeholder="Seleccione el numero de reservas automaticas"
+        formControlName="limitAutomated">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Fianza de Reserva</mat-label>
+      <input matInput type="number" placeholder="Introduzca la fianza por reservas para todos los servicios"
+        formControlName="defaultDeposit">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Tiempo de cancelacion gratuita</mat-label>
+      <input matInput type="number" placeholder="Introduzca el numero de dias para que la cancelacion sea gratuitas"
+        formControlName="depositTimeLimit">
+    </mat-form-field>
+    <br>
+  </div>
   <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Guardar</button>
 </form>

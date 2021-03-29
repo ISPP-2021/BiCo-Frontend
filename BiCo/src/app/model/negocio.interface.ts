@@ -3,5 +3,11 @@ export interface Negocio {
     name: String;
     address: String;
     businessType: String;
+    option:{
+      automatedAccept: boolean
+      limitAutomated: Number
+      defaultDeposit: Number
+      depositTimeLimit: Number
+    }
 
   }

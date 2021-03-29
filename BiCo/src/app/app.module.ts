@@ -20,6 +20,7 @@ import {MatCardModule} from '@angular/material/card';
 import { CrearNegocioComponent } from './components/negocios/crear-negocio/crear-negocio.component';
 import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     NgbModule,
     MatButtonModule,
+    MatCheckboxModule,
     BrowserModule,
     MatInputModule,
     MatCardModule,

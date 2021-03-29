@@ -36,9 +36,13 @@ export class EditarNegocioComponent implements OnInit {
 
   ngOnInit(): void{
     this.form = this.formBuilder.group({
-      name: [null, [Validators.required]],
+      name: ['', [Validators.required]],
       address: ['', Validators.required],
       businessType: ['', [Validators.required]],
+      automatedAccept: ['', [Validators.required]],
+      limitAutomated: [''],
+      defaultDeposit: ['', [Validators.required]],
+      depositTimeLimit: ['', [Validators.required]],
     });
 
     this.negocioService.findOne(parseInt(this.negocioId)).pipe(
@@ -46,7 +50,12 @@ export class EditarNegocioComponent implements OnInit {
             this.form.patchValue({
             name: negocio.name,
             address: negocio.address,
-            businessType: negocio.businessType})
+            businessType: negocio.businessType,
+            automatedAccept: negocio.option.automatedAccept,
+            limitAutomated: negocio.option.limitAutomated,
+            defaultDeposit: negocio.option.defaultDeposit,
+            depositTimeLimit: negocio.option.depositTimeLimit,
+      })
         })
        ).subscribe()
   }
