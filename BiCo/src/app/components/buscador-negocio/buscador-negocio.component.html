@@ -9,7 +9,7 @@
         </div>
     </div>
     <mat-card>
-        <mat-select placeholder="Tipo de negocio" ng-model="onSelect($event)">
+        <mat-select placeholder="Tipo de negocio" (selectionChange)="onSelect($event.value)">
             <mat-option value="">Todos</mat-option>
             <mat-option *ngFor="let tipo of tipos" [value]="tipo">
                 {{tipo}}

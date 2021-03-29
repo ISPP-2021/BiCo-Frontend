@@ -17,11 +17,11 @@ export class BuscadorNegocioComponent implements OnInit {
     
   }
 
-  onSelect(event){
-      if(event.value == "")
+  onSelect(tipo){
+      if(tipo == "")
           this.negocios = this.servicio.getNegocios();
       else
-          this.negocios = this.servicio.getNegociosFilter(event.value);
+          this.negocios = this.servicio.getNegociosFilter(tipo);
       
   }
 
