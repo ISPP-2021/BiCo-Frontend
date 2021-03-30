@@ -11,12 +11,6 @@ export class NegocioService {
 
 	constructor(private http: HttpClient) { }
 
-	findOne(id: Number): Observable<Negocio> {
-		return this.http.get<Negocio>('https://stalion73.herokuapp.com/business/' + id).pipe(
-			map((negocio: Negocio) => negocio)
-		);
-	}
-
 	findAll(): Observable<Negocio[]> {
 		return this.http
 			.get<Negocio[]>('https://stalion73.herokuapp.com/business/')
@@ -28,4 +22,18 @@ export class NegocioService {
 	errorHandler(err: HttpErrorResponse) {
 		return observableThrowError(err.message)
 	}
+
+  findOne(id: Number): Observable<Negocio> {
+    return this.http.get<Negocio>('https://stalion73.herokuapp.com/business/' + id).pipe(
+      map((negocio: Negocio) => negocio)
+    );
+  }
+
+   create(negocio:Negocio): Observable<Negocio> {
+    return this.http.post<Negocio>('https://stalion73.herokuapp.com/business/',negocio);
+  }
+
+   update(id: Number,negocio:Negocio): Observable<Negocio> {
+    return this.http.put<Negocio>('https://stalion73.herokuapp.com/business/' + id,negocio);
+  }
 }

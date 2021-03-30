@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,FormArray, Validators} from '@angular/forms'
+import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
 
 @Component({
   selector: 'app-crear-negocio',
@@ -8,8 +9,10 @@ import { FormBuilder, FormGroup,FormArray, Validators} from '@angular/forms'
 })
 export class CrearNegocioComponent implements OnInit {
 
+    //llamar a nameService name e inicializar las bookings a vacio
+
   form: FormGroup;
-  constructor( private formBuilder: FormBuilder) { }
+  constructor( private formBuilder: FormBuilder, private negocioService: NegocioService) { }
 
   ngOnInit(){
      this.form = this.formBuilder.group({
@@ -49,6 +52,7 @@ export class CrearNegocioComponent implements OnInit {
 
   save() {
     if(this.form.valid){
+    //this.negocioService.create(this.form.value).subscribe()
     console.log(this.form.value)
     }
 

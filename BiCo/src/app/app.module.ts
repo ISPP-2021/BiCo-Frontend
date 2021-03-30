@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
+import { ServisesComponent } from './components/servises/servises.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatDividerModule} from '@angular/material/divider';
     VerNegocioComponent,
     EditarNegocioComponent,
     FilterCommercePipe,
-    CrearNegocioComponent
+    CrearNegocioComponent,
+    ServisesComponent
   ],
   imports: [
     BrowserModule,
