@@ -46,7 +46,7 @@ export class EditarNegocioComponent implements OnInit {
         defaultDeposit: [negocio.option.defaultDeposit, [Validators.required]],
         depositTimeLimit: [negocio.option.depositTimeLimit, [Validators.required]]
         }),
-        services: this.formBuilder.array([this.initService(negocio.services)])
+        services: this.formBuilder.array([this.initService(negocio.services), this.addServiceGroup()])
       });
 
 
@@ -57,13 +57,34 @@ export class EditarNegocioComponent implements OnInit {
     for (let index = 0; index < services.length; index++) {
       const service = services[index];
       return this.formBuilder.group({
-      nameService: service.name,
-      description: service.description,
-      price: service.price,
-      duration: service.duration
+      nameService: [service.name,[Validators.required]],
+      description: [service.description,[Validators.required]],
+      price: [service.price,[Validators.required]],
+      duration: [service.duration,[Validators.required]]
     });
     }
 
+  }
+
+   get serviceArray(){
+    return <FormArray>this.form.get('services');
+  }
+
+  addServiceGroup(){
+    return this.formBuilder.group({
+      nameService: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      price: ['', [Validators.required]],
+      duration: ['', [Validators.required]]
+    });
+  }
+
+   addService(){
+    this.serviceArray.push(this.addServiceGroup());
+  }
+
+  removeService(index){
+    this.serviceArray.removeAt(index);
   }
 
   save() {
