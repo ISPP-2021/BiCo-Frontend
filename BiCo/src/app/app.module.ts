@@ -20,6 +20,9 @@ import {MatCardModule} from '@angular/material/card';
 import { CrearNegocioComponent } from './components/negocios/crear-negocio/crear-negocio.component';
 import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { HttpClientModule } from '@angular/common/http';
     GoogleMapsModule,
     HttpClientModule,
     NgbModule,
+    MatDividerModule,
     MatButtonModule,
+    MatIconModule,
+    MatCheckboxModule,
     BrowserModule,
     MatInputModule,
     MatCardModule,
