@@ -8,6 +8,14 @@
             </div>
         </div>
     </div>
+    <mat-card>
+        <mat-select placeholder="Tipo de negocio" (selectionChange)="onSelect($event.value)">
+            <mat-option value="">Todos</mat-option>
+            <mat-option *ngFor="let tipo of tipos" [value]="tipo">
+                {{tipo}}
+            </mat-option>
+        </mat-select>
+    </mat-card>
     <div class="row">
         <div class="col">
             <table class="table table-striped">
