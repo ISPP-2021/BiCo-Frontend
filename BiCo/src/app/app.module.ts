@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 import { AppComponent } from './app.component';
 import { CercaDeMiComponent } from './components/cerca-de-mi/cerca-de-mi.component';
@@ -27,12 +28,12 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { HomeComponent } from './components/home/home.component';
 import { UsersComponent } from './components/users/users.component';
 import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
-
+import { CreateBookingComponent } from './components/create-booking/create-booking.component';
 import { FilterCommercePipe } from './pipes/filter-commerce.pipe';
 
 import { GeocodingService } from './services/geocoding-service/geocoding.service';
-import { CreateBookingComponent } from './components/create-booking/create-booking.component';
-import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+
+
 
 @NgModule({
 	declarations: [

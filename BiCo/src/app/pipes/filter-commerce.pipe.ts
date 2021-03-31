@@ -10,7 +10,7 @@ export class FilterCommercePipe implements PipeTransform {
     if(arg == '' || arg.length < 3) return value;
     const result = [];
     for(const negocio of value){
-      if(negocio.nombre.toLowerCase().indexOf(arg.toLowerCase()) > -1){
+      if(negocio.name.toLowerCase().indexOf(arg.toLowerCase()) > -1){
         result.push(negocio);
       };
     };
