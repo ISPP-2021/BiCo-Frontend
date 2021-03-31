@@ -1,0 +1,32 @@
+<div style="padding-left: 5%; padding-top: 1%;">
+    <h2>Perfil de usuario</h2>
+    <div style="padding-left: 1%; padding-top: 1%;">
+        <h4>Datos</h4>
+            <div class="row" style="padding-top: 1%;">
+                <div class="col">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nombre de usuario</th>
+                                <th>Contraseña</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Correo Electrónico</th>
+                                <th>Dni</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let usuario of usuarios">
+                                <td>{{usuario.username}}</td>
+                                <td>{{usuario.password}}</td>
+                                <td>{{usuario.name}}</td>
+                                <td>{{usuario.lastname}}</td>
+                                <td>{{usuario.email}}</td>
+                                <td>{{usuario.dni}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    </div>
+</div>
