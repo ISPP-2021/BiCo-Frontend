@@ -16,10 +16,6 @@
   box-sizing: border-box;
 }
 
-img {
-  width: 100%;
-}
-
 @media (max-width: 480 px) {
   .example-form {
     width: 100%;

@@ -1,0 +1,22 @@
+.card {
+    width: 99%;
+    max-height: 99%;
+}
+
+.header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.mat-tab-group{
+  height: 100%;
+}
+
+.mat-tab-body-wrapper {
+  flex-grow: 1;
+}
+
+.mat-tab-body {
+  display: flex !important;
+  flex-direction: column;
+}
