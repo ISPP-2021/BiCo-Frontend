@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
-import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -36,46 +33,46 @@ import { FilterCommercePipe } from './pipes/filter-commerce.pipe';
 import { GeocodingService } from './services/geocoding-service/geocoding.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CercaDeMiComponent,
-    BuscadorNegocioComponent,
-    UserProfileComponent,
-    HomeComponent,
-    EditarNegocioComponent,
-    FilterCommercePipe,
-    CrearNegocioComponent,
-    ServisesComponent,
-    LoginComponent
-    UsersComponent,
-    UserProfileComponent,
-    VerNegocioComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    GoogleMapsModule,
-    HttpClientModule,
-    NgbModule,
-    MatDividerModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCheckboxModule,
-    BrowserModule,
-    MatInputModule,
-    MatCardModule,
-    BrowserAnimationsModule,
-    MatSelectModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MatGridListModule,
-    MatCardModule,
-    MatButtonModule,
-    MatTabsModule,
-    HttpClientModule
-  ],
-  providers: [GeocodingService],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		CercaDeMiComponent,
+		BuscadorNegocioComponent,
+		UserProfileComponent,
+		HomeComponent,
+		EditarNegocioComponent,
+		FilterCommercePipe,
+		CrearNegocioComponent,
+		ServisesComponent,
+		LoginComponent,
+		UsersComponent,
+		UserProfileComponent,
+		VerNegocioComponent
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		GoogleMapsModule,
+		HttpClientModule,
+		NgbModule,
+		MatDividerModule,
+		MatButtonModule,
+		MatIconModule,
+		MatCheckboxModule,
+		BrowserModule,
+		MatInputModule,
+		MatCardModule,
+		BrowserAnimationsModule,
+		MatSelectModule,
+		FormsModule,
+		ReactiveFormsModule,
+		BrowserAnimationsModule,
+		MatGridListModule,
+		MatCardModule,
+		MatButtonModule,
+		MatTabsModule,
+		HttpClientModule
+	],
+	providers: [GeocodingService],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
