@@ -28,10 +28,11 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { HomeComponent } from './components/home/home.component';
 import { UsersComponent } from './components/users/users.component';
 import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
-import { CreateBookingComponent } from './components/create-booking/create-booking.component';
+import { CrearReservaComponent } from './components/reservas/crear-reserva/crear-reserva.component';
 import { FilterCommercePipe } from './pipes/filter-commerce.pipe';
 
 import { GeocodingService } from './services/geocoding-service/geocoding.service';
+
 
 
 
@@ -50,7 +51,8 @@ import { GeocodingService } from './services/geocoding-service/geocoding.service
 		UsersComponent,
 		UserProfileComponent,
 		VerNegocioComponent,
-		CreateBookingComponent
+		CrearReservaComponent,
+		CrearReservaComponent
 	],
 	imports: [
 		BrowserModule,
