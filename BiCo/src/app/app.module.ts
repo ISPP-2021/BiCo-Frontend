@@ -10,9 +10,8 @@ import { AppComponent } from './app.component';
 import { CercaDeMiComponent } from './components/cerca-de-mi/cerca-de-mi.component';
 import { BuscadorNegocioComponent } from './components/buscador-negocio/buscador-negocio.component';
 import { FilterCommercePipe } from './pipes/filter-commerce.pipe';
-import { PerfilComponent } from './components/perfil/perfil.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { HomeComponent } from './components/home/home.component';
-import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
 import { GeocodingService } from './services/geocoding-service/geocoding.service';
 import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component'
 import {MatInputModule} from '@angular/material/input';
@@ -24,16 +23,15 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import { ServisesComponent } from './components/servises/servises.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CercaDeMiComponent,
     BuscadorNegocioComponent,
-    PerfilComponent,
+    UserProfileComponent,
     HomeComponent,
-    VerNegocioComponent,
     EditarNegocioComponent,
     FilterCommercePipe,
     CrearNegocioComponent,

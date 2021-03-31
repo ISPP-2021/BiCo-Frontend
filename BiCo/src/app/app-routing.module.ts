@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
-import { PerfilComponent } from './components/perfil/perfil.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { EditarNegocioComponent } from "./components/negocios/editar-negocio/editar-negocio.component";
 import { CrearNegocioComponent } from "./components/negocios/crear-negocio/crear-negocio.component";
 
@@ -13,15 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'perfil',
-    component: PerfilComponent
-  },
-  /*{
-    path: 'negocios',
-    component: NegociosComponent
-  },*/
-  {
-    path: 'negocio/:id',
-    component: VerNegocioComponent
+    component: UserProfileComponent
   },
    {
     path: 'negocio-edit/:id',
