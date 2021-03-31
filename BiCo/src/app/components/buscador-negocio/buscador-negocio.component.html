@@ -23,12 +23,14 @@
                     <tr>
                         <th>nombre</th>
                         <th>tipo</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let negocio of negocios | filterCommerce: filterCommercePost">
                         <td>{{negocio.nombre}}</td>
                         <td>{{negocio.tipo}}</td>
+                        <td><a class="nav-link" href="/reservar/{{negocio.id}}">Reservar</a></td>
                     </tr>
                 </tbody>
             </table>

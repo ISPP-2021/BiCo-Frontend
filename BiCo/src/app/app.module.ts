@@ -17,6 +17,8 @@ import { EditarNegocioComponent } from './components/negocios/editar-negocio/edi
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
+import { CreateBookingComponent } from './components/create-booking/create-booking.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { MatSelectModule } from '@angular/material/select';
     HomeComponent,
     VerNegocioComponent,
     EditarNegocioComponent,
-    FilterCommercePipe
+    FilterCommercePipe,
+    CreateBookingComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,8 @@ import { MatSelectModule } from '@angular/material/select';
     BrowserAnimationsModule,
     MatCardModule,
     MatSelectModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
   ],
   providers: [GeocodingService],
   bootstrap: [AppComponent]

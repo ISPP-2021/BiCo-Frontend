@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { CreateBookingComponent } from './components/create-booking/create-booking.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,11 @@ const routes: Routes = [
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
-  }
+  },
+  {
+    path: 'reservar/:id',
+    component: CreateBookingComponent
+  },
 ];
 
 @NgModule({
