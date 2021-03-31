@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Negocio } from 'src/app/model/negocio.interface';
 import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
-import  negociosData  from 'src/app/components/negocios/negocios.json';
 
 @Component({
   selector: 'app-ver-negocio',
@@ -28,6 +27,5 @@ export class VerNegocioComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  negocios: Negocio[] = negociosData;
 
 }
