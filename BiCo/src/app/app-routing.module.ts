@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { EditarNegocioComponent } from "./components/negocios/editar-negocio/editar-negocio.component";
 import { CrearNegocioComponent } from "./components/negocios/crear-negocio/crear-negocio.component";
+import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
    {
     path: 'negocio-create',
     component: CrearNegocioComponent
+  },
+  {
+    path: 'negocio/:id',
+    component: VerNegocioComponent
   },
   {
     path: '',
