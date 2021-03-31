@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
+  displayedColumns: string[] = ['username', 'password', 'name', 'lastname', 'email', 'dni'];
   constructor() { }
 
   usuarios = [

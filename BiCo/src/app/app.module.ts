@@ -20,7 +20,7 @@ import { MatCardModule} from '@angular/material/card';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { UsersComponent } from './components/users/users.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component'
-
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
-
+    MatTableModule
   ],
   providers: [GeocodingService],
   bootstrap: [AppComponent]

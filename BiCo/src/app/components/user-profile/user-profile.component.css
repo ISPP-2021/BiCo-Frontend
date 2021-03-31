@@ -1,0 +1,27 @@
+.header-image {
+    background-size: cover;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.card {
+    width: 60%;
+    max-width: 80%;
+    margin: 20px;
+}
+
+.titulo-pagina{
+    background-color: #FCECE3; 
+    font-size: 20px;
+
+}
+.mat-raised-button{
+background-color: #A3DCB9;
+margin: 10px;
+}
+.spacer {
+    flex: 1 1 auto;
+  }

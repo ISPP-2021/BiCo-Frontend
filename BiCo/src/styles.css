@@ -5,6 +5,3 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif; 
     background-color: #D2D9E2;
 }
-:focus { 
-    outline-style: none;
-}

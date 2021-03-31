@@ -30,3 +30,43 @@
             </div>
     </div>
 </div>
+
+  
+<div>
+    <mat-table *ngFor="let usuario of usuarios">
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+        <ng-container matColumnDef="username">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Username</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{usuario.username}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="password">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{usuario.password}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{usuario.name}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="lastname">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Apellidos</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{usuario.lastname}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{usuario.email}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="dni">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>DNI</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{usuario.dni}}</mat-cell>
+        </ng-container>
+    </mat-table>
+
+</div>
+  
+  

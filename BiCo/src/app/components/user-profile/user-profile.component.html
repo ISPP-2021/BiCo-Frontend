@@ -1,15 +1,28 @@
-<div style="padding-left: 5%; padding-top: 1%;">
-    <h2>Perfil de usuario</h2>
-    <div style="padding-left: 1%; padding-top: 1%;" *ngFor="let attribute of usuario">
-        <div style="padding-left: 1%; padding-top: 1%;" >
-        <h3>{{attribute.username}}</h3>
-            <div>
-                <p>{{attribute.name}}</p>
-                <p>{{attribute.lastname}}</p>
-                <p>{{attribute.email}}</p>
-                <p>{{attribute.dni}}</p>
+
+<mat-toolbar class="titulo-pagina">
+    <span> Perfil de usuario</span>
+    <span class="spacer"></span>
+
+</mat-toolbar>
+
+<div class="main-div" *ngFor="let attribute of usuario">
+    <mat-card class="card" >
+        <mat-card-header>
+            <div mat-card-avatar>
+                <img src="./assets/avatar.png" class="header-image">
             </div>
-    </div>
+            <mat-card-title>{{attribute.username}}</mat-card-title>
+            <mat-card-subtitle>{{attribute.email}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>Nombre: {{attribute.name}}</p>
+            <p>Apellidos: {{attribute.lastname}}</p>
+            <p>DNI: {{attribute.dni}}</p>
+            <p>Email: {{attribute.email}}</p>    
+            <mat-card-actions>
+                <button mat-raised-button>Editar</button>
+            </mat-card-actions>     
+        </mat-card-content>
+    </mat-card>
 </div>
-
-
+<router-outlet></router-outlet>
