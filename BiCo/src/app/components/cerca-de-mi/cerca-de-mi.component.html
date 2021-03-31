@@ -2,10 +2,10 @@
 <div>
   <ul>
     <li *ngFor="let negocio of negocios ">
-      <strong>{{ negocio.nombre }}</strong>
-      <div class="tipo"> {{ negocio.tipo }}</div>
+      <strong>{{ negocio.name }}</strong>
+      <div class="tipo"> {{ negocio.businessType }}</div>
       <ul>
-        <li class="servicio" *ngFor="let servicio of negocio.servicios"> {{ servicio.nombre }} : {{ servicio.precio }}</li>
+        <li class="servicio" *ngFor="let servicio of negocio.services"> Servicio: {{ servicio.name }}. Precio: {{ servicio.price }}</li>
       </ul>
     </li>
   </ul>
