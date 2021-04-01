@@ -7,7 +7,7 @@
       <!-- <a mat-button href="/negocio/{{negocio.id}}"> Ver negocio</a> -->
       <mat-card-subtitle *ngIf="negocio.businessType === 'HAIRDRESSER'"> Peluquería</mat-card-subtitle>
       <mat-card-subtitle *ngIf="negocio.businessType === 'RESTAURANT'"> Bar/Restaurante</mat-card-subtitle>
-      <mat-card-subtitle *ngIf="negocio.businessType === 'OTHER'"> Otros</mat-card-subtitle>
+      <mat-card-subtitle *ngIf="negocio.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions *ngFor="let servicio of negocio.services">
       <button mat-button> {{ servicio.name }} - {{ servicio.price }} €</button>
