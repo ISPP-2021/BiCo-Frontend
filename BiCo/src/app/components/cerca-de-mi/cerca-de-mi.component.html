@@ -1,12 +1,16 @@
 <div id="map"></div>
-<div>
-  <ul>
-    <li *ngFor="let negocio of negocios ">
-      <strong>{{ negocio.name }}</strong>
-      <div class="tipo"> {{ negocio.businessType }}</div>
-      <ul>
-        <li class="servicio" *ngFor="let servicio of negocio.services"> Servicio: {{ servicio.name }}. Precio: {{ servicio.price }}</li>
-      </ul>
-    </li>
-  </ul>
-</div>
+<mat-grid-list cols="3" rowHeight="20%">
+  <mat-card class="card" *ngFor="let negocio of negocios ">
+    <mat-card-header>
+      <mat-card-title>{{ negocio.name }}</mat-card-title>
+      <a mat-mini-fab routerLink="/negocio/{{negocio.id}}">Ver</a>
+      <!-- <a mat-button href="/negocio/{{negocio.id}}"> Ver negocio</a> -->
+      <mat-card-subtitle *ngIf="negocio.businessType === 'HAIRDRESSER'"> Peluquería</mat-card-subtitle>
+      <mat-card-subtitle *ngIf="negocio.businessType === 'RESTAURANT'"> Bar/Restaurante</mat-card-subtitle>
+      <mat-card-subtitle *ngIf="negocio.businessType === 'OTHER'"> Otros</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions *ngFor="let servicio of negocio.services">
+      <button mat-button> {{ servicio.name }} - {{ servicio.price }} €</button>
+    </mat-card-actions>
+  </mat-card>
+</mat-grid-list>
