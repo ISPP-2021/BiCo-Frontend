@@ -52,7 +52,6 @@ import { GeocodingService } from './services/geocoding-service/geocoding.service
 		UserProfileComponent,
 		VerNegocioComponent,
 		CrearReservaComponent,
-		CrearReservaComponent
 	],
 	imports: [
 		BrowserModule,

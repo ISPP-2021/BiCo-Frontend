@@ -14,6 +14,7 @@ export interface Reserva {
         }
       }
     services: [{
+        id: Number
         name: String
         description: String
         price: Number

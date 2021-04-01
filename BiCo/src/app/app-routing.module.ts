@@ -5,7 +5,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { EditarNegocioComponent } from "./components/negocios/editar-negocio/editar-negocio.component";
 import { CrearNegocioComponent } from "./components/negocios/crear-negocio/crear-negocio.component";
 import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
-import { CreateBookingComponent } from './components/create-booking/create-booking.component';
+import { CrearReservaComponent } from './components/reservas/crear-reserva/crear-reserva.component';
 
 
 const routes: Routes = [
@@ -36,7 +36,7 @@ const routes: Routes = [
   },
   {
     path: 'reservar/:id',
-    component: CreateBookingComponent
+    component: CrearReservaComponent
   },
 ];
 
