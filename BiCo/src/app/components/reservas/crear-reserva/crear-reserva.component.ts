@@ -40,8 +40,8 @@ export class CrearReservaComponent implements OnInit {
     this.negocioService.findOne(this.negocioId).subscribe(data => this.negocio = data)
     this.form = this.formBuilder.group({
       bookDate: ['', [Validators.required]],
-      emisionDate: [this.fechaActual()],
-      status: [''],
+      emisionDate: [''],
+      status: ['IN PROGRESS'],
        
       services: this.formBuilder.array([this.addServiceGroup()])
       });
@@ -74,9 +74,16 @@ export class CrearReservaComponent implements OnInit {
     }
   }
     
-  fechaActual(){
+
+  fechaActual(formulario: FormGroup) {
     let date: Date = new Date();
-    return date;
+    this.form = this.formBuilder.group({
+        bookDate: formulario.get("bookDate"),
+        emisionDate: date,
+        status: formulario.get("status"),
+
+        services: formulario.get("services")
+    });
   }
 
 }

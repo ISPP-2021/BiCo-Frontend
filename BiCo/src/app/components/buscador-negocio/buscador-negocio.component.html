@@ -11,9 +11,9 @@
     <mat-card>
       <mat-select placeholder="Tipo de negocio" (selectionChange)="onSelect($event.value)">
             <mat-option value="">Todos</mat-option>
-            <mat-option *ngFor="let tipo of tipos" [value]="tipo">
-                {{tipo}}
-            </mat-option>
+            <mat-option value="HAIRDRESSER">Peluqueria</mat-option>
+            <mat-option value="RESTAURANT">Restaurante</mat-option>
+            <mat-option value="GENERAL">Otros</mat-option>
         </mat-select>
     </mat-card>
 
@@ -30,7 +30,9 @@
                 <tbody>
                     <tr *ngFor="let negocio of negocios | filterCommerce: filterCommercePost">
                         <td>{{negocio.name}}</td>
-                        <td>{{negocio.businessType}}</td>
+                        <td *ngIf="negocio.businessType=== 'HAIRDRESSER'">Peluqueria</td>
+                        <td *ngIf="negocio.businessType=== 'RESTAURANT'">Restaurante</td>
+                        <td *ngIf="negocio.businessType=== 'GENERAL'">Otros</td>
                         <td><a class="nav-link" href="/reservar/{{negocio.id}}">Reservar</a></td>
                     </tr>
                 </tbody>
