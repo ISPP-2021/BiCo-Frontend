@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { map, tap, switchMap } from "rxjs/operators";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Observable, of } from 'rxjs';
 import { User } from '../../model/user.interface';
 
 export interface LoginForm {
-  email: string;
+  user: string;
   password: string;
 };
 
@@ -21,14 +21,18 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
   login(loginForm: LoginForm) {
-
-    return this.http.post<any>('https://stalion73.herokuapp.com/user', {email: loginForm.email, password: loginForm.password}).pipe(
+    //https://stalion73.herokuapp.com/user
+     console.log(this.http.post('http://localhost:8080/users', {user: loginForm.user, password: loginForm.password}).subscribe(
+       response=>{
+         console.log(response)
+       }
+     ))/*.pipe(
       map((token) => {
         console.log('token');
-        localStorage.setItem(JWT_NAME, token.access_token);
+        localStorage.setItem(JWT_NAME, this.http.htoken);
         return token;
       })
-    )
+    )*/
   }
 
   logout() {

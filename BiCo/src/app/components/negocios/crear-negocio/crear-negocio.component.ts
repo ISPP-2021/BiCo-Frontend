@@ -52,7 +52,7 @@ export class CrearNegocioComponent implements OnInit {
 
   save() {
     if(this.form.valid){
-    //this.negocioService.create(this.form.value).subscribe()
+    this.negocioService.create(this.form.value).subscribe()
     console.log(this.form.value)
     }
 
