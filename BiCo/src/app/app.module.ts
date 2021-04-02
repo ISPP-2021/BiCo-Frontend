@@ -5,6 +5,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from  '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { JwtHelperService, JWT_OPTIONS } from "@auth0/angular-jwt";
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +38,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 
 
@@ -77,7 +81,7 @@ import { MatDividerModule } from '@angular/material/divider';
 		MatTabsModule,
 		HttpClientModule
 	],
-	providers: [GeocodingService],
+	providers: [GeocodingService, JwtHelperService,  { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
