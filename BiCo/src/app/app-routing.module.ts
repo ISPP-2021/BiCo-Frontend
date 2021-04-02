@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { UsersComponent } from './components/users/users.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-
+import { EditarNegocioComponent } from "./components/negocios/editar-negocio/editar-negocio.component";
+import { CrearNegocioComponent } from "./components/negocios/crear-negocio/crear-negocio.component";
+import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
 
 const routes: Routes = [
   {
@@ -11,12 +12,20 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'users',
-    component: UsersComponent
+    path: 'perfil',
+    component: UserProfileComponent
+  },
+   {
+    path: 'negocio-edit/:id',
+    component: EditarNegocioComponent
+  },
+   {
+    path: 'negocio-create',
+    component: CrearNegocioComponent
   },
   {
-    path: 'user',
-    component: UserProfileComponent
+    path: 'negocio/:id',
+    component: VerNegocioComponent
   },
   {
     path: '',
