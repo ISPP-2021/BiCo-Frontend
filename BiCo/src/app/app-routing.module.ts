@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { SupplierComponent } from './components/users/supplier/supplier.component';
+import { ConsumerProfileComponent } from './components/users/consumer/consumer-profile.component';
+import { SupplierProfileComponent } from './components/users/supplier/supplier-profile.component';
 
 const routes: Routes = [
   {
@@ -9,8 +10,12 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
+    path: 'consumer/:id',
+    component: ConsumerProfileComponent,
+  },
+  {
     path: 'supplier/:id',
-    component: SupplierComponent,
+    component: SupplierProfileComponent,
   },
   {
     path: '',

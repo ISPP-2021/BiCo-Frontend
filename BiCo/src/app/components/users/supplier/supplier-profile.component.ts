@@ -6,11 +6,11 @@ import { Supplier } from 'src/app/model/supplier.interface';
 import { SupplierService } from 'src/app/services/supplier-service/supplier.service';
 
 @Component({
-  selector: 'app-supplier',
-  templateUrl: './supplier.component.html',
-  styleUrls: ['./supplier.component.css'],
+  selector: 'app-supplier-profile',
+  templateUrl: './supplier-profile.component.html',
+  styleUrls: ['./supplier-profile.component.css'],
 })
-export class SupplierComponent implements OnInit {
+export class SupplierProfileComponent implements OnInit {
   supplier$: Observable<Supplier> = this.activatedRoute.params.pipe(
     switchMap((params: Params) => {
       const supplierId: number = parseInt(params['id']);

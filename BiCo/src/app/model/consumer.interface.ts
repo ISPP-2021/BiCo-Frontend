@@ -1,4 +1,4 @@
-export interface Supplier {
+export interface Consumer {
   id?: Number;
   name?: String;
   lastname?: String;
@@ -14,5 +14,19 @@ export interface Supplier {
       new?: boolean;
     };
   };
+  bookings?: {
+    id?: Number;
+    bookDate?: Date;
+    status?: String;
+    new?: boolean;
+  };
   new?: boolean;
+  _links?: {
+    self?: {
+      href?: String;
+    };
+    consumers?: {
+      href?: String;
+    };
+  };
 }

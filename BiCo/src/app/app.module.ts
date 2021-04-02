@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { CercaDeMiComponent } from './components/cerca-de-mi/cerca-de-mi.component';
@@ -20,7 +21,8 @@ import { HomeComponent } from './components/home/home.component';
 import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component';
 
 import { GeocodingService } from './services/geocoding-service/geocoding.service';
-import { SupplierComponent } from './components/users/supplier/supplier.component';
+import { ConsumerProfileComponent } from './components/users/consumer/consumer-profile.component';
+import { SupplierProfileComponent } from './components/users/supplier/supplier-profile.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { SupplierComponent } from './components/users/supplier/supplier.componen
     HomeComponent,
     EditarNegocioComponent,
     FilterCommercePipe,
-    SupplierComponent,
+    ConsumerProfileComponent,
+    SupplierProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { SupplierComponent } from './components/users/supplier/supplier.componen
     MatCardModule,
     MatFormFieldModule,
     MatTableModule,
+    HttpClientModule,
   ],
   providers: [GeocodingService],
   bootstrap: [AppComponent],
