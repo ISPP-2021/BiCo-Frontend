@@ -1,19 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+
 import { AppComponent } from './app.component';
 import { CercaDeMiComponent } from './components/cerca-de-mi/cerca-de-mi.component';
 import { BuscadorNegocioComponent } from './components/buscador-negocio/buscador-negocio.component';
 import { FilterCommercePipe } from './pipes/filter-commerce.pipe';
 import { HomeComponent } from './components/home/home.component';
-import { GeocodingService } from './services/geocoding-service/geocoding.service';
 import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component';
-import { UsersComponent } from './components/users/users.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component'
+
+import { GeocodingService } from './services/geocoding-service/geocoding.service';
+import { SupplierComponent } from './components/users/supplier/supplier.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +30,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     HomeComponent,
     EditarNegocioComponent,
     FilterCommercePipe,
-    UsersComponent,
-    UserProfileComponent
+    SupplierComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,9 +40,16 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     BrowserModule,
     GoogleMapsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatTableModule,
   ],
   providers: [GeocodingService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

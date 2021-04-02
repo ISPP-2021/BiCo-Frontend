@@ -1,0 +1,24 @@
+<mat-toolbar class="titulo-pagina">
+    <span> Perfil de Supplier</span>
+    <span class="spacer"></span>
+
+</mat-toolbar>
+
+<div class="main-div" *ngIf="(supplier$ | async) as supplier">
+    <mat-card class="card" >
+        <mat-card-header>
+            <div mat-card-avatar>
+                <img src="./assets/avatar.png" class="header-image">
+            </div>
+            <mat-card-title>{{supplier.name}}</mat-card-title>
+            <mat-card-subtitle>{{supplier.email}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>Nombre: {{supplier.name}}</p>
+            <p>Apellidos: {{supplier.lastname}}</p>
+            <p>DNI: {{supplier.dni}}</p>
+            <p>Email: {{supplier.email}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>
+<router-outlet></router-outlet>
