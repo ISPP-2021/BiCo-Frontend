@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email, Validators.minLength(6)]),
+      // email: new FormControl(null, [Validators.required, Validators.email, Validators.minLength(6)]),
+      user: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [Validators.required, Validators.minLength(3)])
     })
   }
@@ -30,9 +31,9 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.invalid) {
       return;
     }
-    /*this.authService.login(this.loginForm.value).pipe(
+    this.authService.login(this.loginForm.value).pipe(
       map(token => this.router.navigate(['home']))
-    ).subscribe()*/
+    ).subscribe()
     console.log(this.loginForm.value)
 
   }
