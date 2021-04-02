@@ -36,4 +36,8 @@ export class NegocioService {
    update(id: Number,negocio:Negocio): Observable<Negocio> {
     return this.http.put<Negocio>('https://stalion73.herokuapp.com/business/' + id,negocio);
   }
+
+  findServices(id: Number){
+    return this.http.get<Negocio>('https://stalion73.herokuapp.com/servises/' + id)
+  }
 }

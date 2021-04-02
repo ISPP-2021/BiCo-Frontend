@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { JwtHelperService, JWT_OPTIONS } from "@auth0/angular-jwt";
 
 import { AppComponent } from './app.component';
 import { CercaDeMiComponent } from './components/cerca-de-mi/cerca-de-mi.component';
@@ -72,7 +73,7 @@ import { GeocodingService } from './services/geocoding-service/geocoding.service
 		MatTabsModule,
 		HttpClientModule
 	],
-	providers: [GeocodingService],
+	providers: [GeocodingService, JwtHelperService,  { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
