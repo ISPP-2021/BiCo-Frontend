@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
@@ -11,7 +10,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { UsersComponent } from './components/users/users.component';
 import { ConsumerProfileComponent } from './components/users/consumer/consumer-profile.component';
 import { SupplierProfileComponent } from './components/users/supplier/supplier-profile.component';
 
@@ -42,8 +40,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 
-import { FlexLayoutModule } from '@angular/flex-layout';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,11 +53,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CrearNegocioComponent,
     ServisesComponent,
     LoginComponent,
-    UsersComponent,
     VerNegocioComponent,
-    FlexLayoutModule,
-    MatListModule,
-    MatSidenavModule,
   ],
   imports: [
     BrowserModule,
@@ -84,6 +76,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatSelectModule,
     MatGridListModule,
     MatTabsModule,
+    MatListModule,
+    MatSidenavModule,
   ],
   providers: [
     GeocodingService,

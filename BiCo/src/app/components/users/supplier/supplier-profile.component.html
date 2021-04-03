@@ -1,9 +1,3 @@
-<mat-toolbar class="titulo-pagina">
-    <span> Perfil de Supplier</span>
-    <span class="spacer"></span>
-
-</mat-toolbar>
-
 <div class="main-div" *ngIf="(supplier$ | async) as supplier">
     <mat-card class="card" >
         <mat-card-header>
@@ -18,4 +12,3 @@
         </mat-card-content>
     </mat-card>
 </div>
-<router-outlet></router-outlet>
