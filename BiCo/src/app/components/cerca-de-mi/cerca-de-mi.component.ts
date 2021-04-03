@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
+import { JWT_NAME } from 'src/app/services/authentication-service/authentication.service';
 
 @Component({
 	selector: 'app-cerca-de-mi',
@@ -10,6 +11,7 @@ export class CercaDeMiComponent implements OnInit {
 
 	negocios = [];
 	errorMessage = "";
+	token: string = localStorage.getItem(JWT_NAME);
 
 	constructor(private negocioService: NegocioService) { }
 

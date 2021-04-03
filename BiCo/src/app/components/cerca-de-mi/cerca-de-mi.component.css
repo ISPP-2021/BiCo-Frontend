@@ -1,21 +1,9 @@
-ul {
-  padding:10px;
-  margin:0px;
+.card {
+  margin: 1% auto;
+  width: 50%;
+  max-height: 50%;
 }
 
-ul li {
-  border: 2px solid;
-  border-color: inherit;
-  padding: 10px;
-  margin: 12px 12%;
-  list-style-type: none;
-
-}
-
-ul li .tipo {
-  float: right
-}
-
-ul li .precio {
-  float: right
+.mat-mini-fab {
+  float: right;
 }
