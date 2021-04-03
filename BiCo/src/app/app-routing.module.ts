@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { EditarNegocioComponent } from "./components/negocios/editar-negocio/editar-negocio.component";
-import { CrearNegocioComponent } from "./components/negocios/crear-negocio/crear-negocio.component";
+import { ConsumerProfileComponent } from './components/users/consumer/consumer-profile.component';
+import { SupplierProfileComponent } from './components/users/supplier/supplier-profile.component';
+import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component';
+import { CrearNegocioComponent } from './components/negocios/crear-negocio/crear-negocio.component';
 import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
 import { ServisesComponent } from './components/servises/servises.component';
 import { LoginComponent } from './components/login/login.component';
@@ -11,42 +12,46 @@ import { LoginComponent } from './components/login/login.component';
 const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+  },
+  {
+    path: 'consumer/:id',
+    component: ConsumerProfileComponent,
+  },
+  {
+    path: 'supplier/:id',
+    component: SupplierProfileComponent,
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
-    path: 'perfil',
-    component: UserProfileComponent
-  },
-   {
     path: 'negocio-edit/:id',
-    component: EditarNegocioComponent
+    component: EditarNegocioComponent,
   },
-   {
+  {
     path: 'negocio-create',
-    component: CrearNegocioComponent
+    component: CrearNegocioComponent,
   },
 
   {
     path: 'negocio/:id',
-    component: VerNegocioComponent
+    component: VerNegocioComponent,
   },
-    {
+  {
     path: 'services-edit/:id',
-    component: ServisesComponent
+    component: ServisesComponent,
   },
   {
     path: '',
     redirectTo: '/home',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
