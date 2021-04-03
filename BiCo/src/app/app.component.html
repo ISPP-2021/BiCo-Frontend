@@ -1,23 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Bienvenido a {{title}}</a>
-
-  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/users">Mi Perfil</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/negocio/1">Un negocio</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/reservas">Mis Reservas</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/login">Iniciar Sesion</a>
-      </li>
-
-    </ul>
-  </div>
-</nav>
-
+<mat-toolbar>
+  <button mat-button routerLink="/home" class="home"><img  src="./assets/favicon.png"  style="width:40px;"></button>
+  <button mat-button routerLink="/home" class="home" style="margin-left: 20px;">Bienvenido a BiCo</button>
+  <span class="spacer"></span>
+  <button mat-raised-button routerLink="/consumer/1">Consumer Profile</button>
+  <button mat-raised-button routerLink="/supplier/1">Supplier Profile</button>
+  <button mat-raised-button routerLink="/negocio/1">Mis Negocios</button>
+  <button mat-raised-button routerLink="/reservas">Mis Reservas</button>
+  <button mat-raised-button routerLink="/login">Iniciar Sesión</button>
+</mat-toolbar>
 <router-outlet></router-outlet>
