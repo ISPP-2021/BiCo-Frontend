@@ -1,4 +1,3 @@
-
 <mat-toolbar class="titulo-pagina">
     <span> Perfil de usuario</span>
     <span class="spacer"></span>
@@ -6,10 +5,10 @@
 </mat-toolbar>
 
 <div class="main-div" *ngFor="let attribute of usuario">
-    <mat-card class="card" >
+    <mat-card class="card">
         <mat-card-header>
             <div mat-card-avatar>
-                <img src="./assets/avatar.png" class="header-image">
+                <img src="./assets/avatar.png" class="header-image" style="width = 40px">
             </div>
             <mat-card-title>{{attribute.username}}</mat-card-title>
             <mat-card-subtitle>{{attribute.email}}</mat-card-subtitle>
@@ -18,10 +17,10 @@
             <p>Nombre: {{attribute.name}}</p>
             <p>Apellidos: {{attribute.lastname}}</p>
             <p>DNI: {{attribute.dni}}</p>
-            <p>Email: {{attribute.email}}</p>    
+            <p>Email: {{attribute.email}}</p>
             <mat-card-actions>
                 <button mat-raised-button>Editar</button>
-            </mat-card-actions>     
+            </mat-card-actions>
         </mat-card-content>
     </mat-card>
 </div>

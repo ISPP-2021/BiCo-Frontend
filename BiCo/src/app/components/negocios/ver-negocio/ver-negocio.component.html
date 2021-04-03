@@ -1,31 +1,30 @@
-<mat-grid-list cols="6" rowHeight="50%" *ngIf="(negocio$ | async) as negocio">
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'lightblue'"></mat-grid-tile>
-    <mat-grid-tile [colspan]="4" [rowspan]="1" [style.background]="'lightgreen'">
-        <mat-card class="card">
-            <mat-card-header>
-              <div mat-card-avatar class="header-image"></div>
-              <mat-card-title>{{negocio.name}}</mat-card-title>
-              <mat-card-subtitle>{{negocio.address}}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <p>Tipo de negocio: {{negocio.businessType}}</p>
-            </mat-card-content>
-        </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'lightpink'"></mat-grid-tile>
-    <mat-grid-tile [colspan]="4" [rowspan]="1" [style.background]="'lightpink'" *ngFor="let servicio of negocio.services">
-        <mat-card class="card">
-            <mat-card-header>
-              <mat-card-title>Nombre: {{servicio.name}}</mat-card-title>
-              <mat-card-subtitle>Precio: {{servicio.price}} €</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-                <p>Descripción: </p>
-                <p>{{servicio.description}}</p>
-                <p>Duración: {{servicio.duration}} horas</p>
-                <p>Aforo: {{servicio.capacity}} personas</p>
-            </mat-card-content>
-        </mat-card>
-    </mat-grid-tile>
-    
+<mat-grid-list cols="6" *ngIf="(negocio$ | async) as negocio">
+  <mat-grid-tile [colspan]="1" [rowspan]="2"></mat-grid-tile>
+  <mat-grid-tile [colspan]="4" [rowspan]="1">
+    <mat-card class="card">
+      <mat-card-header>
+        <div mat-card-avatar class="header-image"></div>
+        <mat-card-title>{{negocio.name}}</mat-card-title>
+        <mat-card-subtitle>{{negocio.address}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Tipo de negocio: {{negocio.businessType}}</p>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="1" [rowspan]="2"></mat-grid-tile>
+  <mat-grid-tile [colspan]="4" [rowspan]="1" *ngFor="let servicio of negocio.services">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>Nombre: {{servicio.name}}</mat-card-title>
+        <mat-card-subtitle>Precio: {{servicio.price}} €</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Descripción: </p>
+        <p>{{servicio.description}}</p>
+        <p>Duración: {{servicio.duration}} horas</p>
+        <p>Aforo: {{servicio.capacity}} personas</p>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
 </mat-grid-list>

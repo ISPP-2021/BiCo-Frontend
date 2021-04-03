@@ -1,17 +1,22 @@
 .spacer {
   flex: 1 1 auto;
 }
-.mat-toolbar{
+.mat-toolbar {
   background-color: #C29EAA;
 }
 .mat-button{
-  font-size: 20px;
+  font-size: 2vw;
   background-color: transparent;
+
 }
 .mat-raised-button{
-background-color: #8499B1;
-margin: 10px;
+  background-color: #8499B1;
+  font-size: 1vw;
+  margin: .5vw;
 }
-button:hover{
+.mat-raised-button:hover{
 background-color: #F8D2BF;
+}
+.mat-sidenav-container{
+background-color: #D2D9E2;
 }

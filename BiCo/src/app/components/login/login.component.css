@@ -1,0 +1,23 @@
+:host {
+    display: flex;
+    justify-content: center;
+    margin: 20vw 0vw;
+  }
+
+  .mat-form-field {
+    width: 100%;
+    min-width: 30vw;
+    font-size: 1vw;
+  }
+
+  .mat-card-title{
+    display: flex;
+    justify-content: center;
+    font-size: 1.5vw;
+  }
+.mat-raised-button{
+  margin-left: 50%;
+  transform: translateX(-50%);
+  font-size: 1vw;
+  justify-content: center;
+}

@@ -28,7 +28,6 @@ import { ServisesComponent } from './components/servises/servises.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule} from '@angular/material/toolbar';
-import { MatIconModule} from '@angular/material/icon';
 import { MatButtonModule} from '@angular/material/button';
 import { MatCardModule} from '@angular/material/card';
 import { MatFormFieldModule} from '@angular/material/form-field';
@@ -39,10 +38,11 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDividerModule } from '@angular/material/divider';
+import { MatSidenavModule} from '@angular/material/sidenav';
+import { MatListModule} from '@angular/material/list';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
 	declarations: [
@@ -79,6 +79,9 @@ import { MatDividerModule } from '@angular/material/divider';
 		MatGridListModule,
 		MatButtonModule,
 		MatTabsModule,
+		MatSidenavModule,
+		MatListModule,
+		FlexLayoutModule,
 		HttpClientModule
 	],
 	providers: [GeocodingService, JwtHelperService,  { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }],

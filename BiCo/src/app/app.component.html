@@ -1,11 +1,58 @@
-<mat-toolbar>
-    <button mat-button routerLink="/home" class="home"><img  src="./assets/favicon.png"  style="width:40px;"></button>
-    <button mat-button routerLink="/home" class="home" style="margin-left: 20px;">Bienvenido a BiCo</button>
-    <span class="spacer"></span>
-    <button mat-raised-button routerLink="/users">Usuarios</button>
-    <button mat-raised-button routerLink="/user">Mi Perfil</button>
-    <button mat-raised-button routerLink="/negocio/1">Un negocio</button>
-    <button mat-raised-button routerLink="/reservas">Mis Reservas</button>
-</mat-toolbar>
-<router-outlet></router-outlet>
+<div style="height: 5vh;">
+    <mat-toolbar>
+        <mat-toolbar-row>
+            <button mat-button routerLink="/home"><img src="./assets/favicon.png" style="width:2.5vw;"></button>
+            <button mat-button routerLink="/home">Bienvenido a BiCo</button>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+                <mat-icon>menu</mat-icon>
+            </button>
+            <div fxShow="true" fxHide.lt-md="true">
+                <button mat-raised-button routerLink="/users">
+                    <mat-icon>groups</mat-icon>Usuarios
+                </button>
+                <button mat-raised-button routerLink="/perfil">
+                    <mat-icon>account_circle</mat-icon>Mi perfil
+                </button>
+                <button mat-raised-button routerLink="/negocio/1">
+                    <mat-icon>business</mat-icon>Negocio
+                </button>
+                <button mat-raised-button routerLink="/reservas">
+                    <mat-icon>calendar_today</mat-icon>Mis reservas
+                </button>
+                <button mat-raised-button routerLink="/login">
+                    <mat-icon>login</mat-icon>Iniciar sesión
+                </button>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
 
+    <mat-sidenav-container fxFlexFill [hasBackdrop]="false">
+        <mat-sidenav #sidenav>
+            <mat-nav-list>
+                <a href="/users" mat-list-item>
+                    <mat-icon>group</mat-icon>Mi perfil
+                </a>
+                <a href="/perfil" mat-list-item>
+                    <mat-icon>account_circle</mat-icon>Mi perfil
+                </a>
+                <a href="/negocio/1" mat-list-item>
+                    <mat-icon>business</mat-icon>Negocio
+                </a>
+                <a href="/reservas" mat-list-item>
+                    <mat-icon>calendar_today</mat-icon>Mis reservas
+                </a>
+                <a href="/login" mat-list-item>
+                    <mat-icon>login</mat-icon>Iniciar sesión
+                </a>
+                <a (click)="sidenav.toggle()" mat-list-item>
+                    <mat-icon>close</mat-icon>Cerrar
+                </a>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content></mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
+
+
+<router-outlet></router-outlet>
