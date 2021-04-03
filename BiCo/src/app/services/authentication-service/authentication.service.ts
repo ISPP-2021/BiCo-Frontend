@@ -4,6 +4,7 @@ import { map, tap, switchMap } from "rxjs/operators";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Observable, of } from 'rxjs';
 import { User } from '../../model/user.interface';
+import { UserService } from 'src/app/services/user-services/user.service';
 
 export interface LoginForm {
 	user: string;
@@ -21,16 +22,21 @@ export class AuthenticationService {
 	// https://stalion73.herokuapp.com/users/login
 	url: string = 'http://localhost:8080/users/login';
 
-	constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
+	constructor(private http: HttpClient, private jwtHelper: JwtHelperService,  private userService: UserService) { }
 
 	login(loginForm: LoginForm) {
 
 		return this.http.post<User>(this.url, { username: loginForm.user, password: loginForm.password }).pipe(
 			map((usuario) => {
-				console.log(usuario.token);
+				console.log(usuario.authorities[0].authority)
 				console.log(usuario);
 
 				localStorage.setItem(JWT_NAME, usuario.token);
+
+        let rol = usuario.authorities[0].authority;
+
+        localStorage.setItem("rol", rol);
+
 				return usuario;
 			})
 		)

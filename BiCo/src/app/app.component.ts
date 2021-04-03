@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
   constructor(private router: Router) {}
 
+  rol = localStorage.getItem("rol")
+
   navigateTo(value) {
     this.router.navigate(['../', value]);
   }
