@@ -19,7 +19,7 @@
 
 <div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
 <mat-form-field class="example-full-width">
-    <mat-label>Servicio</mat-label>
+    <mat-label>Servicio {{ i+1 }}</mat-label>
     <mat-select formControlName="id">
       <mat-option *ngFor="let servicio of negocio.services" [value]="servicio.id">{{servicio.name}}</mat-option>
     </mat-select>

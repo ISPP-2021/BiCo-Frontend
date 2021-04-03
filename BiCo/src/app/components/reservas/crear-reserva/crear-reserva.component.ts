@@ -21,16 +21,6 @@ export class CrearReservaComponent implements OnInit {
   negocio = {}
 
   negocioId = parseInt(this.route.snapshot.paramMap.get('id'));
-  negocio$: Observable<Negocio> = this.route.params.pipe(
-    switchMap((params: Params) => {
-      const negocioId: number = parseInt(params['id']);
-
-      return this.negocioService.findOne(negocioId).pipe(
-        map((negocio: Negocio) => negocio)
-        
-  )
-})
-  )
   
   constructor( private http: HttpClient,private formBuilder: FormBuilder,
     private router: Router, private route: ActivatedRoute,
@@ -42,7 +32,7 @@ export class CrearReservaComponent implements OnInit {
       bookDate: ['', [Validators.required]],
       emisionDate: [''],
       status: ['IN PROGRESS'],
-       
+      
       services: this.formBuilder.array([this.addServiceGroup()])
       });
     
@@ -68,8 +58,7 @@ export class CrearReservaComponent implements OnInit {
 
   save() {
     if(this.form.valid){
-     
-    //this.negocioService.create(this.form.value).subscribe()
+    //this.reservaService.create(this.form.value).subscribe()
     console.log(this.form.value)
     }
   }
@@ -77,13 +66,9 @@ export class CrearReservaComponent implements OnInit {
 
   fechaActual(formulario: FormGroup) {
     let date: Date = new Date();
-    this.form = this.formBuilder.group({
-        bookDate: formulario.get("bookDate"),
-        emisionDate: date,
-        status: formulario.get("status"),
-
-        services: formulario.get("services")
-    });
+    this.form.patchValue({
+      emisionDate: date
+    })
   }
 
 }
