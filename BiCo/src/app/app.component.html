@@ -1,22 +1,20 @@
-<div style="height: 5vh;">
+<div style="height: 100hv;">
     <mat-toolbar>
         <mat-toolbar-row>
-            <button mat-button routerLink="/home"><img src="./assets/favicon.png" style="width:2.5vw;"></button>
-            <button mat-button routerLink="/home">Bienvenido a BiCo</button>
-            <span class="spacer"></span>
-            <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+            <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm="true">
                 <mat-icon>menu</mat-icon>
             </button>
+            <button mat-button routerLink="/home"><img src="./assets/favicon.png" style="width:2em;"></button>
+            <button mat-button routerLink="/home">Bienvenido a BiCo</button>
+            <span class="spacer"></span>
+
             <div fxShow="true" fxHide.lt-md="true">
-                <button mat-raised-button routerLink="/consumer/1">Consumer Profile</button>
 
-                <button mat-raised-button routerLink="/supplier/1">Supplier Profile</button>
-
-                <button mat-raised-button routerLink="/users">
-                    <mat-icon>groups</mat-icon>Usuarios
+                <button mat-raised-button routerLink="/supplier/1">
+                    <mat-icon>account_circle</mat-icon>Supplier
                 </button>
-                <button mat-raised-button routerLink="/perfil">
-                    <mat-icon>account_circle</mat-icon>Mi perfil
+                <button mat-raised-button routerLink="/consumer/1">
+                    <mat-icon>perm_identity</mat-icon>Consumer
                 </button>
                 <button mat-raised-button routerLink="/negocio/1">
                     <mat-icon>business</mat-icon>Negocio
@@ -31,14 +29,14 @@
         </mat-toolbar-row>
     </mat-toolbar>
 
-    <mat-sidenav-container fxFlexFill [hasBackdrop]="false">
+    <mat-sidenav-container fxFlexFill [hasBackdrop]="true">
         <mat-sidenav #sidenav>
             <mat-nav-list>
-                <a href="/users" mat-list-item>
-                    <mat-icon>group</mat-icon>Mi perfil
+                <a href="/supplier/1" mat-list-item>
+                    <mat-icon>account_circle</mat-icon>Supplier
                 </a>
-                <a href="/perfil" mat-list-item>
-                    <mat-icon>account_circle</mat-icon>Mi perfil
+                <a href="/consumer/1" mat-list-item>
+                    <mat-icon>perm_identity</mat-icon>Consumer
                 </a>
                 <a href="/negocio/1" mat-list-item>
                     <mat-icon>business</mat-icon>Negocio
@@ -54,9 +52,8 @@
                 </a>
             </mat-nav-list>
         </mat-sidenav>
-        <mat-sidenav-content></mat-sidenav-content>
+        <mat-sidenav-content fxFlexFill>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
     </mat-sidenav-container>
 </div>
-
-
-<router-outlet></router-outlet>
