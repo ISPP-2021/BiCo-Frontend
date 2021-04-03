@@ -1,8 +1,4 @@
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError as observableThrowError } from 'rxjs';
 import { Negocio } from 'src/app/model/negocio.interface';
@@ -24,7 +20,7 @@ export class NegocioService {
 
   findAll(): Observable<Negocio[]> {
     return this.http
-      .get<Negocio[]>(this.url + 'business')
+      .get<Negocio[]>(this.url + 'business', this.headers)
       .pipe(catchError(this.errorHandler));
   }
 
@@ -34,7 +30,7 @@ export class NegocioService {
 
   findOne(id: Number): Observable<Negocio> {
     return this.http
-      .get<Negocio>(this.url + 'business/' + id)
+      .get<Negocio>(this.url + 'business/' + id, this.headers)
       .pipe(map((negocio: Negocio) => negocio));
   }
 
