@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     }
     this.authService.login(this.loginForm.value)/*.pipe(
       map(token => this.router.navigate(['home']))
-    ).subscribe()*/
+    ).subscribe()
     console.log(this.loginForm.value)
 
   }

@@ -1,0 +1,14 @@
+<div class="main-div" *ngIf="(supplier$ | async) as supplier">
+    <mat-card class="card" >
+        <mat-card-header>
+            <mat-card-title>Nombre de usuario: {{supplier.user.username}}</mat-card-title>
+            <mat-card-subtitle>Email: {{supplier.email}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>Nombre: {{supplier.name}}</p>
+            <p>Apellidos: {{supplier.lastname}}</p>
+            <p>DNI: {{supplier.dni}}</p>
+            <p>Email: {{supplier.email}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,20 @@
+{
+    "id": 1,
+    "name": "supplier_name_1",
+    "lastname": "supplier_lastname_1",
+    "dni": "1111111A",
+    "email": "random@gmail.com",
+    "user": {
+        "username": "josito",
+        "password": "1234",
+        "enabled": true,
+        "authorities": [
+            {
+                "id": 1,
+                "authority": "consumer",
+                "new": false
+            }
+        ]
+    },
+    "new": false
+}
