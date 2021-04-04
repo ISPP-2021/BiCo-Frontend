@@ -20,8 +20,8 @@ export class ReservaService {
     },
   };
 
-  create(reserva:Reserva): Observable<Reserva> {
-    return this.http.post<Reserva>(this.url + 'bookings', reserva, this.headers);
+  create(id:Number, reserva:Reserva): Observable<Reserva> {
+    return this.http.post<Reserva>(this.url + 'bookings/' + id, reserva, this.headers);
   }
 
   findOne(id : Number): Observable<Reserva> {
