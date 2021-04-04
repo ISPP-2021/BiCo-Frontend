@@ -8,21 +8,32 @@ import { FilterNegocioService } from 'src/app/services/filter-negocio-service/fi
 })
 export class BuscadorNegocioComponent implements OnInit {
 
+  negocios = [];
+	errorMessage = "";
+
+  
+
   constructor(private servicio:FilterNegocioService) { }
   filterCommercePost = '';
-  negocios = this.servicio.getNegocios();
-  tipos = this.servicio.getTiposDeNegocio();
+  tipos = ["HAIRDRESSER", "RESTAURANT", "GENERAL"];
+  
 
   ngOnInit() {
-    
+
+    this.servicio.findAll().subscribe(data => this.negocios = data,
+			err => this.errorMessage = err)
+  
   }
 
+
   onSelect(tipo){
-      if(tipo == "")
-          this.negocios = this.servicio.getNegocios();
-      else
-          this.negocios = this.servicio.getNegociosFilter(tipo);
-      
+      if(tipo == ""){       
+        this.servicio.findAll().subscribe(data => this.negocios = data,
+		    	err => this.errorMessage = err);
+      }else{
+        this.servicio.getNegociosFilter(tipo).subscribe(data => this.negocios = data,
+          err => this.errorMessage = err)
+      }
   }
 
 }

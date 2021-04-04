@@ -32,6 +32,10 @@ export class AuthenticationService {
 				console.log(usuario);
 
 				localStorage.setItem(JWT_NAME, usuario.token);
+				
+				let id = usuario.authorities[0].id;
+
+        		localStorage.setItem("user_id", id);
 				return usuario;
 			})
 		)

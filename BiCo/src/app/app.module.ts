@@ -4,6 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
@@ -14,12 +17,13 @@ import { ConsumerProfileComponent } from './components/users/consumer/consumer-p
 import { SupplierProfileComponent } from './components/users/supplier/supplier-profile.component';
 
 import { CercaDeMiComponent } from './components/cerca-de-mi/cerca-de-mi.component';
-import { GeocodingService } from './services/geocoding-service/geocoding.service';
+//import { GeocodingService } from './services/geocoding-service/geocoding.service';
 
 import { BuscadorNegocioComponent } from './components/buscador-negocio/buscador-negocio.component';
 import { FilterCommercePipe } from './pipes/filter-commerce.pipe';
 import { CrearNegocioComponent } from './components/negocios/crear-negocio/crear-negocio.component';
 import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
+import { CrearReservaComponent } from './components/reservas/crear-reserva/crear-reserva.component';
 import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component';
 
 import { ServisesComponent } from './components/servises/servises.component';
@@ -35,9 +39,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 
@@ -58,6 +59,7 @@ import { DatePipe } from '@angular/common';
     ServisesComponent,
     LoginComponent,
     VerNegocioComponent,
+    CrearReservaComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,7 +88,7 @@ import { DatePipe } from '@angular/common';
     HttpClientModule
   ],
   providers: [
-    GeocodingService,
+    //GeocodingService,
     JwtHelperService, DatePipe,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
   ],
