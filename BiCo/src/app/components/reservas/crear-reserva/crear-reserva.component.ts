@@ -33,7 +33,7 @@ export class CrearReservaComponent implements OnInit {
     this.form = this.formBuilder.group({
       bookDate: ['', [Validators.required]],
       emisionDate: [''],
-      status: ['IN PROGRESS'],
+      status: ['IN_PROGRESS'],
       services: this.formBuilder.array([this.addServiceGroup()])
       });
     
