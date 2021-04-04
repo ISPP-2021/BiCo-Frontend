@@ -1,8 +1,7 @@
 export interface Reserva {
-    id: Number;
     emisionDate: Date;
     bookDate: Date;
-    status: boolean;
+    status: String;
     consumerId: Number;
     serviceId: Number;
 

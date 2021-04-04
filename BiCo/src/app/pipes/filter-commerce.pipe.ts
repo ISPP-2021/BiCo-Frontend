@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterCommercePipe implements PipeTransform {
 
   transform(value: any, arg: any): any {
-    if(arg == '' || arg.length < 3) return document.getElementById("tabla-buscador").style.display = "none";
+    if(arg == '' || arg.length < 1) return document.getElementById("tabla-buscador").style.display = "none";
     const result = [];
     for(const negocio of value){
       if(negocio.name.toLowerCase().indexOf(arg.toLowerCase()) > -1){

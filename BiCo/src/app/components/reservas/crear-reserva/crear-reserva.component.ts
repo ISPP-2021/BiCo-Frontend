@@ -7,6 +7,7 @@ import { ActivatedRoute, Params, Router} from '@angular/router';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { map, switchMap,tap } from 'rxjs/operators';
+import { Reserva } from 'src/app/model/reserva.interface';
 
 @Component({
   selector: 'app-crear-reserva',
@@ -59,18 +60,18 @@ export class CrearReservaComponent implements OnInit {
 
   save() {
     if(this.form.valid){
-      let reserva = {}
+      let reserva : Reserva;
       let servicios = this.form.value.services;
       for(let servicio of servicios){
         reserva = {
-          consumer_id : this.form.value.consumerId,
-          servise_id : servicio,
+          consumerId : this.form.value.consumerId,
+          serviceId : servicio.id.toString(),
           bookDate: this.form.value.bookDate,
           emisionDate: this.form.value.emisionDate,
           status: this.form.value.status
         }
         console.log(reserva)
-        //this.reservaService.create(reserva).subscribe()
+        this.reservaService.create(reserva).subscribe()
       }
     }
   }

@@ -13,7 +13,7 @@ export class ReservaService {
 
   token: string = localStorage.getItem(JWT_NAME);
   constructor(private http: HttpClient) { }
-  private url: string = 'http://localhost:8080/';
+  private url: string = 'http://bico-despliegue1.herokuapp.com/';
   private headers = {
     headers: {
       Authorization: this.token,

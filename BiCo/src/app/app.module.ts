@@ -17,7 +17,7 @@ import { ConsumerProfileComponent } from './components/users/consumer/consumer-p
 import { SupplierProfileComponent } from './components/users/supplier/supplier-profile.component';
 
 import { CercaDeMiComponent } from './components/cerca-de-mi/cerca-de-mi.component';
-import { GeocodingService } from './services/geocoding-service/geocoding.service';
+//import { GeocodingService } from './services/geocoding-service/geocoding.service';
 
 import { BuscadorNegocioComponent } from './components/buscador-negocio/buscador-negocio.component';
 import { FilterCommercePipe } from './pipes/filter-commerce.pipe';
@@ -85,7 +85,7 @@ import { MatListModule } from '@angular/material/list';
     MatSidenavModule,
   ],
   providers: [
-    GeocodingService,
+//    GeocodingService,
     JwtHelperService,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
   ],
