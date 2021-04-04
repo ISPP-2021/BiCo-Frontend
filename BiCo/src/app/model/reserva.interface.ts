@@ -3,25 +3,7 @@ export interface Reserva {
     emisionDate: Date;
     bookDate: Date;
     status: boolean;
-    consumer:{
-        name: String
-        lastName: String
-        email: String
-        dni: String
-        user: {
-            username: String
-            password: String
-        }
-      }
-    services: [{
-        id: Number
-        name: String
-        description: String
-        price: Number
-        duration: Number
-        capacity: Number
-        deposit: Number
-        tax: Number
-      }]
+    consumerId: Number;
+    serviceId: Number;
 
 }

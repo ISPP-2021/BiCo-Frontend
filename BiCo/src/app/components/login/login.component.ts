@@ -30,10 +30,10 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.invalid) {
       return;
     }
-    this.authService.login(this.loginForm.value)/*.pipe(
+    this.authService.login(this.loginForm.value).pipe(
       map(token => this.router.navigate(['home']))
     ).subscribe()
-    console.log(this.loginForm.value)*/
+    console.log(this.loginForm.value)
 
   }
 

@@ -20,6 +20,7 @@ export class CrearReservaComponent implements OnInit {
   errorMessage = "";
   negocio = {}
 
+  user_id: string = localStorage.getItem("user_id");
   negocioId = parseInt(this.route.snapshot.paramMap.get('id'));
   
   constructor( private http: HttpClient,private formBuilder: FormBuilder,
@@ -32,7 +33,7 @@ export class CrearReservaComponent implements OnInit {
       bookDate: ['', [Validators.required]],
       emisionDate: [''],
       status: ['IN PROGRESS'],
-      
+      consumerId: [this.user_id],
       services: this.formBuilder.array([this.addServiceGroup()])
       });
     
@@ -44,7 +45,7 @@ export class CrearReservaComponent implements OnInit {
 
   addServiceGroup(){
     return this.formBuilder.group({
-      id: ['']
+      id: ['', [Validators.required]]
     });
   }
 
@@ -58,8 +59,19 @@ export class CrearReservaComponent implements OnInit {
 
   save() {
     if(this.form.valid){
-    //this.reservaService.create(this.form.value).subscribe()
-    console.log(this.form.value)
+      let reserva = {}
+      let servicios = this.form.value.services;
+      for(let servicio of servicios){
+        reserva = {
+          consumer_id : this.form.value.consumerId,
+          servise_id : servicio,
+          bookDate: this.form.value.bookDate,
+          emisionDate: this.form.value.emisionDate,
+          status: this.form.value.status
+        }
+        console.log(reserva)
+        //this.reservaService.create(reserva).subscribe()
+      }
     }
   }
     

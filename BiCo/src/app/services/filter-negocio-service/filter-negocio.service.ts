@@ -3,6 +3,7 @@ import { Observable, throwError as observableThrowError } from 'rxjs'
 import { Negocio } from 'src/app/model/negocio.interface'
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
+import { JWT_NAME } from '../authentication-service/authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,18 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 export class FilterNegocioService {
 
   negocios = [];
-
+  token: string = localStorage.getItem(JWT_NAME);
   constructor(private http: HttpClient) { }
+  private url: string = 'http://localhost:8080/';
+  private headers = {
+    headers: {
+      Authorization: this.token,
+    },
+  };
 
   findAll(): Observable<Negocio[]> {
 		return this.http
-			.get<Negocio[]>('https://stalion73.herokuapp.com/business/')
+			.get<Negocio[]>(this.url + 'business', this.headers)
 			.pipe(
 				catchError(this.errorHandler)
 			)
@@ -27,7 +34,7 @@ export class FilterNegocioService {
 
   getNegociosFilter(filtro: string): Observable<Negocio[]> {
     const negociosFiltrados = []
-    return this.http.get<Negocio[]>('https://stalion73.herokuapp.com/business/')
+    return this.http.get<Negocio[]>(this.url + 'business', this.headers)
     .pipe(map(spots => {
       return spots.filter(spot => { 
           return  spot.businessType == filtro;

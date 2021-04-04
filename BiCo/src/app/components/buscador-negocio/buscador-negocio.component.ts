@@ -27,13 +27,13 @@ export class BuscadorNegocioComponent implements OnInit {
 
 
   onSelect(tipo){
-      if(tipo == "")       
-       this.servicio.findAll().subscribe(data => this.negocios = data,
-		    	err => this.errorMessage = err)
-      else
+      if(tipo == ""){       
+        this.servicio.findAll().subscribe(data => this.negocios = data,
+		    	err => this.errorMessage = err);
+      }else{
         this.servicio.getNegociosFilter(tipo).subscribe(data => this.negocios = data,
           err => this.errorMessage = err)
-      
+      }
   }
 
 }

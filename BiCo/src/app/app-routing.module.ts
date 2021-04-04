@@ -9,6 +9,7 @@ import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negoc
 import { CrearReservaComponent } from './components/reservas/crear-reserva/crear-reserva.component';
 import { ServisesComponent } from './components/servises/servises.component';
 import { LoginComponent } from './components/login/login.component';
+import { BuscadorNegocioComponent } from './components/buscador-negocio/buscador-negocio.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,10 @@ const routes: Routes = [
     path: 'reservar/:id',
     component: CrearReservaComponent
   },
+  {
+    path: 'buscar',
+    component: BuscadorNegocioComponent
+  }
 ];
 
 @NgModule({
