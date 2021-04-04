@@ -51,6 +51,6 @@ export class NegocioService {
   }
 
   findServices(id: Number) {
-    return this.http.get<Negocio>(this.url + 'services' + id, this.headers);
+    return this.http.get<Negocio>(this.url + 'services/' + id, this.headers);
   }
 }

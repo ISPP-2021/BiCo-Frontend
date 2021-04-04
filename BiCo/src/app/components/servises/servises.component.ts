@@ -3,6 +3,7 @@ import { FormBuilder, FormArray, FormGroup, Validators} from '@angular/forms'
 import { ActivatedRoute, Params, Router} from '@angular/router';
 import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
 import { HttpClient } from '@angular/common/http'
+import { Negocio } from 'src/app/model/negocio.interface';
 
 @Component({
   selector: 'app-servises',
@@ -16,30 +17,28 @@ export class ServisesComponent implements OnInit {
 
   form: FormGroup;
   negocioId = parseInt(this.route.snapshot.paramMap.get('id'));
+  negocio: Negocio
   constructor(private http: HttpClient,private formBuilder: FormBuilder,
   private router: Router, private route: ActivatedRoute,
   private negocioService: NegocioService) { }
 
   ngOnInit(): void {
-    this.negocioService.findServices(this.negocioId).subscribe(services=>{
+    this.negocioService.findOne(this.negocioId).subscribe(negocio=>{
+      console.log(negocio.services)
+      this.negocio=negocio
       this.form =this.formBuilder.group({
-        services: this.formBuilder.array([services])
+        services: this.formBuilder.array([])
     })
+    this.initService(negocio.services)
   })
 }
 
- /* initService(services): FormGroup {
-    for (let index = 0; index < services.length; index++) {
-      const service = services[index];
-      return this.formBuilder.group({
-      nameService: [service.name,[Validators.required]],
-      description: [service.description,[Validators.required]],
-      price: [service.price,[Validators.required]],
-      duration: [service.duration,[Validators.required]]
+  initService(services){
+    services.forEach(x => {
+      this.serviceArray.push(this.formBuilder.group(x))
     });
-    }
 
-  }*/
+    }
 
    get serviceArray(){
     return <FormArray>this.form.get('services');
@@ -47,7 +46,7 @@ export class ServisesComponent implements OnInit {
 
   }
 
-  addServiceGroup(){
+  addBlankServiceGroup(){
     return this.formBuilder.group({
       nameService: ['', [Validators.required]],
       description: ['', [Validators.required]],
@@ -62,17 +61,21 @@ export class ServisesComponent implements OnInit {
   }
 
    addService(){
-    this.serviceArray.push(this.addServiceGroup());
+    this.serviceArray.push(this.addBlankServiceGroup());
   }
 
   removeService(index){
-    this.serviceArray.removeAt(index);
+    let res = window.confirm("¿Esta seguro de que desea borrar el servicio?")
+    if(res){
+      this.serviceArray.removeAt(index);
+    }
+
   }
 
     save() {
     if(this.form.valid){
-    //this.negocioService.update(this.negocioId,this.form.value).subscribe()
-    console.log(this.form.value)
+    this.negocioService.update(this.negocioId,this.form.value).subscribe()
+    this.router.navigate(['negocio-edit/'+this.negocioId])
     }
   }
 
