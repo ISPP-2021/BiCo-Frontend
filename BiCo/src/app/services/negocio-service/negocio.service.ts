@@ -20,7 +20,7 @@ export class NegocioService {
 
   findAll(): Observable<Negocio[]> {
     return this.http
-      .get<Negocio[]>(this.url + 'business', this.headers)
+      .get<Negocio[]>(this.url + 'business',this.headers)
       .pipe(catchError(this.errorHandler));
   }
 

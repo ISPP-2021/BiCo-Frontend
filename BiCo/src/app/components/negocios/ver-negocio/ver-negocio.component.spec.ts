@@ -55,7 +55,7 @@ describe('VerNegocioComponent', () => {
         MatSidenavModule,
       ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

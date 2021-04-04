@@ -27,6 +27,7 @@ import { CrearReservaComponent } from './components/reservas/crear-reserva/crear
 import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component';
 
 import { ServisesComponent } from './components/servises/servises.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -41,8 +42,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 
-
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -83,12 +84,14 @@ import { MatListModule } from '@angular/material/list';
     MatTabsModule,
     MatListModule,
     MatSidenavModule,
+    FlexLayoutModule,
+    HttpClientModule
   ],
   providers: [
-//    GeocodingService,
-    JwtHelperService,
+    //GeocodingService,
+    JwtHelperService, DatePipe,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

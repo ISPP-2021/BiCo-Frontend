@@ -1,30 +1,41 @@
-<mat-grid-list cols="6" rowHeight="50%" *ngIf="(negocio$ | async) as negocio">
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'lightblue'"></mat-grid-tile>
-    <mat-grid-tile [colspan]="4" [rowspan]="1" [style.background]="'lightgreen'">
-        <mat-card class="card">
-            <mat-card-header>
-              <div mat-card-avatar class="header-image"></div>
-              <mat-card-title>{{negocio.name}}</mat-card-title>
-              <mat-card-subtitle>{{negocio.address}}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <p>Tipo de negocio: {{negocio.businessType}}</p>
-            </mat-card-content>
-        </mat-card>
+<div>
+  <mat-grid-list cols="6" *ngIf="(negocio$ | async) as negocio">
+    <mat-grid-tile [colspan]="1" [rowspan]="2"></mat-grid-tile>
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <mat-card>
+        <mat-card-header>
+          <img mat-card-avatar src="./favicon.ico" alt={{negocio.name}}>
+          <mat-card-title>{{negocio.name}}</mat-card-title>
+          <mat-card-subtitle>{{negocio.address}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p><b>Tipo de negocio:</b>{{negocio.businessType}}</p>
+        </mat-card-content>
+      </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'lightpink'"></mat-grid-tile>
-    <mat-grid-tile [colspan]="4" [rowspan]="1" [style.background]="'lightpink'" *ngFor="let servicio of negocio.services">
-        <mat-card class="card">
-            <mat-card-header>
-              <mat-card-title>Nombre: {{servicio.name}}</mat-card-title>
-              <mat-card-subtitle>Precio: {{servicio.price}} €</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="2"></mat-grid-tile>
+    <mat-grid-tile [colspan]="4" [rowspan]="4">
+      <div class="content">
+        <div fxLayout="row wrap" fxLayoutGap="16px grid">
+          <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let servicio of negocio.services">
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Nombre: {{servicio.name}}</mat-card-title>
+                <mat-card-subtitle>Precio: {{servicio.price}} €</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p><b>Descripción: </b></p>
                 <p>{{servicio.description}}</p>
-                <p>Duración: {{servicio.duration}} horas</p>
-                <p>Aforo: {{servicio.capacity}} personas</p>
-            </mat-card-content>
-        </mat-card>
+                <p><b>Duración: </b>{{servicio.duration}} horas</p>
+                <p><b>Aforo:</b> {{servicio.capacity}} personas</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+
     </mat-grid-tile>
-    
-</mat-grid-list>
+  </mat-grid-list>
+</div>
+<router-outlet></router-outlet>
