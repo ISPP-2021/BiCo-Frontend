@@ -1,22 +1,26 @@
-.card {
-    width: 99%;
-    max-height: 99%;
+
+
+.content {
+  padding: 3%;
+  align-self: flex-start;
+}
+.mat-grid-list{
+  margin-top: 5vh;
 }
 
-.header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
+.mat-card {
+  width: 100%;
+  max-height: 100%;
+  font-size: 15vw;
+
 }
 
-.mat-tab-group{
-  height: 100%;
+.mat-card-title{
+  font-size: 1.5vw;
 }
-
-.mat-tab-body-wrapper {
-  flex-grow: 1;
+.mat-card-subtitle{
+  font-size: 1vw;
 }
-
-.mat-tab-body {
-  display: flex !important;
-  flex-direction: column;
-}
+.mat-card-content{
+  font-size: .75vw;
+} 
