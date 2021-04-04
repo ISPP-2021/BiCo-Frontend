@@ -26,14 +26,15 @@ export class LoginComponent implements OnInit {
 		})
 	}
 
-	onSubmit() {
-		if (this.loginForm.invalid) {
-			return;
-		}
-		this.authService.login(this.loginForm.value).pipe(
-			map(token => this.router.navigate(['home']))
-		).subscribe()
-		/*console.log(this.loginForm.value)*/
-	}
+  onSubmit() {
+    if(this.loginForm.invalid) {
+      return;
+    }
+    this.authService.login(this.loginForm.value).pipe(
+      map(token => this.router.navigate(['home']))
+    ).subscribe()
+    console.log(this.loginForm.value)
+
+  }
 
 }

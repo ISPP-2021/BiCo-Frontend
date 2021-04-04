@@ -36,9 +36,11 @@ export class AuthenticationService {
 				localStorage.setItem(JWT_NAME, usuario.token);
 
         let rol = usuario.authorities[0].authority;
-
         localStorage.setItem("rol", rol);
 
+
+				let id = usuario.authorities[0].id;
+        localStorage.setItem("user_id", id);
 				return usuario;
 			})
 		)
