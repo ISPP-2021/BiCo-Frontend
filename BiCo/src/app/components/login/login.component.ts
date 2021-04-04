@@ -5,26 +5,26 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+	selector: 'app-login',
+	templateUrl: './login.component.html',
+	styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
+	loginForm: FormGroup;
 
-  constructor(
-    private authService: AuthenticationService,
-    private formBuilder: FormBuilder,
-    private router: Router
-    ) { }
+	constructor(
+		private authService: AuthenticationService,
+		private formBuilder: FormBuilder,
+		private router: Router
+	) { }
 
-  ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      user: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(3)])
-    })
-  }
+	ngOnInit(): void {
+		this.loginForm = new FormGroup({
+			user: new FormControl(null, [Validators.required]),
+			password: new FormControl(null, [Validators.required, Validators.minLength(3)])
+		})
+	}
 
   onSubmit() {
     if(this.loginForm.invalid) {

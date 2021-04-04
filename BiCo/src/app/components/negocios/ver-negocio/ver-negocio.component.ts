@@ -12,6 +12,7 @@ import { NegocioService } from 'src/app/services/negocio-service/negocio.service
 })
 export class VerNegocioComponent implements OnInit {
 
+  negocioId = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
   negocio$: Observable<Negocio> = this.activatedRoute.params.pipe(
     switchMap((params: Params) => {
       const negocioId: number = parseInt(params['id']);
