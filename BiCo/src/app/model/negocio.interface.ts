@@ -17,6 +17,11 @@ export interface Negocio {
     capacity: Number
     deposit: Number
     tax: Number
+    bookings:{
+      emisionDate: Date
+      bookDate: Date
+      status: String
+    }
   }
 
 }

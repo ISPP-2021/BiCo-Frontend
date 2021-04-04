@@ -6,7 +6,7 @@ import { map, catchError } from 'rxjs/operators';
 import { JWT_NAME } from '../authentication-service/authentication.service';
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root',
 })
 export class NegocioService {
   token: string = localStorage.getItem(JWT_NAME);
@@ -51,6 +51,6 @@ export class NegocioService {
   }
 
   findServices(id: Number) {
-    return this.http.get<Negocio>(this.url + 'services' + id, this.headers);
+    return this.http.get<Negocio>(this.url + 'services/' + id, this.headers);
   }
 }
