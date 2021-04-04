@@ -42,7 +42,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -87,7 +87,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   ],
   providers: [
     GeocodingService,
-    JwtHelperService,
+    JwtHelperService, DatePipe,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
   ],
   bootstrap: [AppComponent],
