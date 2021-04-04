@@ -5,6 +5,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import { Observable, of } from 'rxjs';
 import { User } from '../../model/user.interface';
 import { UserService } from 'src/app/services/user-services/user.service';
+import { Router } from '@angular/router';
 
 export interface LoginForm {
 	user: string;
@@ -19,7 +20,11 @@ export const JWT_NAME = 'token';
 export class AuthenticationService {
 	// http://localhost:8080/users/login
 
-	constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
+	constructor(
+		private http: HttpClient,
+		private jwtHelper: JwtHelperService,
+		private router: Router) { }
+
 	private url: string = 'http://bico-despliegue1.herokuapp.com';
 	// private headers = {
 	// 	headers: {
@@ -35,19 +40,22 @@ export class AuthenticationService {
 
 				localStorage.setItem(JWT_NAME, usuario.token);
 
-        let rol = usuario.authorities[0].authority;
-        localStorage.setItem("rol", rol);
+				let rol = usuario.authorities[0].authority;
+				localStorage.setItem("rol", rol);
 
 
-				let id = usuario.authorities[0].id;
-        localStorage.setItem("user_id", id);
+				let user_id = usuario.authorities[0].id;
+				localStorage.setItem("user_id", user_id);
+
+				window.location.reload();
+
 				return usuario;
 			})
 		)
 	}
 
 	logout() {
-		localStorage.removeItem(JWT_NAME);
+		localStorage.clear();
 	}
 
 	/*register(user: User) {

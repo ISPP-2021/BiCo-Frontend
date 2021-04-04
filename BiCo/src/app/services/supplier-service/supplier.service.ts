@@ -6,21 +6,21 @@ import { map } from 'rxjs/operators';
 import { JWT_NAME } from '../authentication-service/authentication.service';
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root',
 })
 export class SupplierService {
-  token: string = localStorage.getItem(JWT_NAME);
-  constructor(private http: HttpClient) { }
-  private url: string = 'http://bico-despliegue1.herokuapp.com/';
-  private headers = {
-    headers: {
-      Authorization: this.token,
-    },
-  };
+	token: string = localStorage.getItem(JWT_NAME);
+	constructor(private http: HttpClient) { }
+	private url: string = 'http://bico-despliegue1.herokuapp.com/';
+	private headers = {
+		headers: {
+			Authorization: this.token,
+		},
+	};
 
-  findOne(id: Number): Observable<Supplier> {
-    return this.http
-      .get<Supplier>(this.url + 'suppliers/' + id, this.headers)
-      .pipe(map((supplier: Supplier) => supplier));
-  }
+	findOne(id: Number): Observable<Supplier> {
+		return this.http
+			.get<Supplier>(this.url + 'users/profile', this.headers)
+			.pipe(map((supplier: Supplier) => supplier));
+	}
 }
