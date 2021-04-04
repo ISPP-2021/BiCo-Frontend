@@ -18,10 +18,15 @@ export const JWT_NAME = 'token';
 export class AuthenticationService {
 
 	constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
-
+	private url: string = 'http://bico-despliegue1.herokuapp.com';
+	// private headers = {
+	// 	headers: {
+	// 	Authorization: this.token,
+	// 	},
+	// };
 	login(loginForm: LoginForm) {
 
-		return this.http.post<User>('http://localhost:8080/users/login', { username: loginForm.user, password: loginForm.password }).pipe(
+		return this.http.post<User>(`${this.url}/users/login`, { username: loginForm.user, password: loginForm.password }).pipe(
 			map((usuario) => {
 				console.log(usuario.token);
 				console.log(usuario);

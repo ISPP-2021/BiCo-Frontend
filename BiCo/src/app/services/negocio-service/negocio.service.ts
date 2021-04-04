@@ -11,7 +11,7 @@ import { JWT_NAME } from '../authentication-service/authentication.service';
 export class NegocioService {
   token: string = localStorage.getItem(JWT_NAME);
   constructor(private http: HttpClient) {}
-  private url: string = 'https://stalion73.herokuapp.com/';
+  private url: string = 'http://bico-despliegue1.herokuapp.com/';
   private headers = {
     headers: {
       Authorization: this.token,
