@@ -3,7 +3,8 @@
     <mat-grid-tile [colspan]="1" [rowspan]="2"></mat-grid-tile>
     <mat-grid-tile [colspan]="4" [rowspan]="1">
       <mat-card class="negocio">
-        <button mat-raised-button routerLink="/negocio-edit/{{negocioId}}">Editar Negocio</button>
+        <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/negocio-edit/{{negocioId}}">Editar
+          Negocio</button>
         <mat-card-header>
           <img mat-card-avatar src="./favicon.ico" alt={{negocio.name}}>
           <mat-card-title>{{negocio.name}}</mat-card-title>
@@ -39,7 +40,7 @@
       </div>
 
     </mat-grid-tile>
-  </mat-grid-list>
 
+  </mat-grid-list>
 </div>
 <router-outlet></router-outlet>
