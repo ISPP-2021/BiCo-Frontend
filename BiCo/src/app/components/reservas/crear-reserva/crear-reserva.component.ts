@@ -33,8 +33,7 @@ export class CrearReservaComponent implements OnInit {
     this.form = this.formBuilder.group({
       bookDate: ['', [Validators.required]],
       emisionDate: [''],
-      status: ['IN PROGRESS'],
-      consumerId: [this.user_id],
+      status: ['IN_PROGRESS'],
       services: this.formBuilder.array([this.addServiceGroup()])
       });
     
@@ -64,14 +63,12 @@ export class CrearReservaComponent implements OnInit {
       let servicios = this.form.value.services;
       for(let servicio of servicios){
         reserva = {
-          consumerId : this.form.value.consumerId,
-          serviceId : servicio.id.toString(),
           bookDate: this.form.value.bookDate,
           emisionDate: this.form.value.emisionDate,
           status: this.form.value.status
         }
         console.log(reserva)
-        this.reservaService.create(reserva).subscribe()
+        this.reservaService.create(servicio.id, reserva).subscribe()
       }
     }
   }
