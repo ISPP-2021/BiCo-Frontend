@@ -19,14 +19,16 @@ export const JWT_NAME = 'token';
 export class AuthenticationService {
 	// http://localhost:8080/users/login
 
-	// https://stalion73.herokuapp.com/users/login
-	url: string = 'http://localhost:8080/users/login';
-
-	constructor(private http: HttpClient, private jwtHelper: JwtHelperService,  private userService: UserService) { }
-
+	constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
+	private url: string = 'http://bico-despliegue1.herokuapp.com';
+	// private headers = {
+	// 	headers: {
+	// 	Authorization: this.token,
+	// 	},
+	// };
 	login(loginForm: LoginForm) {
 
-		return this.http.post<User>(this.url, { username: loginForm.user, password: loginForm.password }).pipe(
+		return this.http.post<User>(`${this.url}/users/login`, { username: loginForm.user, password: loginForm.password }).pipe(
 			map((usuario) => {
 				console.log(usuario.authorities[0].authority)
 				console.log(usuario);

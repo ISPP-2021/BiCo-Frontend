@@ -2,16 +2,23 @@
   flex: 1 1 auto;
 }
 .mat-toolbar {
-  background-color: #c29eaa;
+  background-color: #C29EAA;
+  height: 5vmax;
 }
-.mat-button {
-  font-size: 20px;
+.mat-button{
   background-color: transparent;
+  font-size: 2vh;
+
 }
-.mat-raised-button {
-  background-color: #8499b1;
-  margin: 10px;
+.mat-raised-button{
+  background-color: #8499B1;
+
+  margin: .5vh;
 }
-button:hover {
-  background-color: #f8d2bf;
+.mat-raised-button:hover{
+background-color: #F8D2BF;
+}
+.mat-sidenav-content{
+  background-color: #D2D9E2;
+
 }

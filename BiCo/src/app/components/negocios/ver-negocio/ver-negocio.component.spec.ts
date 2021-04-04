@@ -8,9 +8,9 @@ describe('VerNegocioComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VerNegocioComponent ]
+      declarations: [VerNegocioComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

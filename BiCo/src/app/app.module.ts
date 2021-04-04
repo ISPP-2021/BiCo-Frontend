@@ -23,6 +23,7 @@ import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negoc
 import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component';
 
 import { ServisesComponent } from './components/servises/servises.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -39,6 +40,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 @NgModule({
   declarations: [
@@ -78,6 +82,8 @@ import { MatListModule } from '@angular/material/list';
     MatTabsModule,
     MatListModule,
     MatSidenavModule,
+    FlexLayoutModule,
+    HttpClientModule
   ],
   providers: [
     GeocodingService,
@@ -86,4 +92,4 @@ import { MatListModule } from '@angular/material/list';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
