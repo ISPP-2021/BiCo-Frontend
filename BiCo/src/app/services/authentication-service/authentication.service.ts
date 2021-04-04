@@ -18,7 +18,7 @@ export const JWT_NAME = 'token';
 export class AuthenticationService {
 
 	constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
-	private url: string = 'http://bico-despliegue1.herokuapp.com';
+	private url: string = 'http://bico-despliegue1.herokuapp.com/';
 	// private headers = {
 	// 	headers: {
 	// 	Authorization: this.token,
