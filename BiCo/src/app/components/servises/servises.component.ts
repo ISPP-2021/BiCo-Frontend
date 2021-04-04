@@ -15,16 +15,16 @@ export class ServisesComponent implements OnInit {
   //url: /servises/idBusiness
   //llamar a nameService name e inicializar las bookings a vacio
 
+  token = localStorage.getItem('token')
   form: FormGroup;
   negocioId = parseInt(this.route.snapshot.paramMap.get('id'));
-  negocio: Negocio
+  negocio;
   constructor(private http: HttpClient,private formBuilder: FormBuilder,
   private router: Router, private route: ActivatedRoute,
   private negocioService: NegocioService) { }
 
   ngOnInit(): void {
     this.negocioService.findOne(this.negocioId).subscribe(negocio=>{
-      console.log(negocio.services)
       this.negocio=negocio
       this.form =this.formBuilder.group({
         services: this.formBuilder.array([])
@@ -74,8 +74,10 @@ export class ServisesComponent implements OnInit {
 
     save() {
     if(this.form.valid){
-    this.negocioService.update(this.negocioId,this.form.value).subscribe()
-    this.router.navigate(['negocio-edit/'+this.negocioId])
+    this.negocioService.update(this.negocioId,this.form.value).subscribe(res=>{
+      this.router.navigate(['negocio-edit/'+this.negocioId])
+    })
+
     }
   }
 

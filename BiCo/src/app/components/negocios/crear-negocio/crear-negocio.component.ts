@@ -11,6 +11,7 @@ import { JWT_NAME } from 'src/app/services/authentication-service/authentication
 export class CrearNegocioComponent implements OnInit {
 
 	//llamar a nameService name e inicializar las bookings a vacio
+  rol = localStorage.getItem('rol')
 	token: string = localStorage.getItem(JWT_NAME);
 	form: FormGroup;
 	constructor(private formBuilder: FormBuilder, private negocioService: NegocioService) { }
