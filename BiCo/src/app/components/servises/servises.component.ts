@@ -48,10 +48,10 @@ export class ServisesComponent implements OnInit {
 
   addBlankServiceGroup(){
     return this.formBuilder.group({
-      nameService: ['', [Validators.required]],
+      name: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      price: ['', [Validators.required]],
-      duration: ['', [Validators.required]],
+      price: ['', [Validators.required, Validators.min(0)]],
+      duration: ['', [Validators.required, Validators.min(0)]],
       bookings: this.formBuilder.group({
         bookDate: [''],
         emisionDate: [''],
@@ -74,10 +74,10 @@ export class ServisesComponent implements OnInit {
 
     save() {
     if(this.form.valid){
-    this.negocioService.update(this.negocioId,this.form.value).subscribe(res=>{
+    /*this.negocioService.update(this.negocioId,this.form.value).subscribe(res=>{
       this.router.navigate(['negocio-edit/'+this.negocioId])
-    })
-
+    })*/
+    console.log(this.form.value)
     }
   }
 

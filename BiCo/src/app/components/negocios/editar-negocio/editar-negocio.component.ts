@@ -36,16 +36,15 @@ export class EditarNegocioComponent implements OnInit {
 
   ngOnInit(): void{
     this.negocioService.findOne(this.negocioId).subscribe(negocio=>{
-      console.log(negocio)
       this.form = this.formBuilder.group({
       name: [negocio.name, [Validators.required]],
       address: [negocio.address, Validators.required],
       businessType: [negocio.businessType, [Validators.required]],
       option:this.formBuilder.group({
         automatedAccept: [negocio.option.automatedAccept, [Validators.required]],
-        limitAutomated: [{value:negocio.option.limitAutomated, disabled:!negocio.option.automatedAccept}],
-        defaultDeposit: [negocio.option.defaultDeposit, [Validators.required]],
-        depositTimeLimit: [negocio.option.depositTimeLimit, [Validators.required]]
+        limitAutomated: [{value:negocio.option.limitAutomated, disabled:!negocio.option.automatedAccept},  [Validators.required,, Validators.min(1)]],
+        defaultDeposit: [negocio.option.defaultDeposit, [Validators.required,Validators.min(0), Validators.max(1)]],
+        depositTimeLimit: [negocio.option.depositTimeLimit, [Validators.required, Validators.min(1)]]
         }),
       });
 

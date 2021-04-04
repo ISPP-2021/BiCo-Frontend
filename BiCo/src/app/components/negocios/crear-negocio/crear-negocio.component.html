@@ -35,7 +35,7 @@
       <br>
       <mat-form-field class="example-full-width">
         <mat-label>Fianza de Reserva</mat-label>
-        <input matInput type="number" placeholder="Introduzca la fianza por reservas para todos los servicios"
+        <input matInput type="number" placeholder="Introduzca la fianza por reservas para todos los servicios (en %)"
           formControlName="defaultDeposit">
       </mat-form-field>
       <br>
@@ -48,6 +48,12 @@
     </div>
     <div formArrayName="services">
       <h4>Servicios del Negocio</h4>
+      <div *ngIf="serviceArray.controls.length == 0">
+        <p> No tiene añadido nigún servicio</p>
+        <button mat-icon-button (click)="addService()">
+          <mat-icon>control_point</mat-icon>
+        </button>
+      </div>
       <div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
         <h5>Servicio {{i+1}}</h5>
         <mat-form-field class="example-full-width">
@@ -75,7 +81,7 @@
           <button mat-icon-button (click)="addService()">
             <mat-icon>control_point</mat-icon>
           </button>
-          <button *ngIf="i>0" mat-icon-button (click)="removeService(i)">
+          <button mat-icon-button (click)="removeService(i)">
             <mat-icon>remove_circle_outline</mat-icon>
           </button>
         </div>

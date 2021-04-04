@@ -22,10 +22,10 @@ export class CrearNegocioComponent implements OnInit {
 			address: ['', Validators.required],
 			businessType: ['', [Validators.required]],
 			option: this.formBuilder.group({
-				automatedAccept: ['', [Validators.required]],
-				limitAutomated: [{ value: '', disabled: true }, [Validators.required]],
-				defaultDeposit: ['', [Validators.required]],
-				depositTimeLimit: ['', [Validators.required]]
+				automatedAccept: [false, [Validators.required]],
+				limitAutomated: [{ value: '', disabled: true }, [Validators.required,, Validators.min(1)]],
+				defaultDeposit: ['', [Validators.required, Validators.min(0), Validators.max(1)]],
+				depositTimeLimit: ['', [Validators.required, Validators.min(1)]]
 			}),
 			services: this.formBuilder.array([this.addServiceGroup()])
 		});
@@ -39,8 +39,8 @@ export class CrearNegocioComponent implements OnInit {
 		return this.formBuilder.group({
 			name: ['', [Validators.required]],
 			description: ['', [Validators.required]],
-			price: ['', [Validators.required]],
-			duration: ['', [Validators.required]]
+			price: ['', [Validators.required, Validators.min(0)]],
+			duration: ['', [Validators.required, Validators.min(0)]]
 		});
 	}
 
@@ -49,7 +49,10 @@ export class CrearNegocioComponent implements OnInit {
 	}
 
 	removeService(index) {
-		this.serviceArray.removeAt(index);
+		let res = window.confirm("¿Esta seguro de que desea borrar el servicio?")
+    if(res){
+      this.serviceArray.removeAt(index);
+    }
 	}
 
 	save() {
