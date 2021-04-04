@@ -15,7 +15,7 @@ export class FilterCommercePipe implements PipeTransform {
         document.getElementById("tabla-buscador").style.display = "inline";
       }
       if(("peluqueria".indexOf(arg.toLowerCase()) > -1 && negocio.businessType == "HAIRDRESSER") ||
-      ("restaurante".indexOf(arg.toLowerCase()) > -1 && negocio.businessType == "RESTAURANT") ||
+      (("restaurante".indexOf(arg.toLowerCase()) > -1 || "bar".indexOf(arg.toLowerCase()) > -1) && negocio.businessType == "RESTAURANT") ||
       ("otros".indexOf(arg.toLowerCase()) > -1 && negocio.businessType == "GENERAL")){
         if(!result.includes(negocio)){
           result.push(negocio)

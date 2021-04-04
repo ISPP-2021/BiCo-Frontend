@@ -36,7 +36,7 @@ export class CrearNegocioComponent implements OnInit {
 
 	addServiceGroup() {
 		return this.formBuilder.group({
-			nameService: ['', [Validators.required]],
+			name: ['', [Validators.required]],
 			description: ['', [Validators.required]],
 			price: ['', [Validators.required]],
 			duration: ['', [Validators.required]]
