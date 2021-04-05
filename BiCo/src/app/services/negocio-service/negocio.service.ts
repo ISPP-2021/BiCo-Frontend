@@ -31,7 +31,7 @@ export class NegocioService {
 
   findOne(id: Number): Observable<Negocio> {
     return this.http
-      .get<Negocio>(this.url + 'business/' + id, this.headers)
+      .get<Negocio>(this.url2 + 'business/' + id, this.headers)
       .pipe(map((negocio: Negocio) => negocio));
   }
 
@@ -52,6 +52,10 @@ export class NegocioService {
   }
 
   updateServices(id: Number, body) {
-    return this.http.put(this.url2 + 'business/' + id + '/additions', body ,this.headers);
+    return this.http.put(this.url2 + 'business/' + id + '/addition', body ,this.headers);
+  }
+
+  deleteServices(id: Number) {
+    return this.http.delete(this.url2 + 'servises/' + id ,this.headers);
   }
 }

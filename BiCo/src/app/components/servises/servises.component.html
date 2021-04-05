@@ -1,5 +1,5 @@
-<div *ngIf="token === negocio.supplier.user.token else error">
-  <form [formGroup]="form" (ngSubmit)="save()">
+<div *ngIf="rol === 'owner' else error">
+  <form [formGroup]="form" class="example-form" (ngSubmit)="save()">
     <div formArrayName="servises">
       <h4>Servicios del Negocio</h4>
       <div *ngIf="serviceArray.controls.length == 0">
@@ -28,7 +28,23 @@
         <br>
         <mat-form-field class="example-full-width">
           <mat-label>Duracion del servicio</mat-label>
-          <input matInput type="number" placeholder="Introduzcala duracion del servicio" formControlName="duration">
+          <input matInput type="number" placeholder="Introduzca la duracion del servicio" formControlName="duration">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Aforo</mat-label>
+          <input matInput type="number" placeholder="Introduzca el aforo del servicio" formControlName="capacity">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Fianza</mat-label>
+          <input matInput type="number" placeholder="Introduzca la fianza del servicio" formControlName="deposit">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Porcentaje de Fianza</mat-label>
+          <input matInput type="number" placeholder="Introduzca el porcentaje de la fianza del servicio"
+            formControlName="tax">
         </mat-form-field>
         <br>
         <div>
@@ -42,7 +58,7 @@
         <mat-divider></mat-divider>
       </div>
     </div>
-    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Guardar</button>
+    <button type="submit" mat-raised-button [disabled]="form.invalid">Guardar</button>
   </form>
 </div>
 <ng-template #error>
