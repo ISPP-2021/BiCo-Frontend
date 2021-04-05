@@ -10,7 +10,7 @@ import { CrearReservaComponent } from './components/reservas/crear-reserva/crear
 import { ServisesComponent } from './components/servises/servises.component';
 import { LoginComponent } from './components/login/login.component';
 import { BuscadorNegocioComponent } from './components/buscador-negocio/buscador-negocio.component';
-
+import { VerReservasComponent } from './components/reservas/ver-reservas/ver-reservas.component';
 const routes: Routes = [
   {
     path: 'home',
@@ -42,6 +42,12 @@ const routes: Routes = [
     component: VerNegocioComponent,
   },
   {
+    path: 'reservas',
+    component: VerReservasComponent,
+  },
+
+
+  {
     path: 'services-edit/:id',
     component: ServisesComponent,
   },
@@ -64,4 +70,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

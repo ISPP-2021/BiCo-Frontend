@@ -8,17 +8,11 @@
                     <mat-card-subtitle> Busca según tipo o nombre del negocio</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
-
-                    <!--<mat-form-field>
-                             <form>
-                            <input matInput id="buscador" name="filterCommercePost" [(ngModel)]="filterCommercePost"
-                                placeholder="Introduce el nombre o tipo de establecimiento, o el servicio que buscas">
-                                </form>
-                        </mat-form-field>-->
-                    <input matInput type="text" id="buscador" name="filterCommercePost"
-                        placeholder="Introduce el nombre o tipo de establecimiento, o el servicio que buscas"
-                        [(ngModel)]="filterCommercePost">
-
+                    <mat-form-field>
+                        <input matInput type="text" id="buscador" name="filterCommercePost"
+                            placeholder="Introduce el nombre o tipo de establecimiento, o el servicio que buscas"
+                            [(ngModel)]="filterCommercePost">
+                    </mat-form-field>
 
                 </mat-card-content>
             </mat-card>
