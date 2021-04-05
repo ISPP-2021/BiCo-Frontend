@@ -1,8 +1,8 @@
 <mat-grid-list cols="6" *ngIf="(supplier$ | async) as supplier">
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1"></mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="2"></mat-grid-tile>
     <mat-grid-tile [colspan]="4" [rowspan]="2">
-        <mat-card>
+        <mat-card class="perfil">
             <mat-card-header>
                 <img mat-card-avatar src="./favicon.ico">
                 <mat-card-title>Usuario: {{supplier.user.username}}</mat-card-title>

@@ -1,82 +1,98 @@
-<form class="example-form" [formGroup]="form" (ngSubmit)="save()">
-  <h2 style="text-align: center;">Registrar Negocio</h2>
-  <div id="neg">
-    <h4>Datos del Negocio</h4>
-    <mat-form-field class="example-full-width" required>
-      <mat-label>Nombre del Negocio</mat-label>
-      <input matInput placeholder="Introduzca el nombre de su Negocio" formControlName="name">
-    </mat-form-field>
-    <br>
-    <mat-form-field class="example-full-width" required>
-      <mat-label>Direccion del Negocio</mat-label>
-      <input matInput placeholder="Introduzca la direccion de su Negocio" formControlName="address">
-    </mat-form-field>
-    <br>
-    <mat-form-field class="example-full-width" required>
-      <mat-label>Tipo de Negocio</mat-label>
-      <mat-select formControlName="businessType">
-        <mat-option value="RESTAURANT">Restaurante</mat-option>
-        <mat-option value="HAIRDRESSER">Peluqueria</mat-option>
-        <mat-option value="GENERAL">Otros</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div formGroupName="option">
-    <h4>Opciones del Negocio</h4>
-    <mat-checkbox (change)="disable()" class="example-margin" formControlName="automatedAccept">Aceptacion automatica
-    </mat-checkbox>
-    <br>
-    <mat-form-field class="example-full-width">
-      <mat-label>Limite de Reservas Automaticas</mat-label>
-      <input matInput type="number" placeholder="Seleccione el numero de reservas automaticas" formControlName="limitAutomated">
-    </mat-form-field>
-    <br>
-    <mat-form-field class="example-full-width">
-      <mat-label>Fianza de Reserva</mat-label>
-      <input matInput type="number" placeholder="Introduzca la fianza por reservas para todos los servicios" formControlName="defaultDeposit">
-    </mat-form-field>
-    <br>
-    <mat-form-field class="example-full-width">
-      <mat-label>Tiempo de cancelacion gratuita</mat-label>
-      <input matInput type="number" placeholder="Introduzca el numero de dias para que la cancelacion sea gratuitas" formControlName="depositTimeLimit">
-    </mat-form-field>
-    <br>
-  </div>
-  <div formArrayName="services">
-    <h4>Servicios del Negocio</h4>
-    <div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
-      <h5>Servicio {{i+1}}</h5>
-      <mat-form-field class="example-full-width">
-        <mat-label>Nombre del servicio</mat-label>
-        <input matInput type="text" placeholder="Introduzca el nombre del servicio" formControlName="name">
+<div *ngIf="rol === 'owner' else error">
+  <form class="example-form" [formGroup]="form" (ngSubmit)="save()">
+    <h2 style="text-align: center;">Añadir negocio</h2>
+    <div id="neg">
+      <h4>Datos negocio</h4>
+      <mat-form-field class="example-full-width" required>
+        <mat-label>Nombre negocio</mat-label>
+        <input matInput placeholder="Introduzca el nombre de su Negocio" formControlName="name">
       </mat-form-field>
-      <br>
-      <mat-form-field class="example-full-width">
-        <mat-label>Descripcion del servicio</mat-label>
-        <input matInput type="text" placeholder="Introduzca la descripcion del servicio" formControlName="description">
+
+      <mat-form-field class="example-full-width" required>
+        <mat-label>Dirección negocio</mat-label>
+        <input matInput placeholder="Introduzca la direccion de su Negocio" formControlName="address">
       </mat-form-field>
-      <br>
-      <mat-form-field class="example-full-width">
-        <mat-label>Precio del servicio</mat-label>
-        <input matInput type="number" placeholder="Introduzca el precio del servicio" formControlName="price">
+
+      <mat-form-field class="example-full-width" required>
+        <mat-label>Tipo negocio</mat-label>
+        <mat-select formControlName="businessType">
+          <mat-option value="RESTAURANT">Bar/Restaurante</mat-option>
+          <mat-option value="HAIRDRESSER">Peluquería</mat-option>
+          <mat-option value="GENERAL">Otros</mat-option>
+        </mat-select>
       </mat-form-field>
-      <br>
+    </div>
+    <div formGroupName="option">
+      <h4>Opciones negocio</h4>
+      <mat-checkbox (change)="disable()" class="example-margin" formControlName="automatedAccept">Aceptación automática
+      </mat-checkbox>
+
       <mat-form-field class="example-full-width">
-        <mat-label>Duracion del servicio</mat-label>
-        <input matInput type="number" placeholder="Introduzcala duracion del servicio" formControlName="duration">
+        <mat-label>Límite de reservas automáticas (valor entre 0-99+)</mat-label>
+        <input matInput type="number" placeholder="Seleccione el número de reservas automáticas"
+          formControlName="limitAutomated">
       </mat-form-field>
-      <br>
-      <div>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Fianza de reserva (valor entre 0-1)</mat-label>
+        <input matInput type="number" placeholder="Introduzca la fianza por reservas para todos los servicios"
+          formControlName="defaultDeposit">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Tiempo de cancelación gratuita (valor en días) </mat-label>
+        <input matInput type="number" placeholder="Introduzca el número de días para que la cancelación sea gratuitas"
+          formControlName="depositTimeLimit">
+      </mat-form-field>
+
+    </div>
+    <div formArrayName="services">
+      <h4>Servicios negocio</h4>
+      <div *ngIf="serviceArray.controls.length == 0">
+        <p> No tiene añadido nigún servicio</p>
         <button mat-icon-button (click)="addService()">
           <mat-icon>control_point</mat-icon>
         </button>
-        <button *ngIf="i>0" mat-icon-button (click)="removeService(i)">
-          <mat-icon>remove_circle_outline</mat-icon>
-        </button>
       </div>
-      <mat-divider></mat-divider>
-      <br>
+      <div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
+        <h5>Servicio {{i+1}}</h5>
+        <mat-form-field class="example-full -width">
+          <mat-label>Nombre servicio</mat-label>
+          <input matInput type="text" placeholder="Introduzca el nombre del servicio" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Descripción servicio</mat-label>
+          <input matInput type="text" placeholder="Introduzca la descripción del servicio"
+            formControlName="description">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Precio servicio (X.XX)</mat-label>
+          <input matInput tupe="number" placeholder="Introduzca el precio del servicio" formControlName="price">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Duracion servicio (en minutos) </mat-label>
+          <input matInput type="number" placeholder="Introduzca la duración del servicio" formControlName="duration">
+
+        </mat-form-field>
+
+        <div>
+          <button mat-icon-button (click)="addService()">
+            <mat-icon>control_point</mat-icon>
+          </button>
+          <button mat-icon-button (click)="removeService(i)">
+            <mat-icon>remove_circle_outline</mat-icon>
+          </button>
+        </div>
+        <mat-divider></mat-divider>
+
+      </div>
     </div>
-  </div>
-  <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Guardar</button>
-</form>
+    <button type="submit" mat-raised-button [disabled]="form.invalid">Guardar</button>
+  </form>
+</div>
+<ng-template #error>
+  <p>No tiene permiso</p>
+</ng-template>

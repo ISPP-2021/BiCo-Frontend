@@ -4,18 +4,18 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <p>
         <mat-form-field>
-          <input matInput placeholder="Email" formControlName="user">
-          <mat-hint *ngIf="loginForm.controls.user.errors">Email is required</mat-hint>
+          <input matInput placeholder="Usuario" formControlName="user">
+          <mat-hint *ngIf="loginForm.controls.user.errors">El nombre de usuario es obligatorio</mat-hint>
         </mat-form-field>
       </p>
 
       <p>
         <mat-form-field>
-          <input matInput type="password" placeholder="Password" formControlName="password">
-          <mat-hint *ngIf="loginForm.controls.password.errors">Password is required</mat-hint>
+          <input matInput type="password" placeholder="Contraseña" formControlName="password">
+          <mat-hint *ngIf="loginForm.controls.password.errors">La contraseña es obligatoria</mat-hint>
         </mat-form-field>
       </p>
-      <button mat-raised-button [disabled]="!loginForm.valid" type="submit">Login</button>
+      <button mat-raised-button [disabled]="!loginForm.valid" type="submit">Iniciar sesión</button>
     </form>
   </mat-card-content>
 </mat-card>

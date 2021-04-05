@@ -1,32 +1,42 @@
 <div>
-    <br>
-    <h1 style="text-align: center;">Búsqueda de Negocios</h1>
-    <div>
-        <div>
-            <div>
-                <input matInput type="text" class="form-control" style="text-align: center;" id="buscador" name="filterCommercePost" 
-                placeholder="Introduce el nombre o tipo de establecimiento, o el servicio que buscas" [(ngModel)]="filterCommercePost">
-            </div>
-        </div>
-    </div>
-    <br>
-    <mat-divider></mat-divider>
-    <div id="tabla-buscador" style="display: none;">
-        <mat-grid-list cols="3" rowHeight="20%">
-            <mat-card class="card" *ngFor="let negocio of negocios | filterCommerce: filterCommercePost">
+    <mat-grid-list cols="6">
+        <mat-grid-tile [colspan]="1" [rowspan]="2"></mat-grid-tile>
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
+            <mat-card class="busqueda">
                 <mat-card-header>
-                    <mat-card-title>{{ negocio.name }}</mat-card-title>
-                    <a mat-mini-fab routerLink="/negocio/{{negocio.id}}">Ver</a>
-                    &nbsp;&nbsp;
-                    <mat-card-subtitle *ngIf="negocio.businessType === 'HAIRDRESSER'"> Peluquería</mat-card-subtitle>
-                    <mat-card-subtitle *ngIf="negocio.businessType === 'RESTAURANT'"> Bar/Restaurante</mat-card-subtitle>
-                    <mat-card-subtitle *ngIf="negocio.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
+                    <mat-card-title>Búsqueda de negocio</mat-card-title>
+                    <mat-card-subtitle> Busca según tipo o nombre del negocio</mat-card-subtitle>
                 </mat-card-header>
-                <mat-card-actions *ngFor="let servicio of negocio.services">
-                    <button mat-button> {{ servicio.name }} - {{ servicio.price }} €</button>
-                </mat-card-actions>
-                <a mat-raised-button color="primary" routerLink="/reservar/{{negocio.id}}">Reservar</a>
+                <mat-card-content>
+                    <mat-form-field>
+                        <input matInput type="text" id="buscador" name="filterCommercePost"
+                            placeholder="Introduce el nombre o tipo de establecimiento, o el servicio que buscas"
+                            [(ngModel)]="filterCommercePost">
+                    </mat-form-field>
+
+                </mat-card-content>
             </mat-card>
-        </mat-grid-list>
-    </div>
-</div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="2"></mat-grid-tile>
+        <mat-grid-tile [colspan]="4" [rowspan]="10">
+            <div id="tabla-buscador" class="content">
+                <mat-card class="negocio" *ngFor="let negocio of negocios | filterCommerce: filterCommercePost">
+                    <button mat-mini-fab routerLink="/negocio/{{negocio.id}}">Ver</button>
+                    <mat-card-header>
+                        <mat-card-title>{{negocio.name}}</mat-card-title>
+                        <mat-card-subtitle *ngIf="negocio.businessType === 'HAIRDRESSER'"> Peluquería
+                        </mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="negocio.businessType === 'RESTAURANT'"> Bar/Restaurante
+                        </mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="negocio.businessType === 'GENERAL'"> Otros
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content *ngFor="let servicio of negocio.services">
+                        <p>{{servicio.name}} - {{servicio.price}} €</p>
+                    </mat-card-content>
+                    <button mat-raised-button routerLink="/reservar/{{negocio.id}}">Reservar</button>
+                </mat-card>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <router-outlet></router-outlet>
