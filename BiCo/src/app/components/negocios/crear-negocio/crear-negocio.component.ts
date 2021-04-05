@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms'
+import {  Router } from '@angular/router';
 import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
 import { JWT_NAME } from 'src/app/services/authentication-service/authentication.service';
 
@@ -14,7 +15,7 @@ export class CrearNegocioComponent implements OnInit {
   rol = localStorage.getItem('rol')
 	token: string = localStorage.getItem(JWT_NAME);
 	form: FormGroup;
-	constructor(private formBuilder: FormBuilder, private negocioService: NegocioService) { }
+	constructor(private formBuilder: FormBuilder, private negocioService: NegocioService, private router: Router) { }
 
 	ngOnInit() {
 		this.form = this.formBuilder.group({
@@ -57,8 +58,10 @@ export class CrearNegocioComponent implements OnInit {
 
 	save() {
 		if (this.form.valid) {
-			this.negocioService.create(this.form.value).subscribe()
-			console.log(this.form.value)
+			this.negocioService.create(this.form.value).subscribe(res=>{
+        this.router.navigate(['home'])
+      })
+
 		}
 
 	}
