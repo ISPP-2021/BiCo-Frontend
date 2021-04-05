@@ -1,0 +1,21 @@
+.negocio{
+  background-color: #E1CED4;
+  width: 100%;
+  max-height: 100%;
+}
+.content {
+  
+  padding: 1%;
+  align-self: flex-start;
+  width: 100%;
+  max-height: 100%;
+
+}
+.servicio{
+  background-color: #F0E7EA;
+}
+.mat-raised-button{
+float:right;  
+  justify-content: center;
+  background-color: #A3DCB9;
+}

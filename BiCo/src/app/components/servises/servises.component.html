@@ -1,0 +1,50 @@
+<div *ngIf="token === negocio.supplier.user.token else error">
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div formArrayName="services">
+      <h4>Servicios del Negocio</h4>
+      <div *ngIf="serviceArray.controls.length == 0">
+        <p> No tiene añadido nigún servicio</p>
+        <button mat-icon-button (click)="addService()">
+          <mat-icon>control_point</mat-icon>
+        </button>
+      </div>
+      <div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
+        <h5>Servicio {{i+1}}</h5>
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombre del servicio</mat-label>
+          <input matInput type="text" placeholder="Introduzca el nombre del servicio" formControlName="name">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Descripcion del servicio</mat-label>
+          <input matInput type="text" placeholder="Introduzca la descripcion del servicio"
+            formControlName="description">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Precio del servicio</mat-label>
+          <input matInput type="number" placeholder="Introduzca el precio del servicio" formControlName="price">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Duracion del servicio</mat-label>
+          <input matInput type="number" placeholder="Introduzcala duracion del servicio" formControlName="duration">
+        </mat-form-field>
+        <br>
+        <div>
+          <button mat-icon-button (click)="addService()">
+            <mat-icon>control_point</mat-icon>
+          </button>
+          <button mat-icon-button (click)="removeService(i)">
+            <mat-icon>remove_circle_outline</mat-icon>
+          </button>
+        </div>
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Guardar</button>
+  </form>
+</div>
+<ng-template #error>
+  <p>No tiene permiso</p>
+</ng-template>

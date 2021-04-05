@@ -1,13 +1,27 @@
 export interface Negocio {
-    id: Number;
-    descripcion: String;
-    nombre: String;
-    direccion: String;
-    etiqueta: String;
-    aforo: Number;
-    horario_apertura: String;
-    horario_cierre: String;
-    horario_dias_festivos: String;
-    horario_dias_laborales: String;
-    telefono: Number;
+  id: Number;
+  name: String;
+  address: String;
+  businessType: String;
+  option:{
+    automatedAccept: boolean
+    limitAutomated: Number
+    defaultDeposit: Number
+    depositTimeLimit: Number
   }
+  services:{
+    name: String
+    description: String
+    price: Number
+    duration: Number
+    capacity: Number
+    deposit: Number
+    tax: Number
+    bookings:{
+      emisionDate: Date
+      bookDate: Date
+      status: String
+    }
+  }
+
+}

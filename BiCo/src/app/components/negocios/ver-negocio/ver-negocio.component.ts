@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Negocio } from 'src/app/model/negocio.interface';
 import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
-import  negociosData  from 'src/app/components/negocios/negocios.json';
 
 @Component({
   selector: 'app-ver-negocio',
@@ -13,6 +12,8 @@ import  negociosData  from 'src/app/components/negocios/negocios.json';
 })
 export class VerNegocioComponent implements OnInit {
 
+  rol = localStorage.getItem('rol')
+  negocioId = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
   negocio$: Observable<Negocio> = this.activatedRoute.params.pipe(
     switchMap((params: Params) => {
       const negocioId: number = parseInt(params['id']);
@@ -28,6 +29,5 @@ export class VerNegocioComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  negocios: Negocio[] = negociosData;
 
 }

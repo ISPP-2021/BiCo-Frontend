@@ -1,0 +1,27 @@
+.example-form {
+  width: 700px;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px 20px;
+  box-sizing: border-box;
+  margin-top: 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255);
+}
+
+.example-full-width {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+}
+
+@media (max-width: 480 px) {
+  .example-form {
+    width: 100%;
+  }
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FilterNegocioService } from 'src/app/services/filter-negocio-service/filter-negocio.service';
 
 @Component({
   selector: 'app-buscador-negocio',
@@ -7,48 +8,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuscadorNegocioComponent implements OnInit {
 
-  constructor() { }
-  filterCommercePost = '';
-  negocios = [
-    {
-        "nombre" : "Bar pakito",
-        "tipo" : "bar"
-    },
-    {
-        "nombre" : "Plan B",
-        "tipo" : "bar"
-    },
-    {
-        "nombre" : "Cien cocktelitos",
-        "tipo" : "bar"
-    },
-    {
-        "nombre" : "Bar Fede",
-        "tipo" : "bar"
-    },
-    {
-        "nombre": "100 montaditos",
-        "tipo": "bar"
-    },
-    {
-        "nombre" : "La sureña",
-        "tipo" : "bar"
-    },
-    {
-        "nombre" : "Peluquería María Teresa",
-        "tipo" : "peluquería"
-    },
-    {
-        "nombre" : "Navaja shop",
-        "tipo" : "peluquería"
-    },
-    {
-        "nombre" : "Bold Monkey",
-        "tipo" : "peluquería"
-    }
-]
+  negocios = [];
+	errorMessage = "";
 
-  ngOnInit(): void {
+  
+
+  constructor(private servicio:FilterNegocioService) { }
+  filterCommercePost = '';
+  tipos = ["HAIRDRESSER", "RESTAURANT", "GENERAL"];
+  
+
+  ngOnInit() {
+
+    this.servicio.findAll().subscribe(data => this.negocios = data,
+			err => this.errorMessage = err)
+  
+  }
+
+
+  onSelect(tipo){
+      if(tipo == ""){       
+        this.servicio.findAll().subscribe(data => this.negocios = data,
+		    	err => this.errorMessage = err);
+      }else{
+        this.servicio.getNegociosFilter(tipo).subscribe(data => this.negocios = data,
+          err => this.errorMessage = err)
+      }
   }
 
 }

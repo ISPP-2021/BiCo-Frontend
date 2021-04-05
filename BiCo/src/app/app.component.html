@@ -1,19 +1,62 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Bienvenido a {{title}}</a>
+<div style="height: 100hv;">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm="true">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button mat-button routerLink="/home"><img src="./assets/favicon.png" style="width:2em;"></button>
+      <button mat-button routerLink="/home">Bienvenido a BiCo</button>
+      <span class="spacer"></span>
 
-  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/perfil">Mi Perfil</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/negocio">Mis Negocios</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/reservas">Mis Reservas</a>
-      </li>
+      <div fxShow="true" fxHide.lt-md="true">
+        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/buscar">Buscar negocios</button>
+        <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/supplier/1">
+          <mat-icon>account_circle</mat-icon>Mi Perfil
+        </button>
+        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/consumer/1">
+          <mat-icon>perm_identity</mat-icon>Mi Perfil
+        </button>
+        <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/negocio/1">
+          <mat-icon>business</mat-icon>Mis Negocios
+        </button>
+        <button *ngIf="rol != null" mat-raised-button routerLink="/reservas">
+          <mat-icon>calendar_today</mat-icon>Mis reservas
+        </button>
+        <button *ngIf="rol === null" mat-raised-button routerLink="/login">
+          <mat-icon>login</mat-icon>Iniciar sesión
+        </button>
+        <button *ngIf="rol != null" mat-raised-button (click)="logout()">
+          <mat-icon>logout</mat-icon>Cerrar sesión
+        </button>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
 
-    </ul>
-  </div>
-</nav>
-<router-outlet></router-outlet>
+  <mat-sidenav-container fxFlexFill [hasBackdrop]="true">
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a href="/supplier/1" mat-list-item>
+          <mat-icon>account_circle</mat-icon>Supplier
+        </a>
+        <a href="/consumer/1" mat-list-item>
+          <mat-icon>perm_identity</mat-icon>Consumer
+        </a>
+        <a href="/negocio/1" mat-list-item>
+          <mat-icon>business</mat-icon>Negocio
+        </a>
+        <a href="/reservas" mat-list-item>
+          <mat-icon>calendar_today</mat-icon>Mis reservas
+        </a>
+        <a href="/login" mat-list-item>
+          <mat-icon>login</mat-icon>Iniciar sesión
+        </a>
+        <a (click)="sidenav.toggle()" mat-list-item>
+          <mat-icon>close</mat-icon>Cerrar
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
