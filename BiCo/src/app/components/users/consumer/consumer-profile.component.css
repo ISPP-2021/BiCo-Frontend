@@ -2,21 +2,14 @@
   margin-top: 5vh;
 }
 
-.mat-card {
+.usuario{
+  width: 100%;
+  max-height: 100%;
+}
+.content {
+  padding: 1%;
+  align-self: flex-start;
   width: 100%;
   max-height: 100%;
 
-}
-.mat-card-title{
-  font-size: 2vw;
-  font-size: 2vh;
-}
-
-.mat-card-subtitle{
-  font-size: 1.5vw;
-  font-size: 1.5vh;
-}
-.mat-card-content{
-  font-size: 1.5vw;
-  font-size: 1.5vh;
 }
