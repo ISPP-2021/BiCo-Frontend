@@ -27,7 +27,7 @@ export class ServisesComponent implements OnInit {
     this.negocioService.findOne(this.negocioId).subscribe(negocio=>{
       this.negocio=negocio
       this.form =this.formBuilder.group({
-        services: this.formBuilder.array([])
+        servises: this.formBuilder.array([])
     })
     this.initService(negocio.services)
   })
@@ -41,7 +41,7 @@ export class ServisesComponent implements OnInit {
     }
 
    get serviceArray(){
-    return <FormArray>this.form.get('services');
+    return <FormArray>this.form.get('servises');
 
 
   }
@@ -74,10 +74,17 @@ export class ServisesComponent implements OnInit {
 
     save() {
     if(this.form.valid){
-    /*this.negocioService.update(this.negocioId,this.form.value).subscribe(res=>{
+     /* console.log(this.form.value)
+      this.negocioService.updateServices(this.negocioId,this.form.value).subscribe(res=>{
       this.router.navigate(['negocio-edit/'+this.negocioId])
     })*/
-    console.log(this.form.value)
+    let servises = this.form.value.services;
+    for (let index = 0; index < servises.length; index++) {
+      const service = servises[index];
+      //this.negocioService.updateServices(this.negocioId,service).subscribe()
+      console.log(service)
+    }
+    
     }
   }
 

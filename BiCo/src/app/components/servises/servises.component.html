@@ -1,6 +1,6 @@
 <div *ngIf="token === negocio.supplier.user.token else error">
   <form [formGroup]="form" (ngSubmit)="save()">
-    <div formArrayName="services">
+    <div formArrayName="servises">
       <h4>Servicios del Negocio</h4>
       <div *ngIf="serviceArray.controls.length == 0">
         <p> No tiene añadido nigún servicio</p>
