@@ -44,6 +44,7 @@ import { MatListModule } from '@angular/material/list';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DatePipe } from '@angular/common';
+import { VerReservasComponent } from './components/reservas/ver-reservas/ver-reservas.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { DatePipe } from '@angular/common';
     LoginComponent,
     VerNegocioComponent,
     CrearReservaComponent,
+    VerReservasComponent,
   ],
   imports: [
     BrowserModule,

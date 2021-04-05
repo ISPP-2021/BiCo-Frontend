@@ -1,0 +1,24 @@
+<div>
+    <mat-grid-list cols="6" *ngIf="(consumer$ | async) as consumer">
+        <mat-grid-tile [colspan]="1" [rowspan]="2"></mat-grid-tile>
+        <mat-grid-tile [colspan]="4" [rowspan]="10">
+            <div class="content">
+                <mat-card class="reserva" *ngFor="let booking of consumer.bookings">
+                    <mat-card-header>
+                        <mat-card-title>Reserva: {{booking.id}}</mat-card-title>
+                        <mat-card-subtitle *ngIf="booking.status === 'IN_PROGRESS'"> Pendiente de aprobación
+                        </mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="booking.status === 'COMPLETED'"> Aprobada</mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="booking.status === 'CANCELLED'"> Cancelado</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>{{booking.bookDate | date:'dd-MM-yyyy hh:mm'}}</p>
+                        <p></p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+<router-outlet></router-outlet>

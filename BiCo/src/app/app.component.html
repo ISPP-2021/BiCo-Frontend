@@ -19,7 +19,7 @@
         <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/negocio/1">
           <mat-icon>business</mat-icon>Mis Negocios
         </button>
-        <button *ngIf="rol != null" mat-raised-button routerLink="/reservas">
+        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/reservas">
           <mat-icon>calendar_today</mat-icon>Mis reservas
         </button>
         <button *ngIf="rol === null" mat-raised-button routerLink="/login">
