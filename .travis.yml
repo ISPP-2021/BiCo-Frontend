@@ -14,6 +14,7 @@ before_install:
 
 install:
   - npm install
+  - npm install --save chromium
 
 script:
   - npm run test -- --no-watch --no-progress --browsers=Chrome
