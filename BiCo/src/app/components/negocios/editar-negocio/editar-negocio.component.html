@@ -1,5 +1,5 @@
 <div *ngIf="(negocio$ | async) as negocio">
-  <div *ngIf="token === negocio.supplier.user.token else error">
+  <div *ngIf="rol === 'owner' else error">
     <form class="example-form" [formGroup]="form" (ngSubmit)="save()">
       <h2 style="text-align: center;">Editar negocio</h2>
       <!-- <div>

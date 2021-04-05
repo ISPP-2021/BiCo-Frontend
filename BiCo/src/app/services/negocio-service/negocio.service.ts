@@ -12,6 +12,7 @@ export class NegocioService {
   token: string = localStorage.getItem(JWT_NAME);
   constructor(private http: HttpClient) {}
   private url: string = 'http://bico-despliegue1.herokuapp.com/';
+  private url2: string = 'http://localhost:8080/'
   private headers = {
     headers: {
       Authorization: this.token,
@@ -30,7 +31,7 @@ export class NegocioService {
 
   findOne(id: Number): Observable<Negocio> {
     return this.http
-      .get<Negocio>(this.url + 'business/' + id, this.headers)
+      .get<Negocio>(this.url2 + 'business/' + id, this.headers)
       .pipe(map((negocio: Negocio) => negocio));
   }
 
@@ -50,7 +51,11 @@ export class NegocioService {
     );
   }
 
-  findServices(id: Number) {
-    return this.http.get<Negocio>(this.url + 'services/' + id, this.headers);
+  updateServices(id: Number, body) {
+    return this.http.put(this.url2 + 'business/' + id + '/addition', body ,this.headers);
+  }
+
+  deleteServices(id: Number) {
+    return this.http.delete(this.url2 + 'servises/' + id ,this.headers);
   }
 }
