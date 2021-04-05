@@ -10,6 +10,10 @@
     background-color: #FBE5DA;
   
   }
+  .mat-form-field{
+    width: 95%;
+    margin-left: 2.5%;
+  }
   
   .content {
     margin-bottom: 5%;

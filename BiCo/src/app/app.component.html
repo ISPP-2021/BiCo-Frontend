@@ -9,7 +9,9 @@
       <span class="spacer"></span>
 
       <div fxShow="true" fxHide.lt-md="true">
-        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/buscar">Buscar negocios</button>
+        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/buscar">
+          <mat-icon>search</mat-icon>Buscar negocios
+        </button>
         <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/supplier/1">
           <mat-icon>account_circle</mat-icon>Mi Perfil
         </button>
@@ -19,7 +21,10 @@
         <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/negocio/1">
           <mat-icon>business</mat-icon>Mis Negocios
         </button>
-        <button *ngIf="rol != null" mat-raised-button routerLink="/reservas">
+        <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/negocio-create">
+          <mat-icon>note_alt</mat-icon>Añadir negocio
+        </button>
+        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/reservas">
           <mat-icon>calendar_today</mat-icon>Mis reservas
         </button>
         <button *ngIf="rol === null" mat-raised-button routerLink="/login">
@@ -35,20 +40,30 @@
   <mat-sidenav-container fxFlexFill [hasBackdrop]="true">
     <mat-sidenav #sidenav>
       <mat-nav-list>
-        <a href="/supplier/1" mat-list-item>
-          <mat-icon>account_circle</mat-icon>Supplier
+
+        <a *ngIf="rol === 'user'" mat-list-item href="/buscar">
+          <mat-icon>search</mat-icon>Buscar negocios
         </a>
-        <a href="/consumer/1" mat-list-item>
-          <mat-icon>perm_identity</mat-icon>Consumer
+        <a *ngIf="rol === 'owner'" mat-list-item href="/supplier/1">
+          <mat-icon>account_circle</mat-icon>Mi Perfil
         </a>
-        <a href="/negocio/1" mat-list-item>
-          <mat-icon>business</mat-icon>Negocio
+        <a *ngIf="rol === 'user'" mat-list-item href="/consumer/1">
+          <mat-icon>perm_identity</mat-icon>Mi Perfil
         </a>
-        <a href="/reservas" mat-list-item>
+        <a *ngIf="rol === 'owner'" mat-list-item href="/negocio/1">
+          <mat-icon>business</mat-icon>Mis Negocios
+        </a>
+        <a *ngIf="rol === 'owner'" mat-list-item href="/negocio-create">
+          <mat-icon>note_alt</mat-icon>Añadir negocio
+        </a>
+        <a *ngIf="rol === 'user'" mat-list-item href="/reservas">
           <mat-icon>calendar_today</mat-icon>Mis reservas
         </a>
-        <a href="/login" mat-list-item>
+        <a *ngIf="rol === null" mat-list-item href="/login">
           <mat-icon>login</mat-icon>Iniciar sesión
+        </a>
+        <a *ngIf="rol != null" mat-list-item (click)="logout()">
+          <mat-icon>logout</mat-icon>Cerrar sesión
         </a>
         <a (click)="sidenav.toggle()" mat-list-item>
           <mat-icon>close</mat-icon>Cerrar
