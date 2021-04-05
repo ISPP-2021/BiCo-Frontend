@@ -69,6 +69,8 @@ export class CrearReservaComponent implements OnInit {
         }
         console.log(reserva)
         this.reservaService.create(servicio.id, reserva).subscribe()
+        this.router.navigate(['reservas'])
+        window.location.reload();
       }
     }
   }
