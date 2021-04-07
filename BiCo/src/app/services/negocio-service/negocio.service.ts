@@ -51,6 +51,13 @@ export class NegocioService {
     );
   }
 
+   delete(id: Number) {
+    return this.http.delete(
+      this.url + 'business/' + id,
+      this.headers
+    );
+  }
+
   updateServices(id: Number, body) {
     return this.http.put(this.url + 'business/' + id + '/addition', body ,this.headers);
   }
