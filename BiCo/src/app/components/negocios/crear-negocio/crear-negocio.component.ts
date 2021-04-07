@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms'
 import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
 import { JWT_NAME } from 'src/app/services/authentication-service/authentication.service';
+import { ActivatedRoute, Router} from '@angular/router';
+
 
 @Component({
 	selector: 'app-crear-negocio',
@@ -14,7 +16,7 @@ export class CrearNegocioComponent implements OnInit {
   rol = localStorage.getItem('rol')
 	token: string = localStorage.getItem(JWT_NAME);
 	form: FormGroup;
-	constructor(private formBuilder: FormBuilder, private negocioService: NegocioService) { }
+	constructor(private formBuilder: FormBuilder, private negocioService: NegocioService,private router: Router) { }
 
 	ngOnInit() {
 		this.form = this.formBuilder.group({
@@ -27,12 +29,12 @@ export class CrearNegocioComponent implements OnInit {
 				defaultDeposit: ['', [Validators.required, Validators.min(0), Validators.max(1)]],
 				depositTimeLimit: ['', [Validators.required, Validators.min(1)]]
 			}),
-			services: this.formBuilder.array([this.addServiceGroup()])
+			servises: this.formBuilder.array([])
 		});
 	}
 
 	get serviceArray() {
-		return <FormArray>this.form.get('services');
+		return <FormArray>this.form.get('servises');
 	}
 
 	addServiceGroup() {
@@ -40,7 +42,10 @@ export class CrearNegocioComponent implements OnInit {
 			name: ['', [Validators.required]],
 			description: ['', [Validators.required]],
 			price: ['', [Validators.required, Validators.min(0)]],
-			duration: ['', [Validators.required, Validators.min(0)]]
+			duration: ['', [Validators.required, Validators.min(0)]],
+      capacity: ['', [Validators.required, Validators.min(0)]],
+      deposit: ['', [Validators.required, Validators.min(0)]],
+      tax: ['',[Validators.required, Validators.min(0), Validators.max(1)]],
 		});
 	}
 
@@ -57,11 +62,27 @@ export class CrearNegocioComponent implements OnInit {
 
 	save() {
 		if (this.form.valid) {
-			this.negocioService.create(this.form.value).subscribe()
-			console.log(this.form.value)
-		}
+      if(this.serviceArray.length===0){
+       this.serviceArray.push(this.defaultService())
+      }
+      console.log(this.form.value)
+			this.negocioService.create(this.form.value).subscribe( res=>{
+        this.router.navigate(['home'])})
 
 	}
+}
+
+  defaultService(){
+    return this.formBuilder.group({
+			name: ['Solo Reserva', [Validators.required]],
+			description: ['Reservar en el negocio', [Validators.required]],
+			price: [0, [Validators.required, Validators.min(0)]],
+			duration: [0, [Validators.required, Validators.min(0)]],
+      capacity: [0, [Validators.required, Validators.min(0)]],
+      deposit: [0, [Validators.required, Validators.min(0)]],
+      tax: ['',[Validators.required, Validators.min(0), Validators.max(1)]],
+		});
+  }
 
 	disable() {
 		if (this.form.get('option.automatedAccept').value == true) {

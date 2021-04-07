@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, Validators} from '@angular/forms'
-import { ActivatedRoute, Params, Router} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
 import { HttpClient } from '@angular/common/http'
 import { Negocio } from 'src/app/model/negocio.interface';
@@ -27,7 +27,6 @@ export class ServisesComponent implements OnInit {
   ngOnInit(): void {
     this.negocioService.findOne(this.negocioId).subscribe(negocio=>{
       this.negocio=negocio
-      console.log(negocio)
       this.form =this.formBuilder.group({
         servises: this.formBuilder.array([])
     })
@@ -67,7 +66,6 @@ export class ServisesComponent implements OnInit {
 
       let servises = this.serviceArray.value
       let serviceId= servises[index].id
-      console.log(serviceId)
       this.negocioService.deleteServices(serviceId).subscribe()
       this.serviceArray.removeAt(index);
     }else{
