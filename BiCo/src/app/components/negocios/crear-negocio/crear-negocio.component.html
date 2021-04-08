@@ -46,14 +46,8 @@
       </mat-form-field>
 
     </div>
-    <div formArrayName="services">
+    <div formArrayName="servises">
       <h4>Servicios negocio</h4>
-      <div *ngIf="serviceArray.controls.length == 0">
-        <p> No tiene añadido nigún servicio</p>
-        <button mat-icon-button (click)="addService()">
-          <mat-icon>control_point</mat-icon>
-        </button>
-      </div>
       <div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
         <h5>Servicio {{i+1}}</h5>
         <mat-form-field class="example-full -width">
@@ -75,9 +69,23 @@
         <mat-form-field class="example-full-width">
           <mat-label>Duracion servicio (en minutos) </mat-label>
           <input matInput type="number" placeholder="Introduzca la duración del servicio" formControlName="duration">
-
         </mat-form-field>
-
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Aforo</mat-label>
+          <input matInput type="number" placeholder="Introduzca el aforo del servicio" formControlName="capacity">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Fianza</mat-label>
+          <input matInput type="number" placeholder="Introduzca la fianza del servicio" formControlName="deposit">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Porcentaje de Fianza</mat-label>
+          <input matInput type="number" placeholder="Introduzca el porcentaje de la fianza del servicio"
+            formControlName="tax">
+        </mat-form-field>
         <div>
           <button mat-icon-button (click)="addService()">
             <mat-icon>control_point</mat-icon>
@@ -89,6 +97,17 @@
         <mat-divider></mat-divider>
 
       </div>
+    </div>
+
+    <div *ngIf="serviceArray.controls.length == 0">
+      <b> No tiene añadido nigún servicio. Si no añade ningún servicio se le añadirá uno por defecto
+        que
+        podrá
+        personalizar y servira como reserva general de su negocio.</b>
+      <br>
+      <button mat-icon-button (click)="addService()">
+        <mat-icon>control_point</mat-icon>
+      </button>
     </div>
     <button type="submit" mat-raised-button [disabled]="form.invalid">Guardar</button>
   </form>
