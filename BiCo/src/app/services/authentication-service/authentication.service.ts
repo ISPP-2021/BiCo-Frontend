@@ -35,8 +35,6 @@ export class AuthenticationService {
 
 		return this.http.post<User>(`${this.url}/users/login`, { username: loginForm.user, password: loginForm.password }).pipe(
 			map((usuario) => {
-				console.log(usuario.authorities[0].authority)
-				console.log(usuario);
 
 				localStorage.setItem(JWT_NAME, usuario.token);
 
