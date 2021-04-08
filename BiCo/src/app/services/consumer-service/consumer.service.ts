@@ -11,16 +11,24 @@ import { JWT_NAME } from '../authentication-service/authentication.service';
 export class ConsumerService {
 	token: string = localStorage.getItem(JWT_NAME);
 	constructor(private http: HttpClient) { }
-	private url: string = 'http://bico-despliegue1.herokuapp.com/';
+	private url: string = 'https://bico-despliegue1.herokuapp.com/';
 	private headers = {
 		headers: {
 			Authorization: this.token,
 		},
 	};
 
-	findOne(id: Number): Observable<Consumer> {
+	findMe(): Observable<Consumer> {
 		return this.http
 			.get<Consumer>(this.url + 'users/profile', this.headers)
 			.pipe(map((consumer: Consumer) => consumer));
+
 	}
+
+	findOne(id: Number): Observable<Consumer> {
+		return this.http
+			.get<Consumer>(this.url + 'consumer/' + id, this.headers)
+			.pipe(map((consumer: Consumer) => consumer));
+	}
+
 }
