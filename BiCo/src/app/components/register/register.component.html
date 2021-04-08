@@ -1,0 +1,71 @@
+<mat-card>
+  <mat-card-title>Registro</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Nombre" formControlName="name">
+          <mat-hint *ngIf="registerForm.controls.name.errors">El nombre es obligatorio</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Apellido/s" formControlName="lastName">
+          <mat-hint *ngIf="registerForm.controls.lastName.errors">El apellido/s es obligatorio</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="DNI" formControlName="dni">
+          <mat-hint *ngIf="registerForm.controls.dni.errors">El dni es obligatorio</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Email" formControlName="email">
+          <mat-hint *ngIf="registerForm.controls.email.errors">El email es obligatorio</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <div formGroupName="user">
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Username" formControlName="username">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input matInput type="password" placeholder="Contraseña" formControlName="password">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input matInput type="password" placeholder="Repite Contraseña" formControlName="confirmPassword">
+          </mat-form-field>
+        </p>
+
+        <mat-form-field class="example-full-width" required>
+          <mat-label>Rol</mat-label>
+          <mat-select formControlName="authorities">
+            <mat-option value="owner">Owner</mat-option>
+            <mat-option value="user">User</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+      <button mat-raised-button [disabled]="!registerForm.valid" type="submit">Iniciar sesión</button>
+    </form>
+
+    <h3 *ngIf="registerForm.invalid">Form contains following errors</h3>
+    <small *ngIf="registerForm.get('user.password').hasError('passwordInvalid')">Password is not containing a
+      number</small>
+    <br>
+    <small *ngIf="registerForm.hasError('passwordsNotMatching')">Passwords not matching</small>
+  </mat-card-content>
+</mat-card>

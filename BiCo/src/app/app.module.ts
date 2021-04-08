@@ -25,6 +25,7 @@ import { CrearNegocioComponent } from './components/negocios/crear-negocio/crear
 import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
 import { CrearReservaComponent } from './components/reservas/crear-reserva/crear-reserva.component';
 import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component';
+import { RegisterComponent } from './components/register/register.component';
 
 import { ServisesComponent } from './components/servises/servises.component';
 
@@ -46,6 +47,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DatePipe } from '@angular/common';
 import { VerReservasComponent } from './components/reservas/ver-reservas/ver-reservas.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +64,7 @@ import { VerReservasComponent } from './components/reservas/ver-reservas/ver-res
     VerNegocioComponent,
     CrearReservaComponent,
     VerReservasComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
