@@ -12,7 +12,7 @@
                         <mat-card-subtitle *ngIf="booking.status === 'CANCELLED'"> Cancelado</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content>
-                        <p>{{booking.bookDate | date:'dd-MM-yyyy hh:mm'}}</p>
+                        <p>{{booking.bookDate | date:'dd-MM-yyyy HH:mm' : '-000'}}</p>
                         <p></p>
                     </mat-card-content>
                 </mat-card>

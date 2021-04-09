@@ -13,7 +13,8 @@ export class ReservaService {
 
   token: string = localStorage.getItem(JWT_NAME);
   constructor(private http: HttpClient) { }
-  private url: string = 'http://bico-despliegue1.herokuapp.com/';
+  private url: string = 'http://bico-despliegue2.herokuapp.com/';
+  private url2: string = 'http://localhost:8080/';
   private headers = {
     headers: {
       Authorization: this.token,
@@ -21,7 +22,7 @@ export class ReservaService {
   };
 
   create(id:Number, reserva:Reserva): Observable<Reserva> {
-    return this.http.post<Reserva>(this.url + 'bookings/' + id, reserva, this.headers);
+    return this.http.post<Reserva>(this.url2 + 'bookings/' + id, reserva, this.headers);
   }
 
   findOne(id : Number): Observable<Reserva> {
