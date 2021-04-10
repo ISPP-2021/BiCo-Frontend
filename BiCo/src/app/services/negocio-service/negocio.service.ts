@@ -6,12 +6,12 @@ import { map, catchError } from 'rxjs/operators';
 import { JWT_NAME } from '../authentication-service/authentication.service';
 
 @Injectable({
-	providedIn: 'root',
+  providedIn: 'root',
 })
 export class NegocioService {
   token: string = localStorage.getItem(JWT_NAME);
-  constructor(private http: HttpClient) {}
-  private url: string = 'http://bico-despliegue1.herokuapp.com/';
+  constructor(private http: HttpClient) { }
+  private url: string = 'http://bico-despliegue2.herokuapp.com/';
   private url2: string = 'http://localhost:8080/'
   private headers = {
     headers: {
@@ -21,7 +21,7 @@ export class NegocioService {
 
   findAll(): Observable<Negocio[]> {
     return this.http
-      .get<Negocio[]>(this.url + 'business',this.headers)
+      .get<Negocio[]>(this.url + 'business', this.headers)
       .pipe(catchError(this.errorHandler));
   }
 
@@ -51,7 +51,7 @@ export class NegocioService {
     );
   }
 
-   delete(id: Number) {
+  delete(id: Number) {
     return this.http.delete(
       this.url + 'business/' + id,
       this.headers
@@ -59,10 +59,10 @@ export class NegocioService {
   }
 
   updateServices(id: Number, body) {
-    return this.http.put(this.url + 'business/' + id + '/addition', body ,this.headers);
+    return this.http.put(this.url + 'business/' + id + '/addition', body, this.headers);
   }
 
   deleteServices(id: Number) {
-    return this.http.delete(this.url + 'servises/' + id ,this.headers);
+    return this.http.delete(this.url + 'servises/' + id, this.headers);
   }
 }
