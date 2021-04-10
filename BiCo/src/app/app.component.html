@@ -13,19 +13,19 @@
           <mat-icon>search</mat-icon>Buscar negocios
         </button>
         <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/supplier/1">
-          <mat-icon>account_circle</mat-icon>Mi Perfil
+          <mat-icon>account_circle</mat-icon>Mi perfil
         </button>
         <button *ngIf="rol === 'user'" mat-raised-button routerLink="/consumer/1">
-          <mat-icon>perm_identity</mat-icon>Mi Perfil
-        </button>
-        <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/negocio/1">
-          <mat-icon>business</mat-icon>Mis Negocios
+          <mat-icon>perm_identity</mat-icon>Mi perfil
         </button>
         <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/negocio-create">
           <mat-icon>note_alt</mat-icon>Añadir negocio
         </button>
         <button *ngIf="rol === 'user'" mat-raised-button routerLink="/reservas">
           <mat-icon>calendar_today</mat-icon>Mis reservas
+        </button>
+        <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/mis-negocios">
+          <mat-icon>business</mat-icon>Mis negocios
         </button>
         <button *ngIf="rol === null" mat-raised-button routerLink="/login">
           <mat-icon>login</mat-icon>Iniciar sesión
@@ -50,11 +50,11 @@
         <a *ngIf="rol === 'user'" mat-list-item href="/consumer/1">
           <mat-icon>perm_identity</mat-icon>Mi Perfil
         </a>
-        <a *ngIf="rol === 'owner'" mat-list-item href="/negocio/1">
-          <mat-icon>business</mat-icon>Mis Negocios
-        </a>
         <a *ngIf="rol === 'owner'" mat-list-item href="/negocio-create">
           <mat-icon>note_alt</mat-icon>Añadir negocio
+        </a>
+        <a *ngIf="rol === 'owner'" mat-list-item routerLink="/mis-negocios">
+          <mat-icon>business</mat-icon>Mis negocios
         </a>
         <a *ngIf="rol === 'user'" mat-list-item href="/reservas">
           <mat-icon>calendar_today</mat-icon>Mis reservas

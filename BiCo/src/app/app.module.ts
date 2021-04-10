@@ -46,6 +46,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DatePipe } from '@angular/common';
 import { VerReservasComponent } from './components/reservas/ver-reservas/ver-reservas.component';
 import { VerNegocioBookingComponent } from './components/negocios/ver-negocio-booking/ver-negocio-booking.component';
+import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { VerNegocioBookingComponent } from './components/negocios/ver-negocio-bo
     CrearReservaComponent,
     VerReservasComponent,
     VerNegocioBookingComponent,
+    MisNegociosComponent,
   ],
   imports: [
     BrowserModule,

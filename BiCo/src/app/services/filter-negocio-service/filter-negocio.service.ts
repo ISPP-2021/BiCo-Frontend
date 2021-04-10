@@ -13,7 +13,7 @@ export class FilterNegocioService {
   negocios = [];
   token: string = localStorage.getItem(JWT_NAME);
   constructor(private http: HttpClient) { }
-  private url: string = 'http://bico-despliegue1.herokuapp.com/';
+  private url: string = 'http://bico-despliegue2.herokuapp.com/';
   private headers = {
     headers: {
       Authorization: this.token,
@@ -21,25 +21,25 @@ export class FilterNegocioService {
   };
 
   findAll(): Observable<Negocio[]> {
-		return this.http
-			.get<Negocio[]>(this.url + 'business', this.headers)
-			.pipe(
-				catchError(this.errorHandler)
-			)
-	}
+    return this.http
+      .get<Negocio[]>(this.url + 'business', this.headers)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
 
-	errorHandler(err: HttpErrorResponse) {
-		return observableThrowError(err.message)
-	}
+  errorHandler(err: HttpErrorResponse) {
+    return observableThrowError(err.message)
+  }
 
   getNegociosFilter(filtro: string): Observable<Negocio[]> {
     const negociosFiltrados = []
     return this.http.get<Negocio[]>(this.url + 'business', this.headers)
-    .pipe(map(spots => {
-      return spots.filter(spot => { 
-          return  spot.businessType == filtro;
-      })
-  }))
+      .pipe(map(spots => {
+        return spots.filter(spot => {
+          return spot.businessType == filtro;
+        })
+      }))
 
   }
 }

@@ -11,7 +11,7 @@ import { JWT_NAME } from '../authentication-service/authentication.service';
 export class ReservaService {
   token: string = localStorage.getItem(JWT_NAME);
   constructor(private http: HttpClient) {}
-  private url: string = 'http://localhost:8080';
+  private url: string = 'http://bico-despliegue2.herokuapp.com/';
   private headers = {
     headers: {
       Authorization: this.token,
@@ -20,7 +20,7 @@ export class ReservaService {
 
   create(id: Number, reserva: Reserva): Observable<Reserva> {
     return this.http.post<Reserva>(
-      this.url + '/bookings/' + id,
+      this.url + 'bookings/' + id,
       reserva,
       this.headers
     );
@@ -28,7 +28,7 @@ export class ReservaService {
 
   findOne(id: Number): Observable<Reserva> {
     return this.http
-      .get<Reserva>(this.url + '/servises/' + id, this.headers)
+      .get<Reserva>(this.url + 'servises/' + id, this.headers)
       .pipe(catchError(this.errorHandler));
   }
 

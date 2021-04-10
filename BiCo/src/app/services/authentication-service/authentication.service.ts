@@ -19,7 +19,6 @@ export const JWT_NAME = 'token';
 })
 export class AuthenticationService {
   // http://localhost:8080/users/login
-  // http://bico-despliegue1.herokuapp.com
 
   constructor(
     private http: HttpClient,
@@ -27,7 +26,7 @@ export class AuthenticationService {
     private router: Router
   ) {}
 
-  private url: string = 'http://localhost:8080';
+  private url: string = 'http://bico-despliegue2.herokuapp.com';
   // private headers = {
   // 	headers: {
   // 	Authorization: this.token,
@@ -41,6 +40,9 @@ export class AuthenticationService {
       })
       .pipe(
         map((usuario) => {
+          console.log(usuario.authorities[0].authority);
+          console.log(usuario);
+
           localStorage.setItem(JWT_NAME, usuario.token);
 
           let rol = usuario.authorities[0].authority;
