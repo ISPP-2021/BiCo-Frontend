@@ -7,7 +7,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { Booking } from 'src/app/model/booking.interface';
+import { Reserva } from 'src/app/model/reserva.interface';
 
 @Component({
   selector: 'app-crear-reserva',
@@ -64,7 +64,7 @@ export class CrearReservaComponent implements OnInit {
 
   save() {
     if (this.form.valid) {
-      let reserva: Booking;
+      let reserva: Reserva;
       let servicios = this.form.value.services;
       for (let servicio of servicios) {
         reserva = {

@@ -1,7 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError as observableThrowError } from 'rxjs';
-import { Booking } from 'src/app/model/booking.interface';
+import { Reserva } from 'src/app/model/reserva.interface';
+import { map, catchError } from 'rxjs/operators';
 import { JWT_NAME } from '../authentication-service/authentication.service';
 
 @Injectable({
@@ -17,12 +18,18 @@ export class ReservaService {
     },
   };
 
-  create(id: Number, reserva: Booking): Observable<Booking> {
-    return this.http.post<Booking>(
+  create(id: Number, reserva: Reserva): Observable<Reserva> {
+    return this.http.post<Reserva>(
       this.url + '/bookings/' + id,
       reserva,
       this.headers
     );
+  }
+
+  findOne(id: Number): Observable<Reserva> {
+    return this.http
+      .get<Reserva>(this.url + '/servises/' + id, this.headers)
+      .pipe(catchError(this.errorHandler));
   }
 
   errorHandler(err: HttpErrorResponse) {
