@@ -9,9 +9,9 @@
     <p><b>ID:</b> {{id}}</p>
     <p><b>Nombre:</b> {{nombre}}</p>
     <p><b>Descripción:</b> {{descripcion}}</p>
-    <p><b>Precio:</b> {{precio}}€</p>
+    <p><b>Precio:</b> {{precio / 100}}€</p>
 </div>
 <div class="modal-footer d-flex justify-content-between">
-    <button type="button" class="btn btn-outline-success">Confirmar</button>
-    <button type="button" class="btn btn-outline-danger">Cancelar</button>
+    <button type="button" class="btn btn-outline-success" (click)="confirmar(id)">Confirmar</button>
+    <button type="button" class="btn btn-outline-danger" (click)="cancelar(id)">Cancelar</button>
 </div>

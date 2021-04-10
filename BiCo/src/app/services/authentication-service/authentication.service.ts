@@ -25,7 +25,7 @@ export class AuthenticationService {
 		private jwtHelper: JwtHelperService,
 		private router: Router) { }
 
-	private url: string = 'http://bico-despliegue1.herokuapp.com';
+	private url: string = 'http://bico-despliegue2.herokuapp.com';
 	// private headers = {
 	// 	headers: {
 	// 	Authorization: this.token,

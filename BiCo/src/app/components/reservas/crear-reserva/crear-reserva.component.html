@@ -24,7 +24,8 @@
 </div>
 <br>
 <span>Precio total de la reserva: {{pago}} €</span><br>
+<div id="formulario-pago" style="display: none;">
+<app-payment nombre="{{nombre}}" precio="{{pago}}" descripcion="hola" bookDate="{{bookDate}}" emisionDate="{{emisionDate}}" status="{{status}}" servicio="{{servicioId}}"></app-payment>
+</div>
 <button id="boton-reservar" style="display: none;" type="submit" mat-raised-button color="primary" [disabled]="form.invalid" (click)="fechaActual(form)">Reservar</button>
-<button id="boton-pagar" type="submit" mat-raised-button color="primary" [disabled]="form.invalid" (click)="fechaActual(form)">Pagar</button>
 </form>
-<app-payment nombre="{{nombre}}" precio="{{pago}}" descripcion="hola"></app-payment>

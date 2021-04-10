@@ -6,6 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PaymentService } from 'src/app/services/payment/payment.service';
 import { Router } from '@angular/router';
 import { PaymentIntentDto } from 'src/app/model/payment-intent-dto';
+import { Reserva } from 'src/app/model/reserva.interface';
 
 @Component({
   selector: 'app-payment',
@@ -24,6 +25,10 @@ export class PaymentComponent implements OnInit {
   @Input() precio;
   @Input() descripcion;
   @Input() nombre;
+  @Input() servicio;
+  @Input() bookDate;
+  @Input() emisionDate;
+  @Input() status;
 
   error: any;
 
@@ -48,13 +53,14 @@ export class PaymentComponent implements OnInit {
               base: {
                 iconColor: '#666EE8',
                 color: '#31325F',
-                lineHeight: '40px',
+                lineHeight: 'normal',
                 fontWeight: 300,
                 fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
                 fontSize: '18px',
                 '::placeholder': {
-                  color: '#CFD7E0'
+                  color: '#909090'
                 }
+                
               }
             }
           });
@@ -66,6 +72,10 @@ export class PaymentComponent implements OnInit {
 
   buy() {
     const name = this.stripeForm.get('name').value;
+    console.log(this.bookDate)
+    console.log(this.precio)
+    console.log(this.servicio)
+    console.log(this.nombre)
     this.stripeService
       .createToken(this.card, { name })
       .subscribe(result => {
@@ -79,7 +89,7 @@ export class PaymentComponent implements OnInit {
           this.paymentService.pagar(paymentIntentDto).subscribe(
             data => {
               this.abrirModal(data[`id`], this.nombre, data[`description`], data[`amount`]);
-              this.router.navigate(['/']);
+            //  this.router.navigate(['reservas']);
             }
           );
           this.error = undefined;
@@ -95,6 +105,9 @@ export class PaymentComponent implements OnInit {
     modalRef.componentInstance.nombre = nombre;
     modalRef.componentInstance.descripcion = descripcion;
     modalRef.componentInstance.precio = precio;
+    modalRef.componentInstance.bookDate = this.bookDate;
+    modalRef.componentInstance.emisionDate = this.emisionDate;
+    modalRef.componentInstance.status = this.status;
   }
 
 }

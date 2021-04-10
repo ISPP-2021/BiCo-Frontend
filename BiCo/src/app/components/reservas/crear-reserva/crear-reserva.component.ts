@@ -22,6 +22,12 @@ export class CrearReservaComponent implements OnInit {
   negocio = {}
   pago: number;
   nombre: string;
+  reserva: Reserva
+  servicioId: number
+  bookDate: Date
+  emisionDate: Date
+  status: string
+
 
   rol: string = localStorage.getItem("rol");
   negocioId = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -71,7 +77,7 @@ export class CrearReservaComponent implements OnInit {
         }
         console.log(reserva)
         this.reservaService.create(servicio.id, reserva).subscribe()
-        this.router.navigate(['reservas'])
+      //  this.router.navigate(['reservas'])
       }
     }
   }
@@ -82,14 +88,21 @@ export class CrearReservaComponent implements OnInit {
         this.pago = servicio.price * (servicio.deposit / 100)
         this.pago = Math.round(this.pago * 100) / 100
         this.nombre = servicio.name
+        this.servicioId = servicio.id
+        this.bookDate = this.form.value.bookDate,
+        this.emisionDate = new Date(),
+        this.status = this.form.value.status
+       
+        
+        
       }
     }
     if(this.pago==0){
       document.getElementById("boton-reservar").style.display = "inline";
-      document.getElementById("boton-pagar").style.display = "none";
+      document.getElementById("formulario-pago").style.display = "none";
     }else{
       document.getElementById("boton-reservar").style.display = "none";
-      document.getElementById("boton-pagar").style.display = "inline";
+      document.getElementById("formulario-pago").style.display = "inline";
     }
   }
 
@@ -99,5 +112,6 @@ export class CrearReservaComponent implements OnInit {
       emisionDate: date
     })
   }
+
 
 }
