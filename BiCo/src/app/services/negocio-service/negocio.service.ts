@@ -31,7 +31,7 @@ export class NegocioService {
 
   findOneByBooking(id: Number): Observable<Negocio> {
     return this.http
-      .get<Negocio>(this.url2 + 'business/booking/' + id, this.headers)
+      .get<Negocio>(this.url + 'business/booking/' + id, this.headers)
       .pipe(map((negocio: Negocio) => negocio));
   }
 
