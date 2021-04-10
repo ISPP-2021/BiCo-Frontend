@@ -1,29 +1,28 @@
-
 .mat-mini-fab {
-float:right;
-background-color: #8499B1;
+  float: right;
+  background-color: #8499B1;
 }
 
-.cerca-de-mi{
+.cerca-de-mi {
   width: 50%;
   max-height: 100%;
   background-color: #FBE5DA;
-
 }
 
 .content {
   margin-bottom: 5%;
-  margin-top:5%;
+  margin-top: 5%;
   align-self: flex-start;
   width: 100%;
   max-height: 100%;
-
 }
-.negocio{
+
+.negocio {
   background-color: #E1CED4;
   margin-bottom: 10px;
 }
-.mat-raised-button{
+
+.mat-raised-button {
   margin-left: 50%;
   transform: translateX(-50%);
   justify-content: center;
