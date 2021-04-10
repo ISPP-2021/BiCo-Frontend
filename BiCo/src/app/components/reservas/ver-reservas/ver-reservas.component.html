@@ -4,16 +4,18 @@
         <mat-grid-tile [colspan]="4" [rowspan]="10">
             <div class="content">
                 <mat-card class="reserva" *ngFor="let booking of consumer.bookings">
+                    <button mat-raised-button routerLink="/negocioByReserva/{{booking.id}}">Ver
+                        negocio de la reserva</button>
                     <mat-card-header>
-                        <mat-card-title>Reserva: {{booking.id}}</mat-card-title>
+                        <mat-card-title>Reserva Nº: {{booking.id}}</mat-card-title>
                         <mat-card-subtitle *ngIf="booking.status === 'IN_PROGRESS'"> Pendiente de aprobación
                         </mat-card-subtitle>
                         <mat-card-subtitle *ngIf="booking.status === 'COMPLETED'"> Aprobada</mat-card-subtitle>
                         <mat-card-subtitle *ngIf="booking.status === 'CANCELLED'"> Cancelada</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content>
-                        <p>{{booking.bookDate | date:'dd-MM-yyyy hh:mm'}}</p>
-                        <p></p>
+                        <p>Fecha de reserva: {{booking.bookDate | date:'dd-MM-yyyy hh:mm'}}</p>
+                        <p>Servicio reservado: {{booking.servise}}</p>
                     </mat-card-content>
                 </mat-card>
             </div>

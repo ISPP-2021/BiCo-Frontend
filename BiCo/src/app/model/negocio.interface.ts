@@ -1,10 +1,10 @@
 export interface Negocio {
-  id: Number;
-  name: String;
-  address: String;
-  businessType: String;
-  automatedAccept: boolean;
-  supplier: {
+  id?: Number;
+  name?: String;
+  address?: String;
+  businessType?: String;
+  automatedAccept?: boolean;
+  supplier?: {
     id?: Number;
     name?: String;
     lastname?: String;
@@ -23,31 +23,31 @@ export interface Negocio {
     };
     new?: boolean;
   };
-  option: {
-    id: Number;
-    automatedAccept: boolean;
-    limitAutomated: Number;
-    defaultDeposit: Number;
-    depositTimeLimit: Number;
-    new: boolean;
+  option?: {
+    id?: Number;
+    automatedAccept?: boolean;
+    limitAutomated?: Number;
+    defaultDeposit?: Number;
+    depositTimeLimit?: Number;
+    new?: boolean;
   };
-  services: {
-    id: Number;
-    name: String;
-    description: String;
-    price: Number;
-    duration: Number;
-    capacity: Number;
-    deposit: Number;
-    tax: Number;
+  services?: {
+    id?: Number;
+    name?: String;
+    description?: String;
+    price?: Number;
+    duration?: Number;
+    capacity?: Number;
+    deposit?: Number;
+    tax?: Number;
     business?: String;
-    bookings: {
-      id: Number;
-      emisionDate: Date;
-      bookDate: Date;
-      status: String;
-      servise: String;
-      new: boolean;
+    bookings?: {
+      id?: Number;
+      emisionDate?: Date;
+      bookDate?: Date;
+      status?: String;
+      servise?: String;
+      new?: boolean;
     };
   };
 }

@@ -4,10 +4,11 @@ import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Consumer } from 'src/app/model/consumer.interface';
 import { ConsumerService } from 'src/app/services/consumer-service/consumer.service';
+
 @Component({
   selector: 'app-ver-reservas',
   templateUrl: './ver-reservas.component.html',
-  styleUrls: ['./ver-reservas.component.css']
+  styleUrls: ['./ver-reservas.component.css'],
 })
 export class VerReservasComponent implements OnInit {
   consumer$: Observable<Consumer> = this.activatedRoute.params.pipe(
@@ -19,11 +20,11 @@ export class VerReservasComponent implements OnInit {
         .pipe(map((consumer: Consumer) => consumer));
     })
   );
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private consumerService: ConsumerService
-  ) { }
+  ) {}
 
-  ngOnInit(): void { }
-
+  ngOnInit(): void {}
 }

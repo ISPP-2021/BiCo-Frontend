@@ -45,6 +45,7 @@ import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DatePipe } from '@angular/common';
 import { VerReservasComponent } from './components/reservas/ver-reservas/ver-reservas.component';
+import { VerNegocioBookingComponent } from './components/negocios/ver-negocio-booking/ver-negocio-booking.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { VerReservasComponent } from './components/reservas/ver-reservas/ver-res
     VerNegocioComponent,
     CrearReservaComponent,
     VerReservasComponent,
+    VerNegocioBookingComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,13 +89,13 @@ import { VerReservasComponent } from './components/reservas/ver-reservas/ver-res
     MatListModule,
     MatSidenavModule,
     FlexLayoutModule,
-    HttpClientModule
   ],
   providers: [
     //GeocodingService,
-    JwtHelperService, DatePipe,
+    JwtHelperService,
+    DatePipe,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
