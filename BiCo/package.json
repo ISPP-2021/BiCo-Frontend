@@ -28,6 +28,7 @@
     "@auth0/angular-jwt": "^5.0.2",
     "@ng-bootstrap/ng-bootstrap": "^9.1.0",
     "bootstrap": "^4.5.0",
+    "codacy-coverage": "^3.4.0",
     "ng-pick-datetime": "^7.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
