@@ -17,5 +17,5 @@ install:
 
 script:
 - npm run build
-- npm run test -- --code-coverage --single-run
+- npm run test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadless
 - npm run test-with-coverage
