@@ -13,26 +13,26 @@ export class ReservaService {
 
   token: string = localStorage.getItem(JWT_NAME);
   constructor(private http: HttpClient) { }
-  private url: string = 'http://bico-despliegue1.herokuapp.com/';
+  private url: string = 'http://bico-despliegue2.herokuapp.com/';
   private headers = {
     headers: {
       Authorization: this.token,
     },
   };
 
-  create(id:Number, reserva:Reserva): Observable<Reserva> {
+  create(id: Number, reserva: Reserva): Observable<Reserva> {
     return this.http.post<Reserva>(this.url + 'bookings/' + id, reserva, this.headers);
   }
 
-  findOne(id : Number): Observable<Reserva> {
-		return this.http
-			.get<Reserva>(this.url + 'servises/' + id, this.headers)
-			.pipe(
-				catchError(this.errorHandler)
-			)
-	}
-	errorHandler(err: HttpErrorResponse) {
-		return observableThrowError(err.message)
-	}
+  findOne(id: Number): Observable<Reserva> {
+    return this.http
+      .get<Reserva>(this.url + 'servises/' + id, this.headers)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+  errorHandler(err: HttpErrorResponse) {
+    return observableThrowError(err.message)
+  }
 
 }

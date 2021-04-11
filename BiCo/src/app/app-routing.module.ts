@@ -12,6 +12,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { BuscadorNegocioComponent } from './components/buscador-negocio/buscador-negocio.component';
 import { VerReservasComponent } from './components/reservas/ver-reservas/ver-reservas.component';
+import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
+
 const routes: Routes = [
   {
     path: 'home',
@@ -41,7 +43,10 @@ const routes: Routes = [
     path: 'negocio-create',
     component: CrearNegocioComponent,
   },
-
+  {
+    path: 'mis-negocios',
+    component: MisNegociosComponent,
+  },
   {
     path: 'negocio/:id',
     component: VerNegocioComponent,
@@ -50,8 +55,6 @@ const routes: Routes = [
     path: 'reservas',
     component: VerReservasComponent,
   },
-
-
   {
     path: 'services-edit/:id',
     component: ServisesComponent,

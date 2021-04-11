@@ -46,6 +46,7 @@ import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DatePipe } from '@angular/common';
 import { VerReservasComponent } from './components/reservas/ver-reservas/ver-reservas.component';
+import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { VerReservasComponent } from './components/reservas/ver-reservas/ver-res
     CrearReservaComponent,
     VerReservasComponent,
     RegisterComponent,
+    MisNegociosComponent,
   ],
   imports: [
     BrowserModule,

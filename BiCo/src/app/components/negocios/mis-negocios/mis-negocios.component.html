@@ -1,0 +1,64 @@
+<div>
+    <mat-grid-list cols="6" *ngIf="(supplier$ | async) as supplier">
+        <mat-grid-tile [colspan]="1" [rowspan]="2"></mat-grid-tile>
+        <mat-grid-tile [colspan]="4" [rowspan]="10">
+            <div class="content">
+
+                <mat-card class="negocio" *ngFor="let business of supplier.business">
+                    <button mat-mini-fab routerLink="/negocio-edit/{{business.id}}">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button type="button" mat-mini-fab (click)="deleteBusiness()">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <mat-card-header>
+
+                        <mat-card-title>Nombre: {{business.name}}</mat-card-title>
+                        <mat-card-subtitle>Dirección: {{business.address}}</mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="business.businessType === 'HAIRDRESSER'"> Peluquería
+                        </mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="business.businessType === 'RESTAURANT'"> Bar/Restaurante
+                        </mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="business.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
+
+                    </mat-card-header>
+                    <mat-card-content *ngFor="let service of business.services">
+                        <mat-card class="servicio">
+                            <mat-card-header>
+                                <mat-card-title>{{service.name}}</mat-card-title>
+                                <mat-card-subtitle>{{service.price}} €</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <p><b>Descripción: </b>{{service.description}}</p>
+                                <p><b>Duración: </b>{{service.duration}} horas</p>
+                                <p><b>Aforo:</b> {{service.capacity}} personas</p>
+                                <mat-card class="reservas" *ngFor="let booking of service.bookings">
+                                    <mat-card-header>
+                                        <mat-card-title>{{booking.bookDate | date:'hh:mm dd-MM-yyyy'}}
+                                        </mat-card-title>
+
+                                        <mat-card-subtitle *ngIf="booking.status === 'IN_PROGRESS'"> Pendiente
+                                            de aprobación
+                                        </mat-card-subtitle>
+                                        <mat-card-subtitle *ngIf="booking.status === 'COMPLETED'"> Aprobada
+                                        </mat-card-subtitle>
+                                        <mat-card-subtitle *ngIf="booking.status === 'CANCELLED'"> Cancelado
+                                        </mat-card-subtitle>
+
+                                    </mat-card-header>
+                                    <mat-card-content>
+
+                                    </mat-card-content>
+                                </mat-card>
+
+                            </mat-card-content>
+                        </mat-card>
+
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+</div>
+<router-outlet></router-outlet>
