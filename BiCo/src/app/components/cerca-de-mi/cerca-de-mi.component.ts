@@ -29,12 +29,12 @@ export class CercaDeMiComponent implements OnInit {
 			console.log(longitude)
 		}
 		function error() {
-			output.innerHTML = "<p>Su posicion no se pudo obtener</p>"
+			//output.innerHTML = "<p>Su posicion no se pudo obtener</p>"
 		}
 		navigator.geolocation.getCurrentPosition(location, error)
 
-		this.negocioService.findAll().subscribe(data => this.negocios = data,
-			err => this.errorMessage = err)
+		// this.negocioService.findAll().subscribe(data => this.negocios = data,
+		// 	err => this.errorMessage = err)
 
 		// var service = new google.maps.DistanceMatrixService();
 		// service.getDistanceMatrix({
