@@ -6,6 +6,7 @@ addons:
   chrome: stable
 
 cache:
+  npm: false
   directories:
      - ./node_modules
 
@@ -16,4 +17,6 @@ install:
   - npm install
 
 script:
-  - npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
+- npm run build
+- npm run test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadless
+- npm run test-with-coverage
