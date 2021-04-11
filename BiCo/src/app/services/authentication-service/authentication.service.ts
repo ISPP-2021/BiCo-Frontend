@@ -58,12 +58,12 @@ export class AuthenticationService {
 	}
 
 	registerUser(body) {
-	  return this.http.post(this.url2+'/users/signup/consumers', body)
+	  return this.http.post(this.url+'/users/signup/consumers', body)
 
 	}
 
   registerOwner(body) {
-	  return this.http.post(this.url2+'/users/signup/suppliers', body)
+	  return this.http.post(this.url+'/users/signup/suppliers', body)
 
 	}
 
