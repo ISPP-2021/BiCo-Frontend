@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppModule } from 'src/app/app.module';
 
 import { MisNegociosComponent } from './mis-negocios.component';
 
@@ -8,7 +9,10 @@ describe('MisNegociosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MisNegociosComponent ]
+      declarations: [ MisNegociosComponent ],
+      imports: [
+        AppModule
+      ]
     })
     .compileComponents();
   });
