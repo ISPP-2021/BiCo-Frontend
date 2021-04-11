@@ -6,6 +6,9 @@
                 <mat-card class="reserva" *ngFor="let booking of consumer.bookings">
                     <button mat-raised-button routerLink="/negocioByReserva/{{booking.id}}">Ver
                         negocio de la reserva</button>
+                    <ng-container *ngIf="booking.status !== 'CANCELLED'">
+                        <button mat-raised-button color="warn" (click)="cancelBooking(booking.id)">Cancelar reserva</button>
+                    </ng-container>
                     <mat-card-header>
                         <mat-card-title>Reserva Nº: {{booking.id}}</mat-card-title>
                         <mat-card-subtitle *ngIf="booking.status === 'IN_PROGRESS'"> Pendiente de aprobación

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Consumer } from 'src/app/model/consumer.interface';
 import { ConsumerService } from 'src/app/services/consumer-service/consumer.service';
+import { ReservaService } from 'src/app/services/reserva-service/reserva.service';
 
 @Component({
   selector: 'app-ver-reservas',
@@ -23,8 +24,20 @@ export class VerReservasComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private consumerService: ConsumerService
+    private consumerService: ConsumerService,
+    private bookingService: ReservaService
   ) {}
 
   ngOnInit(): void {}
+
+  cancelBooking(id: number) {
+    let res = window.confirm('¿Seguro de que desea cancelar la reserva?');
+    if (res) {
+      console.log(id);
+
+      this.bookingService.cancelBooking(id).subscribe();
+
+      window.location.reload();
+    }
+  }
 }
