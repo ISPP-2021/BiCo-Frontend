@@ -18,7 +18,9 @@
 
   <div fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="2%">
     <mat-card class="negocio" *ngFor="let negocio of negocios">
-      <button mat-mini-fab routerLink="/negocio/{{negocio.id}}">Ver</button>
+      <button mat-mini-fab routerLink="/negocio/{{negocio.id}}">
+        <mat-icon>visibility</mat-icon>
+      </button>
       <mat-card-header>
         <mat-card-title>{{negocio.name}}</mat-card-title>
         <mat-card-subtitle *ngIf="negocio.businessType === 'HAIRDRESSER'"> Peluquería</mat-card-subtitle>

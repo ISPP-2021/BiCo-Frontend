@@ -62,9 +62,6 @@ describe('UserService', () => {
   });
 
   it('should be created', () => {
-    localStorage.setItem('token', '12345'); 
     expect(service).toBeTruthy();
   });
-
-  afterAll(()=>{})
 });

@@ -1,73 +1,76 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, tap, switchMap } from "rxjs/operators";
-import { JwtHelperService } from "@auth0/angular-jwt";
+import { map, tap, switchMap } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, of } from 'rxjs';
 import { User } from '../../model/user.interface';
 import { UserService } from 'src/app/services/user-services/user.service';
 import { Router } from '@angular/router';
 
 export interface LoginForm {
-	user: string;
-	password: string;
-};
+  user: string;
+  password: string;
+}
 
 export const JWT_NAME = 'token';
 
 @Injectable({
-	providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticationService {
-	// http://localhost:8080/users/login
+  // http://localhost:8080/users/login
 
-	constructor(
-		private http: HttpClient,
-		private jwtHelper: JwtHelperService,
-		private router: Router) { }
+  constructor(
+    private http: HttpClient,
+    private jwtHelper: JwtHelperService,
+    private router: Router
+  ) {}
 
-	private url: string = 'http://bico-despliegue2.herokuapp.com';
-	// private headers = {
-	// 	headers: {
-	// 	Authorization: this.token,
-	// 	},
-	// };
-	login(loginForm: LoginForm) {
+  private url: string = 'http://bico-despliegue2.herokuapp.com';
+  // private headers = {
+  // 	headers: {
+  // 	Authorization: this.token,
+  // 	},
+  // };
+  login(loginForm: LoginForm) {
+    return this.http
+      .post<User>(`${this.url}/users/login`, {
+        username: loginForm.user,
+        password: loginForm.password,
+      })
+      .pipe(
+        map((usuario) => {
+          console.log(usuario.authorities[0].authority);
+          console.log(usuario);
 
-		return this.http.post<User>(`${this.url}/users/login`, { username: loginForm.user, password: loginForm.password }).pipe(
-			map((usuario) => {
-				console.log(usuario.authorities[0].authority)
-				console.log(usuario);
+          localStorage.setItem(JWT_NAME, usuario.token);
 
-				localStorage.setItem(JWT_NAME, usuario.token);
+          let rol = usuario.authorities[0].authority;
+          localStorage.setItem('rol', rol);
 
-				let rol = usuario.authorities[0].authority;
-				localStorage.setItem("rol", rol);
+          let user_id = usuario.authorities[0].id;
+          localStorage.setItem('user_id', user_id);
 
+          window.location.reload();
 
-				let user_id = usuario.authorities[0].id;
-				localStorage.setItem("user_id", user_id);
+          return usuario;
+        })
+      );
+  }
 
-				window.location.reload();
+  logout() {
+    localStorage.clear();
+  }
 
-				return usuario;
-			})
-		)
-	}
-
-	logout() {
-		localStorage.clear();
-	}
-
-	/*register(user: User) {
+  /*register(user: User) {
 	  return this.http.post<any>('/api/users', user).pipe(
 		tap(user => console.log(user)),
 		map(user => user)
 	  )
 	}*/
 
-	isAuthenticated(): boolean {
-		const token = localStorage.getItem(JWT_NAME);
-		return !this.jwtHelper.isTokenExpired(token);
-	}
-
+  isAuthenticated(): boolean {
+    const token = localStorage.getItem(JWT_NAME);
+    return !this.jwtHelper.isTokenExpired(token);
+  }
 }

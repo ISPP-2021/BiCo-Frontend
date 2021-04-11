@@ -1,5 +1,4 @@
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-// import { AppModule } from 'src/app/app.module';
+// import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 // import { VerReservasComponent } from './ver-reservas.component';
 
@@ -7,24 +6,14 @@
 //   let component: VerReservasComponent;
 //   let fixture: ComponentFixture<VerReservasComponent>;
 
-//   // beforeEach(async (() => {
-//   //   TestBed.configureTestingModule({
-//   //     declarations: [ VerReservasComponent ],
-//   //     imports: [
-//   //         AppModule
-//   //     ]
-//   //   })
-//   //   .compileComponents();
-//   // }));
-
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ VerReservasComponent ],
-//       imports: [
-//           AppModule
-//       ]
+//   beforeEach(async () => {
+//     await TestBed.configureTestingModule({
+//       declarations: [ VerReservasComponent ]
 //     })
 //     .compileComponents();
+//   });
+
+//   beforeEach(() => {
 //     fixture = TestBed.createComponent(VerReservasComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();

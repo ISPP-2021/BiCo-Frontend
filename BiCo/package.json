@@ -8,8 +8,7 @@
     "prod": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "test-with-coverage": "cat ./coverage/BiCo/lcov.info | codacy-coverage --token da1d0ad5326e477a9f1b76e9e3cc326b"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -30,7 +29,6 @@
     "@ng-bootstrap/ng-bootstrap": "^9.1.0",
     "@stripe/stripe-js": "^1.13.2",
     "bootstrap": "^4.5.0",
-    "codacy-coverage": "^3.4.0",
     "ng-pick-datetime": "^7.0.0",
     "ngx-stripe": "^7.4.4",
     "ngx-toastr": "^13.2.1",
@@ -53,7 +51,6 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
-    "karma-spec-reporter": "0.0.32",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
