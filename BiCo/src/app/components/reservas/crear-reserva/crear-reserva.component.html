@@ -1,10 +1,10 @@
 <form class="example-form" [formGroup]="form" (ngSubmit)="save()">
-<h2 style="text-align: center;">Nueva Reserva</h2>
-<div>
-    <mat-label>Book Date:</mat-label>
+  <h2 style="text-align: center;">Nueva Reserva</h2>
+  <div>
+    <mat-label>Fecha:</mat-label>
     &nbsp;
     <mat-form-field>
-        <input matInput type="datetime-local" formControlName="bookDate">
+      <input matInput type="datetime-local" formControlName="bookDate">
     </mat-form-field>
 </div>
 <br>
@@ -29,3 +29,4 @@
 </div>
 <button id="boton-reservar" style="display: none;" type="submit" mat-raised-button color="primary" [disabled]="form.invalid" (click)="fechaActual(form)">Reservar</button>
 </form>
+

@@ -1,32 +1,15 @@
-.negocio{
-    background-color: #E1CED4;
-    width: 100%;
-    max-height: 100%;
-  }
-  .content {
-    margin-bottom: 5%;
-    margin-top:5%;
-    align-self: flex-start;
-    width: 95%;
-  }
-  .servicio{
-    margin-bottom: 5%;
-    margin-top:5%;
-    align-self: flex-start;
-    background-color: #F0E7EA;
-    width: 90%;
+.negocio {
+  margin-bottom: 5%;
+  margin-top: 5%;
+  background-color: #e1ced4;
+  width: 60%;
+}
+.servicio {
+  background-color: #f0e7ea;
+}
 
-  }
-  .reservas{
-    margin-bottom: 5%;
-    margin-top:5%;
-    align-self: flex-start;
-    width: 90%;
-
-
-  }
-  .mat-mini-fab {
-    float:right;
-    background-color: #8499B1;
-    margin-right:5%;
-    }
+.mat-mini-fab {
+  float: right;
+  background-color: #8499b1;
+  margin-right: 5%;
+}

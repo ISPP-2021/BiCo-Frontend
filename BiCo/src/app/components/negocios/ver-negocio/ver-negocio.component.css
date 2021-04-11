@@ -1,22 +1,19 @@
 .negocio {
-  background-color: #E1CED4;
-  width: 100%;
-  max-height: 100%;
+  background-color: #e1ced4;
+  width: 50%;
+  margin: 2%;
 }
-
-.content {
-  padding: 1%;
-  align-self: flex-start;
-  width: 100%;
-  max-height: 100%;
+.servicios {
+  width: 75%;
 }
-
 .servicio {
-  background-color: #F0E7EA;
+  margin: 2%;
+  background-color: #f0e7ea;
+  width: 60%;
 }
 
 .mat-raised-button {
   float: right;
   justify-content: center;
-  background-color: #A3DCB9;
+  background-color: #a3dcb9;
 }

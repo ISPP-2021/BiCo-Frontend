@@ -1,29 +1,18 @@
-:host {
-  display: flex;
-  justify-content: center;
-  margin: 20vw 0vw;
+.login {
+  margin: 10%;
+  width: 50%;
+  background-color: #fbe5da;
 }
 
 .mat-form-field {
   width: 100%;
-  min-width: 40vw;
-  font-size: 1.5vw;
 }
-
 .mat-card-title {
   display: flex;
   justify-content: center;
-  font-size: 2vw;
 }
-
 .mat-raised-button {
   margin-left: 50%;
   transform: translateX(-50%);
-  font-size: 1vw;
-  justify-content: center;
-  background-color: #6BC78E;
-}
-
-.mat-card {
-  background-color: #FBE5DA;
+  background-color: #a3dcb9;
 }
