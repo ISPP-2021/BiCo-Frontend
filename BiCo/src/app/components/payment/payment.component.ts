@@ -72,10 +72,6 @@ export class PaymentComponent implements OnInit {
 
   buy() {
     const name = this.stripeForm.get('name').value;
-    console.log(this.bookDate)
-    console.log(this.precio)
-    console.log(this.servicio)
-    console.log(this.nombre)
     this.stripeService
       .createToken(this.card, { name })
       .subscribe(result => {
@@ -89,7 +85,6 @@ export class PaymentComponent implements OnInit {
           this.paymentService.pagar(paymentIntentDto).subscribe(
             data => {
               this.abrirModal(data[`id`], this.nombre, data[`description`], data[`amount`]);
-            //  this.router.navigate(['reservas']);
             }
           );
           this.error = undefined;
@@ -106,8 +101,8 @@ export class PaymentComponent implements OnInit {
     modalRef.componentInstance.descripcion = descripcion;
     modalRef.componentInstance.precio = precio;
     modalRef.componentInstance.bookDate = this.bookDate;
-    modalRef.componentInstance.emisionDate = this.emisionDate;
+    modalRef.componentInstance.emisionDate = this.emisionDate; 
     modalRef.componentInstance.status = this.status;
+    modalRef.componentInstance.servicio = this.servicio;
   }
-
 }

@@ -25,7 +25,7 @@ export class CrearReservaComponent implements OnInit {
   reserva: Reserva
   servicioId: number
   bookDate: Date
-  emisionDate: Date
+  emisionDate: String
   status: string
 
 
@@ -77,7 +77,7 @@ export class CrearReservaComponent implements OnInit {
         }
         console.log(reserva)
         this.reservaService.create(servicio.id, reserva).subscribe()
-      //  this.router.navigate(['reservas'])
+        this.router.navigate(['reservas'])
       }
     }
   }
@@ -90,9 +90,10 @@ export class CrearReservaComponent implements OnInit {
         this.nombre = servicio.name
         this.servicioId = servicio.id
         this.bookDate = this.form.value.bookDate,
-        this.emisionDate = new Date(),
+        this.emisionDate = new Date().toISOString().substr(0,16),
         this.status = this.form.value.status
-       
+        console.log(this.form.value.emisionDate)
+        
         
         
       }
