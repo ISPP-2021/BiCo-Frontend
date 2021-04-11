@@ -18,56 +18,54 @@ export const JWT_NAME = 'token';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  // http://localhost:8080/users/login
+	// http://localhost:8080/users/login
 
-  constructor(
-    private http: HttpClient,
-    private jwtHelper: JwtHelperService,
-    private router: Router
-  ) {}
+	constructor(
+		private http: HttpClient,
+		private jwtHelper: JwtHelperService,
+		private router: Router) { }
 
-  private url: string = 'http://bico-despliegue2.herokuapp.com';
-  // private headers = {
-  // 	headers: {
-  // 	Authorization: this.token,
-  // 	},
-  // };
-  login(loginForm: LoginForm) {
-    return this.http
-      .post<User>(`${this.url}/users/login`, {
-        username: loginForm.user,
-        password: loginForm.password,
-      })
-      .pipe(
-        map((usuario) => {
-          console.log(usuario.authorities[0].authority);
-          console.log(usuario);
+	private url: string = 'http://bico-despliegue2.herokuapp.com';
+  private url2: string = 'http://localhost:8080';
+	// private headers = {
+	// 	headers: {
+	// 	Authorization: this.token,
+	// 	},
+	// };
+	login(loginForm: LoginForm) {
 
-          localStorage.setItem(JWT_NAME, usuario.token);
+		return this.http.post<User>(`${this.url}/users/login`, { username: loginForm.user, password: loginForm.password }).pipe(
+			map((usuario) => {
 
-          let rol = usuario.authorities[0].authority;
-          localStorage.setItem('rol', rol);
+				localStorage.setItem(JWT_NAME, usuario.token);
 
-          let user_id = usuario.authorities[0].id;
-          localStorage.setItem('user_id', user_id);
+				let rol = usuario.authorities[0].authority;
+				localStorage.setItem("rol", rol);
 
-          window.location.reload();
 
-          return usuario;
-        })
-      );
-  }
+				let user_id = usuario.authorities[0].id;
+				localStorage.setItem("user_id", user_id);
 
-  logout() {
-    localStorage.clear();
-  }
+				window.location.reload();
 
-  /*register(user: User) {
-	  return this.http.post<any>('/api/users', user).pipe(
-		tap(user => console.log(user)),
-		map(user => user)
-	  )
-	}*/
+				return usuario;
+			})
+		)
+	}
+
+	logout() {
+		localStorage.clear();
+	}
+
+	registerUser(body) {
+	  return this.http.post(this.url+'/users/signup/consumers', body)
+
+	}
+
+  registerOwner(body) {
+	  return this.http.post(this.url+'/users/signup/suppliers', body)
+
+	}
 
   isAuthenticated(): boolean {
     const token = localStorage.getItem(JWT_NAME);

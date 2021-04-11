@@ -27,6 +27,7 @@ import { CrearNegocioComponent } from './components/negocios/crear-negocio/crear
 import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
 import { CrearReservaComponent } from './components/reservas/crear-reserva/crear-reserva.component';
 import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component';
+import { RegisterComponent } from './components/register/register.component';
 
 import { ServisesComponent } from './components/servises/servises.component';
 
@@ -52,6 +53,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +70,7 @@ import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-neg
     VerNegocioComponent,
     CrearReservaComponent,
     VerReservasComponent,
+    RegisterComponent,
     VerNegocioBookingComponent,
     ModalComponent,
     PaymentComponent,

@@ -1,0 +1,67 @@
+<mat-card>
+  <mat-card-title>Registro</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <h2>Datos personales</h2>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Nombre" formControlName="name">
+          <mat-hint *ngIf="registerForm.controls.name.errors">El nombre es obligatorio</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Apellido/s" formControlName="lastName">
+          <mat-hint *ngIf="registerForm.controls.lastName.errors">El apellido/s es obligatorio</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="DNI" formControlName="dni">
+          <mat-hint *ngIf="registerForm.controls.dni.errors">El dni es obligatorio</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Email" formControlName="email">
+          <mat-hint *ngIf="registerForm.controls.email.errors">El email es obligatorio</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <div formGroupName="user">
+        <h2>Datos de Usuario</h2>
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Username" formControlName="username">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input matInput type="password" placeholder="Contraseña" formControlName="password">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input matInput type="password" placeholder="Repite Contraseña" formControlName="confirmPassword">
+          </mat-form-field>
+        </p>
+      </div>
+
+      <button mat-raised-button [disabled]="!registerForm.valid" type="submit">Registrarse como user</button>
+      <button mat-raised-button [disabled]="!registerForm.valid" type="button" (click)="registerOwner()">Registrarse
+        como owner</button>
+    </form>
+
+    <br>
+    <small style="color: brown;" *ngIf="registerForm.get('user.password').hasError('passwordInvalid')">La contraseña no
+      contiene numero</small>
+    <br>
+    <small style="color: brown;" *ngIf=" registerForm.hasError('passwordsNotMatching')">Las contraseñas no
+      coinciden</small>
+  </mat-card-content>
+</mat-card>

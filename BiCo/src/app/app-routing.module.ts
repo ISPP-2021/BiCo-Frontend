@@ -10,6 +10,7 @@ import { VerNegocioBookingComponent } from './components/negocios/ver-negocio-bo
 import { CrearReservaComponent } from './components/reservas/crear-reserva/crear-reserva.component';
 import { ServisesComponent } from './components/servises/servises.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { BuscadorNegocioComponent } from './components/buscador-negocio/buscador-negocio.component';
 import { VerReservasComponent } from './components/reservas/ver-reservas/ver-reservas.component';
 import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
   },
   {
     path: 'negocio-edit/:id',
