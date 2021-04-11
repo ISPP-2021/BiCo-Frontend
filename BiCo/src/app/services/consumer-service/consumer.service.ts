@@ -6,30 +6,22 @@ import { map } from 'rxjs/operators';
 import { JWT_NAME } from '../authentication-service/authentication.service';
 
 @Injectable({
-	providedIn: 'root',
+  providedIn: 'root',
 })
 export class ConsumerService {
-	token: string = localStorage.getItem(JWT_NAME);
-	constructor(private http: HttpClient) { }
-	private url: string = 'http://bico-despliegue2.herokuapp.com/';
-	private url2: string = 'http://localhost:8080/';
-	private headers = {
-		headers: {
-			Authorization: this.token,
-		},
-	};
+  token: string = localStorage.getItem(JWT_NAME);
+  constructor(private http: HttpClient) {}
+  private url: string = 'http://bico-despliegue2.herokuapp.com/';
+  private url2: string = 'http://localhost:8080/';
+  private headers = {
+    headers: {
+      Authorization: this.token,
+    },
+  };
 
-	findMe(): Observable<Consumer> {
-		return this.http
-			.get<Consumer>(this.url2 + 'users/profile', this.headers)
-			.pipe(map((consumer: Consumer) => consumer));
-
-	}
-
-	findOne(id: Number): Observable<Consumer> {
-		return this.http
-			.get<Consumer>(this.url + 'consumer/' + id, this.headers)
-			.pipe(map((consumer: Consumer) => consumer));
-	}
-
+  findOne(): Observable<Consumer> {
+    return this.http
+      .get<Consumer>(this.url + 'users/profile', this.headers)
+      .pipe(map((consumer: Consumer) => consumer));
+  }
 }

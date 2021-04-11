@@ -1,18 +1,16 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http'
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError as observableThrowError } from 'rxjs'
-import { Reserva } from 'src/app/model/reserva.interface'
+import { Observable, throwError as observableThrowError } from 'rxjs';
+import { Reserva } from 'src/app/model/reserva.interface';
 import { map, catchError } from 'rxjs/operators';
 import { JWT_NAME } from '../authentication-service/authentication.service';
 
-
 @Injectable({
-	providedIn: 'root'
+  providedIn: 'root',
 })
 export class ReservaService {
-
   token: string = localStorage.getItem(JWT_NAME);
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   private url: string = 'http://bico-despliegue2.herokuapp.com/';
   private url2: string = 'http://localhost:8080/';
   private headers = {
@@ -21,28 +19,29 @@ export class ReservaService {
     },
   };
 
-  create(id:Number, reserva:Reserva): Observable<Reserva> {
-    return this.http.post<Reserva>(this.url2 + 'bookings/' + id, reserva, this.headers);
+  create(id: Number, reserva: Reserva): Observable<Reserva> {
+    return this.http.post<Reserva>(
+      this.url + 'bookings/' + id,
+      reserva,
+      this.headers
+    );
   }
 
   findOne(id: Number): Observable<Reserva> {
     return this.http
       .get<Reserva>(this.url + 'servises/' + id, this.headers)
-      .pipe(
-        catchError(this.errorHandler)
-      )
+      .pipe(catchError(this.errorHandler));
   }
+
   errorHandler(err: HttpErrorResponse) {
-    return observableThrowError(err.message)
+    return observableThrowError(err.message);
   }
 
-	cancelBooking(id: number): Observable<Reserva> {
-		console.log(this.url + 'bookings/' + id + '/cancel');
+  cancelBooking(id: number): Observable<Reserva> {
+    console.log(this.url + 'bookings/' + id + '/cancel');
 
-		return this.http.delete<Reserva>(this.url + 'bookings/' + id + '/cancel', this.headers)
-			.pipe(
-				catchError(this.errorHandler)
-			)
-	}
-
+    return this.http
+      .delete<Reserva>(this.url + 'bookings/' + id + '/cancel', this.headers)
+      .pipe(catchError(this.errorHandler));
+  }
 }

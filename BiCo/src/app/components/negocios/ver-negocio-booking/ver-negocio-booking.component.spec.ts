@@ -1,20 +1,20 @@
 // import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { MisNegociosComponent } from './mis-negocios.component';
+// import { VerNegocioBookingComponent } from './ver-negocio-booking.component';
 
-// describe('MisNegociosComponent', () => {
-//   let component: MisNegociosComponent;
-//   let fixture: ComponentFixture<MisNegociosComponent>;
+// describe('VerNegocioBookingComponent', () => {
+//   let component: VerNegocioBookingComponent;
+//   let fixture: ComponentFixture<VerNegocioBookingComponent>;
 
 //   beforeEach(async () => {
 //     await TestBed.configureTestingModule({
-//       declarations: [ MisNegociosComponent ]
+//       declarations: [ VerNegocioBookingComponent ]
 //     })
 //     .compileComponents();
 //   });
 
 //   beforeEach(() => {
-//     fixture = TestBed.createComponent(MisNegociosComponent);
+//     fixture = TestBed.createComponent(VerNegocioBookingComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });

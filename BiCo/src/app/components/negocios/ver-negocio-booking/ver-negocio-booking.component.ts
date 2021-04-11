@@ -6,19 +6,17 @@ import { Negocio } from 'src/app/model/negocio.interface';
 import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
 
 @Component({
-  selector: 'app-ver-negocio',
-  templateUrl: './ver-negocio.component.html',
-  styleUrls: ['./ver-negocio.component.css'],
+  selector: 'app-ver-negocio-booking',
+  templateUrl: './ver-negocio-booking.component.html',
+  styleUrls: ['./ver-negocio-booking.component.css'],
 })
-export class VerNegocioComponent implements OnInit {
-  rol = localStorage.getItem('rol');
-  negocioId = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
+export class VerNegocioBookingComponent implements OnInit {
   negocio$: Observable<Negocio> = this.activatedRoute.params.pipe(
     switchMap((params: Params) => {
-      const negocioId: number = parseInt(params['id']);
+      const bookingId: number = parseInt(params['id']);
 
       return this.negocioService
-        .findOne(negocioId)
+        .findOneByBooking(bookingId)
         .pipe(map((negocio: Negocio) => negocio));
     })
   );

@@ -6,6 +6,7 @@ import { SupplierProfileComponent } from './components/users/supplier/supplier-p
 import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component';
 import { CrearNegocioComponent } from './components/negocios/crear-negocio/crear-negocio.component';
 import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
+import { VerNegocioBookingComponent } from './components/negocios/ver-negocio-booking/ver-negocio-booking.component';
 import { CrearReservaComponent } from './components/reservas/crear-reserva/crear-reserva.component';
 import { ServisesComponent } from './components/servises/servises.component';
 import { LoginComponent } from './components/login/login.component';
@@ -52,6 +53,10 @@ const routes: Routes = [
     component: VerNegocioComponent,
   },
   {
+    path: 'negocioByReserva/:id',
+    component: VerNegocioBookingComponent,
+  },
+  {
     path: 'reservas',
     component: VerReservasComponent,
   },
@@ -62,20 +67,20 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: '/home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'reservar/:id',
-    component: CrearReservaComponent
+    component: CrearReservaComponent,
   },
   {
     path: 'buscar',
-    component: BuscadorNegocioComponent
-  }
+    component: BuscadorNegocioComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -7,6 +7,7 @@ export interface Supplier {
   user?: {
     username?: String;
     password?: String;
+    token?: String;
     enabled?: boolean;
     authorities?: {
       id?: Number;

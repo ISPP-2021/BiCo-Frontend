@@ -10,9 +10,9 @@ import { JWT_NAME } from '../authentication-service/authentication.service';
 })
 export class NegocioService {
   token: string = localStorage.getItem(JWT_NAME);
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   private url: string = 'http://bico-despliegue2.herokuapp.com/';
-  private url2: string = 'http://localhost:8080/'
+  private url2: string = 'http://localhost:8080/';
   private headers = {
     headers: {
       Authorization: this.token,
@@ -21,12 +21,18 @@ export class NegocioService {
 
   findAll(): Observable<Negocio[]> {
     return this.http
-      .get<Negocio[]>(this.url + 'business',this.headers)
+      .get<Negocio[]>(this.url + 'business', this.headers)
       .pipe(catchError(this.errorHandler));
   }
 
   errorHandler(err: HttpErrorResponse) {
     return observableThrowError(err.message);
+  }
+
+  findOneByBooking(id: Number): Observable<Negocio> {
+    return this.http
+      .get<Negocio>(this.url + 'business/booking/' + id, this.headers)
+      .pipe(map((negocio: Negocio) => negocio));
   }
 
   findOne(id: Number): Observable<Negocio> {
@@ -52,14 +58,15 @@ export class NegocioService {
   }
 
   delete(id: Number) {
-    return this.http.delete(
-      this.url + 'business/' + id,
-      this.headers
-    );
+    return this.http.delete(this.url + 'business/' + id, this.headers);
   }
 
   updateServices(id: Number, body) {
-    return this.http.put(this.url + 'business/' + id + '/addition', body, this.headers);
+    return this.http.put(
+      this.url + 'business/' + id + '/addition',
+      body,
+      this.headers
+    );
   }
 
   deleteServices(id: Number) {
