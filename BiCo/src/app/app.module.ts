@@ -49,6 +49,7 @@ import { DatePipe } from '@angular/common';
 import { VerReservasComponent } from './components/reservas/ver-reservas/ver-reservas.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { PaymentComponent } from './components/payment/payment.component';
     VerReservasComponent,
     ModalComponent,
     PaymentComponent,
+    MisNegociosComponent,
   ],
   imports: [
     BrowserModule,

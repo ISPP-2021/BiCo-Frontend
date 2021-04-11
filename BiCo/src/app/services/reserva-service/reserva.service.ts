@@ -7,7 +7,7 @@ import { JWT_NAME } from '../authentication-service/authentication.service';
 
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class ReservaService {
 
@@ -25,15 +25,24 @@ export class ReservaService {
     return this.http.post<Reserva>(this.url2 + 'bookings/' + id, reserva, this.headers);
   }
 
-  findOne(id : Number): Observable<Reserva> {
-		return this.http
-			.get<Reserva>(this.url + 'servises/' + id, this.headers)
+  findOne(id: Number): Observable<Reserva> {
+    return this.http
+      .get<Reserva>(this.url + 'servises/' + id, this.headers)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+  errorHandler(err: HttpErrorResponse) {
+    return observableThrowError(err.message)
+  }
+
+	cancelBooking(id: number): Observable<Reserva> {
+		console.log(this.url + 'bookings/' + id + '/cancel');
+
+		return this.http.delete<Reserva>(this.url + 'bookings/' + id + '/cancel', this.headers)
 			.pipe(
 				catchError(this.errorHandler)
 			)
-	}
-	errorHandler(err: HttpErrorResponse) {
-		return observableThrowError(err.message)
 	}
 
 }
