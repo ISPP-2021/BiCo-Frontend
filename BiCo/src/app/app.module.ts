@@ -8,6 +8,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { NgxStripeModule } from 'ngx-stripe';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +27,7 @@ import { CrearNegocioComponent } from './components/negocios/crear-negocio/crear
 import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
 import { CrearReservaComponent } from './components/reservas/crear-reserva/crear-reserva.component';
 import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component';
+import { RegisterComponent } from './components/register/register.component';
 
 import { ServisesComponent } from './components/servises/servises.component';
 
@@ -45,6 +48,11 @@ import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DatePipe } from '@angular/common';
 import { VerReservasComponent } from './components/reservas/ver-reservas/ver-reservas.component';
+import { VerNegocioBookingComponent } from './components/negocios/ver-negocio-booking/ver-negocio-booking.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
+
 
 @NgModule({
   declarations: [
@@ -62,6 +70,11 @@ import { VerReservasComponent } from './components/reservas/ver-reservas/ver-res
     VerNegocioComponent,
     CrearReservaComponent,
     VerReservasComponent,
+    RegisterComponent,
+    VerNegocioBookingComponent,
+    ModalComponent,
+    PaymentComponent,
+    MisNegociosComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,13 +100,18 @@ import { VerReservasComponent } from './components/reservas/ver-reservas/ver-res
     MatListModule,
     MatSidenavModule,
     FlexLayoutModule,
-    HttpClientModule
+    ToastrModule.forRoot(),
+    NgxStripeModule.forRoot(
+      'pk_test_51IeGm1A32JKQZm0zQ9rDl6vL1KuiQYaGHiszd0nJ4dUDy5AW3K9tmHjJLdbdxbsPivHTtQ5JR7uvNlo1tAP1Of6v00oarGizZJ'
+    ),
   ],
+  entryComponents: [ModalComponent],
   providers: [
     //GeocodingService,
-    JwtHelperService, DatePipe,
+    JwtHelperService,
+    DatePipe,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

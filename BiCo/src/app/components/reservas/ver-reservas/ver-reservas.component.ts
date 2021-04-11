@@ -4,10 +4,12 @@ import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Consumer } from 'src/app/model/consumer.interface';
 import { ConsumerService } from 'src/app/services/consumer-service/consumer.service';
+import { ReservaService } from 'src/app/services/reserva-service/reserva.service';
+
 @Component({
   selector: 'app-ver-reservas',
   templateUrl: './ver-reservas.component.html',
-  styleUrls: ['./ver-reservas.component.css']
+  styleUrls: ['./ver-reservas.component.css'],
 })
 export class VerReservasComponent implements OnInit {
   consumer$: Observable<Consumer> = this.activatedRoute.params.pipe(
@@ -15,15 +17,27 @@ export class VerReservasComponent implements OnInit {
       const consumerId: number = parseInt(params['id']);
 
       return this.consumerService
-        .findOne(consumerId)
+        .findOne()
         .pipe(map((consumer: Consumer) => consumer));
     })
   );
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    private consumerService: ConsumerService
-  ) { }
+    private consumerService: ConsumerService,
+    private bookingService: ReservaService
+  ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
+  cancelBooking(id: number) {
+    let res = window.confirm('¿Seguro de que desea cancelar la reserva?');
+    if (res) {
+      console.log(id);
+
+      this.bookingService.cancelBooking(id).subscribe();
+
+      window.location.reload();
+    }
+  }
 }
