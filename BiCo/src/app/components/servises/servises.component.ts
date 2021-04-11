@@ -73,11 +73,24 @@ export class ServisesComponent implements OnInit {
     }
 
   }
+  defaultService(){
+    return this.formBuilder.group({
+			name: ['Solo Reserva', [Validators.required]],
+			description: ['Reservar en el negocio', [Validators.required]],
+			price: [0, [Validators.required, Validators.min(0)]],
+			duration: [0, [Validators.required, Validators.min(0)]],
+      capacity: [0, [Validators.required, Validators.min(0)]],
+      deposit: [0, [Validators.required, Validators.min(0)]],
+      tax: ['',[Validators.required, Validators.min(0), Validators.max(1)]],
+		});
+  }
 
     save() {
     if(this.form.valid){
     let servises = this.serviceArray.value;
-    console.log(servises)
+    if( this.serviceArray.length===0){
+       this.serviceArray.push(this.defaultService())
+      }
     for (let index = 0; index < servises.length; index++) {
       const service = servises[index];
       service.bookings = []

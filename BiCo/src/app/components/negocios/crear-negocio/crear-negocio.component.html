@@ -87,9 +87,7 @@
             formControlName="tax">
         </mat-form-field>
         <div>
-          <button mat-icon-button (click)="addService()">
-            <mat-icon>control_point</mat-icon>
-          </button>
+
           <button mat-icon-button (click)="removeService(i)">
             <mat-icon>remove_circle_outline</mat-icon>
           </button>
@@ -97,6 +95,9 @@
         <mat-divider></mat-divider>
 
       </div>
+      <button mat-icon-button *ngIf="serviceArray.controls.length != 0" (click)="addService()">
+        <mat-icon>control_point</mat-icon>
+      </button>
     </div>
 
     <div *ngIf="serviceArray.controls.length == 0">
