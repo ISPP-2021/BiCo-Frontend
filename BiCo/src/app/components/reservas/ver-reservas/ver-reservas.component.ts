@@ -4,26 +4,41 @@ import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Consumer } from 'src/app/model/consumer.interface';
 import { ConsumerService } from 'src/app/services/consumer-service/consumer.service';
+import { ReservaService } from 'src/app/services/reserva-service/reserva.service';
+
 @Component({
-  selector: 'app-ver-reservas',
-  templateUrl: './ver-reservas.component.html',
-  styleUrls: ['./ver-reservas.component.css']
+	selector: 'app-ver-reservas',
+	templateUrl: './ver-reservas.component.html',
+	styleUrls: ['./ver-reservas.component.css']
 })
 export class VerReservasComponent implements OnInit {
-  consumer$: Observable<Consumer> = this.activatedRoute.params.pipe(
-    switchMap((params: Params) => {
-      const consumerId: number = parseInt(params['id']);
 
-      return this.consumerService
-        .findOne(consumerId)
-        .pipe(map((consumer: Consumer) => consumer));
-    })
-  );
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private consumerService: ConsumerService
-  ) { }
+	consumer$: Observable<Consumer> = this.activatedRoute.params.pipe(
+		switchMap(() => {
 
-  ngOnInit(): void { }
+			return this.consumerService
+				.findMe()
+				.pipe(map((consumer: Consumer) => consumer));
+		})
+	);
+
+	constructor(
+		private activatedRoute: ActivatedRoute,
+		private consumerService: ConsumerService,
+		private bookingService: ReservaService
+	) { }
+
+	ngOnInit(): void { }
+
+	cancelBooking(id: number) {
+		let res = window.confirm("¿Seguro de que desea cancelar la reserva?")
+		if (res) {
+			console.log(id);
+
+			this.bookingService.cancelBooking(id).subscribe();
+
+			window.location.reload();
+		}
+	}
 
 }

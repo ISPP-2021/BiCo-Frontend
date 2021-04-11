@@ -8,6 +8,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { NgxStripeModule } from 'ngx-stripe';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -46,6 +48,8 @@ import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DatePipe } from '@angular/common';
 import { VerReservasComponent } from './components/reservas/ver-reservas/ver-reservas.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { PaymentComponent } from './components/payment/payment.component';
 import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
 
 
@@ -66,6 +70,8 @@ import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-neg
     CrearReservaComponent,
     VerReservasComponent,
     RegisterComponent,
+    ModalComponent,
+    PaymentComponent,
     MisNegociosComponent,
   ],
   imports: [
@@ -92,8 +98,11 @@ import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-neg
     MatListModule,
     MatSidenavModule,
     FlexLayoutModule,
+    ToastrModule.forRoot(),
+    NgxStripeModule.forRoot('pk_test_51IeGm1A32JKQZm0zQ9rDl6vL1KuiQYaGHiszd0nJ4dUDy5AW3K9tmHjJLdbdxbsPivHTtQ5JR7uvNlo1tAP1Of6v00oarGizZJ'),
     HttpClientModule
   ],
+  entryComponents: [ModalComponent],
   providers: [
     //GeocodingService,
     JwtHelperService, DatePipe,

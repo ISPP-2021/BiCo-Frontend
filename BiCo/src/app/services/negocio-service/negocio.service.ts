@@ -21,7 +21,7 @@ export class NegocioService {
 
   findAll(): Observable<Negocio[]> {
     return this.http
-      .get<Negocio[]>(this.url + 'business', this.headers)
+      .get<Negocio[]>(this.url2 + 'business',this.headers)
       .pipe(catchError(this.errorHandler));
   }
 
@@ -31,7 +31,7 @@ export class NegocioService {
 
   findOne(id: Number): Observable<Negocio> {
     return this.http
-      .get<Negocio>(this.url + 'business/' + id, this.headers)
+      .get<Negocio>(this.url2 + 'business/' + id, this.headers)
       .pipe(map((negocio: Negocio) => negocio));
   }
 
