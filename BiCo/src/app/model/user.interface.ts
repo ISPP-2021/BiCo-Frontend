@@ -5,7 +5,7 @@ export interface User {
 	email?: string;
 	password?: string;
 	authorities?: {
-    	authority?: string;
+    	authority: string;
   	}
-	token?: string;
+	token: string;
 }

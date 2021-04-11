@@ -18,17 +18,9 @@ export class ConsumerService {
 		},
 	};
 
-	findMe(): Observable<Consumer> {
+	findOne(id: Number): Observable<Consumer> {
 		return this.http
 			.get<Consumer>(this.url + 'users/profile', this.headers)
 			.pipe(map((consumer: Consumer) => consumer));
-
 	}
-
-	findOne(id: Number): Observable<Consumer> {
-		return this.http
-			.get<Consumer>(this.url + 'consumer/' + id, this.headers)
-			.pipe(map((consumer: Consumer) => consumer));
-	}
-
 }
