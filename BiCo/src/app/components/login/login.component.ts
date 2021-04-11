@@ -10,10 +10,6 @@ import { map } from 'rxjs/operators';
 	styleUrls: ['./login.component.css']
 })
 
-@NgModule({
-	exports:[LoginComponent]
-})
-
 export class LoginComponent implements OnInit {
 
 	loginForm: FormGroup;
