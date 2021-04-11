@@ -1,10 +1,14 @@
 <div *ngIf="(consumer$ | async) as consumer" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="2%">
     <mat-card class="reserva" *ngFor="let booking of consumer.bookings">
-        <button mat-raised-button routerLink="/negocioByReserva/{{booking.id}}">Ver
-            negocio de la reserva</button>
         <ng-container *ngIf="booking.status !== 'CANCELLED'">
-            <button mat-raised-button color="warn" (click)="cancelBooking(booking.id)">Cancelar reserva</button>
+            <button mat-mini-fab color="warn" (click)="cancelBooking(booking.id)">
+                <mat-icon>close</mat-icon>
+            </button>
         </ng-container>
+        <button mat-mini-fab routerLink="/negocioByReserva/{{booking.id}}">
+            <mat-icon>visibility</mat-icon>
+        </button>
+        
         <mat-card-header>
             <mat-card-title>Reserva Nº: {{booking.id}}</mat-card-title>
             <mat-card-subtitle *ngIf="booking.status === 'IN_PROGRESS'"> Pendiente de aprobación

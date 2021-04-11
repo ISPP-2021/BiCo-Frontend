@@ -22,13 +22,7 @@
                         <mat-card-title>{{service.name}}</mat-card-title>
                         <mat-card-subtitle>{{service.price}} €</mat-card-subtitle>
                     </mat-card-header>
-                    <mat-card-content *ngFor="let service of business.services">
-                        <mat-card class="servicio">
-                            <mat-card-header>
-                                <mat-card-title>{{service.name}}</mat-card-title>
-                                <mat-card-subtitle>{{service.price}} €</mat-card-subtitle>
-                            </mat-card-header>
-                            <mat-card-content>
+                        <mat-card-content>
                                 <p><b>Descripción: </b>{{service.description}}</p>
                                 <p><b>Duración: </b>{{service.duration}} horas</p>
                                 <p><b>Aforo:</b> {{service.capacity}} personas</p>
@@ -72,10 +66,6 @@
                                         </mat-tab>
                                     </mat-tab-group>
                                 </div>
-
-                            </mat-card-content>
-                        </mat-card>
-
                     </mat-card-content>
                 </mat-card>
             </div>

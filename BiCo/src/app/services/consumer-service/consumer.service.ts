@@ -19,7 +19,7 @@ export class ConsumerService {
     },
   };
 
-  findOne(id: Number): Observable<Consumer> {
+  findOne(): Observable<Consumer> {
     return this.http
       .get<Consumer>(this.url + 'users/profile', this.headers)
       .pipe(map((consumer: Consumer) => consumer));

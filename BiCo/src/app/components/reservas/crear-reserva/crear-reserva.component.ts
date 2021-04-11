@@ -26,6 +26,7 @@ export class CrearReservaComponent implements OnInit {
   bookDate: Date;
   emisionDate: String;
   status: string;
+  description: String;
 
   rol: string = localStorage.getItem('rol');
   negocioId = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -93,6 +94,7 @@ export class CrearReservaComponent implements OnInit {
         this.pago = Math.round(this.pago * 100) / 100;
         this.nombre = servicio.name;
         this.servicioId = servicio.id;
+        this.description = servicio.description;
         (this.bookDate = this.form.value.bookDate),
           (this.emisionDate = new Date().toISOString().substr(0, 16)),
           (this.status = this.form.value.status);

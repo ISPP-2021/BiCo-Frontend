@@ -17,7 +17,7 @@ export class VerReservasComponent implements OnInit {
       const consumerId: number = parseInt(params['id']);
 
       return this.consumerService
-        .findOne(consumerId)
+        .findOne()
         .pipe(map((consumer: Consumer) => consumer));
     })
   );
