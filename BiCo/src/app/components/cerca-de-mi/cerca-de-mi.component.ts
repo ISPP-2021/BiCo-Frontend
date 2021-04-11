@@ -14,7 +14,7 @@ export class CercaDeMiComponent implements OnInit {
 	errorMessage = "";
 	token: string = localStorage.getItem(JWT_NAME);
 
-	constructor(private negocioService: NegocioService, private servicio:FilterNegocioService) { }
+	constructor(private negocioService: NegocioService, private servicio: FilterNegocioService) { }
 
 	ngOnInit() {
 		let output = document.getElementById('map')
@@ -29,7 +29,7 @@ export class CercaDeMiComponent implements OnInit {
 			console.log(longitude)
 		}
 		function error() {
-			output.innerHTML = "<p>Su posicion no se pudo obtener</p>"
+			// output.innerHTML = "<p>Su posicion no se pudo obtener</p>"
 		}
 		navigator.geolocation.getCurrentPosition(location, error)
 
@@ -45,13 +45,13 @@ export class CercaDeMiComponent implements OnInit {
 
 	}
 
-	onSelect(tipo){
-		if(tipo == ""){       
-		  this.servicio.findAll().subscribe(data => this.negocios = data,
-				  err => this.errorMessage = err);
-		}else{
-		  this.servicio.getNegociosFilter(tipo).subscribe(data => this.negocios = data,
-			err => this.errorMessage = err)
+	onSelect(tipo) {
+		if (tipo == "") {
+			this.servicio.findAll().subscribe(data => this.negocios = data,
+				err => this.errorMessage = err);
+		} else {
+			this.servicio.getNegociosFilter(tipo).subscribe(data => this.negocios = data,
+				err => this.errorMessage = err)
 		}
 	}
 
