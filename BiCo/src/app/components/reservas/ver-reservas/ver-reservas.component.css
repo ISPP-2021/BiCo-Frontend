@@ -1,12 +1,6 @@
-.content {
-    margin-bottom: 5%;
-    margin-top:5%;
-    align-self: flex-start;
-    width: 100%;
-    max-height: 100%;
-  
-  }
-  .reserva{
+
+.reserva{
     background-color: #E1CED4;
-    margin-bottom: 10px;
+    width : 60%;
+    margin: 2%;
   }

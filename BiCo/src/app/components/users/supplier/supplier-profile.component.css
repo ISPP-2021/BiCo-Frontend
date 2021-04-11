@@ -1,12 +1,5 @@
 .perfil{
+  margin: 2%;
   background-color: #E1CED4;
-  width: 100%;
-  max-height: 100%;
-}
-.content {
-  
-  padding: 1%;
-  align-self: flex-start;
-  width: 100%;
-  max-height: 100%;
+  width: 60%;
 }

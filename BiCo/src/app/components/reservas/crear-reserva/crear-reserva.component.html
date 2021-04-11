@@ -1,35 +1,35 @@
 <form class="example-form" [formGroup]="form" (ngSubmit)="save()">
-<h2 style="text-align: center;">Nueva Reserva</h2>
-<div>
-    <mat-label>Book Date:</mat-label>
+  <h2 style="text-align: center;">Nueva Reserva</h2>
+  <div>
+    <mat-label>Fecha:</mat-label>
     &nbsp;
     <mat-form-field>
-        <input matInput type="datetime-local" formControlName="bookDate">
+      <input matInput type="datetime-local" formControlName="bookDate">
     </mat-form-field>
-</div>
-<br>
-<mat-divider></mat-divider>
-<br>
-<div formArrayName="services">
-<h4>Servicios</h4>
-
-<div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
-<mat-form-field class="example-full-width">
-    <mat-label>Servicio {{ i+1 }}</mat-label>
-    <mat-select formControlName="id">
-      <mat-option *ngFor="let servicio of negocio.services" [value]="servicio.id">{{servicio.name}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-<div>
-    <button mat-icon-button (click)="addService()">
-      <mat-icon>control_point</mat-icon>
-    </button>
-    <button *ngIf="i>0" mat-icon-button (click)="removeService(i)">
-      <mat-icon>remove_circle_outline</mat-icon>
-    </button>
   </div>
-</div>
-</div>
-<button type="submit" mat-raised-button color="primary" [disabled]="form.invalid" (click)="fechaActual(form)">Guardar</button>
-</form>
+  <br>
+  <mat-divider></mat-divider>
+  <br>
+  <div formArrayName="services">
+    <h4>Servicios:</h4>
 
+    <div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
+      <mat-form-field class="example-full-width">
+        <mat-label>Servicio {{ i+1 }}</mat-label>
+        <mat-select formControlName="id">
+          <mat-option *ngFor="let servicio of negocio.services" [value]="servicio.id">{{servicio.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-icon-button (click)="addService()">
+          <mat-icon>control_point</mat-icon>
+        </button>
+        <button *ngIf="i>0" mat-icon-button (click)="removeService(i)">
+          <mat-icon>remove_circle_outline</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid"
+    (click)="fechaActual(form)">Guardar</button>
+</form>

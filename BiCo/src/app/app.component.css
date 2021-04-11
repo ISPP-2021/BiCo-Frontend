@@ -3,12 +3,10 @@
 }
 .mat-toolbar {
   background-color: #C29EAA;
-  height: 5vmax;
+  height: 2vmax;
 }
 .mat-button{
   background-color: transparent;
-
-
 }
 .mat-raised-button{
   background-color: #8499B1;
@@ -20,5 +18,5 @@ background-color: #F8D2BF;
 }
 .mat-sidenav-content{
   background-color: #D2D9E2;
-
+  height: 100vh;
 }
