@@ -3,15 +3,18 @@
   width: 100%;
   max-height: 100%;
 }
+
 .content {
   padding: 1%;
   align-self: flex-start;
   width: 100%;
   max-height: 100%;
 }
+
 .servicio {
   background-color: #f0e7ea;
 }
+
 .mat-raised-button {
   float: right;
   justify-content: center;
