@@ -1,35 +1,26 @@
-.mat-mini-fab {
-  float: right;
-  background-color: #8499B1;
-}
-
 .busqueda {
-  width: 75%;
-  max-height: 100%;
-  background-color: #FBE5DA;
+  background-color: #fbe5da;
+  width: 50%;
+  margin: 2%;
 }
-
 .mat-form-field {
   width: 95%;
   margin-left: 2.5%;
 }
 
-.content {
-  margin-bottom: 5%;
-  margin-top: 5%;
-  align-self: flex-start;
-  width: 100%;
-  max-height: 100%;
+.negocio {
+  background-color: #e1ced4;
+  width: 60%;
+  margin: 2%;
 }
 
-.negocio {
-  background-color: #E1CED4;
-  margin-bottom: 10px;
+.mat-mini-fab {
+  float: right;
+  background-color: #8499b1;
 }
 
 .mat-raised-button {
   margin-left: 50%;
   transform: translateX(-50%);
-  justify-content: center;
-  background-color: #A3DCB9;
+  background-color: #a3dcb9;
 }
