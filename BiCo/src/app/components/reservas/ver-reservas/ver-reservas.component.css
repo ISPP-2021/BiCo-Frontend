@@ -1,16 +1,5 @@
-.content {
-  margin-bottom: 5%;
-  margin-top: 5%;
-  align-self: flex-start;
-  width: 100%;
-  max-height: 100%;
-}
 .reserva {
   background-color: #e1ced4;
-  margin-bottom: 10px;
-}
-.mat-raised-button {
-  float: right;
-  justify-content: center;
-  background-color: #a3dcb9;
+  width: 60%;
+  margin: 2%;
 }

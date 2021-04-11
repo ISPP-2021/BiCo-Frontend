@@ -1,26 +1,26 @@
-<div>
-    <mat-grid-list cols="6" *ngIf="(supplier$ | async) as supplier">
-        <mat-grid-tile [colspan]="1" [rowspan]="2"></mat-grid-tile>
-        <mat-grid-tile [colspan]="4" [rowspan]="10">
-            <div class="content">
-
-                <mat-card class="negocio" *ngFor="let business of supplier.business">
-                    <button mat-mini-fab routerLink="/negocio-edit/{{business.id}}">
-                        <mat-icon>edit</mat-icon>
-                    </button>
-                    <button type="button" mat-mini-fab (click)="deleteBusiness()">
-                        <mat-icon>delete</mat-icon>
-                    </button>
+<div *ngIf="(supplier$ | async) as supplier" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="2%">
+    <mat-card class="negocio" *ngFor="let business of supplier.business">
+        <button type="button" mat-mini-fab (click)="deleteBusiness()">
+            <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-mini-fab routerLink="/negocio-edit/{{business.id}}">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <mat-card-header>
+            <mat-card-title>Nombre: {{business.name}}</mat-card-title>
+            <mat-card-subtitle>Dirección: {{business.address}}</mat-card-subtitle>
+            <mat-card-subtitle *ngIf="business.businessType === 'HAIRDRESSER'"> Peluquería
+            </mat-card-subtitle>
+            <mat-card-subtitle *ngIf="business.businessType === 'RESTAURANT'"> Bar/Restaurante
+            </mat-card-subtitle>
+            <mat-card-subtitle *ngIf="business.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content *ngFor="let service of business.services">
+            <div fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="2%">
+                <mat-card class="servicio">
                     <mat-card-header>
-
-                        <mat-card-title>Nombre: {{business.name}}</mat-card-title>
-                        <mat-card-subtitle>Dirección: {{business.address}}</mat-card-subtitle>
-                        <mat-card-subtitle *ngIf="business.businessType === 'HAIRDRESSER'"> Peluquería
-                        </mat-card-subtitle>
-                        <mat-card-subtitle *ngIf="business.businessType === 'RESTAURANT'"> Bar/Restaurante
-                        </mat-card-subtitle>
-                        <mat-card-subtitle *ngIf="business.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
-
+                        <mat-card-title>{{service.name}}</mat-card-title>
+                        <mat-card-subtitle>{{service.price}} €</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content *ngFor="let service of business.services">
                         <mat-card class="servicio">
@@ -79,8 +79,8 @@
                     </mat-card-content>
                 </mat-card>
             </div>
-        </mat-grid-tile>
+        </mat-card-content>
+    </mat-card>
 
-    </mat-grid-list>
 </div>
 <router-outlet></router-outlet>
