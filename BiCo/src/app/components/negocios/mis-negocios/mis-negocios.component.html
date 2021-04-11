@@ -22,12 +22,6 @@
                         <mat-card-title>{{service.name}}</mat-card-title>
                         <mat-card-subtitle>{{service.price}} €</mat-card-subtitle>
                     </mat-card-header>
-                    <mat-card-content *ngFor="let service of business.services">
-                        <mat-card class="servicio">
-                            <mat-card-header>
-                                <mat-card-title>{{service.name}}</mat-card-title>
-                                <mat-card-subtitle>{{service.price}} €</mat-card-subtitle>
-                            </mat-card-header>
                             <mat-card-content>
                                 <p><b>Descripción: </b>{{service.description}}</p>
                                 <p><b>Duración: </b>{{service.duration}} horas</p>
@@ -44,9 +38,9 @@
                                                         <mat-icon>check</mat-icon>
                                                     </button>
                                                     <mat-card-content>
-                                                        Hora: {{booking.bookDate | date:'hh:mm'}}
+                                                        <b>Hora: </b>{{booking.bookDate | date:'hh:mm'}}
                                                         <br>
-                                                        Fecha: {{booking.bookDate | date:'dd-MM-yyyy'}}
+                                                        <b>Fecha: </b>{{booking.bookDate | date:'dd-MM-yyyy'}}
    
                                                     </mat-card-content>
                                                 </mat-card>
@@ -74,10 +68,7 @@
                                 </div>
 
                             </mat-card-content>
-                        </mat-card>
-
-                    </mat-card-content>
-                </mat-card>
+                        </mat-card> 
             </div>
         </mat-card-content>
     </mat-card>
