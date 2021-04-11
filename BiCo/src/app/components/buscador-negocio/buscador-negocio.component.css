@@ -1,27 +1,26 @@
-.busqueda{
-    background-color: #FBE5DA;
-    width:50%;
-    margin: 2%;
-  }
-  .mat-form-field{
-    width: 95%;
-    margin-left: 2.5%;
-  }
-  
-  .negocio{
-    background-color: #E1CED4;
-    width : 60%;
-    margin: 2%;
-  }
-  
-  .mat-mini-fab {
-    float:right;
-    background-color: #8499B1;
-  }
-  
-  .mat-raised-button{
-    margin-left: 50%;
-    transform: translateX(-50%);
-    background-color: #A3DCB9;
-  }
-  
+.busqueda {
+  background-color: #fbe5da;
+  width: 50%;
+  margin: 2%;
+}
+.mat-form-field {
+  width: 95%;
+  margin-left: 2.5%;
+}
+
+.negocio {
+  background-color: #e1ced4;
+  width: 60%;
+  margin: 2%;
+}
+
+.mat-mini-fab {
+  float: right;
+  background-color: #8499b1;
+}
+
+.mat-raised-button {
+  margin-left: 50%;
+  transform: translateX(-50%);
+  background-color: #a3dcb9;
+}
