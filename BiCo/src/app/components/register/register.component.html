@@ -50,18 +50,11 @@
             <input matInput type="password" placeholder="Repite Contraseña" formControlName="confirmPassword">
           </mat-form-field>
         </p>
-
-        <mat-form-field class="example-full-width" required>
-          <mat-label>Rol</mat-label>
-          <mat-select formControlName="authorities">
-            <mat-option value="owner">Owner</mat-option>
-            <mat-option value="user">User</mat-option>
-          </mat-select>
-        </mat-form-field>
-
       </div>
 
-      <button mat-raised-button [disabled]="!registerForm.valid" type="submit">Registrarse</button>
+      <button mat-raised-button [disabled]="!registerForm.valid" type="submit">Registrarse como user</button>
+      <button mat-raised-button [disabled]="!registerForm.valid" type="button" (click)="registerOwner()">Registrarse
+        como owner</button>
     </form>
 
     <br>

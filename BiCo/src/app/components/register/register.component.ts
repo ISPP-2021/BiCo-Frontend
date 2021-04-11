@@ -56,21 +56,32 @@ export class RegisterComponent implements OnInit {
         username: [null, [Validators.required]],
         password: [null, [Validators.required,Validators.minLength(3),CustomValidators.passwordContainsNumber]],
         confirmPassword: [null, [Validators.required]],
-        authorities: [null, [Validators.required]]
       }),
     },{
        validators: CustomValidators.passwordsMatch
     })
   }
 
+  registerOwner(){
+    if(this.registerForm.invalid) {
+      return;
+    }
+    this.registerForm.get('user.confirmPassword').disable()
+    console.log(this.registerForm.value);
+    this.authService.registerOwner(this.registerForm.value).pipe(
+      map(user => this.router.navigate(['login']))
+    ).subscribe()
+  }
+
   onSubmit(){
     if(this.registerForm.invalid) {
       return;
     }
+    this.registerForm.get('user.confirmPassword').disable()
     console.log(this.registerForm.value);
-   /* this.authService.register(this.registerForm.value).pipe(
+    this.authService.registerUser(this.registerForm.value).pipe(
       map(user => this.router.navigate(['login']))
-    ).subscribe()*/
+    ).subscribe()
   }
 
 }
