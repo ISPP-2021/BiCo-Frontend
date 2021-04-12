@@ -65,7 +65,7 @@ export class CrearNegocioComponent implements OnInit {
       if(this.serviceArray.length===0){
        this.serviceArray.push(this.defaultService())
       }
-      console.log(this.form.value)
+
 			this.negocioService.create(this.form.value).subscribe( res=>{
         this.router.navigate(['home'])})
 

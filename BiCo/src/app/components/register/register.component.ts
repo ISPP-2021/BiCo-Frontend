@@ -45,8 +45,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       name: [null, [Validators.required]],
-      lastName: [null, [Validators.required]],
-      dni: [null, [Validators.required]],
+      lastname: [null, [Validators.required]],
+      dni: [null, [Validators.required, Validators.pattern(/^\d{8}[a-zA-Z]$/)]],
       email: [null, [
         Validators.required,
         Validators.email,
@@ -67,7 +67,6 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.registerForm.get('user.confirmPassword').disable()
-    console.log(this.registerForm.value);
     this.authService.registerOwner(this.registerForm.value).pipe(
       map(user => this.router.navigate(['login']))
     ).subscribe()
@@ -78,7 +77,6 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.registerForm.get('user.confirmPassword').disable()
-    console.log(this.registerForm.value);
     this.authService.registerUser(this.registerForm.value).pipe(
       map(user => this.router.navigate(['login']))
     ).subscribe()

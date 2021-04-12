@@ -1,11 +1,13 @@
 .negocio {
-  margin-bottom: 5%;
-  margin-top: 5%;
+  margin: 2%;
   background-color: #e1ced4;
   width: 60%;
 }
 .servicio {
   background-color: #f0e7ea;
+}
+.reservas {
+  margin: 1%;
 }
 
 .mat-mini-fab {

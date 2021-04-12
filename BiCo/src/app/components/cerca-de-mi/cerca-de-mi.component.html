@@ -2,8 +2,7 @@
   <div fxLayoutAlign="space-around center">
     <mat-card class="cerca-de-mi">
       <mat-card-header>
-        <mat-card-title>Cerca de mí</mat-card-title>
-        <mat-card-subtitle> Selecciona un tipo de negocio</mat-card-subtitle>
+        <mat-card-title>Selecciona un tipo de negocio</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <mat-select placeholder="Tipo de negocio" (selectionChange)="onSelect($event.value)">
@@ -33,5 +32,6 @@
       <button mat-raised-button routerLink="/reservar/{{negocio.id}}">Reservar</button>
     </mat-card>
   </div>
+
 </div>
 <router-outlet></router-outlet>
