@@ -1,8 +1,8 @@
 <br>
 <form novalidate (ngSubmit)="buy()" [formGroup]="stripeForm" #f="ngForm">
-    <div class="form-group">
-        <input matInput class="form-control" type="text" id="name" formControlName="name" placeholder="tu nombre" required>
-    </div>
+    <mat-form-field class="form-group">
+        <input matInput class="form-control" type="text" id="name" formControlName="name" placeholder="Tu nombre" required>
+    </mat-form-field>
 
     <div id="card-element" class="field"></div>
     <div *ngIf="error" class="alert alert-danger">
