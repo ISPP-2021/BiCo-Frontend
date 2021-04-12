@@ -42,7 +42,6 @@ export class ModalComponent implements OnInit {
         this.activeModal.close();
       },
       (err) => {
-        console.log(err);
         this.activeModal.close();
       }
     );
@@ -53,8 +52,6 @@ export class ModalComponent implements OnInit {
     };
     this.reservaService.create(this.servicio, reserva).subscribe();
     window.location.replace('/reservas');
-    console.log(this.servicio);
-    console.log(reserva);
   }
 
   cancelar(id: string): void {
@@ -68,7 +65,6 @@ export class ModalComponent implements OnInit {
         this.activeModal.close();
       },
       (err) => {
-        console.log(err);
         this.activeModal.close();
       }
     );

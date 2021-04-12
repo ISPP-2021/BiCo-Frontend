@@ -33,10 +33,7 @@ export class VerReservasComponent implements OnInit {
   cancelBooking(id: number) {
     let res = window.confirm('¿Seguro de que desea cancelar la reserva?');
     if (res) {
-      console.log(id);
-
       this.bookingService.cancelBooking(id).subscribe();
-
       window.location.reload();
     }
   }
