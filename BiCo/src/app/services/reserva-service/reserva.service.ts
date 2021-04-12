@@ -38,8 +38,6 @@ export class ReservaService {
   }
 
   cancelBooking(id: number): Observable<Reserva> {
-    console.log(this.url + 'bookings/' + id + '/cancel');
-
     return this.http
       .delete<Reserva>(this.url + 'bookings/' + id + '/cancel', this.headers)
       .pipe(catchError(this.errorHandler));

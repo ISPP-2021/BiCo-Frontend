@@ -60,7 +60,6 @@ export class EditarNegocioComponent implements OnInit {
   save() {
     if(this.form.valid){
     this.negocioService.update(this.negocioId,this.form.value).subscribe()
-    console.log(this.form.value)
     this.router.navigate(['home'])
     }
   }

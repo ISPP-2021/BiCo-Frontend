@@ -80,7 +80,6 @@ export class CrearReservaComponent implements OnInit {
           emisionDate: this.form.value.emisionDate,
           status: this.form.value.status,
         };
-        console.log(reserva);
         this.reservaService.create(servicio.id, reserva).subscribe();
         this.router.navigate(['reservas']);
       }
@@ -98,7 +97,6 @@ export class CrearReservaComponent implements OnInit {
         (this.bookDate = this.form.value.bookDate),
           (this.emisionDate = new Date().toISOString().substr(0, 16)),
           (this.status = this.form.value.status);
-        console.log(this.form.value.emisionDate);
       }
     }
     if (this.pago == 0) {

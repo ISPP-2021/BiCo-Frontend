@@ -27,8 +27,6 @@ export class CercaDeMiComponent implements OnInit {
 			Funcion que devuelva la lista de negocios
 			params: (latitud, longitude) -> Origen
 			*/
-      console.log(latitude);
-      console.log(longitude);
     }
     function error() {
       //output.innerHTML = "<p>Su posicion no se pudo obtener</p>"
