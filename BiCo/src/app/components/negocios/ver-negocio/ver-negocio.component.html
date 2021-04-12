@@ -1,0 +1,35 @@
+<div fxLayout="column" fxLayoutAlign="center" *ngIf="(negocio$ | async) as negocio">
+  <div fxLayoutAlign="space-around center">
+    <mat-card class="negocio">
+      <mat-card-header>
+        <img mat-card-avatar src="./favicon.ico" alt={{negocio.name}}>
+        <mat-card-title>{{negocio.name}}</mat-card-title>
+        <mat-card-subtitle>{{negocio.address}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-card-subtitle *ngIf="negocio.businessType === 'HAIRDRESSER'"> Peluquería</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="negocio.businessType === 'RESTAURANT'"> Bar/Restaurante</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="negocio.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+  <div fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="2%">
+    <mat-card class="servicio" *ngFor="let servicio of negocio.services">
+      <mat-card-header>
+        <mat-card-title>{{servicio.name}}</mat-card-title>
+        <mat-card-subtitle>{{servicio.price}} €</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p><b>Descripción: </b></p>
+        <p>{{servicio.description}}</p>
+        <p><b>Duración: </b>{{servicio.duration}} horas</p>
+        <p><b>Aforo:</b> {{servicio.capacity}} personas</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>

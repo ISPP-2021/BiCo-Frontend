@@ -1,0 +1,22 @@
+.spacer {
+  flex: 1 1 auto;
+}
+.mat-toolbar {
+  background-color: #c29eaa;
+  height: 2vmax;
+}
+.mat-button {
+  background-color: transparent;
+}
+.mat-raised-button {
+  background-color: #8499b1;
+  margin: 0.5vh;
+}
+
+.mat-raised-button:hover {
+  background-color: #f8d2bf;
+}
+.mat-sidenav-content {
+  background-color: #d2d9e2;
+  height: 100vh;
+}

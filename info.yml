@@ -1,0 +1,36 @@
+project:
+  name: 'BiCo Frontend'
+  owner: 'afternoon'
+  teamId: '12'
+  identities:
+    github:
+      url: 'https://github.com/ISPP-2021/BiCo-Frontend.git'
+    heroku:
+      url: 'https://bico-ds1.netlify.app/'
+    travis:
+      url: ' '
+  members:
+    member1:
+      name: 'Maria Jesus'
+      surname: 'Cadenas Sanchez' 
+      githubUsername: 'marcadsan2'
+    member2:
+      name: 'Jose'
+      surname: 'Cesar Garcia' 
+      githubUsername: 'PepeCesarG'
+    member3:
+      name: 'Adrian'
+      surname: 'Fernandez Fernandez' 
+      githubUsername: 'AdrinFdez'
+    member4:
+      name: 'Jose Antonio'
+      surname: 'Macias Portillo' 
+      githubUsername: 'JosanFCS03'
+    member5:
+      name: 'Manuel'
+      surname: 'Perez Carrillo' 
+      githubUsername: 'manpercar1'
+    member6:
+      name: 'Jose'
+      surname: 'Rodriguez Adame' 
+      githubUsername: 'PepeRodriAdams'

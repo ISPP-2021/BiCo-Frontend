@@ -1,0 +1,18 @@
+.negocio {
+  background-color: #e1ced4;
+  width: 50%;
+  margin: 2%;
+}
+.servicios {
+  width: 75%;
+}
+.servicio {
+  margin: 2%;
+  background-color: #f0e7ea;
+  width: 60%;
+}
+.mat-raised-button {
+  float: right;
+  justify-content: center;
+  background-color: #a3dcb9;
+}

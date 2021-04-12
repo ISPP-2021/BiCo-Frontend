@@ -1,7 +1,7 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
-module.exports = function (config) {
+module.exports = function(config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
@@ -27,12 +27,24 @@ module.exports = function (config) {
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage/BiCo'),
       subdir: '.',
-      reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
+      reporters: [{
+          type: 'html'
+        },
+        {
+          type: 'text-summary'
+        },
+        {
+          type: 'lcov'
+        }
       ]
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'kjhtml', 'coverage'],
+    customLaunchers: {
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
+      }
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,

@@ -1,0 +1,44 @@
+  <form  class="example-form"  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <h2 style="text-align: center;">Registro</h2>   
+      <h4>Datos personales</h4>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Nombre" formControlName="name">
+          <mat-hint *ngIf="registerForm.controls.name.errors">El campo nombre es obligatorio</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Apellido/s" formControlName="lastname">
+          <mat-hint *ngIf="registerForm.controls.lastname.errors">El campo apellidos es obligatorio</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="DNI" formControlName="dni">
+          <mat-hint *ngIf="registerForm.controls.dni.errors">El campo DNI es obligatorio</mat-hint>
+        </mat-form-field>
+ 
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email" formControlName="email">
+          <mat-hint *ngIf="registerForm.controls.email.errors">El campo email es obligatorio</mat-hint>
+        </mat-form-field>
+      <div formGroupName="user">
+        <br>
+        <h4>Datos de Usuario</h4>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Username" formControlName="username">
+          </mat-form-field>
+          <mat-form-field class="example-full-width"> 
+            <input matInput type="password" placeholder="Contraseña" formControlName="password">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput type="password" placeholder="Repite Contraseña" formControlName="confirmPassword">
+          </mat-form-field>
+      </div>
+      <button mat-raised-button [disabled]="!registerForm.valid" type="submit">Soy usuario</button>
+      <button mat-raised-button [disabled]="!registerForm.valid" type="button" (click)="registerOwner()">Soy propietario</button>
+        <br>
+        <small style="color: brown;" *ngIf="registerForm.get('user.password').hasError('passwordInvalid')">La contraseña no
+          contiene número</small>
+        <br>
+        <small style="color: brown;" *ngIf=" registerForm.hasError('passwordsNotMatching')">Las contraseñas no
+          coinciden</small>
+    
+    </form>
+

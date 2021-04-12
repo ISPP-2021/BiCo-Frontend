@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - "10"
+
+addons:
+  chrome: stable
+
+cache:
+  directories:
+     - ./node_modules
+
+before_install:
+  - cd BiCo
+
+install:
+  - npm install
+
+script:
+  - npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
+  - npm run test-with-coverage

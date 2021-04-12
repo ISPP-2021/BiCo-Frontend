@@ -1,0 +1,16 @@
+<div fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="2%">
+    <mat-card class="perfil" *ngIf=" (consumer$ | async) as consumer">
+        <mat-card-header>
+            <img mat-card-avatar src="./favicon.ico">
+            <mat-card-title>Usuario: {{consumer.user.username}}</mat-card-title>
+            <mat-card-subtitle>{{consumer.email}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p><b>Nombre:</b> {{consumer.name}}</p>
+            <p><b>Apellidos:</b> {{consumer.lastname}}</p>
+            <p><b>DNI:</b> {{consumer.dni}}</p>
+            <p><b>Email:</b> {{consumer.email}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>
+<router-outlet></router-outlet>

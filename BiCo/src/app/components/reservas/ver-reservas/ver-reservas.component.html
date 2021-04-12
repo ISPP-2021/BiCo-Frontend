@@ -1,0 +1,25 @@
+<div *ngIf="(consumer$ | async) as consumer" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="2%">
+    <mat-card class="reserva" *ngFor="let booking of consumer.bookings">
+        <ng-container *ngIf="booking.status !== 'CANCELLED'">
+            <button mat-mini-fab color="warn" (click)="cancelBooking(booking.id)">
+                <mat-icon>close</mat-icon>
+            </button>
+        </ng-container>
+        <button mat-mini-fab routerLink="/negocioByReserva/{{booking.id}}">
+            <mat-icon>visibility</mat-icon>
+        </button>
+        
+        <mat-card-header>
+            <mat-card-title>Reserva Nº: {{booking.id}}</mat-card-title>
+            <mat-card-subtitle *ngIf="booking.status === 'IN_PROGRESS'"> Pendiente de aprobación
+            </mat-card-subtitle>
+            <mat-card-subtitle *ngIf="booking.status === 'COMPLETED'"> Aprobada</mat-card-subtitle>
+            <mat-card-subtitle *ngIf="booking.status === 'CANCELLED'"> Cancelada</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Fecha de reserva: {{booking.bookDate | date:'dd-MM-yyyy HH:mm' : '-000'}}</p>
+            <p>Servicio reservado: {{booking.servise}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>
+<router-outlet></router-outlet>

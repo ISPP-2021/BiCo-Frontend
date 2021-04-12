@@ -1,0 +1,17 @@
+.negocio {
+  margin: 2%;
+  background-color: #e1ced4;
+  width: 60%;
+}
+.servicio {
+  background-color: #f0e7ea;
+}
+.reservas {
+  margin: 1%;
+}
+
+.mat-mini-fab {
+  float: right;
+  background-color: #8499b1;
+  margin-right: 5%;
+}

@@ -1,0 +1,60 @@
+[
+    {
+        "id": 1,
+        "name": "business_name_1",
+        "address": "address_1",
+        "businessType": "HAIRDRESSER",
+        "automatedAccept": true,
+        "supplier": {
+            "id": 1,
+            "name": "supplier_name_1",
+            "lastname": "supplier_lastname_1",
+            "dni": "1111111A",
+            "email": "random@gmail.com",
+            "user": {
+                "username": "josito",
+                "password": "1234",
+                "enabled": true,
+                "authorities": [
+                    {
+                        "id": 1,
+                        "authority": "consumer",
+                        "new": false
+                    }
+                ]
+            },
+            "new": false
+        },
+        "option": {
+            "id": 1,
+            "automatedAccept": true,
+            "limitAutomated": 3,
+            "defaultDeposit": 0.7,
+            "depositTimeLimit": 5,
+            "new": false
+        },
+        "services": [
+            {
+                "id": 1,
+                "name": "servise_name",
+                "description": "servise_description_1",
+                "price": 20.3,
+                "duration": 2,
+                "capacity": 2,
+                "deposit": 40.7,
+                "tax": 0.05,
+                "bookings": [
+                    {
+                        "id": 1,
+                        "bookDate": "2021-01-27T22:00:00.000+00:00",
+                        "emisionDate": "2022-01-27T22:00:00.000+00:00",
+                        "status": "IN_PROGRESS",
+                        "new": false
+                    }
+                ],
+                "new": false
+            }
+        ],
+        "new": false
+    }
+]

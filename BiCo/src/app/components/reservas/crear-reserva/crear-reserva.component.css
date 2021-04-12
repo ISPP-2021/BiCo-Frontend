@@ -1,0 +1,30 @@
+.example-form {
+  width: 60%;
+  max-width: 60%;
+  margin: auto;
+  padding: 2% 2%;
+  box-sizing: border-box;
+  margin-top: 2%;
+  border-radius: 20px;
+  background: #e1ced4;
+}
+å .example-full-width {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480 px) {
+  .example-form {
+    width: 100%;
+  }
+}
+.mat-raised-button {
+  margin-top: 5%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  width: 15%;
+  font-size: 1vw;
+  justify-content: center;
+  background-color: #6bc78e;
+  display: inline;
+}

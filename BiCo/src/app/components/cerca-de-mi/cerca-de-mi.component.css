@@ -1,0 +1,20 @@
+.cerca-de-mi {
+  background-color: #fbe5da;
+  width: 50%;
+  margin: 2%;
+}
+
+.negocio {
+  background-color: #e1ced4;
+  width: 60%;
+}
+
+.mat-mini-fab {
+  float: right;
+  background-color: #8499b1;
+}
+.mat-raised-button {
+  margin-left: 50%;
+  transform: translateX(-50%);
+  background-color: #a3dcb9;
+}
