@@ -27,10 +27,10 @@
                         <p><b>Duración: </b>{{service.duration}} horas</p>
                         <p><b>Aforo:</b> {{service.capacity}} personas</p>
                         <div>
-                            <mat-tab-group class="reservas">
+                            <mat-tab-group>
                                 <mat-tab label="Pendientes">
                                     <ng-container *ngFor="let booking of service.bookings">
-                                        <mat-card *ngIf="booking.status === 'IN_PROGRESS'">
+                                        <mat-card  class="reservas" *ngIf="booking.status === 'IN_PROGRESS'">
                                             <button mat-mini-fab>
                                                 <mat-icon>close</mat-icon>
                                             </button>
@@ -47,19 +47,23 @@
                                 </mat-tab>
                                 <mat-tab label="Aprobadas">
                                     <ng-container *ngFor="let booking of service.bookings">
-                                        <mat-card *ngIf="booking.status === 'COMPLETED'">
-                                            <mat-card-subtitle>
-                                                {{booking.bookDate | date:'hh:mm dd-MM-yyyy'}}
-                                            </mat-card-subtitle>
+                                        <mat-card class="reservas" *ngIf="booking.status === 'COMPLETED'">
+                                            <mat-card-content>
+                                                <b>Hora: </b>{{booking.bookDate | date:'hh:mm'}}
+                                                <br>
+                                                <b>Fecha: </b>{{booking.bookDate | date:'dd-MM-yyyy'}}
+                                            </mat-card-content>
                                         </mat-card>
                                     </ng-container>
                                 </mat-tab>
                                 <mat-tab label="Canceladas">
                                     <ng-container *ngFor="let booking of service.bookings">
-                                        <mat-card *ngIf="booking.status === 'CANCELLED'">
-                                            <mat-card-subtitle>
-                                                {{booking.bookDate | date:'hh:mm dd-MM-yyyy'}}
-                                            </mat-card-subtitle>
+                                        <mat-card class="reservas" *ngIf="booking.status === 'CANCELLED'">
+                                            <mat-card-content>
+                                                <b>Hora: </b>{{booking.bookDate | date:'hh:mm'}}
+                                                <br>
+                                                <b>Fecha: </b>{{booking.bookDate | date:'dd-MM-yyyy'}}
+                                            </mat-card-content>
                                         </mat-card>
                                     </ng-container>
                                 </mat-tab>
