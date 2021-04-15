@@ -31,11 +31,11 @@ export class MisNegociosComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  deleteBusiness() {
+  deleteBusiness(id) {
     let res = window.confirm('¿Esta seguro de que desea borrar el negocio?');
     if (res) {
-      this.negocioService.delete(this.negocioId).subscribe((res) => {
-        this.router.navigate(['home']);
+      this.negocioService.delete(id).subscribe((res) => {
+        window.location.reload()
       });
     } else {
     }

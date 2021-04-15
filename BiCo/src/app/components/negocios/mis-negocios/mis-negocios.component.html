@@ -1,79 +1,79 @@
 <div *ngIf="(supplier$ | async) as supplier" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="2%">
-    <mat-card class="negocio" *ngFor="let business of supplier.business">
-        <button type="button" mat-mini-fab (click)="deleteBusiness()">
-            <mat-icon>delete</mat-icon>
-        </button>
-        <button mat-mini-fab routerLink="/negocio-edit/{{business.id}}">
-            <mat-icon>edit</mat-icon>
-        </button>
-        <mat-card-header>
-            <mat-card-title>Nombre: {{business.name}}</mat-card-title>
-            <mat-card-subtitle>Dirección: {{business.address}}</mat-card-subtitle>
-            <mat-card-subtitle *ngIf="business.businessType === 'HAIRDRESSER'"> Peluquería
-            </mat-card-subtitle>
-            <mat-card-subtitle *ngIf="business.businessType === 'RESTAURANT'"> Bar/Restaurante
-            </mat-card-subtitle>
-            <mat-card-subtitle *ngIf="business.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content *ngFor="let service of business.services">
-            <div fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="2%">
-                <mat-card class="servicio">
-                    <mat-card-header>
-                        <mat-card-title>{{service.name}}</mat-card-title>
-                        <mat-card-subtitle>{{service.price}} €</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p><b>Descripción: </b>{{service.description}}</p>
-                        <p><b>Duración: </b>{{service.duration}} horas</p>
-                        <p><b>Aforo:</b> {{service.capacity}} personas</p>
-                        <div>
-                            <mat-tab-group>
-                                <mat-tab label="Pendientes">
-                                    <ng-container *ngFor="let booking of service.bookings">
-                                        <mat-card  class="reservas" *ngIf="booking.status === 'IN_PROGRESS'">
-                                            <button mat-mini-fab>
-                                                <mat-icon>close</mat-icon>
-                                            </button>
-                                            <button mat-mini-fab>
-                                                <mat-icon>check</mat-icon>
-                                            </button>
-                                            <mat-card-content>
-                                                <b>Hora: </b>{{booking.bookDate | date:'hh:mm'}}
-                                                <br>
-                                                <b>Fecha: </b>{{booking.bookDate | date:'dd-MM-yyyy'}}
-                                            </mat-card-content>
-                                        </mat-card>
-                                    </ng-container>
-                                </mat-tab>
-                                <mat-tab label="Aprobadas">
-                                    <ng-container *ngFor="let booking of service.bookings">
-                                        <mat-card class="reservas" *ngIf="booking.status === 'COMPLETED'">
-                                            <mat-card-content>
-                                                <b>Hora: </b>{{booking.bookDate | date:'hh:mm'}}
-                                                <br>
-                                                <b>Fecha: </b>{{booking.bookDate | date:'dd-MM-yyyy'}}
-                                            </mat-card-content>
-                                        </mat-card>
-                                    </ng-container>
-                                </mat-tab>
-                                <mat-tab label="Canceladas">
-                                    <ng-container *ngFor="let booking of service.bookings">
-                                        <mat-card class="reservas" *ngIf="booking.status === 'CANCELLED'">
-                                            <mat-card-content>
-                                                <b>Hora: </b>{{booking.bookDate | date:'hh:mm'}}
-                                                <br>
-                                                <b>Fecha: </b>{{booking.bookDate | date:'dd-MM-yyyy'}}
-                                            </mat-card-content>
-                                        </mat-card>
-                                    </ng-container>
-                                </mat-tab>
-                            </mat-tab-group>
-                        </div>
-                    </mat-card-content>
-                </mat-card>
+  <mat-card class="negocio" *ngFor="let business of supplier.business">
+    <button type="button" mat-mini-fab (click)="deleteBusiness(business.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-mini-fab routerLink="/negocio-edit/{{business.id}}">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <mat-card-header>
+      <mat-card-title>Nombre: {{business.name}}</mat-card-title>
+      <mat-card-subtitle>Dirección: {{business.address}}</mat-card-subtitle>
+      <mat-card-subtitle *ngIf="business.businessType === 'HAIRDRESSER'"> Peluquería
+      </mat-card-subtitle>
+      <mat-card-subtitle *ngIf="business.businessType === 'RESTAURANT'"> Bar/Restaurante
+      </mat-card-subtitle>
+      <mat-card-subtitle *ngIf="business.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content *ngFor="let service of business.services">
+      <div fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="2%">
+        <mat-card class="servicio">
+          <mat-card-header>
+            <mat-card-title>{{service.name}}</mat-card-title>
+            <mat-card-subtitle>{{service.price}} €</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p><b>Descripción: </b>{{service.description}}</p>
+            <p><b>Duración: </b>{{service.duration}} horas</p>
+            <p><b>Aforo:</b> {{service.capacity}} personas</p>
+            <div>
+              <mat-tab-group>
+                <mat-tab label="Pendientes">
+                  <ng-container *ngFor="let booking of service.bookings">
+                    <mat-card class="reservas" *ngIf="booking.status === 'IN_PROGRESS'">
+                      <button mat-mini-fab>
+                        <mat-icon>close</mat-icon>
+                      </button>
+                      <button mat-mini-fab>
+                        <mat-icon>check</mat-icon>
+                      </button>
+                      <mat-card-content>
+                        <b>Hora: </b>{{booking.bookDate | date:'hh:mm'}}
+                        <br>
+                        <b>Fecha: </b>{{booking.bookDate | date:'dd-MM-yyyy'}}
+                      </mat-card-content>
+                    </mat-card>
+                  </ng-container>
+                </mat-tab>
+                <mat-tab label="Aprobadas">
+                  <ng-container *ngFor="let booking of service.bookings">
+                    <mat-card class="reservas" *ngIf="booking.status === 'COMPLETED'">
+                      <mat-card-content>
+                        <b>Hora: </b>{{booking.bookDate | date:'hh:mm'}}
+                        <br>
+                        <b>Fecha: </b>{{booking.bookDate | date:'dd-MM-yyyy'}}
+                      </mat-card-content>
+                    </mat-card>
+                  </ng-container>
+                </mat-tab>
+                <mat-tab label="Canceladas">
+                  <ng-container *ngFor="let booking of service.bookings">
+                    <mat-card class="reservas" *ngIf="booking.status === 'CANCELLED'">
+                      <mat-card-content>
+                        <b>Hora: </b>{{booking.bookDate | date:'hh:mm'}}
+                        <br>
+                        <b>Fecha: </b>{{booking.bookDate | date:'dd-MM-yyyy'}}
+                      </mat-card-content>
+                    </mat-card>
+                  </ng-container>
+                </mat-tab>
+              </mat-tab-group>
             </div>
-        </mat-card-content>
-    </mat-card>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
 
 </div>
 <router-outlet></router-outlet>
