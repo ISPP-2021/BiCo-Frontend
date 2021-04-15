@@ -5,8 +5,6 @@ project:
   identities:
     github:
       url: 'https://github.com/ISPP-2021/BiCo-Frontend.git'
-    heroku:
-      url: 'https://bico-ds1.netlify.app/'
     travis:
       url: ' '
   members:
