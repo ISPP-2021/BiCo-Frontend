@@ -46,7 +46,7 @@
       </mat-form-field>
 
     </div>
-    <div formArrayName="servises">
+    <div formArrayName="services">
       <h4>Servicios negocio</h4>
       <div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
         <h5>Servicio {{i+1}}</h5>

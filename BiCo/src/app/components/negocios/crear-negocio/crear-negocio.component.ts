@@ -29,23 +29,24 @@ export class CrearNegocioComponent implements OnInit {
 				defaultDeposit: ['', [Validators.required, Validators.min(0), Validators.max(1)]],
 				depositTimeLimit: ['', [Validators.required, Validators.min(1)]]
 			}),
-			servises: this.formBuilder.array([])
+			services: this.formBuilder.array([])
 		});
 	}
 
 	get serviceArray() {
-		return <FormArray>this.form.get('servises');
+		return <FormArray>this.form.get('services');
 	}
 
 	addServiceGroup() {
 		return this.formBuilder.group({
 			name: ['', [Validators.required]],
 			description: ['', [Validators.required]],
-			price: ['', [Validators.required, Validators.min(0)]],
+			price: ['', [Validators.required, Validators.min(0.01)]],
 			duration: ['', [Validators.required, Validators.min(0)]],
       capacity: ['', [Validators.required, Validators.min(0)]],
       deposit: ['', [Validators.required, Validators.min(0)]],
       tax: ['',[Validators.required, Validators.min(0), Validators.max(1)]],
+      bookings: this.formBuilder.array([])
 		});
 	}
 
@@ -67,7 +68,7 @@ export class CrearNegocioComponent implements OnInit {
       }
 
 			this.negocioService.create(this.form.value).subscribe( res=>{
-        this.router.navigate(['home'])})
+        this.router.navigate(['mis-negocios'])})
 
 	}
 }
@@ -76,11 +77,12 @@ export class CrearNegocioComponent implements OnInit {
     return this.formBuilder.group({
 			name: ['Solo Reserva', [Validators.required]],
 			description: ['Reservar en el negocio', [Validators.required]],
-			price: [0, [Validators.required, Validators.min(0)]],
+			price: [0.01, [Validators.required, Validators.min(0.01)]],
 			duration: [0, [Validators.required, Validators.min(0)]],
       capacity: [0, [Validators.required, Validators.min(0)]],
       deposit: [0, [Validators.required, Validators.min(0)]],
-      tax: ['',[Validators.required, Validators.min(0), Validators.max(1)]],
+      tax: [0,[Validators.required, Validators.min(0), Validators.max(1)]],
+      bookings: this.formBuilder.array([])
 		});
   }
 
