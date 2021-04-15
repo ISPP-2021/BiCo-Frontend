@@ -6,7 +6,7 @@ project:
     github:
       url: 'https://github.com/ISPP-2021/BiCo-Frontend.git'
     travis:
-      url: ' '
+      url: 'https://travis-ci.com/github/ISPP-2021/BiCo-Frontend'
   members:
     member1:
       name: 'Maria Jesus'
