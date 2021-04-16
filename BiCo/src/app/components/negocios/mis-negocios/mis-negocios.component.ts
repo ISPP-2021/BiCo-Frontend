@@ -5,6 +5,8 @@ import { map, switchMap } from 'rxjs/operators';
 import { Supplier } from 'src/app/model/supplier.interface';
 import { SupplierService } from 'src/app/services/supplier-service/supplier.service';
 import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
+import { ReservaService } from 'src/app/services/reserva-service/reserva.service';
+
 
 @Component({
   selector: 'app-mis-negocios',
@@ -25,11 +27,22 @@ export class MisNegociosComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private negocioService: NegocioService,
+    private reservaService: ReservaService,
     private supplierService: SupplierService,
     private router: Router
   ) {}
 
   ngOnInit(): void {}
+
+  cancelBooking(id){
+    this.reservaService.cancelBooking(id).subscribe(res=>{
+      window.location.reload()
+    })
+  }
+
+  acceptBooking(id){
+
+  }
 
   deleteBusiness(id) {
     let res = window.confirm('¿Esta seguro de que desea borrar el negocio?');
