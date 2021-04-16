@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "test-with-coverage": "cat ./coverage/BiCo/lcov.info | codacy-coverage --token da1d0ad5326e477a9f1b76e9e3cc326b"
+    "test-with-coverage": "cat ./coverage/BiCo/lcov.info | codacy-coverage --token $CODACY_PROJECT_TOKEN"
   },
   "private": true,
   "dependencies": {
