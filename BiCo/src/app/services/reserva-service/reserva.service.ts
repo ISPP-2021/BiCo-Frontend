@@ -6,46 +6,47 @@ import { map, catchError } from 'rxjs/operators';
 import { JWT_NAME } from '../authentication-service/authentication.service';
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root',
 })
 export class ReservaService {
-  token: string = localStorage.getItem(JWT_NAME);
-  constructor(private http: HttpClient) {}
-  private url: string = 'http://bico-despliegue2.herokuapp.com/';
-  private url2: string = 'http://localhost:8080/';
-  private headers = {
-    headers: {
-      Authorization: this.token,
-    },
-  };
+	token: string = localStorage.getItem(JWT_NAME);
+	constructor(private http: HttpClient) { }
+	private url: string = 'http://bico-despliegue2.herokuapp.com/';
+	// private url: string = 'http://localhost:8080/';
 
-  create(id: Number, reserva: Reserva): Observable<Reserva> {
-    return this.http.post<Reserva>(
-      this.url + 'bookings/' + id,
-      reserva,
-      this.headers
-    );
-  }
+	private headers = {
+		headers: {
+			Authorization: this.token,
+		},
+	};
 
-  findOne(id: Number): Observable<Reserva> {
-    return this.http
-      .get<Reserva>(this.url + 'servises/' + id, this.headers)
-      .pipe(catchError(this.errorHandler));
-  }
+	create(id: Number, reserva: Reserva): Observable<Reserva> {
+		return this.http.post<Reserva>(
+			this.url + 'bookings/' + id,
+			reserva,
+			this.headers
+		);
+	}
 
-  errorHandler(err: HttpErrorResponse) {
-    return observableThrowError(err.message);
-  }
+	findOne(id: Number): Observable<Reserva> {
+		return this.http
+			.get<Reserva>(this.url + 'servises/' + id, this.headers)
+			.pipe(catchError(this.errorHandler));
+	}
 
-  cancelBooking(id: number): Observable<Reserva> {
-    return this.http
-      .delete<Reserva>(this.url + 'bookings/' + id + '/cancel', this.headers)
-      .pipe(catchError(this.errorHandler));
-  }
+	errorHandler(err: HttpErrorResponse) {
+		return observableThrowError(err.message);
+	}
 
-  acceptBooking(id: number): Observable<Reserva> {
-    return this.http
-      .put<Reserva>(this.url + 'bookings/' + id + '/complete', this.headers)
-      .pipe(catchError(this.errorHandler));
-  }
+	cancelBooking(id: number): Observable<Reserva> {
+		return this.http
+			.delete<Reserva>(this.url + 'bookings/' + id + '/cancel', this.headers)
+			.pipe(catchError(this.errorHandler));
+	}
+
+	acceptBooking(id: number): Observable<Reserva> {
+		return this.http
+			.put<Reserva>(this.url + 'bookings/' + id + '/complete', this.headers)
+			.pipe(catchError(this.errorHandler));
+	}
 }
