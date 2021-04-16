@@ -33,15 +33,21 @@ export class MisNegociosComponent implements OnInit {
 	ngOnInit(): void { }
 
 	cancelBooking(id) {
-		this.reservaService.cancelBooking(id).subscribe(() => {
-			window.location.reload()
-		})
+		let res = window.confirm('¿Seguro que desea cancelar la reserva?');
+		if (res) {
+			this.reservaService.cancelBooking(id).subscribe(() => {
+				window.location.reload()
+			})
+		}
 	}
 
 	acceptBooking(id) {
-		this.reservaService.acceptBooking(id).subscribe(() => {
-			window.location.reload()
-		})
+		let res = window.confirm('¿Seguro que desea aceptar la reserva?');
+		if (res) {
+			this.reservaService.acceptBooking(id).subscribe(() => {
+				window.location.reload()
+			})
+		}
 	}
 
 	deleteBusiness(id) {

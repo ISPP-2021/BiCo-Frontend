@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError as observableThrowError } from 'rxjs';
 import { Reserva } from 'src/app/model/reserva.interface';
-import { map, catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { JWT_NAME } from '../authentication-service/authentication.service';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class ReservaService {
 	private headers = {
 		headers: {
 			Authorization: this.token,
-		},
+		}
 	};
 
 	create(id: Number, reserva: Reserva): Observable<Reserva> {
@@ -46,7 +46,7 @@ export class ReservaService {
 
 	acceptBooking(id: number): Observable<Reserva> {
 		return this.http
-			.put<Reserva>(this.url + 'bookings/' + id + '/complete', this.headers)
+			.put<Reserva>(this.url + 'bookings/' + id + '/complete', {}, this.headers)
 			.pipe(catchError(this.errorHandler));
 	}
 }
