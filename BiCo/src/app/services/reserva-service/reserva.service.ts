@@ -42,4 +42,10 @@ export class ReservaService {
       .delete<Reserva>(this.url + 'bookings/' + id + '/cancel', this.headers)
       .pipe(catchError(this.errorHandler));
   }
+
+  acceptBooking(id: number): Observable<Reserva> {
+    return this.http
+      .put<Reserva>(this.url + 'bookings/' + id + '/complete', this.headers)
+      .pipe(catchError(this.errorHandler));
+  }
 }

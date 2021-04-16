@@ -53,6 +53,9 @@
                         <br>
                         <b>Fecha: </b>{{booking.bookDate | date:'dd-MM-yyyy'}}
                       </mat-card-content>
+                      <button mat-mini-fab (click)="cancelBooking(booking.id)">
+                        <mat-icon>close</mat-icon>
+                      </button>
                     </mat-card>
                   </ng-container>
                 </mat-tab>
