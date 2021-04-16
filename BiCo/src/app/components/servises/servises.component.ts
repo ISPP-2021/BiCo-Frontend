@@ -77,26 +77,31 @@ export class ServisesComponent implements OnInit {
     return this.formBuilder.group({
 			name: ['Solo Reserva', [Validators.required]],
 			description: ['Reservar en el negocio', [Validators.required]],
-			price: [0, [Validators.required, Validators.min(0)]],
+			price: [0.01, [Validators.required, Validators.min(0.01)]],
 			duration: [0, [Validators.required, Validators.min(0)]],
       capacity: [0, [Validators.required, Validators.min(0)]],
       deposit: [0, [Validators.required, Validators.min(0)]],
-      tax: ['',[Validators.required, Validators.min(0), Validators.max(1)]],
+      tax: [0,[Validators.required, Validators.min(0), Validators.max(1)]],
+      bookings: this.formBuilder.array([])
 		});
   }
 
     save() {
     if(this.form.valid){
-    let servises = this.serviceArray.value;
     if( this.serviceArray.length===0){
        this.serviceArray.push(this.defaultService())
+       let serviceDefault = this.serviceArray.value[0]
+       this.negocioService.updateServices(this.negocioId,serviceDefault).subscribe()
+      }else{
+        let servises = this.serviceArray.value;
+        for (let index = 0; index < servises.length; index++) {
+          const service = servises[index];
+          service.bookings = []
+          service.business = null
+          this.negocioService.updateServices(this.negocioId,service).subscribe()
+        }
       }
-    for (let index = 0; index < servises.length; index++) {
-      const service = servises[index];
-      service.bookings = []
-      service.business = null
-      this.negocioService.updateServices(this.negocioId,service).subscribe()
-    }
+
 
     this.router.navigate(['negocio-edit/'+this.negocioId])
 
