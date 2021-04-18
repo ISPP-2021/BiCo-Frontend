@@ -10,12 +10,12 @@
           <mat-hint *ngIf="registerForm.controls.lastname.errors">El campo apellidos es obligatorio</mat-hint>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="DNI" formControlName="dni">
-          <mat-hint *ngIf="registerForm.controls.dni.errors">El campo DNI es obligatorio</mat-hint>
+          <input matInput placeholder="00000000A" formControlName="dni">
+          <mat-hint *ngIf="registerForm.controls.dni.errors">El campo DNI es obligatorio. Debe tener 8 dígitos y 1 letra</mat-hint>
         </mat-form-field>
  
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Email" formControlName="email">
+          <input matInput placeholder="example@example.example" formControlName="email">
           <mat-hint *ngIf="registerForm.controls.email.errors">El campo email es obligatorio</mat-hint>
         </mat-form-field>
       <div formGroupName="user">
@@ -28,10 +28,10 @@
             <input matInput type="password" placeholder="Contraseña" formControlName="password">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput type="password" placeholder="Repite Contraseña" formControlName="confirmPassword">
+            <input matInput type="password" placeholder="Repite contraseña" formControlName="confirmPassword">
           </mat-form-field>
       </div>
-      <button mat-raised-button [disabled]="!registerForm.valid" type="submit">Soy usuario</button>
+      <button mat-raised-button [disabled]="!registerForm.valid" type="submit" >Soy usuario</button>
       <button mat-raised-button [disabled]="!registerForm.valid" type="button" (click)="registerOwner()">Soy propietario</button>
         <br>
         <small style="color: brown;" *ngIf="registerForm.get('user.password').hasError('passwordInvalid')">La contraseña no
