@@ -28,11 +28,11 @@
             <input matInput type="password" placeholder="Contraseña" formControlName="password">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput type="password" placeholder="Repite Contraseña" formControlName="confirmPassword">
+            <input matInput type="password" placeholder="Repite contraseña" formControlName="confirmPassword">
           </mat-form-field>
       </div>
-      <button mat-raised-button [disabled]="!registerForm.valid" type="submit">Soy usuario</button>
-      <button mat-flat-button [disabled]="!registerForm.valid" type="button" (click)="registerOwner()" class="propietario">Soy propietario</button>
+      <button mat-raised-button [disabled]="!registerForm.valid" type="submit" >Soy usuario</button>
+      <button mat-raised-button [disabled]="!registerForm.valid" type="button" (click)="registerOwner()">Soy propietario</button>
         <br>
         <small style="color: brown;" *ngIf="registerForm.get('user.password').hasError('passwordInvalid')">La contraseña no
           contiene número</small>
