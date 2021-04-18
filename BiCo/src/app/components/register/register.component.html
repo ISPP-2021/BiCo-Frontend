@@ -10,12 +10,12 @@
           <mat-hint *ngIf="registerForm.controls.lastname.errors">El campo apellidos es obligatorio</mat-hint>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="DNI" formControlName="dni">
+          <input matInput placeholder="00000000A" formControlName="dni">
           <mat-hint *ngIf="registerForm.controls.dni.errors">El campo DNI es obligatorio</mat-hint>
         </mat-form-field>
  
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Email" formControlName="email">
+          <input matInput placeholder="example@example.example" formControlName="email">
           <mat-hint *ngIf="registerForm.controls.email.errors">El campo email es obligatorio</mat-hint>
         </mat-form-field>
       <div formGroupName="user">
