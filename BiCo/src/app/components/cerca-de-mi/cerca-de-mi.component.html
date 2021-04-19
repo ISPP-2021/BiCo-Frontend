@@ -29,7 +29,7 @@
       <mat-card-content *ngFor="let servicio of negocio.services">
         <p>{{servicio.name}} - {{servicio.price}} €</p>
       </mat-card-content>
-      <button mat-raised-button routerLink="/reservar/{{negocio.id}}">Reservar</button>
+      <button *ngIf="rol === 'user'" mat-raised-button routerLink="/reservar/{{negocio.id}}">Reservar</button>
     </mat-card>
   </div>
 
