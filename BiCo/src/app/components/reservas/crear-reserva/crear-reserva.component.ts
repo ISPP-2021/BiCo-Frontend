@@ -77,7 +77,7 @@ export class CrearReservaComponent implements OnInit {
       let servicios = this.form.value.services;
       for (let servicio of servicios) {
         reserva = {
-          bookDate: this.form.value.bookDate,
+          bookDate: this.form.value.bookDate,//.toISOString().substr(0, 16),
           emisionDate: this.form.value.emisionDate,
           status: this.form.value.status,
         };
@@ -85,7 +85,7 @@ export class CrearReservaComponent implements OnInit {
 
         //this.router.navigate(['reservas']);
       }
-      window.location.replace('reservas')
+      //window.location.replace('reservas')
     }
   }
 
@@ -97,7 +97,7 @@ export class CrearReservaComponent implements OnInit {
         this.nombre = servicio.name;
         this.servicioId = servicio.id;
         this.description = servicio.description;
-        (this.bookDate = this.form.value.bookDate),
+        (this.bookDate = this.form.value.bookDate.toISOString().substr(0, 16)),
           (this.emisionDate = new Date().toISOString().substr(0, 16)),
           (this.status = this.form.value.status);
       }

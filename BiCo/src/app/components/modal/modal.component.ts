@@ -50,8 +50,10 @@ export class ModalComponent implements OnInit {
       emisionDate: this.emisionDate,
       status: this.status,
     };
-    this.reservaService.create(this.servicio, reserva).subscribe();
-    window.location.replace('/reservas');
+    this.reservaService.create(this.servicio, reserva).subscribe(()=>{
+     // window.location.replace('/reservas');
+    });
+
   }
 
   cancelar(id: string): void {
