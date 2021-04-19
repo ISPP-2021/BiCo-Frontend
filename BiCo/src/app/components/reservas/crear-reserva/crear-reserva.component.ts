@@ -81,9 +81,11 @@ export class CrearReservaComponent implements OnInit {
           emisionDate: this.form.value.emisionDate,
           status: this.form.value.status,
         };
-        this.reservaService.create(servicio.id, reserva).subscribe();
+        this.reservaService.create(servicio.id, reserva).subscribe(()=>{
+          this.router.navigate(['reservas']);
+        });
 
-        //this.router.navigate(['reservas']);
+        //
       }
       //window.location.replace('reservas')
     }
