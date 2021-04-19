@@ -35,6 +35,7 @@ class CustomValidators {
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
+  err: string;
 
   constructor(
     private authService: AuthenticationService,
@@ -69,17 +70,28 @@ export class RegisterComponent implements OnInit {
     this.registerForm.get('user.confirmPassword').disable()
     this.authService.registerOwner(this.registerForm.value).pipe(
       map(user => this.router.navigate(['login']))
-    ).subscribe()
+      ).subscribe(data=>{  
+
+      }, error => {
+        this.err= error.error.title
+        this.registerForm.get('user.confirmPassword').enable()
+      })
   }
 
   onSubmit(){
     if(this.registerForm.invalid) {
       return;
     }
+
     this.registerForm.get('user.confirmPassword').disable()
-    this.authService.registerUser(this.registerForm.value).pipe(
+    let auth = this.authService.registerUser(this.registerForm.value).pipe(
       map(user => this.router.navigate(['login']))
-    ).subscribe()
+      ).subscribe(data=>{  
+
+      }, error => {
+        this.err= error.error.title
+        this.registerForm.get('user.confirmPassword').enable()
+      })
   }
 
 }
