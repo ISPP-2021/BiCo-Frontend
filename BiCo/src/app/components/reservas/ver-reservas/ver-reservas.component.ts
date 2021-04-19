@@ -31,7 +31,7 @@ export class VerReservasComponent implements OnInit {
 	ngOnInit(): void { }
 
 	cancelBooking(id: number) {
-		let res = window.confirm('¿Seguro de que desea cancelar la reserva?');
+		let res = window.confirm('¿Seguro que desea cancelar la reserva?');
 		if (res) {
 			this.bookingService.cancelBooking(id).subscribe();
 			window.location.reload();

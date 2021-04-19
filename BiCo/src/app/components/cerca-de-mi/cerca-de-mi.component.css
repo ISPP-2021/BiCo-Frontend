@@ -2,11 +2,13 @@
   background-color: #fbe5da;
   width: 50%;
   margin: 2%;
+  
 }
 
 .negocio {
   background-color: #e1ced4;
-  width: 60%;
+  width: 60%; 
+  margin-bottom: 1%;
 }
 
 .mat-mini-fab {

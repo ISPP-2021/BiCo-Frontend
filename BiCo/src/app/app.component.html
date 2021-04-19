@@ -28,13 +28,13 @@
           <mat-icon>business</mat-icon>Mis negocios
         </button>
         <button *ngIf="rol === null" mat-raised-button routerLink="/login">
-          <mat-icon>login</mat-icon>Inicio sesión
+          <mat-icon>login</mat-icon> Inicio sesión
         </button>
         <button *ngIf="rol === null" mat-raised-button routerLink="/register">
-          <mat-icon>person_add_alt_1</mat-icon>Registro
+          <mat-icon>person_add_alt_1</mat-icon> Registro
         </button>
         <button *ngIf="rol != null" mat-raised-button (click)="logout()">
-          <mat-icon>logout</mat-icon>Cerrar sesión
+          <mat-icon>logout</mat-icon> Cerrar sesión
         </button>
       </div>
     </mat-toolbar-row>
@@ -63,16 +63,16 @@
           <mat-icon>calendar_today</mat-icon>Mis reservas
         </a>
         <a *ngIf="rol === null" mat-list-item href="/login">
-          <mat-icon>login</mat-icon>Inicio sesión
+          <mat-icon>login</mat-icon> Inicio sesión
         </a>
         <a *ngIf="rol === null" mat-list-item href="/register">
-          <mat-icon>person_add_alt_1</mat-icon>Registro
+          <mat-icon>person_add_alt_1</mat-icon> Registro
         </a>
         <a *ngIf="rol != null" mat-list-item (click)="logout()">
-          <mat-icon>logout</mat-icon>Cerrar sesión
+          <mat-icon>logout</mat-icon> Cerrar sesión
         </a>
         <a (click)="sidenav.toggle()" mat-list-item>
-          <mat-icon>close</mat-icon>Cerrar
+          <mat-icon>close</mat-icon> Cerrar
         </a>
       </mat-nav-list>
     </mat-sidenav>
