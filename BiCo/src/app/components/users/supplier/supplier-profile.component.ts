@@ -55,19 +55,19 @@ export class SupplierProfileComponent implements OnInit {
     let res = window.confirm("¿Esta seguro de que desea cambiar su tipo de suscripción?")
     if(res){
       if(subscription==='FREE'){
-        console.log("Hola")
-       var sessionId;
+        var sessionId;
         this.supplierService.change(this.priceIdPremium).subscribe(r =>{
           sessionId = r['sessionId']
           this.checkout(sessionId)
           
          // stripe.redirectToCheckout
         });
-        console.log("Adios")
-        console.log(sessionId)
       }else{
-        var sessionId2 = this.supplierService.change(this.priceIdFree).subscribe(r =>{});
-        console.log(sessionId2)
+        var sessionId;
+        this.supplierService.change(this.priceIdFree).subscribe(r =>{
+          sessionId = r['sessionId']
+          this.checkout(sessionId)
+        });
       }
   }
     

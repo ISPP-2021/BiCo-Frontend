@@ -25,7 +25,7 @@ export class AuthenticationService {
 		private jwtHelper: JwtHelperService,
 		private router: Router) { }
 
-	private url: string = 'http://bico-despliegue2.herokuapp.com';
+	private url: string = 'http://bico-despliegue3.herokuapp.com';
   private url2: string = 'http://localhost:8080';
 	// private headers = {
 	// 	headers: {
@@ -34,7 +34,7 @@ export class AuthenticationService {
 	// };
 	login(loginForm: LoginForm) {
 
-		return this.http.post<User>(`${this.url2}/users/login`, { username: loginForm.user, password: loginForm.password }).pipe(
+		return this.http.post<User>(`${this.url}/users/login`, { username: loginForm.user, password: loginForm.password }).pipe(
 			map((usuario) => {
 
 				localStorage.setItem(JWT_NAME, usuario.token);
@@ -63,7 +63,7 @@ export class AuthenticationService {
 	}
 
   registerOwner(body) {
-	  return this.http.post(this.url2+'/users/signup/suppliers', body)
+	  return this.http.post(this.url+'/users/signup/suppliers', body)
 
 	}
 
