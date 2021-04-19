@@ -1,13 +1,9 @@
 <div *ngIf="(negocio$ | async) as negocio">
   <div *ngIf="rol === 'owner' else error">
 
-    
+
     <form class="example-form" [formGroup]="form" (ngSubmit)="save()">
       <h2 style="text-align: center;">Editar negocio</h2>
-      <!-- <div>
-      <p>Imagen del Negocio:</p>
-      <img mat-card-image src="{{negocio.foto}}" alt="Imagen">
-    </div>-->
       <br>
       <div>
         <h4>Datos negocio</h4>
@@ -39,7 +35,7 @@
         <mat-form-field class="example-full-width">
           <mat-label>Límite de reservas automáticas (valor entre 0-99+)</mat-label>
           <input matInput type="number" placeholder="Seleccione el número de reservas automáticas"
-            formControlName="limitAutomated">
+            formControlName="gas">
         </mat-form-field>
         <br>
         <mat-form-field class="example-full-width">

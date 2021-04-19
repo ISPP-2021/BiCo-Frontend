@@ -85,6 +85,19 @@
       </div>
     </mat-card-content>
   </mat-card>
-
+  <div *ngIf="supplier.business.length === 0 ">
+    <div fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="2%">
+      <mat-card class="crearNegocio">
+        <mat-card-header>
+          <mat-card-title>Añade un negocio</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p style="text-align: center;">Actualmente no tiene ningun negocio registrado. Añada un negocio aquí: </p>
+          <button mat-raised-button color="primary" routerLink="/negocio-create">Añadir negocio</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
 </div>
+
 <router-outlet></router-outlet>

@@ -11,7 +11,7 @@ import { JWT_NAME } from '../authentication-service/authentication.service';
 export class SupplierService {
 	token: string = localStorage.getItem(JWT_NAME);
 	constructor(private http: HttpClient) { }
-	private url: string = 'http://bico-despliegue3.herokuapp.com/';
+	private url: string = 'http://bico-despliegue2.herokuapp.com/';
 	private url2: string = 'http://localhost:8080/';
 	private headers = {
 		headers: {
@@ -23,9 +23,9 @@ export class SupplierService {
 		return this.http
 			.get<Supplier>(this.url + 'users/profile', this.headers)
 			.pipe(map((supplier: Supplier) => supplier));
-		
+
 	}
-	
+
 	change(priceId): Observable<String> {
 		console.log("hasta luego")
 		console.log(priceId)

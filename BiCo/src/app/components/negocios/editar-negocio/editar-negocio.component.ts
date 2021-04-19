@@ -37,12 +37,12 @@ export class EditarNegocioComponent implements OnInit {
   ngOnInit(): void{
     this.negocioService.findOne(this.negocioId).subscribe(negocio=>{
       this.form = this.formBuilder.group({
-      name: [negocio.name, [Validators.required]],
+      name: [negocio.name, Validators.required],
       address: [negocio.address, Validators.required],
       businessType: [negocio.businessType, [Validators.required]],
       option:this.formBuilder.group({
         automatedAccept: [negocio.option.automatedAccept, [Validators.required]],
-        limitAutomated: [{value:negocio.option.limitAutomated, disabled:!negocio.option.automatedAccept},  [Validators.required,, Validators.min(1)]],
+        gas: [{value:negocio.option.gas, disabled:!negocio.option.automatedAccept},  [Validators.required,, Validators.min(1)]],
         defaultDeposit: [negocio.option.defaultDeposit, [Validators.required,Validators.min(0), Validators.max(1)]],
         depositTimeLimit: [negocio.option.depositTimeLimit, [Validators.required, Validators.min(1)]]
         }),
@@ -60,15 +60,15 @@ export class EditarNegocioComponent implements OnInit {
   save() {
     if(this.form.valid){
     this.negocioService.update(this.negocioId,this.form.value).subscribe()
-    this.router.navigate(['home'])
+    this.router.navigate(['mis-negocios'])
     }
   }
 
   disable(){
     if(this.form.get('option.automatedAccept').value==true){
-      this.form.get('option.limitAutomated').enable()
+      this.form.get('option.gas').enable()
     }else{
-      this.form.get('option.limitAutomated').disable()
+      this.form.get('option.gas').disable()
     }
   }
 }
