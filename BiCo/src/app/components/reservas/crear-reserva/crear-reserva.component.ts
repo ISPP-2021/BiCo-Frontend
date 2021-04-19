@@ -2,11 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ReservaService } from 'src/app/services/reserva-service/reserva.service';
 import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
-import { Negocio } from 'src/app/model/negocio.interface';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
 import { Reserva } from 'src/app/model/reserva.interface';
 
 @Component({
@@ -15,6 +12,9 @@ import { Reserva } from 'src/app/model/reserva.interface';
   styleUrls: ['./crear-reserva.component.css'],
 })
 export class CrearReservaComponent implements OnInit {
+  public value: Date = new Date();
+  public format = 'dd/MM/yyyy HH:mm';
+  public minDate: Date = new Date()
   form: FormGroup;
   serviciosReservados: any;
   errorMessage = '';
@@ -41,11 +41,12 @@ export class CrearReservaComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.minDate.setMinutes(this.value.getMinutes() + 30)
     this.negocioService
       .findOne(this.negocioId)
       .subscribe((data) => (this.negocio = data));
     this.form = this.formBuilder.group({
-      bookDate: ['', [Validators.required]],
+      bookDate: [null, [Validators.required]],
       emisionDate: [''],
       status: ['IN_PROGRESS'],
       services: this.formBuilder.array([this.addServiceGroup()]),
@@ -81,8 +82,10 @@ export class CrearReservaComponent implements OnInit {
           status: this.form.value.status,
         };
         this.reservaService.create(servicio.id, reserva).subscribe();
-        this.router.navigate(['reservas']);
+
+        //this.router.navigate(['reservas']);
       }
+      window.location.replace('reservas')
     }
   }
 

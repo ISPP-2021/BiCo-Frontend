@@ -26,7 +26,7 @@ export interface Negocio {
   option?: {
     id?: Number;
     automatedAccept?: boolean;
-    limitAutomated?: Number;
+    gas?: Number;
     defaultDeposit?: Number;
     depositTimeLimit?: Number;
     new?: boolean;
