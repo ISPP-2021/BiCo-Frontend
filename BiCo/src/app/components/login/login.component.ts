@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 export class LoginComponent implements OnInit {
 
 	loginForm: FormGroup;
+  err: string;
 
 	constructor(
 		private authService: AuthenticationService,
@@ -30,10 +31,13 @@ export class LoginComponent implements OnInit {
 		if (this.loginForm.invalid) {
 			return;
 		}
-		this.authService.login(this.loginForm.value).pipe(
+		let auth = this.authService.login(this.loginForm.value).pipe(
 			map(token => this.router.navigate(['home']))
-		).subscribe()
-		console.log(this.loginForm.value)
+		).subscribe(data=>{
+
+    }, error => {
+      this.err= error.error.detail
+    })
 
 		this.router.navigate(['home']);
 

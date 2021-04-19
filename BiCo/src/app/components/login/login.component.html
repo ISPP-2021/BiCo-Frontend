@@ -7,6 +7,7 @@
         <mat-form-field>
           <input matInput placeholder="Usuario" formControlName="user">
           <mat-hint *ngIf="loginForm.controls.user.errors">El nombre de usuario es obligatorio</mat-hint>
+          <mat-hint *ngIf="err">{{err}}</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
