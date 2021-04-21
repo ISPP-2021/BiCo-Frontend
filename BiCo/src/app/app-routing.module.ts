@@ -16,6 +16,7 @@ import { VerReservasComponent } from './components/reservas/ver-reservas/ver-res
 import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
 import { OwnerGuard } from './guards/owner/owner.guard';
 import { OwnerBusinessGuard } from './guards/ownerBusiness/owner-business.guard';
+import { ConsumerGuard } from './guards/consumer/consumer.guard';
 
 const routes: Routes = [
   {
@@ -64,6 +65,7 @@ const routes: Routes = [
   {
     path: 'reservas',
     component: VerReservasComponent,
+    canActivate: [ConsumerGuard]
   },
   {
     path: 'services-edit/:id',
@@ -78,10 +80,12 @@ const routes: Routes = [
   {
     path: 'reservar/:id',
     component: CrearReservaComponent,
+    canActivate: [ConsumerGuard]
   },
   {
     path: 'buscar',
     component: BuscadorNegocioComponent,
+    canActivate: [ConsumerGuard]
   },
 ];
 
