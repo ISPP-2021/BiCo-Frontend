@@ -14,6 +14,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { BuscadorNegocioComponent } from './components/buscador-negocio/buscador-negocio.component';
 import { VerReservasComponent } from './components/reservas/ver-reservas/ver-reservas.component';
 import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
+import { OwnerGuard } from './guards/owner/owner.guard';
+import { OwnerBusinessGuard } from './guards/ownerBusiness/owner-business.guard';
 
 const routes: Routes = [
   {
@@ -39,14 +41,17 @@ const routes: Routes = [
   {
     path: 'negocio-edit/:id',
     component: EditarNegocioComponent,
+    canActivate: [OwnerBusinessGuard]
   },
   {
     path: 'negocio-create',
     component: CrearNegocioComponent,
+    canActivate: [OwnerGuard]
   },
   {
     path: 'mis-negocios',
     component: MisNegociosComponent,
+    canActivate: [OwnerGuard]
   },
   {
     path: 'negocio/:id',
@@ -63,6 +68,7 @@ const routes: Routes = [
   {
     path: 'services-edit/:id',
     component: ServisesComponent,
+    canActivate: [OwnerGuard]
   },
   {
     path: '',
