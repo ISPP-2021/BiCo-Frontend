@@ -12,6 +12,7 @@ export class CercaDeMiComponent implements OnInit {
   negocios = [];
   errorMessage = '';
   token: string = localStorage.getItem(JWT_NAME);
+  rol = localStorage.getItem('rol')
 
   constructor(
     private negocioService: NegocioService,

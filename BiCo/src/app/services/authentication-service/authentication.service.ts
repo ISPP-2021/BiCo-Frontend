@@ -18,8 +18,6 @@ export const JWT_NAME = 'token';
   providedIn: 'root',
 })
 export class AuthenticationService {
-	// http://localhost:8080/users/login
-
 	constructor(
 		private http: HttpClient,
 		private jwtHelper: JwtHelperService,
@@ -27,11 +25,7 @@ export class AuthenticationService {
 
 	private url: string = 'http://bico-despliegue2.herokuapp.com';
   private url2: string = 'http://localhost:8080';
-	// private headers = {
-	// 	headers: {
-	// 	Authorization: this.token,
-	// 	},
-	// };
+
 	login(loginForm: LoginForm) {
 
 		return this.http.post<User>(`${this.url}/users/login`, { username: loginForm.user, password: loginForm.password }).pipe(

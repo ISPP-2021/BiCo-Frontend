@@ -26,9 +26,11 @@ export class VerReservasComponent implements OnInit {
 		private activatedRoute: ActivatedRoute,
 		private consumerService: ConsumerService,
 		private bookingService: ReservaService
-	) { }
+	) {  }
 
-	ngOnInit(): void { }
+	ngOnInit(): void {
+
+  }
 
 	cancelBooking(id: number) {
 		let res = window.confirm('¿Seguro que desea cancelar la reserva?');

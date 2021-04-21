@@ -52,6 +52,8 @@ import { VerNegocioBookingComponent } from './components/negocios/ver-negocio-bo
 import { ModalComponent } from './components/modal/modal.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+
 
 
 @NgModule({
@@ -104,6 +106,7 @@ import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-neg
     NgxStripeModule.forRoot(
       'pk_test_51IeGm1A32JKQZm0zQ9rDl6vL1KuiQYaGHiszd0nJ4dUDy5AW3K9tmHjJLdbdxbsPivHTtQ5JR7uvNlo1tAP1Of6v00oarGizZJ'
     ),
+    DateInputsModule,
   ],
   entryComponents: [ModalComponent],
   providers: [

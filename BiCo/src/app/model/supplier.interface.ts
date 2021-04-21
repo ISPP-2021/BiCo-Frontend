@@ -4,6 +4,7 @@ export interface Supplier {
   lastname?: String;
   dni?: String;
   email?: String;
+  subscription?: String;
   user?: {
     username?: String;
     password?: String;

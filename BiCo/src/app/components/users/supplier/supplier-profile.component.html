@@ -10,6 +10,9 @@
             <p><b>Apellidos:</b> {{supplier.lastname}}</p>
             <p><b>DNI:</b> {{supplier.dni}}</p>
             <p><b>Email:</b> {{supplier.email}}</p>
+            <p><b>Subscripción:</b> {{supplier.subscription}}</p>
+            <button id="checkout" mat-raised-button color="primary" (click)="changeSubscription(supplier.subscription)">Cambiar Tarifa</button>
+
         </mat-card-content>
     </mat-card>
 </div>
