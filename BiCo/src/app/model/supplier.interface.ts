@@ -1,3 +1,5 @@
+import { Negocio } from "./negocio.interface";
+
 export interface Supplier {
   id?: Number;
   name?: String;
@@ -16,7 +18,7 @@ export interface Supplier {
       new?: boolean;
     };
   };
-  business: {
+  business: Array<Negocio>/* {
     id: Number;
     name: String;
     address: String;
@@ -50,6 +52,6 @@ export interface Supplier {
 
     }
     new?: boolean;
-  }
+  }*/
   new?: boolean;
 }
