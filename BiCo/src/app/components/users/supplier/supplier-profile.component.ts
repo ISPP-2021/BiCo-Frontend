@@ -26,12 +26,12 @@ export class SupplierProfileComponent implements OnInit {
       const supplierId: number = parseInt(params['id']);
 
       return this.supplierService
-        .findOne(supplierId)
+        .findOne()
         .pipe(map((supplier: Supplier) => supplier));
-        
+
     })
   );
-  
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -41,14 +41,14 @@ export class SupplierProfileComponent implements OnInit {
 
    checkout = async(sessionId) => {
     (await this.stripe).redirectToCheckout({
-  
+
       sessionId: sessionId
 
     })
     .then(handleResult => {
       console.log("dani tonto")
     });
-  }; 
+  };
 
 
   changeSubscription(subscription){
@@ -59,7 +59,7 @@ export class SupplierProfileComponent implements OnInit {
         this.supplierService.change(this.priceIdPremium).subscribe(r =>{
           sessionId = r['sessionId']
           this.checkout(sessionId)
-          
+
          // stripe.redirectToCheckout
         });
       }else{
@@ -70,7 +70,7 @@ export class SupplierProfileComponent implements OnInit {
         });
       }
   }
-    
+
   }
   ngOnInit(): void {
 

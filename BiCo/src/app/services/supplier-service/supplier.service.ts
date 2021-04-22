@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class SupplierService {
 	token: string = localStorage.getItem(JWT_NAME);
 	constructor(private http: HttpClient, private router: Router) { }
-	private url: string = 'http://bico-despliegue2.herokuapp.com/';
+	private url: string = 'https://bico-despliegue2.herokuapp.com/';
 	private url2: string = 'http://localhost:8080/';
 	private headers = {
 		headers: {
@@ -20,7 +20,7 @@ export class SupplierService {
 		},
 	};
 
-	findOne(id: Number): Observable<Supplier> {
+	findOne(): Observable<Supplier> {
 		return this.http
 			.get<Supplier>(this.url + 'users/profile', this.headers)
 			.pipe(map((supplier: Supplier) => supplier));
@@ -34,7 +34,7 @@ export class SupplierService {
 	}
 
   isOwnerBusiness(id: Number): Promise<boolean>{
-    return this.findOne(1).pipe(
+    return this.findOne().pipe(
       map((user) => {
         if (user.business.find(x => x.id == id)) {
           return true;
