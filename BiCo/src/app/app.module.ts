@@ -45,7 +45,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DatePipe } from '@angular/common';
@@ -55,8 +55,6 @@ import { ModalComponent } from './components/modal/modal.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
-
-
 
 @NgModule({
   declarations: [

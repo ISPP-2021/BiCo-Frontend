@@ -1,4 +1,4 @@
-<mat-toolbar>
+  <mat-toolbar>
     <mat-toolbar-row>
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm="true">
         <mat-icon>menu</mat-icon>
@@ -15,10 +15,10 @@
           <mat-icon>search</mat-icon>
         </button>
         <button *ngIf="rol === 'owner'" mat-mini-fab  matTooltip="Mi perfil" routerLink="/ownerProfile">
-          <mat-icon>account_circle</mat-icon>Mi perfil
+          <mat-icon>account_circle</mat-icon>
         </button>
         <button *ngIf="rol === 'user'"  mat-mini-fab  matTooltip="Mi perfil" routerLink="/userProfile">
-          <mat-icon>perm_identity</mat-icon>Mi perfil
+          <mat-icon>perm_identity</mat-icon>
         </button>
         <button *ngIf="rol === 'owner'" mat-mini-fab  matTooltip="Añadir un negocio" routerLink="/negocio-create">
           <mat-icon>note_alt</mat-icon>
@@ -42,17 +42,17 @@
     </mat-toolbar-row>
   </mat-toolbar>
 
-  <mat-sidenav-container fxFlexFill [hasBackdrop]="true">
-    <mat-sidenav #sidenav>
+  <mat-sidenav-container fxFlexFill [hasBackdrop]="true" style="position: absolute;" >
+    <mat-sidenav #sidenav mode="over">
       <mat-nav-list>
 
         <a *ngIf="rol === 'user'" mat-list-item href="/buscar">
           <mat-icon>search</mat-icon>Buscar negocios
         </a>
-        <a *ngIf="rol === 'owner'" mat-list-item href="/supplier/1">
+        <a *ngIf="rol === 'owner'" mat-list-item href="/ownerProfile">
           <mat-icon>account_circle</mat-icon>Mi Perfil
         </a>
-        <a *ngIf="rol === 'user'" mat-list-item href="/consumer/1">
+        <a *ngIf="rol === 'user'" mat-list-item href="/userProfile">
           <mat-icon>perm_identity</mat-icon>Mi Perfil
         </a>
         <a *ngIf="rol === 'owner'" mat-list-item href="/negocio-create">
@@ -78,7 +78,16 @@
         </a>
       </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content fxFlexFill>
-      <router-outlet></router-outlet>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+        <footer>
+          <div class="footer">
+            <mat-toolbar>
+              <button mat-button routerLink="/home"><img src="./assets/favicon.png" style="width:2em;"></button>
+              <button mat-button routerLink="/home">BiCo</button>
+            </mat-toolbar>
+          </div>
+        </footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
+

@@ -4,20 +4,21 @@
 .mat-toolbar {
   background-color: #fd7487;
   position: sticky;
-  position: -webkit-sticky; 
+  position: -webkit-sticky;
   top: 0;
-  z-index: 1000; 
+  z-index: 1000;
   width: 100%;
-  font: "Abril Fatface";
 }
-.home{
+.home {
   margin-left: 45%;
   transform: translateX(-45%);
+}
+button {
+  font-family: "Abril Fatface";
 }
 .mat-button {
   background-color: transparent;
   font-size: 100%;
-
 }
 .mat-mini-fab {
   background-color: #42c6ae;
@@ -30,4 +31,14 @@
 }
 .mat-sidenav-content {
   background-color: white;
+}
+
+footer {
+  background-color: #fd7487;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.footer {
+  margin-left: 42%;
 }
