@@ -17,19 +17,23 @@ import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-neg
 import { OwnerGuard } from './guards/owner/owner.guard';
 import { OwnerBusinessGuard } from './guards/ownerBusiness/owner-business.guard';
 import { ConsumerGuard } from './guards/consumer/consumer.guard';
+import { AuthenticatedGuard } from './guards/auth/authenticated.guard';
 
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [AuthenticatedGuard]
   },
   {
-    path: 'consumer/:id',
+    path: 'userProfile',
     component: ConsumerProfileComponent,
+    canActivate: [AuthenticatedGuard]
   },
   {
-    path: 'supplier/:id',
+    path: 'ownerProfile',
     component: SupplierProfileComponent,
+    canActivate: [AuthenticatedGuard]
   },
   {
     path: 'login',
@@ -57,10 +61,12 @@ const routes: Routes = [
   {
     path: 'negocio/:id',
     component: VerNegocioComponent,
+    canActivate: [AuthenticatedGuard]
   },
   {
     path: 'negocioByReserva/:id',
     component: VerNegocioBookingComponent,
+    canActivate: [AuthenticatedGuard]
   },
   {
     path: 'reservas',

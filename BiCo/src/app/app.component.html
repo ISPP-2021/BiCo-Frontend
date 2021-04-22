@@ -14,11 +14,11 @@
         <button *ngIf="rol === 'user'" mat-mini-fab matTooltip="Buscar negocios o servicios" routerLink="/buscar">
           <mat-icon>search</mat-icon>
         </button>
-        <button *ngIf="rol === 'owner'" mat-mini-fab  matTooltip="Mi perfil" routerLink="/supplier/1">
-          <mat-icon>account_circle</mat-icon>
+        <button *ngIf="rol === 'owner'" mat-mini-fab  matTooltip="Mi perfil" routerLink="/ownerProfile">
+          <mat-icon>account_circle</mat-icon>Mi perfil
         </button>
-        <button *ngIf="rol === 'user'" mat-mini-fab  matTooltip="Mi perfil" routerLink="/consumer/1">
-          <mat-icon>perm_identity</mat-icon>
+        <button *ngIf="rol === 'user'"  mat-mini-fab  matTooltip="Mi perfil" routerLink="/userProfile">
+          <mat-icon>perm_identity</mat-icon>Mi perfil
         </button>
         <button *ngIf="rol === 'owner'" mat-mini-fab  matTooltip="Añadir un negocio" routerLink="/negocio-create">
           <mat-icon>note_alt</mat-icon>
