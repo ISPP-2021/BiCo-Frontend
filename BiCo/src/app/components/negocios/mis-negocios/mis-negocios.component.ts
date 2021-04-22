@@ -19,7 +19,7 @@ export class MisNegociosComponent implements OnInit {
 			const supplierId: number = parseInt(params['id']);
 
 			return this.supplierService
-				.findOne(supplierId)
+				.findOne()
 				.pipe(map((supplier: Supplier) => supplier));
 		})
 	);

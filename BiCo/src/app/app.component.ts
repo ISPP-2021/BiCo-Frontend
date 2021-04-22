@@ -10,9 +10,6 @@ import { AuthenticationService } from './services/authentication-service/authent
 export class AppComponent {
 
 	constructor(private router: Router, private authService: AuthenticationService) {
-    if(!this.authService.isAuthenticated){
-      localStorage.clear;
-    }
    }
 
 	rol = localStorage.getItem("rol")
@@ -24,7 +21,7 @@ export class AppComponent {
 
 	logout() {
 		this.authService.logout();
-		window.location.replace("/home");
+		window.location.replace("/login");
 	}
 
 }

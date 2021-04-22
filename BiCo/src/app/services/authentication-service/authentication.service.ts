@@ -23,7 +23,7 @@ export class AuthenticationService {
 		private jwtHelper: JwtHelperService,
 		private router: Router) { }
 
-	private url: string = 'http://bico-despliegue2.herokuapp.com';
+	private url: string = 'https://bico-despliegue2.herokuapp.com';
   private url2: string = 'http://localhost:8080';
 
 	login(loginForm: LoginForm) {
@@ -61,8 +61,11 @@ export class AuthenticationService {
 
 	}
 
-  isAuthenticated(): boolean {
+  isTokenExpired(): boolean {
     const token = localStorage.getItem(JWT_NAME);
-    return !this.jwtHelper.isTokenExpired(token);
+    if(token === null){
+      return false;
+    }
+    return this.jwtHelper.isTokenExpired(token);
   }
 }
