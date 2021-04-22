@@ -1,4 +1,21 @@
 <div *ngIf="(consumer$ | async) as consumer" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="2%">
+  <mat-card class="reserva" *ngIf="consumer.bookings.length === 0">
+    <mat-card-header>
+      <mat-card-title>No tiene ninguna reserva aún</mat-card-title>
+      <mat-card-subtitle>Comience buscando un servicio o yendo a la pagina de inicio</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <ng-container>
+        <button mat-mini-fab color="warn" routerLink="/home">
+          <mat-icon>home</mat-icon>
+        </button>
+        <button mat-mini-fab color="warn" routerLink="/buscar">
+          <mat-icon>search</mat-icon>
+        </button>
+      </ng-container>
+    </mat-card-content>
+  </mat-card>
+
   <mat-card class="reserva" *ngFor="let booking of consumer.bookings">
     <ng-container *ngIf="booking.status === 'IN_PROGRESS'">
       <button mat-mini-fab color="warn" (click)="cancelBooking(booking.id)">
@@ -18,7 +35,7 @@
       <mat-card-subtitle *ngIf="booking.status === 'REJECTED'"> Rechazada por propietario</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p>Fecha de reserva: {{booking.bookDate | date:'dd-MM-yyyy HH:mm' }}</p>
+      <p>Fecha de reserva: {{booking.bookDate | date:'dd-MM-yyyy HH:mm' : '-000'}}</p>
       <p>Servicio reservado: {{booking.servise}}</p>
     </mat-card-content>
   </mat-card>

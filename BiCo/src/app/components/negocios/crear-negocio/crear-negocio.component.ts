@@ -30,16 +30,16 @@ export class CrearNegocioComponent implements OnInit {
 	supplier$: Observable<Supplier> = this.activatedRoute.params.pipe(
 		switchMap((params: Params) => {
 		  const supplierId: number = parseInt(params['id']);
-	
+
 		  return this.supplierService
-			.findOne(supplierId)
+			.findOne()
 			.pipe(map((supplier: Supplier) => supplier));
-			
+
 		})
 	  );
-	  
+
 	constructor(
-		private formBuilder: FormBuilder, 
+		private formBuilder: FormBuilder,
 		private negocioService: NegocioService,
 		private router: Router,
 		private activatedRoute: ActivatedRoute,
@@ -125,16 +125,16 @@ export class CrearNegocioComponent implements OnInit {
 
 	checkout = async(sessionId) => {
 		(await this.stripe).redirectToCheckout({
-	  
+
 		  sessionId: sessionId
-	
+
 		})
 		.then(handleResult => {
 		  console.log("dani tonto")
 		});
-	  }; 
-	
-	
+	  };
+
+
 	  changeSubscription(subscription){
 		let res = window.confirm("¿Esta seguro de que desea cambiar su tipo de suscripción?")
 		if(res){
@@ -143,7 +143,7 @@ export class CrearNegocioComponent implements OnInit {
 			this.supplierService.change(this.priceIdPremium).subscribe(r =>{
 			  sessionId = r['sessionId']
 			  this.checkout(sessionId)
-			  
+
 			 // stripe.redirectToCheckout
 			});
 		  }else{

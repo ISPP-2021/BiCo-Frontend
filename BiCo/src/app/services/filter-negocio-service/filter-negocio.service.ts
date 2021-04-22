@@ -13,7 +13,7 @@ export class FilterNegocioService {
   negocios = [];
   token: string = localStorage.getItem(JWT_NAME);
   constructor(private http: HttpClient) { }
-  private url: string = 'http://bico-despliegue2.herokuapp.com/';
+  private url: string = 'https://bico-despliegue2.herokuapp.com/';
   private headers = {
     headers: {
       Authorization: this.token,
