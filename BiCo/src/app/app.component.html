@@ -1,40 +1,42 @@
-<div style="height: 100hv;">
-  <mat-toolbar>
+<mat-toolbar>
     <mat-toolbar-row>
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm="true">
         <mat-icon>menu</mat-icon>
       </button>
-      <button mat-button routerLink="/home"><img src="./assets/favicon.png" style="width:2em;"></button>
-      <button mat-button routerLink="/home">Bienvenido a BiCo</button>
+      <div class = "home">
+        <button mat-button routerLink="/home"><img src="./assets/favicon.png" style="width:2em;"></button>
+        <button mat-button routerLink="/home">BiCo</button>
+      </div>
+     
       <span class="spacer"></span>
 
       <div fxShow="true" fxHide.lt-md="true">
-        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/buscar">
-          <mat-icon>search</mat-icon>Buscar negocios
+        <button *ngIf="rol === 'user'" mat-mini-fab matTooltip="Buscar negocios o servicios" routerLink="/buscar">
+          <mat-icon>search</mat-icon>
         </button>
-        <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/supplier/1">
-          <mat-icon>account_circle</mat-icon>Mi perfil
+        <button *ngIf="rol === 'owner'" mat-mini-fab  matTooltip="Mi perfil" routerLink="/supplier/1">
+          <mat-icon>account_circle</mat-icon>
         </button>
-        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/consumer/1">
-          <mat-icon>perm_identity</mat-icon>Mi perfil
+        <button *ngIf="rol === 'user'" mat-mini-fab  matTooltip="Mi perfil" routerLink="/consumer/1">
+          <mat-icon>perm_identity</mat-icon>
         </button>
-        <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/negocio-create">
-          <mat-icon>note_alt</mat-icon>Añadir negocio
+        <button *ngIf="rol === 'owner'" mat-mini-fab  matTooltip="Añadir un negocio" routerLink="/negocio-create">
+          <mat-icon>note_alt</mat-icon>
         </button>
-        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/reservas">
-          <mat-icon>calendar_today</mat-icon>Mis reservas
+        <button *ngIf="rol === 'user'" mat-mini-fab  matTooltip="Ver mis reservas"routerLink="/reservas">
+          <mat-icon>calendar_today</mat-icon>
         </button>
-        <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/mis-negocios">
-          <mat-icon>business</mat-icon>Mis negocios
+        <button *ngIf="rol === 'owner'" mat-mini-fab  matTooltip="Ver mis negocios" routerLink="/mis-negocios">
+          <mat-icon>business</mat-icon>
         </button>
-        <button *ngIf="rol === null" mat-raised-button routerLink="/login">
-          <mat-icon>login</mat-icon> Inicio sesión
+        <button *ngIf="rol === null" mat-mini-fab   matTooltip="Inicio sesión" routerLink="/login">
+          <mat-icon>login</mat-icon>
         </button>
-        <button *ngIf="rol === null" mat-raised-button routerLink="/register">
-          <mat-icon>person_add_alt_1</mat-icon> Registro
+        <button *ngIf="rol === null"mat-mini-fab matTooltip="Registro" routerLink="/register">
+          <mat-icon>person_add_alt_1</mat-icon> 
         </button>
-        <button *ngIf="rol != null" mat-raised-button (click)="logout()">
-          <mat-icon>logout</mat-icon> Cerrar sesión
+        <button *ngIf="rol != null" mat-mini-fab  matTooltip="Cerrar sesión" (click)="logout()">
+          <mat-icon>logout</mat-icon>
         </button>
       </div>
     </mat-toolbar-row>
@@ -80,4 +82,3 @@
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</div>

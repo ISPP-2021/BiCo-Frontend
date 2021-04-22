@@ -2,21 +2,32 @@
   flex: 1 1 auto;
 }
 .mat-toolbar {
-  background-color: #c29eaa;
-  height: 2vmax;
+  background-color: #fd7487;
+  position: sticky;
+  position: -webkit-sticky; 
+  top: 0;
+  z-index: 1000; 
+  width: 100%;
+  font: "Abril Fatface";
+}
+.home{
+  margin-left: 45%;
+  transform: translateX(-45%);
 }
 .mat-button {
   background-color: transparent;
+  font-size: 100%;
+
 }
-.mat-raised-button {
-  background-color: #8499b1;
-  margin: 0.5vh;
+.mat-mini-fab {
+  background-color: #42c6ae;
+  margin-block-end: 5%;
+  margin: 1%;
 }
 
 .mat-raised-button:hover {
   background-color: #f8d2bf;
 }
 .mat-sidenav-content {
-  background-color: #d2d9e2;
-  height: 100vh;
+  background-color: white;
 }
