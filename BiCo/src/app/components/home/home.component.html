@@ -1,1 +1,6 @@
-<app-cerca-de-mi></app-cerca-de-mi>
+<div *ngIf="rol != null">
+  <app-cerca-de-mi></app-cerca-de-mi>
+</div>
+<div *ngIf="rol === null">
+  <app-login></app-login>
+</div>

@@ -5,6 +5,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { Consumer } from 'src/app/model/consumer.interface';
 import { ConsumerService } from 'src/app/services/consumer-service/consumer.service';
 import { ReservaService } from 'src/app/services/reserva-service/reserva.service';
+import { Reserva } from 'src/app/model/reserva.interface';
 
 @Component({
 	selector: 'app-ver-reservas',
@@ -18,7 +19,10 @@ export class VerReservasComponent implements OnInit {
 
 			return this.consumerService
 				.findOne()
-				.pipe(map((consumer: Consumer) => consumer));
+				.pipe(map((consumer: Consumer) => {
+					consumer.bookings.sort(this.bookingComparator);
+					return consumer;
+				}));
 		})
 	);
 
@@ -26,18 +30,29 @@ export class VerReservasComponent implements OnInit {
 		private activatedRoute: ActivatedRoute,
 		private consumerService: ConsumerService,
 		private bookingService: ReservaService
-	) {  }
+	) { }
 
 	ngOnInit(): void {
 
-  }
+	}
+
+	bookingComparator(a: Reserva, b: Reserva) {
+		if (a.bookDate > b.bookDate)
+			return 1;
+		// B va primero que A
+		else if (a.bookDate < b.bookDate)
+			return -1;
+		// A y B son iguales
+		else
+			return 0;
+	}
 
 	cancelBooking(id: number) {
 		let res = window.confirm('¿Seguro que desea cancelar la reserva?');
 		if (res) {
-			this.bookingService.cancelBooking(id).subscribe(()=>{
-        window.location.reload();
-      });
+			this.bookingService.cancelBooking(id).subscribe(() => {
+				window.location.reload();
+			});
 
 		}
 	}
