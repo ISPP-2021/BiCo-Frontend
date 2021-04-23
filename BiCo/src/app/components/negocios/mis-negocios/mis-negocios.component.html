@@ -14,6 +14,8 @@
       <mat-card-subtitle *ngIf="business.businessType === 'RESTAURANT'"> Bar/Restaurante
       </mat-card-subtitle>
       <mat-card-subtitle *ngIf="business.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
+      <mat-card-subtitle>Abre: {{business.openTime}}</mat-card-subtitle>
+      <mat-card-subtitle>Cierra: {{business.closeTime}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content *ngFor="let service of business.services">
       <div fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="2%">

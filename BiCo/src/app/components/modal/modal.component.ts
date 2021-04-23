@@ -51,7 +51,7 @@ export class ModalComponent implements OnInit {
       status: this.status,
     };
     this.reservaService.create(this.servicio, reserva).subscribe(()=>{
-      window.location.replace('/reservas');
+     // window.location.replace('/reservas');
     });
 
   }

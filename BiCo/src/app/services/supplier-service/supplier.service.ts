@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
 export class SupplierService {
 	token: string = localStorage.getItem(JWT_NAME);
 	constructor(private http: HttpClient, private router: Router) { }
-	private url: string = 'http://bico-despliegue2.herokuapp.com/';
-	private url2: string = 'http://localhost:8080/';
+	//private url: string = 'http://bico-despliegue3.herokuapp.com/';
+	private url: string = 'http://localhost:8080/';
 	private headers = {
 		headers: {
 			Authorization: this.token,

@@ -23,8 +23,8 @@ export class AuthenticationService {
 		private jwtHelper: JwtHelperService,
 		private router: Router) { }
 
-	private url: string = 'http://bico-despliegue2.herokuapp.com';
-  private url2: string = 'http://localhost:8080';
+	//private url: string = 'http://bico-despliegue3.herokuapp.com';
+  private url: string = 'http://localhost:8080';
 
 	login(loginForm: LoginForm) {
 
