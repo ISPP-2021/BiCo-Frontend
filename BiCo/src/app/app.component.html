@@ -12,10 +12,10 @@
         <button *ngIf="rol === 'user'" mat-raised-button routerLink="/buscar">
           <mat-icon>search</mat-icon>Buscar negocios
         </button>
-        <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/supplier/1">
+        <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/ownerProfile">
           <mat-icon>account_circle</mat-icon>Mi perfil
         </button>
-        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/consumer/1">
+        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/userProfile">
           <mat-icon>perm_identity</mat-icon>Mi perfil
         </button>
         <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/negocio-create">
@@ -47,10 +47,10 @@
         <a *ngIf="rol === 'user'" mat-list-item href="/buscar">
           <mat-icon>search</mat-icon>Buscar negocios
         </a>
-        <a *ngIf="rol === 'owner'" mat-list-item href="/supplier/1">
+        <a *ngIf="rol === 'owner'" mat-list-item href="/ownerProfile">
           <mat-icon>account_circle</mat-icon>Mi Perfil
         </a>
-        <a *ngIf="rol === 'user'" mat-list-item href="/consumer/1">
+        <a *ngIf="rol === 'user'" mat-list-item href="/userProfile">
           <mat-icon>perm_identity</mat-icon>Mi Perfil
         </a>
         <a *ngIf="rol === 'owner'" mat-list-item href="/negocio-create">

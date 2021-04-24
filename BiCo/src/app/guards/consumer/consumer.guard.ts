@@ -6,8 +6,8 @@ import { AuthenticationService } from 'src/app/services/authentication-service/a
 @Injectable({
   providedIn: 'root'
 })
-export class OwnerGuard implements CanActivate {
-constructor(private authService: AuthenticationService, private router: Router){}
+export class ConsumerGuard implements CanActivate {
+  constructor(private authService: AuthenticationService, private router: Router){}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -16,7 +16,7 @@ constructor(private authService: AuthenticationService, private router: Router){
       window.location.replace('/login');
     }
     const rol = localStorage.getItem('rol')
-    if(rol != 'owner'){
+    if(rol != 'user'){
       this.router.navigate(['home'])
     }
     return true;
