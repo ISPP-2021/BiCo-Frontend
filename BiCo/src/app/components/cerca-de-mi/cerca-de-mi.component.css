@@ -1,14 +1,35 @@
 .cerca-de-mi {
   background-color: #fbe5da;
-  width: 50%;
-  margin: 2%;
-  
+  width: 20%;
+  margin: 1%;
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 .negocio {
-  background-color: #e1ced4;
-  width: 60%; 
+  width: 300px;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   margin-bottom: 1%;
+  border-bottom: solid #44917e;
+  background-color: #f2e6ee;
+}
+
+.card-header {
+  background-color: #f2e6ee;
+}
+
+.card-content {
+  margin-top: 10px;
+  background-color: #f2e6ee;
 }
 
 .mat-mini-fab {
