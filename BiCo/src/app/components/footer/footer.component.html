@@ -1,5 +1,14 @@
 <mat-toolbar>
-    <button mat-button routerLink="/home" class="footerhome"><img src="./assets/favicon.png"
-            style="width:2em;"></button>
-    <button mat-button routerLink="/home">BiCo</button>
+    <div class="footerhome" *ngIf="rol === 'owner'">
+        <button mat-button routerLink="/home"><img src="./assets/favicon.png" style="width:2em;"></button>
+        <button mat-button routerLink="/home">BiCo</button>
+    </div>
+    <div class="footerhome" *ngIf="rol === 'user'">
+        <button mat-button routerLink="/home"><img src="./assets/favicon.png" style="width:2em;"></button>
+        <button mat-button routerLink="/home">BiCo</button>
+    </div>
+    <div class="footerhome" *ngIf="rol === null">
+        <button mat-button routerLink="/login"><img src="./assets/favicon.png" style="width:2em;"></button>
+        <button mat-button routerLink="/login">BiCo</button>
+    </div>
 </mat-toolbar>
