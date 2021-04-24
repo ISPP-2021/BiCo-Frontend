@@ -9,6 +9,35 @@ import { Observable } from 'rxjs';
 import { Negocio } from 'src/app/model/negocio.interface';
 import { map, switchMap } from 'rxjs/operators';
 
+class CustomValidators {
+
+  static validBookDate (control: AbstractControl): ValidationErrors{
+    const bookDate = new Date(control.get('bookDate').value)
+    console.log(bookDate.toISOString())
+    const hours = bookDate.getHours();
+    const minutes = bookDate.getMinutes();
+    
+    const openTime = control.get('openTime').value.split(":")
+    const openTimeHours = Number(openTime[0])
+    const openTimeMinutes = Number(openTime[1])
+
+    const closeTime = control.get('closeTime').value.split(":")
+    const closeTimeHours = Number(closeTime[0])
+    const closeTimeMinutes = Number(closeTime[1])
+
+    if(hours < openTimeHours || hours>closeTimeHours){
+      return {invalidBookDate: true};
+    }else if((hours === openTimeHours && minutes < openTimeMinutes) || (hours === closeTimeHours && minutes > closeTimeMinutes)){
+      return {invalidBookDate: true}; 
+    }else{
+      return null;
+    }
+
+  }
+
+}
+
+
 @Component({
   selector: 'app-crear-reserva',
   templateUrl: './crear-reserva.component.html',
@@ -30,23 +59,19 @@ export class CrearReservaComponent implements OnInit {
   emisionDate: String;
   status: string;
   description: String;
- 
-
-  
+  public servicios;
 
   rol: string = localStorage.getItem('rol');
   negocioId = parseInt(this.route.snapshot.paramMap.get('id'));
+  negocio$: Observable<Negocio> = this.route.params.pipe(
+    switchMap((params: Params) => {
+      const negocioId: number = parseInt(params['id']);
 
-  // negocio2$: Observable<Negocio> = this.route.params.pipe(
-  //   switchMap((params: Params) => {
-  //     const negocioId: number = parseInt(params['id']);
-
-  //     return this.negocioService
-  //       .findOne(negocioId)
-  //       .pipe(map((negocio2: Negocio) => negocio2));
-  //   })
-  // );
-
+      return this.negocioService.findOne(negocioId).pipe(
+        map((negocio: Negocio) => negocio)
+  )
+})
+  )
   constructor(
     private http: HttpClient,
     private formBuilder: FormBuilder,
@@ -58,22 +83,22 @@ export class CrearReservaComponent implements OnInit {
 
   ngOnInit() {
     this.minDate.setMinutes(this.value.getMinutes() + 30)
-    this.negocioService
-      .findOne(this.negocioId)
-      .subscribe((data) => (this.negocio = data));
-    this.form = this.formBuilder.group({
-      businessOpenTime: [''],
-      businessCloseTime: [''],
-      bookDate: [null, [Validators.required]],
-      emisionDate: [''],
-      status: ['IN_PROGRESS'],
-      services: this.formBuilder.array([this.addServiceGroup()]),
-    });
+    this.negocioService.findOne(this.negocioId).subscribe(negocio => {
+        this.form = this.formBuilder.group({
+          openTime: [negocio.openTime],
+          closeTime: [negocio.closeTime],
+          bookDate: [null, [Validators.required]],
+          emisionDate: [''],
+          status: ['IN_PROGRESS'],
+          services: this.formBuilder.array([this.addServiceGroup()]),
+        },{
+          validators: CustomValidators.validBookDate
+        });
+        this.negocio = negocio
+        this.servicios = negocio.services
+      });
     
   }
-
-
-  
 
   get serviceArray() {
     return <FormArray>this.form.get('services');
@@ -145,16 +170,6 @@ export class CrearReservaComponent implements OnInit {
       emisionDate: date,
     });
   }
-
-
-
-  // static validBookDate (control: AbstractControl): ValidationErrors{
-  //   const hours = control.get('bookDate').value.getHours()
-  //   const minutes = control.get('bookDate').value.getMinutes()
-    
-   
-
-  // }
 
 
 }

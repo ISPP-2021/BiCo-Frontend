@@ -1,40 +1,42 @@
-<form class="example-form" [formGroup]="form" (ngSubmit)="save()">
-  <h2 style="text-align: center;">Nueva reserva</h2>
-  <div>
- <!--   <div *ngIf="(negocio2$ | async) as negocio2">
-      <input type="date" formControlName="businessOpenTime" [value]="negocio2.openTime">
-      <input type="date" formControlName="businessCloseTime" [value]="negocio2.closeTime">
-    </div>-->
-    <mat-label>Fecha:</mat-label>
-    &nbsp;
-    <kendo-datetimepicker formControlName="bookDate" required [readOnlyInput]=true [format]="format" [(value)]="value"
-      [min]="minDate">
-    </kendo-datetimepicker>
-  </div>
-  <!--<mat-error *ngIf=" form.get(bookDate).hasError('notValidBookDate')">La hora seleccionada para la reserva está fuera del horario de apertura
-     del establecimiento</mat-error>
-  <mat-error *ngIf="err">{{err}}</mat-error>-->
-  <br>
-  <mat-divider></mat-divider>
-  <br>
-  <div formArrayName="services">
-    <h4>Servicios</h4>
-    <div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
-      <mat-form-field class="example-full-width">
-        <mat-label>Servicio</mat-label>
-        <mat-select formControlName="id" (selectionChange)="pagoTotal($event.value)">
-          <mat-option *ngFor="let servicio of negocio.services" [value]="servicio.id">{{servicio.name}} -
-            {{servicio.price}} €</mat-option>
-        </mat-select>
-      </mat-form-field>
+<div *ngIf="(negocio$ | async) as negocio">
+  <form class="example-form" [formGroup]="form" (ngSubmit)="save()">
+    <h2 style="text-align: center;">Reserva en {{negocio.name}}</h2>
+    <mat-label>Abre: {{negocio.openTime}}</mat-label><br>
+    <mat-label>Cierra: {{negocio.closeTime}}</mat-label>
+    <input type="hidden" formControlName="openTime">
+    <input type="hidden" formControlName="closeTime">
+    <hr>
+    <div>
+      <mat-label>Fecha:</mat-label>
+      &nbsp;
+      <kendo-datetimepicker formControlName="bookDate" required [readOnlyInput]=true [format]="format" [(value)]="value"
+        [min]="minDate">
+      </kendo-datetimepicker>
     </div>
-  </div>
-  <br>
-  <span>Fianza de la reserva: {{pago}} €</span><br>
-  <div id="formulario-pago" style="display: none;">
-    <app-payment nombre="{{nombre}}" precio="{{pago}}" descripcion="{{description}}" bookDate="{{bookDate}}"
-      emisionDate="{{emisionDate}}" status="{{status}}" servicio="{{servicioId}}"></app-payment>
-  </div>
-  <button id="boton-reservar" style="display: none;" type="submit" mat-raised-button color="primary"
-    [disabled]="form.invalid" (click)="fechaActual(form)">Reservar</button>
-</form>
+    <mat-error *ngIf="form.hasError('invalidBookDate')">La hora seleccionada para la reserva está fuera del horario de apertura
+      del establecimiento</mat-error>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <div formArrayName="services">
+      <h4>Servicios</h4>
+      <div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
+        <mat-form-field class="example-full-width">
+          <mat-label>Servicio</mat-label>
+          <mat-select formControlName="id" (selectionChange)="pagoTotal($event.value)">
+            <mat-option *ngFor="let servicio of servicios" [value]="servicio.id">{{servicio.name}} -
+              {{servicio.price}} €</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <br>
+    <span>Fianza de la reserva: {{pago}} €</span><br>
+    <div id="formulario-pago" style="display: none;">
+      <app-payment nombre="{{nombre}}" precio="{{pago}}" descripcion="{{description}}" bookDate="{{bookDate}}"
+        emisionDate="{{emisionDate}}" status="{{status}}" servicio="{{servicioId}}"></app-payment>
+    </div>
+    <button id="boton-reservar" style="display: none;" type="submit" mat-raised-button color="primary"
+      [disabled]="form.invalid" (click)="fechaActual(form)">Reservar</button>
+  </form>
+</div>
