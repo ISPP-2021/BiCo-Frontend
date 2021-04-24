@@ -39,6 +39,7 @@
     "bootstrap": "^4.5.0",
     "codacy-coverage": "^3.4.0",
     "ng-pick-datetime": "^7.0.0",
+    "ngx-material-timepicker": "^5.5.3",
     "ngx-stripe": "^7.4.4",
     "ngx-toastr": "^13.2.1",
     "rxjs": "~6.6.0",

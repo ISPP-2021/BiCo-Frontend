@@ -24,7 +24,7 @@ export class AuthenticationService {
 		private router: Router) { }
 
 	private url: string = 'https://bico-despliegue2.herokuapp.com';
-  private url2: string = 'http://localhost:8080';
+  	private url2: string = 'http://localhost:8080';
 
 	login(loginForm: LoginForm) {
 

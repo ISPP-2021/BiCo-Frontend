@@ -46,6 +46,76 @@
           formControlName="depositTimeLimit">
       </mat-form-field>
       <br>
+      <div>
+        <h4>Datos negocio</h4>
+        <mat-form-field class="example-full-width" required>
+          <mat-label>Nombre negocio</mat-label>
+          <input matInput placeholder="Introduzca el nombre de su negocio" formControlName="name">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width" required>
+          <mat-label>Dirección negocio</mat-label>
+          <input matInput placeholder="Introduzca la dirección de su negocio" formControlName="address">
+        </mat-form-field>
+       
+       <!--
+        <div class="24hr-example">
+          <mat-label>Hora de apertura</mat-label>&nbsp;
+          <input matInput placeholder="Introduzca la hora de apertura" formControlName="openTime">
+           <input placeholder="24hr format" aria-label="24hr format" [ngxTimepicker]="fullTime" [format]="24" formControlName="openTime" type="time">
+          <ngx-material-timepicker #fullTime></ngx-material-timepicker>
+        </div>
+        <br>
+        <div class="24hr-example">
+          <mat-label>Hora de cierre</mat-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input matInput placeholder="Introduzca la hora de cierre" formControlName="closeTime">
+          <input placeholder="24hr format" aria-label="24hr format" [ngxTimepicker]="fullTime2" [format]="24" formControlName="closeTime" type="time">
+          <ngx-material-timepicker #fullTime2></ngx-material-timepicker>
+        </div>
+      -->
+        <br>
+        <mat-form-field class="example-full-width" required>
+          <mat-label>Tipo negocio</mat-label>
+          <mat-select formControlName="businessType" [(value)]="negocio.businessType">
+            <mat-option value="RESTAURANT">Bar/Restaurante</mat-option>
+            <mat-option value="HAIRDRESSER">Peluquería</mat-option>
+            <mat-option value="GENERAL">Otros</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <br>
+      <mat-label>Hora de apertura</mat-label>&nbsp;
+      <input type="time" formControlName="openTime" required> 
+      <br>
+      <br>
+      <mat-label>Hora de cierre</mat-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="time" formControlName="closeTime" required> 
+      <br>
+      <br>
+      <div formGroupName="option">
+        <h4>Opciones negocio</h4>
+        <mat-checkbox (change)="disable()" class="example-margin" formControlName="automatedAccept">Aceptación
+          automática
+        </mat-checkbox>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Límite de reservas automáticas (valor entre 0-99+)</mat-label>
+          <input matInput type="number" placeholder="Seleccione el número de reservas automáticas"
+            formControlName="gas">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Fianza de reserva (valor entre 0-1)</mat-label>
+          <input matInput type="number" placeholder="Introduzca la fianza por reservas para todos los servicios (0-1)"
+            formControlName="defaultDeposit">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Tiempo de cancelación gratuita (valor en días) </mat-label>
+          <input matInput type="number" placeholder="Introduzca el número de días para que la cancelación sea gratuitas"
+            formControlName="depositTimeLimit">
+        </mat-form-field>
+        <br>
 
     </div>
 

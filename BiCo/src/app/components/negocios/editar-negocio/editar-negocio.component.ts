@@ -40,6 +40,8 @@ export class EditarNegocioComponent implements OnInit {
       name: [negocio.name, Validators.required],
       address: [negocio.address, Validators.required],
       businessType: [negocio.businessType, [Validators.required]],
+      openTime: [negocio.openTime, [Validators.required]],
+      closeTime: [negocio.closeTime, [Validators.required]],
       option:this.formBuilder.group({
         automatedAccept: [negocio.option.automatedAccept, [Validators.required]],
         gas: [{value:negocio.option.gas, disabled:!negocio.option.automatedAccept},  [Validators.required,, Validators.min(1)]],
@@ -61,6 +63,9 @@ export class EditarNegocioComponent implements OnInit {
     if(this.form.valid){
     this.negocioService.update(this.negocioId,this.form.value).subscribe()
     this.router.navigate(['mis-negocios'])
+    console.log(this.form.value)
+    console.log(this.form.value.openTime)
+    console.log(this.form.value.closeTime)
     }
   }
 
