@@ -47,6 +47,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DatePipe } from '@angular/common';
 import { VerReservasComponent } from './components/reservas/ver-reservas/ver-reservas.component';
@@ -55,8 +57,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
-
-
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
     ModalComponent,
     PaymentComponent,
     MisNegociosComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,6 +105,8 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
     MatTabsModule,
     MatListModule,
     MatSidenavModule,
+    MatToolbarModule,
+    MatTooltipModule,
     FlexLayoutModule,
     ToastrModule.forRoot(),
     NgxStripeModule.forRoot(

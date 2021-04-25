@@ -1,11 +1,8 @@
 <div fxLayout="column" fxLayoutAlign="center">
-  <div fxLayoutAlign="space-around center">
+  <div>
     <mat-card class="cerca-de-mi">
-      <mat-card-header>
-        <mat-card-title>Selecciona un tipo de negocio</mat-card-title>
-      </mat-card-header>
       <mat-card-content>
-        <mat-select placeholder="Tipo de negocio" (selectionChange)="onSelect($event.value)">
+        <mat-select placeholder="Tipo de negocio" (selectionChange)="onSelect($event.value)" class="selector">
           <mat-option value="">Todos</mat-option>
           <mat-option value="HAIRDRESSER">Peluquería</mat-option>
           <mat-option value="RESTAURANT">Bar/Restaurante</mat-option>
@@ -15,21 +12,31 @@
     </mat-card>
   </div>
 
-  <div fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="2%">
+  <div fxLayoutAlign="space-around center"  class="flex-container">
     <mat-card class="negocio" *ngFor="let negocio of negocios">
-      <button mat-mini-fab routerLink="/negocio/{{negocio.id}}">
-        <mat-icon>visibility</mat-icon>
-      </button>
-      <mat-card-header>
-        <mat-card-title>{{negocio.name}}</mat-card-title>
-        <mat-card-subtitle *ngIf="negocio.businessType === 'HAIRDRESSER'"> Peluquería</mat-card-subtitle>
-        <mat-card-subtitle *ngIf="negocio.businessType === 'RESTAURANT'"> Bar/Restaurante</mat-card-subtitle>
-        <mat-card-subtitle *ngIf="negocio.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content *ngFor="let servicio of negocio.services">
-        <p>{{servicio.name}} - {{servicio.price}} €</p>
-      </mat-card-content>
-      <button *ngIf="rol === 'user'" mat-raised-button routerLink="/reservar/{{negocio.id}}">Reservar</button>
+      <div class="card-header">
+        <button mat-mini-fab routerLink="/negocio/{{negocio.id}}">
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <mat-card-header>
+          <mat-card-title>{{negocio.name}}</mat-card-title>
+          <mat-card-subtitle *ngIf="negocio.businessType === 'HAIRDRESSER'"> Peluquería</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="negocio.businessType === 'RESTAURANT'"> Bar/Restaurante</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="negocio.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
+        </mat-card-header>
+      </div>
+      <div class="card-content">
+        <mat-card-content *ngFor="let servicio of negocio.services">
+          <div style="display: flex; flex-flow: row wrap;">
+            <h3 style="margin-top: auto; margin-bottom: auto; margin-left: 2%;">{{servicio.name}}</h3>
+            <h3 style="margin-top: auto; margin-bottom: auto; position: absolute; right: 7%; font-weight: bold;">{{servicio.price}} €</h3>
+          </div>
+        </mat-card-content>
+      </div>
+      <div>
+        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/reservar/{{negocio.id}}">Reservar</button>
+      </div>
+      
     </mat-card>
   </div>
 
