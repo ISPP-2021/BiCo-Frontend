@@ -14,10 +14,7 @@
 
 .login {
   width: 400px;
-  margin-top: 5%;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-bottom: 1%;
+  margin: 5%;
   border-bottom: solid #44917e;
   background-color: #f2e6ee;
   position: relative;
