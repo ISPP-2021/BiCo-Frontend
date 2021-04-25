@@ -45,7 +45,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DatePipe } from '@angular/common';
@@ -110,6 +110,7 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
     ),
     DateInputsModule,
     NgxMaterialTimepickerModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [ModalComponent],
   providers: [
