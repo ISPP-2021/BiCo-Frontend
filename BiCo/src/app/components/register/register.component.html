@@ -7,22 +7,22 @@
               <mat-card class="boxes">
                 <mat-card-title class="card-header">Datos personales</mat-card-title>
                 <mat-card-content>
-                  <mat-form-field class="example-full-width">
+                  <mat-form-field>
                     <input matInput placeholder="Nombre" formControlName="name">
                     <mat-hint *ngIf="registerForm.controls.name.errors">El campo nombre es obligatorio</mat-hint>
                   </mat-form-field>
-                  <mat-form-field class="example-full-width">
+                  <mat-form-field>
                     <input matInput placeholder="Apellido/s" formControlName="lastname">
                     <mat-hint *ngIf="registerForm.controls.lastname.errors">El campo apellidos es obligatorio
                     </mat-hint>
                   </mat-form-field>
-                  <mat-form-field class="example-full-width">
+                  <mat-form-field>
                     <input matInput placeholder="00000000A" formControlName="dni">
                     <mat-hint *ngIf="registerForm.controls.dni.errors">El campo DNI es obligatorio. Debe tener 8
                       dígitos y 1 letra
                     </mat-hint>
                   </mat-form-field>
-                  <mat-form-field class="example-full-width">
+                  <mat-form-field>
                     <input matInput placeholder="example@example.example" formControlName="email">
                     <mat-hint *ngIf="registerForm.controls.email.errors">El campo email es obligatorio</mat-hint>
                   </mat-form-field>
@@ -34,13 +34,13 @@
                 <div formGroupName="user">
                   <mat-card-title class="card-header">Datos de usuario</mat-card-title>
                   <mat-card-content>
-                    <mat-form-field class="example-full-width">
+                    <mat-form-field>
                       <input matInput placeholder="Username" formControlName="username">
                     </mat-form-field>
-                    <mat-form-field class="example-full-width">
+                    <mat-form-field>
                       <input matInput type="password" placeholder="Contraseña" formControlName="password">
                     </mat-form-field>
-                    <mat-form-field class="example-full-width">
+                    <mat-form-field>
                       <input matInput type="password" placeholder="Repite contraseña" formControlName="confirmPassword">
                     </mat-form-field>
                   </mat-card-content>
