@@ -1,5 +1,5 @@
 export interface Reserva {
-  emisionDate: Date;
-  bookDate: Date;
-  status: String;
+	emisionDate?: Date;
+	bookDate?: Date;
+	status?: String;
 }

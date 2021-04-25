@@ -10,6 +10,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { NgxStripeModule } from 'ngx-stripe';
 import { ToastrModule } from 'ngx-toastr';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -111,6 +112,7 @@ import { FooterComponent } from './components/footer/footer.component';
       'pk_test_51IeGm1A32JKQZm0zQ9rDl6vL1KuiQYaGHiszd0nJ4dUDy5AW3K9tmHjJLdbdxbsPivHTtQ5JR7uvNlo1tAP1Of6v00oarGizZJ'
     ),
     DateInputsModule,
+    NgxMaterialTimepickerModule,
   ],
   entryComponents: [ModalComponent],
   providers: [

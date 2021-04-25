@@ -9,6 +9,18 @@
         <mat-card-subtitle *ngIf="negocio.businessType === 'HAIRDRESSER'"> Peluquería</mat-card-subtitle>
         <mat-card-subtitle *ngIf="negocio.businessType === 'RESTAURANT'"> Bar/Restaurante</mat-card-subtitle>
         <mat-card-subtitle *ngIf="negocio.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
+        <mat-card-subtitle>{{negocio.openTime}}</mat-card-subtitle>
+        <mat-card-subtitle>{{negocio.closeTime}}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </div>
+
+
+  <div fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="2%">
+    <mat-card class="servicio" *ngFor="let servicio of negocio.services">
+      <mat-card-header>
+        <mat-card-title>{{servicio.name}}</mat-card-title>
+        <mat-card-subtitle>{{servicio.price}} €</mat-card-subtitle>
       </mat-card-header>
 
       <mat-card-content>
@@ -36,12 +48,8 @@
         </div>
       </mat-card-content>
     </mat-card>
-
   </div>
-
-
-
-</div>
+  </div>
 
 
 <router-outlet></router-outlet>
