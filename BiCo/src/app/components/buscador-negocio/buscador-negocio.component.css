@@ -1,26 +1,51 @@
 .busqueda {
-  background-color: #fbe5da;
-  width: 50%;
+  width: 500px;
   margin: 2%;
+  border: solid #44917e;
+  border-radius: 35px;
+  background-color: #e2f1ef;
+  display: inline;
 }
 .mat-form-field {
   width: 95%;
   margin-left: 2.5%;
 }
 
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
 .negocio {
-  background-color: #e1ced4;
-  width: 60%;
-  margin-bottom: 1%;
+  width: 300px;
+  min-height: 300px;
+  margin: 5%;
+  border-bottom: solid #44917e;
+  background-color: #f2e6ee;
+  position: relative;
+}
+
+.card-header {
+  background-color: #f2e6ee;
+}
+
+.card-content {
+  margin-top: 10px;
+  background-color: #f2e6ee;
 }
 
 .mat-mini-fab {
   float: right;
   background-color: #8499b1;
 }
-
 .mat-raised-button {
   margin-left: 50%;
   transform: translateX(-50%);
   background-color: #a3dcb9;
+  position: absolute;
+  bottom: 5%;
 }

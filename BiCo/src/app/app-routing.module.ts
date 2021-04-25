@@ -24,17 +24,17 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [AuthenticatedGuard]
+    canActivate: [AuthenticatedGuard],
   },
   {
     path: 'userProfile',
     component: ConsumerProfileComponent,
-    canActivate: [AuthenticatedGuard]
+    canActivate: [AuthenticatedGuard],
   },
   {
     path: 'ownerProfile',
     component: SupplierProfileComponent,
-    canActivate: [AuthenticatedGuard]
+    canActivate: [AuthenticatedGuard],
   },
   {
     path: 'login',
@@ -49,37 +49,37 @@ const routes: Routes = [
   {
     path: 'negocio-edit/:id',
     component: EditarNegocioComponent,
-    canActivate: [OwnerBusinessGuard]
+    canActivate: [OwnerBusinessGuard],
   },
   {
     path: 'negocio-create',
     component: CrearNegocioComponent,
-    canActivate: [OwnerGuard]
+    canActivate: [OwnerGuard],
   },
   {
     path: 'mis-negocios',
     component: MisNegociosComponent,
-    canActivate: [OwnerGuard]
+    canActivate: [OwnerGuard],
   },
   {
     path: 'negocio/:id',
     component: VerNegocioComponent,
-    canActivate: [AuthenticatedGuard]
+    canActivate: [AuthenticatedGuard],
   },
   {
     path: 'negocioByReserva/:id',
     component: VerNegocioBookingComponent,
-    canActivate: [AuthenticatedGuard]
+    canActivate: [AuthenticatedGuard],
   },
   {
     path: 'reservas',
     component: VerReservasComponent,
-    canActivate: [ConsumerGuard]
+    canActivate: [ConsumerGuard],
   },
   {
     path: 'services-edit/:id',
     component: ServisesComponent,
-    canActivate: [OwnerGuard]
+    canActivate: [OwnerGuard],
   },
   {
     path: '',
@@ -89,12 +89,12 @@ const routes: Routes = [
   {
     path: 'reservar/:id',
     component: CrearReservaComponent,
-    canActivate: [ConsumerGuard]
+    canActivate: [ConsumerGuard],
   },
   {
     path: 'buscar',
     component: BuscadorNegocioComponent,
-    canActivate: [ConsumerGuard]
+    canActivate: [ConsumerGuard],
   },
 ];
 
