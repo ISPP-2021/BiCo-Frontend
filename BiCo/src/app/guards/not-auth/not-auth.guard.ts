@@ -11,8 +11,10 @@ export class NotAuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if(localStorage.getItem('token') !== null){
       window.location.replace('/home');
+      return false;
+    }else{
+      return true;
     }
-    return true;
   }
 
 }
