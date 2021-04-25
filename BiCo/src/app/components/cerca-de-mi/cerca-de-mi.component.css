@@ -1,7 +1,10 @@
 .cerca-de-mi {
-  background-color: #fbe5da;
-  width: 20%;
-  margin: 1%;
+  width: 200px;
+  margin: 2%;
+  border: solid #44917e;
+  border-radius: 35px;
+  background-color: #e2f1ef;
+  float: right;
 }
 
 .flex-container {

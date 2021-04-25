@@ -1,3 +1,4 @@
+<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 <mat-toolbar>
     <div class="footerhome" *ngIf="rol === 'owner'">
         <button mat-button routerLink="/home"><img src="./assets/favicon.png" style="width:2em;"></button>
@@ -10,5 +11,10 @@
     <div class="footerhome" *ngIf="rol === null">
         <button mat-button routerLink="/login"><img src="./assets/favicon.png" style="width:2em;"></button>
         <button mat-button routerLink="/login">BiCo</button>
+    </div>
+    <div class="social">
+        <a mat-button  href="mailto:wearebico@gmail.com" matTooltip="wearebico@gmail.com"><mat-icon>email</mat-icon></a>
+        <a mat-button  href="https://twitter.com/WeAreBiCo" matTooltip="Twitter"><mat-icon>tag</mat-icon></a>
+        <a mat-button  href="https://www.instagram.com/wearebico/" matTooltip="Instagram"><mat-icon>photo_camera</mat-icon></a>
     </div>
 </mat-toolbar>

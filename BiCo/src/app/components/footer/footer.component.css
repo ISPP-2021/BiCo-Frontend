@@ -15,5 +15,10 @@ button {
   color: white;
 }
 .footerhome {
-  margin-left: 41%;
+  margin-left: 3%;
+}
+.social {
+  position: absolute;
+  float: right;
+  right: 2%;
 }
