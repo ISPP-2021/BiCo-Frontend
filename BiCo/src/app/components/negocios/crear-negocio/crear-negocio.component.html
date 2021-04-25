@@ -31,6 +31,24 @@
           <input matInput placeholder="Introduzca la direccion de su Negocio" formControlName="address">
         </mat-form-field>
 
+        <mat-label>Hora de apertura</mat-label>&nbsp;
+        <input type="time" formControlName="openTime"> 
+        
+        <mat-label>Hora de cierre</mat-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="time" formControlName="closeTime"> 
+   <!--      
+        <div class="24hr-example">
+          <mat-label>Hora de apertura</mat-label>&nbsp;
+          <input placeholder="24hr format" aria-label="24hr format" [ngxTimepicker]="fullTime" [format]="24"  readonly formControlName="openTime">
+          <ngx-material-timepicker #fullTime></ngx-material-timepicker>
+        </div>
+        <br>
+        <div class="24hr-example">
+          <mat-label>Hora de cierre</mat-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input placeholder="24hr format" aria-label="24hr format" [ngxTimepicker]="fullTime2" [format]="24"  readonly formControlName="closeTime">
+          <ngx-material-timepicker #fullTime2></ngx-material-timepicker>
+        </div>
+      -->
         <mat-form-field class="example-full-width" required>
           <mat-label>Tipo negocio</mat-label>
           <mat-select formControlName="businessType">

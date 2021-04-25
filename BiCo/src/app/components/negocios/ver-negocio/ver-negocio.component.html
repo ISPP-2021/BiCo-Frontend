@@ -10,6 +10,8 @@
         <mat-card-subtitle *ngIf="negocio.businessType === 'HAIRDRESSER'"> Peluquería</mat-card-subtitle>
         <mat-card-subtitle *ngIf="negocio.businessType === 'RESTAURANT'"> Bar/Restaurante</mat-card-subtitle>
         <mat-card-subtitle *ngIf="negocio.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
+        <mat-card-subtitle>{{negocio.openTime}}</mat-card-subtitle>
+        <mat-card-subtitle>{{negocio.closeTime}}</mat-card-subtitle>
       </mat-card-content>
     </mat-card>
   </div>
