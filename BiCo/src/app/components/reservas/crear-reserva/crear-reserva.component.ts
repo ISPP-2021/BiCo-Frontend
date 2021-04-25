@@ -13,16 +13,19 @@ class CustomValidators {
 
   static validBookDate (control: AbstractControl): ValidationErrors{
     const bookDate = new Date(control.get('bookDate').value)
-    console.log(bookDate.toISOString())
-    const hours = bookDate.getHours();
+    let hours = bookDate.getHours();
+    if(hours === 0){
+      hours = 24
+    }
     const minutes = bookDate.getMinutes();
-    
     const openTime = control.get('openTime').value.split(":")
     const openTimeHours = Number(openTime[0])
     const openTimeMinutes = Number(openTime[1])
-
     const closeTime = control.get('closeTime').value.split(":")
-    const closeTimeHours = Number(closeTime[0])
+    let closeTimeHours = Number(closeTime[0])
+    if(closeTimeHours === 0){
+      closeTimeHours = 24
+    }
     const closeTimeMinutes = Number(closeTime[1])
 
     if(hours < openTimeHours || hours>closeTimeHours){
@@ -121,7 +124,6 @@ export class CrearReservaComponent implements OnInit {
   save() {
     if (this.form.valid) {
     //  if(this.form.value.bookDate.getHours())
-    console.log(this.form.value.bookDate.getHours())
       let reserva: Reserva;
       let servicios = this.form.value.services;
       for (let servicio of servicios) {
@@ -141,8 +143,6 @@ export class CrearReservaComponent implements OnInit {
   }
 
   pagoTotal(event) {
-    console.log(this.form.value.bookDate.getHours())
-    console.log(this.form.value.bookDate.getMinutes())
     for (let servicio of this.negocio['services']) {
       if (servicio.id == event) {
         this.pago = servicio.price * (servicio.deposit / 100);
