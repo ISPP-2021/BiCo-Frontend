@@ -18,6 +18,7 @@ import { OwnerGuard } from './guards/owner/owner.guard';
 import { OwnerBusinessGuard } from './guards/ownerBusiness/owner-business.guard';
 import { ConsumerGuard } from './guards/consumer/consumer.guard';
 import { AuthenticatedGuard } from './guards/auth/authenticated.guard';
+import { NotAuthGuard } from './guards/not-auth/not-auth.guard';
 
 const routes: Routes = [
   {
@@ -38,10 +39,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [NotAuthGuard]
   },
   {
     path: 'register',
     component: RegisterComponent,
+    canActivate: [NotAuthGuard]
   },
   {
     path: 'negocio-edit/:id',
