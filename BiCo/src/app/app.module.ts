@@ -45,6 +45,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -113,6 +114,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ),
     DateInputsModule,
     NgxMaterialTimepickerModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [ModalComponent],
   providers: [
