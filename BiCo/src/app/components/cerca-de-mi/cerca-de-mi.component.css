@@ -18,12 +18,14 @@
 
 .negocio {
   width: 300px;
-  margin-top: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
+  min-height: 300px;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
   margin-bottom: 1%;
   border-bottom: solid #44917e;
   background-color: #f2e6ee;
+  position: relative;
 }
 
 .card-header {
@@ -43,4 +45,6 @@
   margin-left: 50%;
   transform: translateX(-50%);
   background-color: #a3dcb9;
-}
+  position: absolute;
+  bottom: 5%;
+ }

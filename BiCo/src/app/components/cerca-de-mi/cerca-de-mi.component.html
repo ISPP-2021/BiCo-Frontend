@@ -12,7 +12,7 @@
     </mat-card>
   </div>
 
-  <div fxLayoutAlign="space-around center" fxLayoutGap="2%" class="flex-container">
+  <div fxLayoutAlign="space-around center"  class="flex-container">
     <mat-card class="negocio" *ngFor="let negocio of negocios">
       <div class="card-header">
         <button mat-mini-fab routerLink="/negocio/{{negocio.id}}">
@@ -33,7 +33,10 @@
           </div>
         </mat-card-content>
       </div>
-      <button *ngIf="rol === 'user'" mat-raised-button routerLink="/reservar/{{negocio.id}}">Reservar</button>
+      <div>
+        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/reservar/{{negocio.id}}">Reservar</button>
+      </div>
+      
     </mat-card>
   </div>
 
