@@ -1,7 +1,10 @@
 .busqueda {
-  background-color: #fbe5da;
-  width: 50%;
+  width: 500px;
   margin: 2%;
+  border: solid #44917e;
+  border-radius: 35px;
+  background-color: #e2f1ef;
+  display: inline;
 }
 .mat-form-field {
   width: 95%;
@@ -48,4 +51,4 @@
   background-color: #a3dcb9;
   position: absolute;
   bottom: 5%;
- }
+}
