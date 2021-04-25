@@ -51,6 +51,8 @@ export class CrearNegocioComponent implements OnInit {
 			name: ['', [Validators.required]],
 			address: ['', Validators.required],
 			businessType: ['', [Validators.required]],
+			openTime: ['', [Validators.required]],
+			closeTime: ['', [Validators.required]],
 			option: this.formBuilder.group({
 				automatedAccept: [false, [Validators.required]],
 				limitAutomated: [{ value: '', disabled: true }, [Validators.required,, Validators.min(1)]],
@@ -97,8 +99,9 @@ export class CrearNegocioComponent implements OnInit {
 
 			this.negocioService.create(this.form.value).subscribe( res=>{
         	this.router.navigate(['mis-negocios'])})
-
+			
 		}
+
 	}
 
 	defaultService(){

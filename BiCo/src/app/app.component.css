@@ -2,21 +2,87 @@
   flex: 1 1 auto;
 }
 .mat-toolbar {
-  background-color: #c29eaa;
-  height: 2vmax;
+  background-color: #914457;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+.home {
+  margin-left: 45%;
+  transform: translateX(-45%);
+  color: white;
+}
+.access {
+  display: inline;
+}
+.bico {
+  font-family: "Abril Fatface";
 }
 .mat-button {
   background-color: transparent;
+  font-size: 100%;
 }
-.mat-raised-button {
-  background-color: #8499b1;
-  margin: 0.5vh;
+.mat-mini-fab {
+  background-color: #42c6ae;
+  margin: 1%;
+  border-radius: 0px;
+  height: max-content;
+  width: 98%;
 }
 
 .mat-raised-button:hover {
   background-color: #f8d2bf;
 }
-.mat-sidenav-content {
-  background-color: #d2d9e2;
-  height: 100vh;
+
+mat-sidenav-content {
+  background-color: #f2e6ee;
+}
+mat-sidenav {
+  background-color: white;
+}
+
+.drop-button {
+  background-color: #914457;
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0;
+}
+
+.dropdown-content button {
+  background-color: #42c6ae;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover button {
+  background-color: #a7495d;
+}
+.dropdown:hover .access {
+  background-color: #f2e6ee;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content .access:hover {
+  background-color: #8dc8bc;
 }

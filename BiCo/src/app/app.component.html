@@ -1,47 +1,5 @@
-<div style="height: 100hv;">
-  <mat-toolbar>
-    <mat-toolbar-row>
-      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm="true">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <button mat-button routerLink="/home"><img src="./assets/favicon.png" style="width:2em;"></button>
-      <button mat-button routerLink="/home">Bienvenido a BiCo</button>
-      <span class="spacer"></span>
-
-      <div fxShow="true" fxHide.lt-md="true">
-        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/buscar">
-          <mat-icon>search</mat-icon>Buscar negocios
-        </button>
-        <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/ownerProfile">
-          <mat-icon>account_circle</mat-icon>Mi perfil
-        </button>
-        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/userProfile">
-          <mat-icon>perm_identity</mat-icon>Mi perfil
-        </button>
-        <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/negocio-create">
-          <mat-icon>note_alt</mat-icon>Añadir negocio
-        </button>
-        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/reservas">
-          <mat-icon>calendar_today</mat-icon>Mis reservas
-        </button>
-        <button *ngIf="rol === 'owner'" mat-raised-button routerLink="/mis-negocios">
-          <mat-icon>business</mat-icon>Mis negocios
-        </button>
-        <button *ngIf="rol === null" mat-raised-button routerLink="/login">
-          <mat-icon>login</mat-icon> Inicio sesión
-        </button>
-        <button *ngIf="rol === null" mat-raised-button routerLink="/register">
-          <mat-icon>person_add_alt_1</mat-icon> Registro
-        </button>
-        <button *ngIf="rol != null" mat-raised-button (click)="logout()">
-          <mat-icon>logout</mat-icon> Cerrar sesión
-        </button>
-      </div>
-    </mat-toolbar-row>
-  </mat-toolbar>
-
-  <mat-sidenav-container fxFlexFill [hasBackdrop]="true">
-    <mat-sidenav #sidenav>
+  <mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav mode="over">
       <mat-nav-list>
 
         <a *ngIf="rol === 'user'" mat-list-item href="/buscar">
@@ -76,8 +34,82 @@
         </a>
       </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content fxFlexFill>
-      <router-outlet></router-outlet>
+    <mat-sidenav-content fxLayout="column">
+      <mat-toolbar>
+        <mat-toolbar-row>
+          <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm="true">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <div class="home" *ngIf="rol === 'owner'">
+            <button mat-button routerLink="/home" ><img src="./assets/favicon.png" style="width:2em;"></button>
+            <button mat-button routerLink="/home" class="bico">BiCo</button>
+          </div>
+          <div class="home" *ngIf="rol === 'user'">
+            <button mat-button routerLink="/home"><img src="./assets/favicon.png" style="width:2em;"></button>
+            <button mat-button routerLink="/home" class="bico">BiCo</button>
+          </div>
+          <div class="home" *ngIf="rol === null">
+            <button mat-button routerLink="/login"><img src="./assets/favicon.png" style="width:2em;"></button>
+            <button mat-button routerLink="/login" class="bico">BiCo</button>
+          </div>
+      
+          <span class="spacer"></span>
+      
+          <div fxShow="true" fxHide.lt-md="true" class="access">
+            
+            <div *ngIf="rol === 'user'" class="dropdown">
+              <button *ngIf="rol === 'user'" class="drop-button" matTooltip="Buscar negocios o servicios" routerLink="/buscar">
+                <mat-icon>search</mat-icon>
+              </button>
+            </div>
+            
+
+            <div *ngIf="rol === 'owner'" class="dropdown">
+              <button class="drop-button"><mat-icon>business</mat-icon></button>
+              <div class="dropdown-content">
+                <button *ngIf="rol === 'owner'" mat-mini-fab matTooltip="Ver mis negocios" routerLink="/mis-negocios"
+                  class="access">
+                  <mat-icon>business</mat-icon> Mis Negocios
+                </button>
+                <button *ngIf="rol === 'owner'" mat-mini-fab matTooltip="Añadir un negocio" routerLink="/negocio-create"
+                  class="access">
+                  <mat-icon>note_alt</mat-icon> Crear Negocio
+                </button>
+              </div>
+            </div>
+
+            <div *ngIf="rol === 'user'" class="dropdown">
+                <button *ngIf="rol === 'user'" class="drop-button" matTooltip="Ver mis reservas" routerLink="/reservas">
+                  <mat-icon>calendar_today</mat-icon>
+                </button>
+            </div>
+
+            <div class="dropdown">
+              <button class="drop-button"><mat-icon>settings</mat-icon></button>
+              <div class="dropdown-content">
+                <button *ngIf="rol === 'owner'" mat-mini-fab matTooltip="Mi perfil" routerLink="/ownerProfile" class="access">
+                  <mat-icon>account_circle</mat-icon> Mi perfil
+                </button>
+                <button *ngIf="rol === 'user'" mat-mini-fab matTooltip="Mi perfil" routerLink="/userProfile" class="access">
+                  <mat-icon>perm_identity</mat-icon> Mi perfil
+                </button>
+                <button *ngIf="rol === null" mat-mini-fab matTooltip="Inicio sesión" routerLink="/login" class="access">
+                  <mat-icon>login</mat-icon> Inicia sesión
+                </button>
+                <button *ngIf="rol === null" mat-mini-fab matTooltip="Registro" routerLink="/register" class="access">
+                  <mat-icon>person_add_alt_1</mat-icon> Regístrate
+                </button>
+                <button *ngIf="rol != null" mat-mini-fab matTooltip="Cerrar sesión" (click)="logout()" class="access">
+                  <mat-icon>logout</mat-icon> Cerrar Sesión
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </mat-toolbar-row>
+      </mat-toolbar>
+        <router-outlet></router-outlet>
+        <app-footer fxFlexOffset="auto"></app-footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</div>
+
