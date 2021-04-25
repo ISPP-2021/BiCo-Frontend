@@ -14,10 +14,12 @@ constructor(private authService: AuthenticationService, private router: Router){
     if(this.authService.isTokenExpired()){
       localStorage.clear();
       window.location.replace('/login');
+      return false;
     }
     const rol = localStorage.getItem('rol')
     if(rol != 'owner'){
       this.router.navigate(['home'])
+      return false;
     }
     return true;
   }

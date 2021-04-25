@@ -14,8 +14,11 @@ export class AuthenticatedGuard implements CanActivate {
     if(this.authService.isTokenExpired()){
       localStorage.clear();
       window.location.replace('/login');
+      return false;
+    }else{
+      return true;
     }
-    return true;
+
   }
 
 }
