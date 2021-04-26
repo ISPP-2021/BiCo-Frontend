@@ -55,7 +55,7 @@ export class CrearNegocioComponent implements OnInit {
 			closeTime: ['', [Validators.required]],
 			option: this.formBuilder.group({
 				automatedAccept: [false, [Validators.required]],
-				limitAutomated: [{ value: '', disabled: true }, [Validators.required,, Validators.min(1)]],
+				limitAutomated: [{ value: '', disabled: true }, [Validators.required, Validators.min(1)]],
 				defaultDeposit: ['', [Validators.required, Validators.min(0), Validators.max(1)]],
 				depositTimeLimit: ['', [Validators.required, Validators.min(1)]]
 			}),

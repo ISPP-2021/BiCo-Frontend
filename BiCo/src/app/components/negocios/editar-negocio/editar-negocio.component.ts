@@ -44,7 +44,7 @@ export class EditarNegocioComponent implements OnInit {
       closeTime: [negocio.closeTime, [Validators.required]],
       option:this.formBuilder.group({
         automatedAccept: [negocio.option.automatedAccept, [Validators.required]],
-        gas: [{value:negocio.option.gas, disabled:!negocio.option.automatedAccept},  [Validators.required,, Validators.min(1)]],
+        gas: [{value:negocio.option.gas, disabled:!negocio.option.automatedAccept},  [Validators.required, Validators.min(1)]],
         defaultDeposit: [negocio.option.defaultDeposit, [Validators.required,Validators.min(0), Validators.max(1)]],
         depositTimeLimit: [negocio.option.depositTimeLimit, [Validators.required, Validators.min(1)]]
         }),
