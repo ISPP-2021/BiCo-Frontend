@@ -99,7 +99,7 @@ export class CrearNegocioComponent implements OnInit {
 
 			this.negocioService.create(this.form.value).subscribe( res=>{
         	this.router.navigate(['mis-negocios'])})
-			
+
 		}
 
 	}
@@ -133,7 +133,6 @@ export class CrearNegocioComponent implements OnInit {
 
 		})
 		.then(handleResult => {
-		  console.log("dani tonto")
 		});
 	  };
 

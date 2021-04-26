@@ -63,9 +63,6 @@ export class EditarNegocioComponent implements OnInit {
     if(this.form.valid){
     this.negocioService.update(this.negocioId,this.form.value).subscribe()
     this.router.navigate(['mis-negocios'])
-    console.log(this.form.value)
-    console.log(this.form.value.openTime)
-    console.log(this.form.value.closeTime)
     }
   }
 
