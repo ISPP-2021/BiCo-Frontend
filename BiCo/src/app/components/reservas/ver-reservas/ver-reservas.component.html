@@ -1,14 +1,37 @@
-<div *ngIf="(consumer$ | async) as consumer" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="2%">
-  <mat-card class="reserva" *ngFor="let booking of consumer.bookings">
-    <ng-container *ngIf="booking.status === 'IN_PROGRESS'">
-      <button mat-mini-fab color="warn" (click)="cancelBooking(booking.id)">
-        <mat-icon>close</mat-icon>
-      </button>
-    </ng-container>
-    <button mat-mini-fab routerLink="/negocioByReserva/{{booking.id}}">
-      <mat-icon>visibility</mat-icon>
-    </button>
+<div fxLayout="column" fxLayoutAlign="center">
+<div *ngIf="(consumer$ | async) as consumer">
+  
+  <div fxLayoutAlign="space-around center">
+  <mat-card class="reserva" *ngIf="consumer.bookings.length === 0">
+    <mat-card-header>
+      <mat-card-title>No tiene ninguna reserva aún</mat-card-title>
+      <mat-card-subtitle>Puede ver los servicios de los negocios en la página de inicio o utilizando el buscador.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <ng-container>
+        <button mat-mini-fab routerLink="/home">
+          <mat-icon>home</mat-icon>
+        </button>
+        <button mat-mini-fab routerLink="/buscar">
+          <mat-icon>search</mat-icon>
+        </button>
+      </ng-container>
+    </mat-card-content>
+  </mat-card>
+  </div>
 
+<div fxLayoutAlign="space-around center" class="flex-container">
+  <mat-card class="reserva" *ngFor="let booking of consumer.bookings">
+
+<div class="card-header">
+      <ng-container *ngIf="booking.status === 'IN_PROGRESS'">
+        <button mat-mini-fab  matTooltip="Cancelar la reserva" (click)="cancelBooking(booking.id)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </ng-container>
+      <button mat-mini-fab matTooltip="Ver el negocio"  routerLink="/negocioByReserva/{{booking.id}}"> 
+        <mat-icon>visibility</mat-icon>
+      </button>
     <mat-card-header>
       <mat-card-title>Reserva Nº: {{booking.id}}</mat-card-title>
       <mat-card-subtitle *ngIf="booking.status === 'IN_PROGRESS'"> Pendiente de aprobación
@@ -17,10 +40,16 @@
       <mat-card-subtitle *ngIf="booking.status === 'CANCELLED'"> Cancelada por usuario</mat-card-subtitle>
       <mat-card-subtitle *ngIf="booking.status === 'REJECTED'"> Rechazada por propietario</mat-card-subtitle>
     </mat-card-header>
+</div>
+<div class="card-content">
     <mat-card-content>
       <p>Fecha de reserva: {{booking.bookDate | date:'dd-MM-yyyy HH:mm' : '-000'}}</p>
       <p>Servicio reservado: {{booking.servise}}</p>
     </mat-card-content>
+</div>
   </mat-card>
+</div>
+
+</div>
 </div>
 <router-outlet></router-outlet>

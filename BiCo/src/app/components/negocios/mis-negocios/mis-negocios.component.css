@@ -1,3 +1,10 @@
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
 .negocio {
   margin: 2%;
   background-color: #e1ced4;
@@ -14,4 +21,19 @@
   float: right;
   background-color: #8499b1;
   margin-right: 5%;
+}
+
+.crearNegocio {
+  margin: 2%;
+  background-color: #e1ced4;
+  width: 60%;
+}
+
+.time {
+  margin-left: 10%;
+  margin-top: 2%;
+}
+
+.inner-content {
+  margin-left: 2%;
 }

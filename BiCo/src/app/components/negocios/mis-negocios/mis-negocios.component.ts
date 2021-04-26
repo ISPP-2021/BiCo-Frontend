@@ -6,6 +6,8 @@ import { Supplier } from 'src/app/model/supplier.interface';
 import { SupplierService } from 'src/app/services/supplier-service/supplier.service';
 import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
 import { ReservaService } from 'src/app/services/reserva-service/reserva.service';
+import { Negocio } from 'src/app/model/negocio.interface';
+import { Servicio } from 'src/app/model/service.interface';
 
 
 @Component({
@@ -14,13 +16,18 @@ import { ReservaService } from 'src/app/services/reserva-service/reserva.service
 	styleUrls: ['./mis-negocios.component.css'],
 })
 export class MisNegociosComponent implements OnInit {
+
 	supplier$: Observable<Supplier> = this.activatedRoute.params.pipe(
 		switchMap((params: Params) => {
 			const supplierId: number = parseInt(params['id']);
 
 			return this.supplierService
-				.findOne(supplierId)
-				.pipe(map((supplier: Supplier) => supplier));
+				.findOne()
+				.pipe(map((supplier: Supplier) => {
+					supplier.business.sort(this.businessComparator);
+					supplier.business.forEach(a => a.services.sort(this.servicesComparator))
+					return supplier;
+				}));
 		})
 	);
 	constructor(
@@ -31,6 +38,24 @@ export class MisNegociosComponent implements OnInit {
 	) { }
 
 	ngOnInit(): void { }
+
+	servicesComparator(a: Servicio, b: Servicio) {
+		if (a.name > b.name)
+			return 1;
+		else if (a.name < b.name)
+			return -1;
+		else
+			return 0;
+	}
+
+	businessComparator(a: Negocio, b: Negocio) {
+		if (a.name > b.name)
+			return 1;
+		else if (a.name < b.name)
+			return -1;
+		else
+			return 0;
+	}
 
 	cancelBooking(id) {
 		let res = window.confirm('¿Seguro que desea cancelar la reserva?');

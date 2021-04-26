@@ -1,13 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { ReservaService } from 'src/app/services/reserva-service/reserva.service';
 import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
-import { Negocio } from 'src/app/model/negocio.interface';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
 import { Reserva } from 'src/app/model/reserva.interface';
+import { Observable } from 'rxjs';
+import { Negocio } from 'src/app/model/negocio.interface';
+import { map, switchMap } from 'rxjs/operators';
+
+class CustomValidators {
+
+  static validBookDate (control: AbstractControl): ValidationErrors{
+    const bookDate = new Date(control.get('bookDate').value)
+    let hours = bookDate.getHours();
+    if(hours === 0){
+      hours = 24
+    }
+    const minutes = bookDate.getMinutes();
+    const openTime = control.get('openTime').value.split(":")
+    const openTimeHours = Number(openTime[0])
+    const openTimeMinutes = Number(openTime[1])
+    const closeTime = control.get('closeTime').value.split(":")
+    let closeTimeHours = Number(closeTime[0])
+    if(closeTimeHours === 0){
+      closeTimeHours = 24
+    }
+    const closeTimeMinutes = Number(closeTime[1])
+
+    if(hours < openTimeHours || hours>closeTimeHours){
+      return {invalidBookDate: true};
+    }else if((hours === openTimeHours && minutes < openTimeMinutes) || (hours === closeTimeHours && minutes > closeTimeMinutes)){
+      return {invalidBookDate: true}; 
+    }else{
+      return null;
+    }
+
+  }
+
+}
+
 
 @Component({
   selector: 'app-crear-reserva',
@@ -15,6 +47,9 @@ import { Reserva } from 'src/app/model/reserva.interface';
   styleUrls: ['./crear-reserva.component.css'],
 })
 export class CrearReservaComponent implements OnInit {
+  public value: Date = new Date();
+  public format = 'dd/MM/yyyy HH:mm';
+  public minDate: Date = new Date()
   form: FormGroup;
   serviciosReservados: any;
   errorMessage = '';
@@ -27,10 +62,19 @@ export class CrearReservaComponent implements OnInit {
   emisionDate: String;
   status: string;
   description: String;
+  public servicios;
 
   rol: string = localStorage.getItem('rol');
   negocioId = parseInt(this.route.snapshot.paramMap.get('id'));
+  negocio$: Observable<Negocio> = this.route.params.pipe(
+    switchMap((params: Params) => {
+      const negocioId: number = parseInt(params['id']);
 
+      return this.negocioService.findOne(negocioId).pipe(
+        map((negocio: Negocio) => negocio)
+  )
+})
+  )
   constructor(
     private http: HttpClient,
     private formBuilder: FormBuilder,
@@ -41,15 +85,22 @@ export class CrearReservaComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.negocioService
-      .findOne(this.negocioId)
-      .subscribe((data) => (this.negocio = data));
-    this.form = this.formBuilder.group({
-      bookDate: ['', [Validators.required]],
-      emisionDate: [''],
-      status: ['IN_PROGRESS'],
-      services: this.formBuilder.array([this.addServiceGroup()]),
-    });
+    this.minDate.setMinutes(this.value.getMinutes() + 30)
+    this.negocioService.findOne(this.negocioId).subscribe(negocio => {
+        this.form = this.formBuilder.group({
+          openTime: [negocio.openTime],
+          closeTime: [negocio.closeTime],
+          bookDate: [null, [Validators.required]],
+          emisionDate: [''],
+          status: ['IN_PROGRESS'],
+          services: this.formBuilder.array([this.addServiceGroup()]),
+        },{
+          validators: CustomValidators.validBookDate
+        });
+        this.negocio = negocio
+        this.servicios = negocio.services
+      });
+    
   }
 
   get serviceArray() {
@@ -72,17 +123,22 @@ export class CrearReservaComponent implements OnInit {
 
   save() {
     if (this.form.valid) {
+    //  if(this.form.value.bookDate.getHours())
       let reserva: Reserva;
       let servicios = this.form.value.services;
       for (let servicio of servicios) {
         reserva = {
-          bookDate: this.form.value.bookDate,
+          bookDate: this.form.value.bookDate,//.toISOString().substr(0, 16),
           emisionDate: this.form.value.emisionDate,
           status: this.form.value.status,
         };
-        this.reservaService.create(servicio.id, reserva).subscribe();
-        this.router.navigate(['reservas']);
+        this.reservaService.create(servicio.id, reserva).subscribe(()=>{
+          this.router.navigate(['reservas']);
+        });
+
+        //
       }
+      //window.location.replace('reservas')
     }
   }
 
@@ -94,7 +150,7 @@ export class CrearReservaComponent implements OnInit {
         this.nombre = servicio.name;
         this.servicioId = servicio.id;
         this.description = servicio.description;
-        (this.bookDate = this.form.value.bookDate),
+        (this.bookDate = this.form.value.bookDate.toISOString().substr(0, 16)),
           (this.emisionDate = new Date().toISOString().substr(0, 16)),
           (this.status = this.form.value.status);
       }
@@ -114,4 +170,6 @@ export class CrearReservaComponent implements OnInit {
       emisionDate: date,
     });
   }
+
+
 }

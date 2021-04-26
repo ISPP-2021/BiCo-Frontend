@@ -18,20 +18,14 @@ export const JWT_NAME = 'token';
   providedIn: 'root',
 })
 export class AuthenticationService {
-	// http://localhost:8080/users/login
-
 	constructor(
 		private http: HttpClient,
 		private jwtHelper: JwtHelperService,
 		private router: Router) { }
 
-	private url: string = 'http://bico-despliegue2.herokuapp.com';
-  private url2: string = 'http://localhost:8080';
-	// private headers = {
-	// 	headers: {
-	// 	Authorization: this.token,
-	// 	},
-	// };
+	private url: string = 'https://bico-despliegue3.herokuapp.com';
+  	private url2: string = 'http://localhost:8080';
+
 	login(loginForm: LoginForm) {
 
 		return this.http.post<User>(`${this.url}/users/login`, { username: loginForm.user, password: loginForm.password }).pipe(
@@ -67,8 +61,11 @@ export class AuthenticationService {
 
 	}
 
-  isAuthenticated(): boolean {
+  isTokenExpired(): boolean {
     const token = localStorage.getItem(JWT_NAME);
-    return !this.jwtHelper.isTokenExpired(token);
+    if(token === null){
+      return false;
+    }
+    return this.jwtHelper.isTokenExpired(token);
   }
 }

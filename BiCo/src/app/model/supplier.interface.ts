@@ -1,9 +1,12 @@
+import { Negocio } from "./negocio.interface";
+
 export interface Supplier {
   id?: Number;
   name?: String;
   lastname?: String;
   dni?: String;
   email?: String;
+  subscription?: String;
   user?: {
     username?: String;
     password?: String;
@@ -15,7 +18,7 @@ export interface Supplier {
       new?: boolean;
     };
   };
-  business: {
+  business: Array<Negocio>/* {
     id: Number;
     name: String;
     address: String;
@@ -49,6 +52,6 @@ export interface Supplier {
 
     }
     new?: boolean;
-  }
+  }*/
   new?: boolean;
 }

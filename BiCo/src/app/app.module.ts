@@ -10,6 +10,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { NgxStripeModule } from 'ngx-stripe';
 import { ToastrModule } from 'ngx-toastr';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -44,6 +45,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DatePipe } from '@angular/common';
@@ -52,7 +56,8 @@ import { VerNegocioBookingComponent } from './components/negocios/ver-negocio-bo
 import { ModalComponent } from './components/modal/modal.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
-
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +80,7 @@ import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-neg
     ModalComponent,
     PaymentComponent,
     MisNegociosComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,11 +105,16 @@ import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-neg
     MatTabsModule,
     MatListModule,
     MatSidenavModule,
+    MatToolbarModule,
+    MatTooltipModule,
     FlexLayoutModule,
     ToastrModule.forRoot(),
     NgxStripeModule.forRoot(
       'pk_test_51IeGm1A32JKQZm0zQ9rDl6vL1KuiQYaGHiszd0nJ4dUDy5AW3K9tmHjJLdbdxbsPivHTtQ5JR7uvNlo1tAP1Of6v00oarGizZJ'
     ),
+    DateInputsModule,
+    NgxMaterialTimepickerModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [ModalComponent],
   providers: [

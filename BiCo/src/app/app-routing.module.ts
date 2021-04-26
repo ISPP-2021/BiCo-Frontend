@@ -14,55 +14,72 @@ import { RegisterComponent } from './components/register/register.component';
 import { BuscadorNegocioComponent } from './components/buscador-negocio/buscador-negocio.component';
 import { VerReservasComponent } from './components/reservas/ver-reservas/ver-reservas.component';
 import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
+import { OwnerGuard } from './guards/owner/owner.guard';
+import { OwnerBusinessGuard } from './guards/ownerBusiness/owner-business.guard';
+import { ConsumerGuard } from './guards/consumer/consumer.guard';
+import { AuthenticatedGuard } from './guards/auth/authenticated.guard';
+import { NotAuthGuard } from './guards/not-auth/not-auth.guard';
 
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [AuthenticatedGuard],
   },
   {
-    path: 'consumer/:id',
+    path: 'userProfile',
     component: ConsumerProfileComponent,
+    canActivate: [AuthenticatedGuard],
   },
   {
-    path: 'supplier/:id',
+    path: 'ownerProfile',
     component: SupplierProfileComponent,
+    canActivate: [AuthenticatedGuard],
   },
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [NotAuthGuard]
   },
   {
     path: 'register',
     component: RegisterComponent,
+    canActivate: [NotAuthGuard]
   },
   {
     path: 'negocio-edit/:id',
     component: EditarNegocioComponent,
+    canActivate: [OwnerBusinessGuard],
   },
   {
     path: 'negocio-create',
     component: CrearNegocioComponent,
+    canActivate: [OwnerGuard],
   },
   {
     path: 'mis-negocios',
     component: MisNegociosComponent,
+    canActivate: [OwnerGuard],
   },
   {
     path: 'negocio/:id',
     component: VerNegocioComponent,
+    canActivate: [AuthenticatedGuard],
   },
   {
     path: 'negocioByReserva/:id',
     component: VerNegocioBookingComponent,
+    canActivate: [AuthenticatedGuard],
   },
   {
     path: 'reservas',
     component: VerReservasComponent,
+    canActivate: [ConsumerGuard],
   },
   {
     path: 'services-edit/:id',
     component: ServisesComponent,
+    canActivate: [OwnerGuard],
   },
   {
     path: '',
@@ -72,10 +89,12 @@ const routes: Routes = [
   {
     path: 'reservar/:id',
     component: CrearReservaComponent,
+    canActivate: [ConsumerGuard],
   },
   {
     path: 'buscar',
     component: BuscadorNegocioComponent,
+    canActivate: [ConsumerGuard],
   },
 ];
 

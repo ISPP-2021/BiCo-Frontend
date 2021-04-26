@@ -32,6 +32,8 @@ export class ModalComponent implements OnInit {
   ngOnInit() {}
 
   confirmar(id: string): void {
+    document.getElementById("spinner").style.display = "block";
+    document.getElementById("ventana").style.display = "none";
     this.paymentService.confirmar(id).subscribe(
       (data) => {
         this.toastrService.success(
@@ -50,8 +52,10 @@ export class ModalComponent implements OnInit {
       emisionDate: this.emisionDate,
       status: this.status,
     };
-    this.reservaService.create(this.servicio, reserva).subscribe();
+    this.reservaService.create(this.servicio, reserva).subscribe(()=>{
     window.location.replace('/reservas');
+    });
+
   }
 
   cancelar(id: string): void {

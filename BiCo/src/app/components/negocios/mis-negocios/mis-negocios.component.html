@@ -1,3 +1,4 @@
+<ng-container>
 <div *ngIf="(supplier$ | async) as supplier" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="2%">
   <mat-card class="negocio" *ngFor="let business of supplier.business">
     <button type="button" mat-mini-fab (click)="deleteBusiness(business.id)">
@@ -6,14 +7,18 @@
     <button mat-mini-fab routerLink="/negocio-edit/{{business.id}}">
       <mat-icon>edit</mat-icon>
     </button>
-    <mat-card-header>
-      <mat-card-title>Nombre: {{business.name}}</mat-card-title>
+    <mat-card-header class="flex-container">
+      <mat-card-title>{{business.name}}</mat-card-title>
       <mat-card-subtitle>Dirección: {{business.address}}</mat-card-subtitle>
       <mat-card-subtitle *ngIf="business.businessType === 'HAIRDRESSER'"> Peluquería
       </mat-card-subtitle>
       <mat-card-subtitle *ngIf="business.businessType === 'RESTAURANT'"> Bar/Restaurante
       </mat-card-subtitle>
       <mat-card-subtitle *ngIf="business.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
+      <div class="time">
+        <mat-card-subtitle><b>Abre: </b>{{business.openTime}}</mat-card-subtitle>
+        <mat-card-subtitle><b>Cierra: </b>{{business.closeTime}}</mat-card-subtitle>
+      </div>
     </mat-card-header>
     <mat-card-content *ngFor="let service of business.services">
       <div fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="2%">
@@ -22,7 +27,7 @@
             <mat-card-title>{{service.name}}</mat-card-title>
             <mat-card-subtitle>{{service.price}} €</mat-card-subtitle>
           </mat-card-header>
-          <mat-card-content>
+          <mat-card-content class="inner-content">
             <p><b>Descripción: </b>{{service.description}}</p>
             <p><b>Duración: </b>{{service.duration}} horas</p>
             <p><b>Aforo:</b> {{service.capacity}} personas</p>
@@ -85,6 +90,20 @@
       </div>
     </mat-card-content>
   </mat-card>
-
+  <div *ngIf="supplier.business.length === 0 ">
+    <div fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="2%">
+      <mat-card class="crearNegocio">
+        <mat-card-header>
+          <mat-card-title>Añade un negocio</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p style="text-align: center;">Actualmente no tiene ningun negocio registrado. Añada un negocio aquí: </p>
+          <button mat-raised-button color="primary" routerLink="/negocio-create">Añadir negocio</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
 </div>
+</ng-container>
+
 <router-outlet></router-outlet>
