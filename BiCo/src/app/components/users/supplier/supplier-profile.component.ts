@@ -46,7 +46,6 @@ export class SupplierProfileComponent implements OnInit {
 
     })
     .then(handleResult => {
-      console.log("dani tonto")
     });
   };
 
