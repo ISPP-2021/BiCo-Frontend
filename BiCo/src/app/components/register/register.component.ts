@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors, FormControl } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication-service/authentication.service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -68,10 +68,16 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.registerForm.get('user.confirmPassword').disable()
-    this.authService.registerOwner(this.registerForm.value).pipe(
-      map(user => this.router.navigate(['login']))
-      ).subscribe(data=>{  
-
+    this.authService.registerOwner(this.registerForm.value).subscribe(data=>{
+      let loginForm =new FormGroup({
+			user: new FormControl(data['user']['username'], [Validators.required]),
+			password: new FormControl(data['user']['password'], [Validators.required, Validators.minLength(3)])
+		})
+      let auth = this.authService.login(loginForm.value).subscribe(data=>{
+        this.router.navigate(['home'])
+    }, error => {
+      this.err= error.error.detail
+    })
       }, error => {
         this.err= error.error.title
         this.registerForm.get('user.confirmPassword').enable()
@@ -84,10 +90,16 @@ export class RegisterComponent implements OnInit {
     }
 
     this.registerForm.get('user.confirmPassword').disable()
-    let auth = this.authService.registerUser(this.registerForm.value).pipe(
-      map(user => this.router.navigate(['login']))
-      ).subscribe(data=>{  
-
+    let auth = this.authService.registerUser(this.registerForm.value).subscribe(data=>{
+      let loginForm =new FormGroup({
+			user: new FormControl(data['user']['username'], [Validators.required]),
+			password: new FormControl(data['user']['password'], [Validators.required, Validators.minLength(3)])
+		})
+      let auth = this.authService.login(loginForm.value).subscribe(data=>{
+        this.router.navigate(['home'])
+    }, error => {
+      this.err= error.error.detail
+    })
       }, error => {
         this.err= error.error.title
         this.registerForm.get('user.confirmPassword').enable()
