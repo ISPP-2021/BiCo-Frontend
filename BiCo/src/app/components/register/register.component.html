@@ -1,75 +1,85 @@
 <div fxLayout="column" fxLayoutAlign="center">
-    <mat-card class="register">
-      <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <mat-card-title class="card-header">Registro</mat-card-title>
-          <mat-card-content>
-            <div fxLayoutAlign="space-around center" class="flex-container">
-              <mat-card class="boxes">
-                <mat-card-title class="card-header">Datos personales</mat-card-title>
-                <mat-card-content>
-                  <mat-form-field>
-                    <input matInput placeholder="Nombre" formControlName="name">
-                    <mat-hint *ngIf="registerForm.controls.name.errors">El campo nombre es obligatorio</mat-hint>
-                  </mat-form-field>
-                  <mat-form-field>
-                    <input matInput placeholder="Apellido/s" formControlName="lastname">
-                    <mat-hint *ngIf="registerForm.controls.lastname.errors">El campo apellidos es obligatorio
-                    </mat-hint>
-                  </mat-form-field>
-                  <mat-form-field>
-                    <input matInput placeholder="00000000A" formControlName="dni">
-                    <mat-hint *ngIf="registerForm.controls.dni.errors">El campo DNI es obligatorio. Debe tener 8
-                      dígitos y 1 letra
-                    </mat-hint>
-                  </mat-form-field>
-                  <mat-form-field>
-                    <input matInput placeholder="example@example.example" formControlName="email">
-                    <mat-hint *ngIf="registerForm.controls.email.errors">El campo email es obligatorio</mat-hint>
-                  </mat-form-field>
-                </mat-card-content>
-              </mat-card>
+  <mat-card class="register">
+    <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <mat-card-title class="card-header">Registro</mat-card-title>
+      <mat-card-content>
+        <div fxLayoutAlign="space-around center" class="flex-container">
+          <mat-card class="boxes">
+            <mat-card-title class="card-header">Datos personales</mat-card-title>
+            <mat-card-content>
+              <mat-form-field>
+                <input matInput placeholder="Nombre" formControlName="name">
+                <mat-hint *ngIf="registerForm.controls.name.errors">El campo nombre es obligatorio</mat-hint>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Apellido/s" formControlName="lastname">
+                <mat-hint *ngIf="registerForm.controls.lastname.errors">El campo apellidos es obligatorio
+                </mat-hint>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="00000000A" formControlName="dni">
+                <mat-hint *ngIf="registerForm.controls.dni.errors">El campo DNI es obligatorio. Debe tener 8
+                  dígitos y 1 letra
+                </mat-hint>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="example@example.example" formControlName="email">
+                <mat-hint *ngIf="registerForm.controls.email.errors">El campo email es obligatorio</mat-hint>
+              </mat-form-field>
+            </mat-card-content>
+          </mat-card>
 
-              
-              <mat-card class="boxes">
-                <div formGroupName="user">
-                  <mat-card-title class="card-header">Datos de usuario</mat-card-title>
-                  <mat-card-content>
-                    <mat-form-field>
-                      <input matInput placeholder="Username" formControlName="username">
-                    </mat-form-field>
-                    <mat-form-field>
-                      <input matInput type="password" placeholder="Contraseña" formControlName="password">
-                    </mat-form-field>
-                    <mat-form-field>
-                      <input matInput type="password" placeholder="Repite contraseña" formControlName="confirmPassword">
-                    </mat-form-field>
-                  </mat-card-content>
-                  <div>
-                    <mat-error *ngIf="registerForm.get('user.password').hasError('passwordInvalid')">La contraseña no
-                      contiene número</mat-error>
-                    <mat-error *ngIf=" registerForm.hasError('passwordsNotMatching')">Las contraseñas no
-                      coinciden</mat-error>
-                    <mat-error *ngIf="err">{{err}}</mat-error>
-                  </div>
 
-                </div>
-              </mat-card>
+          <mat-card class="boxes">
+            <div formGroupName="user">
+              <mat-card-title class="card-header">Datos de usuario</mat-card-title>
+              <mat-card-content>
+                <mat-form-field>
+                  <input matInput placeholder="Username" formControlName="username">
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput type="password" placeholder="Contraseña" formControlName="password">
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput type="password" placeholder="Repite contraseña" formControlName="confirmPassword">
+                </mat-form-field>
+              </mat-card-content>
+              <div>
+                <mat-error *ngIf="registerForm.get('user.password').hasError('passwordInvalid')">La contraseña no
+                  contiene número</mat-error>
+                <mat-error *ngIf=" registerForm.hasError('passwordsNotMatching')">Las contraseñas no
+                  coinciden</mat-error>
+                <mat-error *ngIf="err">{{err}}</mat-error>
+              </div>
+
             </div>
+          </mat-card>
+        </div>
+        <form class="example-form" [formGroup]="termsForm">
+          <div>
+            <mat-checkbox formControlName="term">He leído y acepto los <button mat-button
+                (click)="openDialog()">Terminos y
+                Condiciones</button></mat-checkbox>
+          </div>
+        </form>
 
-            <div fxLayoutAlign="center">
-              <h3>¿Cómo te quieres registrar?</h3>
-            </div>
+        <div fxLayoutAlign="center">
+          <h3>¿Cómo te quieres registrar?</h3>
+        </div>
 
-            <div fxLayoutAlign="center">
-              <button mat-raised-button [disabled]="!registerForm.valid" type="submit">
-                <mat-icon>emoji_people</mat-icon> Soy usuario
-              </button>
-              <button mat-raised-button [disabled]="!registerForm.valid" type="button" (click)="registerOwner()">
-                Soy propietario <mat-icon>hail</mat-icon>
-              </button>
-            </div>
+        <div fxLayoutAlign="center">
+          <button mat-raised-button [disabled]="registerForm.invalid || termsForm.invalid" type="submit">
+            <mat-icon>emoji_people</mat-icon> Soy usuario
+          </button>
+          <button mat-raised-button [disabled]="registerForm.invalid || termsForm.invalid" type="button"
+            (click)="registerOwner()">
+            Soy propietario <mat-icon>hail</mat-icon>
+          </button>
+        </div>
 
-          </mat-card-content>
-      </form>
-    </mat-card>
+      </mat-card-content>
+
+    </form>
+
+  </mat-card>
 </div>

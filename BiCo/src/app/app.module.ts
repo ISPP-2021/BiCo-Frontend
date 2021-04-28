@@ -47,6 +47,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -59,6 +60,7 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { FooterComponent } from './components/footer/footer.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +84,7 @@ import { FooterComponent } from './components/footer/footer.component';
     PaymentComponent,
     MisNegociosComponent,
     FooterComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,6 +101,7 @@ import { FooterComponent } from './components/footer/footer.component';
     MatFormFieldModule,
     MatTableModule,
     MatStepperModule,
+    MatDialogModule,
     HttpClientModule,
     MatDividerModule,
     MatCheckboxModule,
@@ -118,7 +122,7 @@ import { FooterComponent } from './components/footer/footer.component';
     NgxMaterialTimepickerModule,
     MatProgressSpinnerModule
   ],
-  entryComponents: [ModalComponent],
+  entryComponents: [ModalComponent, DialogComponent],
   providers: [
     //GeocodingService,
     JwtHelperService,

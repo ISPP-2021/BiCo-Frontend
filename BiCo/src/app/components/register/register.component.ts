@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors, FormControl } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication-service/authentication.service';
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
+import {MatDialog} from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 class CustomValidators {
   static passwordContainsNumber(control: AbstractControl): ValidationErrors {
@@ -36,12 +37,18 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   err: string;
+  termsForm: FormGroup;
 
   constructor(
     private authService: AuthenticationService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) { }
+
+   openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent);
+  }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -61,6 +68,8 @@ export class RegisterComponent implements OnInit {
     },{
        validators: CustomValidators.passwordsMatch
     })
+
+    this.termsForm =this.formBuilder.group({term: new FormControl('', [Validators.requiredTrue])});
   }
 
   registerOwner(){
@@ -110,4 +119,3 @@ export class RegisterComponent implements OnInit {
 async function redirectCreate() {
   window.location.replace('/negocio-create');
 }
-
