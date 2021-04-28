@@ -59,7 +59,7 @@ export class CrearNegocioComponent implements OnInit {
 				defaultDeposit: ['', [Validators.required, Validators.min(0), Validators.max(1)]],
 				depositTimeLimit: ['', [Validators.required, Validators.min(1)]]
 			}),
-			services: this.formBuilder.array([])
+			services: this.formBuilder.array([this.addServiceGroup()])
 		});
 	}
 

@@ -34,7 +34,7 @@
     "@progress/kendo-angular-l10n": "^3.0.0",
     "@progress/kendo-angular-popup": "^4.0.0",
     "@progress/kendo-licensing": "^1.1.4",
-    "@progress/kendo-theme-default": "latest",
+    "@progress/kendo-theme-material": "^3.32.0",
     "@stripe/stripe-js": "^1.13.2",
     "bootstrap": "^4.5.0",
     "codacy-coverage": "^3.4.0",

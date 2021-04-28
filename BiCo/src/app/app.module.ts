@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import {MatStepperModule} from '@angular/material/stepper';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { NgxStripeModule } from 'ngx-stripe';
 import { ToastrModule } from 'ngx-toastr';
@@ -96,6 +97,7 @@ import { FooterComponent } from './components/footer/footer.component';
     MatCardModule,
     MatFormFieldModule,
     MatTableModule,
+    MatStepperModule,
     HttpClientModule,
     MatDividerModule,
     MatCheckboxModule,
