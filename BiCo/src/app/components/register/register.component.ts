@@ -73,8 +73,8 @@ export class RegisterComponent implements OnInit {
 			user: new FormControl(data['user']['username'], [Validators.required]),
 			password: new FormControl(data['user']['password'], [Validators.required, Validators.minLength(3)])
 		})
-      let auth = this.authService.login(loginForm.value).subscribe(data=>{
-        this.router.navigate(['home'])
+      let auth = this.authService.login(loginForm.value).subscribe(async data=>{
+        await redirectCreate();
     }, error => {
       this.err= error.error.detail
     })
@@ -107,3 +107,7 @@ export class RegisterComponent implements OnInit {
   }
 
 }
+async function redirectCreate() {
+  window.location.replace('/negocio-create');
+}
+
