@@ -17,6 +17,11 @@ export class OwnerBusinessGuard implements CanActivate {
     if(this.authService.isTokenExpired()){
       localStorage.clear();
       window.location.replace('/login');
+      return false;
+    }
+    if(localStorage.getItem('rol')==='user'){
+      window.location.replace('/home');
+      return false;
     }
     const id =  route.url[1].path
     return  this.check(id)

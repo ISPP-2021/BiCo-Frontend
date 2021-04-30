@@ -13,6 +13,22 @@
         <mat-label>Dirección negocio</mat-label>
         <input matInput placeholder="Introduzca la dirección de su negocio" formControlName="address">
       </mat-form-field>
+
+      <!--
+        <div class="24hr-example">
+          <mat-label>Hora de apertura</mat-label>&nbsp;
+          <input matInput placeholder="Introduzca la hora de apertura" formControlName="openTime">
+           <input placeholder="24hr format" aria-label="24hr format" [ngxTimepicker]="fullTime" [format]="24" formControlName="openTime" type="time">
+          <ngx-material-timepicker #fullTime></ngx-material-timepicker>
+        </div>
+        <br>
+        <div class="24hr-example">
+          <mat-label>Hora de cierre</mat-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input matInput placeholder="Introduzca la hora de cierre" formControlName="closeTime">
+          <input placeholder="24hr format" aria-label="24hr format" [ngxTimepicker]="fullTime2" [format]="24" formControlName="closeTime" type="time">
+          <ngx-material-timepicker #fullTime2></ngx-material-timepicker>
+        </div>
+      -->
       <br>
       <mat-form-field class="example-full-width" required>
         <mat-label>Tipo negocio</mat-label>
@@ -23,6 +39,15 @@
         </mat-select>
       </mat-form-field>
     </div>
+    <br>
+    <mat-label>Hora de apertura</mat-label>&nbsp;
+    <input type="time" formControlName="openTime" required>
+    <br>
+    <br>
+    <mat-label>Hora de cierre</mat-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="time" formControlName="closeTime" required>
+    <br>
+    <br>
     <div formGroupName="option">
       <h4>Opciones negocio</h4>
       <mat-checkbox (change)="disable()" class="example-margin" formControlName="automatedAccept">Aceptación
@@ -48,24 +73,6 @@
       <br>
 
     </div>
-
-
-
-    <!--<mat-form-field class="example-full-width">
-  <mat-label>Horario de apertura</mat-label>
-  <input formControlName="horario_apertura" matInput placeholder="Introduzca el horario de apertura de su Negocio">
-</mat-form-field>
-<br>
-<mat-form-field class="example-full-width">
-  <mat-label>Horario de cierre</mat-label>
-  <input formControlName="horario_cierre" matInput placeholder="Introduzca el horario de cierre de su Negocio">
-</mat-form-field>
-<br>
-<mat-form-field class="example-full-width">
-  <mat-label>Aforo</mat-label>
-  <input formControlName="aforo" matInput placeholder="Introduzca el aforo de su Negocio">
-</mat-form-field>
-<br>-->
     <button type="button" mat-raised-button (click)="editServices()">Editar Servicios</button>
     <button type="submit" mat-raised-button [disabled]="form.invalid">Guardar</button>
 

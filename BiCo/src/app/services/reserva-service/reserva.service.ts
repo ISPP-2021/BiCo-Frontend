@@ -11,7 +11,7 @@ import { JWT_NAME } from '../authentication-service/authentication.service';
 export class ReservaService {
 	token: string = localStorage.getItem(JWT_NAME);
 	constructor(private http: HttpClient) { }
-	private url: string = 'https://bico-despliegue2.herokuapp.com/';
+	private url: string = 'https://bico-despliegue3.herokuapp.com/';
 	// private url: string = 'http://localhost:8080/';
 
 	private headers = {
