@@ -28,6 +28,14 @@ export class ReservaService {
 		);
 	}
 
+	createFor(serviceId: Number, consumerId: Number, reserva: Reserva): Observable<Reserva> {
+		return this.http.post<Reserva>(
+			this.url + 'bookings/' + serviceId + '/' + consumerId,
+			reserva,
+			this.headers
+		);
+	}
+
 	findOne(id: Number): Observable<Reserva> {
 		return this.http
 			.get<Reserva>(this.url + 'servises/' + id, this.headers)
