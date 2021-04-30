@@ -59,7 +59,7 @@ export class CrearReservaComponent implements OnInit {
   reserva: Reserva;
   servicioId: number;
   bookDate: Date;
-  emisionDate: String;
+  emisionDate: Date;
   status: string;
   description: String;
   public servicios;
@@ -91,7 +91,7 @@ export class CrearReservaComponent implements OnInit {
           openTime: [negocio.openTime],
           closeTime: [negocio.closeTime],
           bookDate: [null, [Validators.required]],
-          emisionDate: [''],
+          emisionDate: [new Date],
           status: ['IN_PROGRESS'],
           services: this.formBuilder.array([this.addServiceGroup()]),
         },{
@@ -128,8 +128,8 @@ export class CrearReservaComponent implements OnInit {
       let servicios = this.form.value.services;
       for (let servicio of servicios) {
         reserva = {
-          bookDate: this.form.value.bookDate,//.toISOString().substr(0, 16),
-          emisionDate: this.form.value.emisionDate,
+          bookDate: this.form.value.bookDate,
+          emisionDate: this.form.value.emisionDate.setHours(this.form.value.emisionDate.getHours() + 2),
           status: this.form.value.status,
         };
         this.reservaService.create(servicio.id, reserva).subscribe(()=>{
@@ -150,8 +150,11 @@ export class CrearReservaComponent implements OnInit {
         this.nombre = servicio.name;
         this.servicioId = servicio.id;
         this.description = servicio.description;
+        (this.bookDate = this.form.value.bookDate.setHours(this.form.value.bookDate.getHours() + 2)),
         (this.bookDate = this.form.value.bookDate.toISOString().substr(0, 16)),
-          (this.emisionDate = new Date().toISOString().substr(0, 16)),
+        (this.emisionDate = new Date()),
+        (this.emisionDate = this.form.value.emisionDate.setHours(this.form.value.emisionDate.getHours() + 2)),
+          (this.emisionDate = this.form.value.emisionDate.toISOString().substr(0, 16)),
           (this.status = this.form.value.status);
       }
     }
