@@ -24,4 +24,9 @@ export class ConsumerService {
       .get<Consumer>(this.url + 'users/profile', this.headers)
       .pipe(map((consumer: Consumer) => consumer));
   }
+
+  all(): Observable<Consumer[]>{
+    return this.http.get<Consumer[]>(this.url + 'consumers', this.headers)
+  }
+  
 }

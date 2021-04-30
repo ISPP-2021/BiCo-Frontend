@@ -7,6 +7,9 @@
     <button mat-mini-fab routerLink="/negocio-edit/{{business.id}}">
       <mat-icon>edit</mat-icon>
     </button>
+    <button mat-mini-fab routerLink="/nueva-reserva/{{business.id}}">
+      <mat-icon>add</mat-icon>
+    </button>
     <mat-card-header class="flex-container">
       <mat-card-title>{{business.name}}</mat-card-title>
       <mat-card-subtitle>Dirección: {{business.address}}</mat-card-subtitle>
@@ -43,7 +46,7 @@
                         <mat-icon>check</mat-icon>
                       </button>
                       <mat-card-content>
-                        <b>Hora: </b>{{booking.bookDate | date:'HH:mm' : '-000'}}
+                        <b>Hora: </b>{{booking.bookDate | date:'HH:mm' : '+200'}}
                         <br>
                         <b>Fecha: </b>{{booking.bookDate | date:'dd-MM-yyyy' : '-000'}}
                       </mat-card-content>
