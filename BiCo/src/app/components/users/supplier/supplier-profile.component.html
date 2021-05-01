@@ -4,6 +4,8 @@
         <mat-card class = "perfil" *ngIf=" (supplier$ | async) as supplier">
             <div class="card-header">
                 <mat-card-header>
+                  <button mat-button (click)="openOblivion()"> Eliminar datos </button>
+                  <button mat-button (click)="openPorter()"> Portar datos </button>
                     <img mat-card-avatar src="./favicon.ico">
             <mat-card-title>Usuario: {{supplier.user.username}}</mat-card-title>
             <mat-card-subtitle>{{supplier.email}}</mat-card-subtitle>
@@ -22,7 +24,7 @@
             <div><br>
                 <button id="checkout" mat-raised-button (click)="changeSubscription(supplier.subscription)">Cambiar tarifa</button>
             </div>
-                            
+
         </mat-card>
     </div>
 </div>

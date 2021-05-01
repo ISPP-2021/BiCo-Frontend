@@ -7,7 +7,9 @@ import { SupplierService } from 'src/app/services/supplier-service/supplier.serv
 import { StripeService} from 'ngx-stripe';
 import {loadStripe} from '@stripe/stripe-js';
 import { async } from '@angular/core/testing';
-
+import { MatDialog } from '@angular/material/dialog';
+import { OblivionComponent } from 'src/app/components/oblivion/oblivion.component';
+import { PorterComponent } from 'src/app/components/porter/porter.component';
 
 @Component({
   selector: 'app-supplier-profile',
@@ -36,7 +38,9 @@ export class SupplierProfileComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private supplierService: SupplierService,
-    private stripeService: StripeService
+    private stripeService: StripeService,
+    private dialog: MatDialog
+
   ) {}
 
    checkout = async(sessionId) => {
@@ -73,5 +77,13 @@ export class SupplierProfileComponent implements OnInit {
   }
   ngOnInit(): void {
 
+  }
+
+  openOblivion(){
+    const dialogRef = this.dialog.open(OblivionComponent);
+  }
+
+  openPorter(){
+    const dialogRef = this.dialog.open(PorterComponent);
   }
 }
