@@ -47,6 +47,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -59,9 +60,10 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { FooterComponent } from './components/footer/footer.component';
+import { CrearReservaPropietarioComponent } from './components/reservas/crear-reserva-propietario/crear-reserva-propietario.component';
+
 import { OblivionComponent } from './components/oblivion/oblivion.component';
 import { PorterComponent } from './components/porter/porter.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,6 +86,7 @@ import { PorterComponent } from './components/porter/porter.component';
     PaymentComponent,
     MisNegociosComponent,
     FooterComponent,
+    CrearReservaPropietarioComponent,
     OblivionComponent,
     PorterComponent,
   ],
@@ -120,6 +123,7 @@ import { PorterComponent } from './components/porter/porter.component';
     DateInputsModule,
     NgxMaterialTimepickerModule,
     MatProgressSpinnerModule,
+    AutocompleteLibModule,
     MatDialogModule
   ],
   entryComponents: [ModalComponent],
