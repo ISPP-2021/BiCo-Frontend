@@ -33,7 +33,7 @@ class CustomValidators {
     if(hours < openTimeHours || hours>closeTimeHours){
       return {invalidBookDate: true};
     }else if((hours === openTimeHours && minutes < openTimeMinutes) || (hours === closeTimeHours && minutes > closeTimeMinutes)){
-      return {invalidBookDate: true}; 
+      return {invalidBookDate: true};
     }else{
       return null;
     }
@@ -136,7 +136,7 @@ export class CrearReservaPropietarioComponent implements OnInit {
     if (this.form.valid) {
       let reserva: Reserva;
       let servicios = this.form.value.services;
-      console.log(this.form.value.bookDate)
+      // console.log(this.form.value.bookDate)
       for (let servicio of servicios) {
         reserva = {
           bookDate: this.form.value.bookDate.toISOString().substr(0, 16),
@@ -146,7 +146,7 @@ export class CrearReservaPropietarioComponent implements OnInit {
         this.reservaService.createFor(servicio.id, this.form.value.consumer.id, reserva).subscribe(()=>{
           this.router.navigate(['mis-negocios']);
         });
-        
+
       }
       //window.location.replace('reservas')
     }
