@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators, AbstractControl, ValidationErrors, FormControl } from '@angular/forms';
 import { ReservaService } from 'src/app/services/reserva-service/reserva.service';
 import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Reserva } from 'src/app/model/reserva.interface';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Negocio } from 'src/app/model/negocio.interface';
-import { map, switchMap } from 'rxjs/operators';
+import { debounceTime, map, startWith, switchMap } from 'rxjs/operators';
+import { ConsumerService } from 'src/app/services/consumer-service/consumer.service';
+import { Consumer } from 'src/app/model/consumer.interface';
 
 class CustomValidators {
 
@@ -31,7 +33,7 @@ class CustomValidators {
     if(hours < openTimeHours || hours>closeTimeHours){
       return {invalidBookDate: true};
     }else if((hours === openTimeHours && minutes < openTimeMinutes) || (hours === closeTimeHours && minutes > closeTimeMinutes)){
-      return {invalidBookDate: true}; 
+      return {invalidBookDate: true};
     }else{
       return null;
     }
@@ -40,13 +42,12 @@ class CustomValidators {
 
 }
 
-
 @Component({
-  selector: 'app-crear-reserva',
-  templateUrl: './crear-reserva.component.html',
-  styleUrls: ['./crear-reserva.component.css'],
+  selector: 'app-crear-reserva-propietario',
+  templateUrl: './crear-reserva-propietario.component.html',
+  styleUrls: ['./crear-reserva-propietario.component.css']
 })
-export class CrearReservaComponent implements OnInit {
+export class CrearReservaPropietarioComponent implements OnInit {
   public value: Date = new Date();
   public format = 'dd/MM/yyyy HH:mm';
   public minDate: Date = new Date()
@@ -59,7 +60,7 @@ export class CrearReservaComponent implements OnInit {
   reserva: Reserva;
   servicioId: number;
   bookDate: Date;
-  emisionDate: Date;
+  emisionDate: String;
   status: string;
   description: String;
   public servicios;
@@ -71,18 +72,23 @@ export class CrearReservaComponent implements OnInit {
       const negocioId: number = parseInt(params['id']);
 
       return this.negocioService.findOne(negocioId).pipe(
-        map((negocio: Negocio) => negocio)
+        map((negocio: Negocio) => negocio))
+    })
   )
-})
-  )
+
+  public keyword = 'name';
+
+  public consumers$: Observable<Consumer[]>;
+
   constructor(
     private http: HttpClient,
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private negocioService: NegocioService,
-    private reservaService: ReservaService
-  ) {}
+    private reservaService: ReservaService,
+    private consumerService: ConsumerService
+  ) { }
 
   ngOnInit() {
     this.minDate.setMinutes(this.value.getMinutes() + 30)
@@ -91,16 +97,21 @@ export class CrearReservaComponent implements OnInit {
           openTime: [negocio.openTime],
           closeTime: [negocio.closeTime],
           bookDate: [null, [Validators.required]],
-          emisionDate: [new Date],
-          status: ['IN_PROGRESS'],
+          emisionDate: [''],
+          status: ['COMPLETED'],
+          consumer: ['', Validators.required],
           services: this.formBuilder.array([this.addServiceGroup()]),
         },{
           validators: CustomValidators.validBookDate
         });
         this.negocio = negocio
         this.servicios = negocio.services
+        this.getConsumers()
       });
-    
+  }
+
+  getConsumers():void{
+    this.consumers$ = this.consumerService.all()
   }
 
   get serviceArray() {
@@ -123,20 +134,19 @@ export class CrearReservaComponent implements OnInit {
 
   save() {
     if (this.form.valid) {
-    //  if(this.form.value.bookDate.getHours())
       let reserva: Reserva;
       let servicios = this.form.value.services;
+      // console.log(this.form.value.bookDate)
       for (let servicio of servicios) {
         reserva = {
-          bookDate: this.form.value.bookDate,
-          emisionDate: this.form.value.emisionDate.setHours(this.form.value.emisionDate.getHours() + 2),
+          bookDate: this.form.value.bookDate.toISOString().substr(0, 16),
+          emisionDate: this.form.value.emisionDate,
           status: this.form.value.status,
         };
-        this.reservaService.create(servicio.id, reserva).subscribe(()=>{
-          this.router.navigate(['reservas']);
+        this.reservaService.createFor(servicio.id, this.form.value.consumer.id, reserva).subscribe(()=>{
+          this.router.navigate(['mis-negocios']);
         });
 
-        //
       }
       //window.location.replace('reservas')
     }
@@ -150,20 +160,10 @@ export class CrearReservaComponent implements OnInit {
         this.nombre = servicio.name;
         this.servicioId = servicio.id;
         this.description = servicio.description;
-        (this.bookDate = this.form.value.bookDate.setHours(this.form.value.bookDate.getHours() + 2)),
         (this.bookDate = this.form.value.bookDate.toISOString().substr(0, 16)),
-        (this.emisionDate = new Date()),
-        (this.emisionDate = this.form.value.emisionDate.setHours(this.form.value.emisionDate.getHours() + 2)),
-          (this.emisionDate = this.form.value.emisionDate.toISOString().substr(0, 16)),
+          (this.emisionDate = new Date().toISOString().substr(0, 16)),
           (this.status = this.form.value.status);
       }
-    }
-    if (this.pago == 0) {
-      document.getElementById('boton-reservar').style.display = 'inline';
-      document.getElementById('formulario-pago').style.display = 'none';
-    } else {
-      document.getElementById('boton-reservar').style.display = 'none';
-      document.getElementById('formulario-pago').style.display = 'inline';
     }
   }
 
@@ -173,6 +173,5 @@ export class CrearReservaComponent implements OnInit {
       emisionDate: date,
     });
   }
-
 
 }
