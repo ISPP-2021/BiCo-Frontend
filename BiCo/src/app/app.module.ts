@@ -45,6 +45,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
@@ -61,6 +62,8 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { FooterComponent } from './components/footer/footer.component';
 import { CrearReservaPropietarioComponent } from './components/reservas/crear-reserva-propietario/crear-reserva-propietario.component';
 
+import { OblivionComponent } from './components/oblivion/oblivion.component';
+import { PorterComponent } from './components/porter/porter.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,6 +87,8 @@ import { CrearReservaPropietarioComponent } from './components/reservas/crear-re
     MisNegociosComponent,
     FooterComponent,
     CrearReservaPropietarioComponent,
+    OblivionComponent,
+    PorterComponent,
   ],
   imports: [
     BrowserModule,
@@ -118,7 +123,8 @@ import { CrearReservaPropietarioComponent } from './components/reservas/crear-re
     DateInputsModule,
     NgxMaterialTimepickerModule,
     MatProgressSpinnerModule,
-    AutocompleteLibModule
+    AutocompleteLibModule,
+    MatDialogModule
   ],
   entryComponents: [ModalComponent],
   providers: [
