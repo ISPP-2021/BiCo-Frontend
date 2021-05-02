@@ -1,24 +1,27 @@
 <div fxLayout="column" fxLayoutAlign="center" *ngIf="(negocio$ | async) as negocio">
   <div fxLayoutAlign="space-around center">
     <mat-card class="negocio">
+      <div>
+        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/reservar/{{negocio.id}}">Reservar</button>
+        <mat-card-header class="header">
+          <img mat-card-avatar src="./favicon.ico" alt={{negocio.name}}>
+          <mat-card-title>{{negocio.name}}</mat-card-title>
+          <mat-card-subtitle>Dirección: {{negocio.address}}</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="negocio.businessType === 'HAIRDRESSER'"> Peluquería</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="negocio.businessType === 'RESTAURANT'"> Bar/Restaurante</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="negocio.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
+          <div class="time">
+            <mat-card-subtitle>Abre: {{negocio.openTime}}</mat-card-subtitle>
+            <mat-card-subtitle>Cierra: {{negocio.closeTime}}</mat-card-subtitle>
+          </div>
 
-      <mat-card-header class="header">
-        <img mat-card-avatar src="./favicon.ico" alt={{negocio.name}}>
-        <mat-card-title>{{negocio.name}}</mat-card-title>
-        <mat-card-subtitle>Dirección: {{negocio.address}}</mat-card-subtitle>
-        <mat-card-subtitle *ngIf="negocio.businessType === 'HAIRDRESSER'"> Peluquería</mat-card-subtitle>
-        <mat-card-subtitle *ngIf="negocio.businessType === 'RESTAURANT'"> Bar/Restaurante</mat-card-subtitle>
-        <mat-card-subtitle *ngIf="negocio.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
-        <div class="time">
-          <mat-card-subtitle>Abre: {{negocio.openTime}}</mat-card-subtitle>
-          <mat-card-subtitle>Cierra: {{negocio.closeTime}}</mat-card-subtitle>
-        </div>
-      </mat-card-header>
+        </mat-card-header>
+      </div>
 
       <div fxLayoutAlign="space-around" class="flex-container">
           <mat-card class="servicio" *ngFor="let servicio of negocio.services">
             <div class="card-header">
-      
+
               <mat-card-header>
                 <div style="display: flex; flex-flow: row wrap;">
                   <mat-card-title>{{servicio.name}}</mat-card-title>
@@ -27,7 +30,7 @@
                     {{servicio.price}} €</mat-card-subtitle>
                 </div>
               </mat-card-header>
-      
+
             </div>
             <div class="card-content">
               <mat-card-content>

@@ -41,11 +41,12 @@
   background-color: #8499b1;
 }
 .mat-raised-button {
-  margin-left: 50%;
-  transform: translateX(-50%);
+  /* margin-left: 50%;
+  transform: translateX(-50%); */
   background-color: #a3dcb9;
-  position: absolute;
+  /* position: absolute; */
   bottom: 5%;
+  float:right;
 }
 .time {
   margin-left: 10%;
