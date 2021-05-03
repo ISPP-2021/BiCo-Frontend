@@ -8,8 +8,8 @@
             <img mat-card-avatar src="./favicon.ico" alt={{negocio.name}}>
             <mat-card-subtitle>Dirección: {{negocio.address}}</mat-card-subtitle>
             <div class="time">
-              <mat-card-subtitle>Abre: {{negocio.openTime | slice : 1:5}}</mat-card-subtitle>
-              <mat-card-subtitle>Cierra: {{negocio.closeTime | slice : 1:5}}</mat-card-subtitle>
+              <mat-card-subtitle>Abre: {{negocio.openTime | slice : 0:5}}</mat-card-subtitle>
+              <mat-card-subtitle>Cierra: {{negocio.closeTime | slice : 0:5}}</mat-card-subtitle>
               <input type="hidden" formControlName="openTime">
               <input type="hidden" formControlName="closeTime">
             </div>

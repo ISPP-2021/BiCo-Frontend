@@ -21,8 +21,8 @@
             </mat-card-subtitle>
             <mat-card-subtitle *ngIf="business.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
             <div class="time">
-              <mat-card-subtitle><b>Abre: </b>{{business.openTime | slice : 1:5}}</mat-card-subtitle>
-              <mat-card-subtitle><b>Cierra: </b>{{business.closeTime | slice : 1:5}}</mat-card-subtitle>
+              <mat-card-subtitle><b>Abre: </b>{{business.openTime | slice : 0:5}}</mat-card-subtitle>
+              <mat-card-subtitle><b>Cierra: </b>{{business.closeTime | slice : 0:5}}</mat-card-subtitle>
             </div>
           </mat-card-header>
           <mat-card-content *ngFor="let service of business.services">
@@ -111,7 +111,7 @@
                       aquí:
                     </p>
                     <div fxLayoutAlign="space-around center">
-                      <button mat-raised-button xrouterLink="/negocio-create">Añadir negocio</button>
+                      <button mat-raised-button routerLink="/negocio-create">Añadir negocio</button>
                     </div>
 
                   </mat-card-content>

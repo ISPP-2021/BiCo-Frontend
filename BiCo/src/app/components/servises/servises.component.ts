@@ -77,7 +77,7 @@ export class ServisesComponent implements OnInit {
     return this.formBuilder.group({
 			name: ['Solo Reserva', [Validators.required]],
 			description: ['Reservar en el negocio', [Validators.required]],
-			price: [0.01, [Validators.required, Validators.min(0.01)]],
+			price: [0, [Validators.required, Validators.min(0.01)]],
 			duration: [0, [Validators.required, Validators.min(0)]],
       capacity: [0, [Validators.required, Validators.min(0)]],
       deposit: [0, [Validators.required, Validators.min(0)]],
@@ -91,20 +91,20 @@ export class ServisesComponent implements OnInit {
     if( this.serviceArray.length===0){
        this.serviceArray.push(this.defaultService())
        let serviceDefault = this.serviceArray.value[0]
-       this.negocioService.updateServices(this.negocioId,serviceDefault).subscribe()
+       this.negocioService.updateServices(this.negocioId,serviceDefault).subscribe(()=>{
+        window.location.replace('/mis-negocios')
+       })
       }else{
         let servises = this.serviceArray.value;
         for (let index = 0; index < servises.length; index++) {
           const service = servises[index];
           service.bookings = []
           service.business = null
-          this.negocioService.updateServices(this.negocioId,service).subscribe()
+          this.negocioService.updateServices(this.negocioId,service).subscribe(()=>{
+           window.location.replace('/mis-negocios')
+       })
         }
       }
-
-
-    this.router.navigate(['negocio-edit/'+this.negocioId])
-
     }
   }
 
