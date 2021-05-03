@@ -1,30 +1,40 @@
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.reserva {
+  width: 600px;
+  margin: 5%;
+  border-bottom: solid #44917e;
+  background-color: #f2e6ee;
+  position: relative;
+}
 .example-form {
     width: 60%;
     max-width: 60%;
-    margin: auto;
     padding: 2% 2%;
     box-sizing: border-box;
     margin-top: 2%;
     border-radius: 20px;
-    background: #e1ced4;
   }
-  å .example-full-width {
+.example-full-width {
     width: 100%;
     box-sizing: border-box;
   }
-  
-  @media (max-width: 480 px) {
-    .example-form {
-      width: 100%;
-    }
-  }
-  .mat-raised-button {
-    margin-top: 5%;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    width: 15%;
-    font-size: 1vw;
-    justify-content: center;
-    background-color: #6bc78e;
-    display: inline;
-  }
+
+.mat-raised-button {
+  background-color: #a3dcb9;
+  bottom: 5%;
+}
+.card-header {
+  background-color: #f2e6ee;
+}
+
+.card-content {
+  background-color: #f2e6ee;
+}

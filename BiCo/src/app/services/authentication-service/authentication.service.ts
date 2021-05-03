@@ -26,7 +26,7 @@ export class AuthenticationService {
 	private url: string = 'https://bico-despliegue3.herokuapp.com';
   	private url2: string = 'http://localhost:8080';
 
-	login(loginForm: LoginForm) {
+	login(loginForm: LoginForm): Observable<any> {
 
 		return this.http.post<User>(`${this.url}/users/login`, { username: loginForm.user, password: loginForm.password }).pipe(
 			map((usuario) => {
@@ -51,12 +51,12 @@ export class AuthenticationService {
 		localStorage.clear();
 	}
 
-	registerUser(body) {
+	registerUser(body: any): Observable<any>{
 	  return this.http.post(this.url+'/users/signup/consumers', body)
 
 	}
 
-  registerOwner(body) {
+  registerOwner(body: any): Observable<any> {
 	  return this.http.post(this.url+'/users/signup/suppliers', body)
 
 	}

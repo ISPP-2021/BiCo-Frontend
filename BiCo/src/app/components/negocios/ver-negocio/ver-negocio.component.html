@@ -11,35 +11,35 @@
           <mat-card-subtitle *ngIf="negocio.businessType === 'RESTAURANT'"> Bar/Restaurante</mat-card-subtitle>
           <mat-card-subtitle *ngIf="negocio.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
           <div class="time">
-            <mat-card-subtitle>Abre: {{negocio.openTime}}</mat-card-subtitle>
-            <mat-card-subtitle>Cierra: {{negocio.closeTime}}</mat-card-subtitle>
+            <mat-card-subtitle>Abre: {{negocio.openTime | slice : 0:5}}</mat-card-subtitle>
+            <mat-card-subtitle>Cierra: {{negocio.closeTime | slice : 0:5}}</mat-card-subtitle>
           </div>
 
         </mat-card-header>
       </div>
 
       <div fxLayoutAlign="space-around" class="flex-container">
-          <mat-card class="servicio" *ngFor="let servicio of negocio.services">
-            <div class="card-header">
+        <mat-card class="servicio" *ngFor="let servicio of negocio.services">
+          <div class="card-header">
 
-              <mat-card-header>
-                <div style="display: flex; flex-flow: row wrap;">
-                  <mat-card-title>{{servicio.name}}</mat-card-title>
-                  <mat-card-subtitle
-                    style="margin-top: auto; margin-bottom: auto; position: absolute; right: 7%; font-weight: bold;">
-                    {{servicio.price}} €</mat-card-subtitle>
-                </div>
-              </mat-card-header>
+            <mat-card-header>
+              <div style="display: flex; flex-flow: row wrap;">
+                <mat-card-title>{{servicio.name}}</mat-card-title>
+                <mat-card-subtitle
+                  style="margin-top: auto; margin-bottom: auto; position: absolute; right: 7%; font-weight: bold;">
+                  {{servicio.price}} €</mat-card-subtitle>
+              </div>
+            </mat-card-header>
 
-            </div>
-            <div class="card-content">
-              <mat-card-content>
-                <p style="margin-top:10%;"><b>Descripción: </b>{{servicio.description}}</p>
-                <p style="margin-top:10%;"><b>Duración: </b>{{servicio.duration}} minutos</p>
-                <p style="margin-top:10%;"><b>Aforo:</b> {{servicio.capacity}} personas</p>
-              </mat-card-content>
-            </div>
-          </mat-card>
+          </div>
+          <div class="card-content">
+            <mat-card-content>
+              <p style="margin-top:10%;"><b>Descripción: </b>{{servicio.description}}</p>
+              <p style="margin-top:10%;"><b>Duración: </b>{{servicio.duration}} minutos</p>
+              <p style="margin-top:10%;"><b>Aforo:</b> {{servicio.capacity}} personas</p>
+            </mat-card-content>
+          </div>
+        </mat-card>
       </div>
     </mat-card>
   </div>
