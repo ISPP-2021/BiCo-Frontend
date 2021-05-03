@@ -64,6 +64,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { CrearReservaPropietarioComponent } from './components/reservas/crear-reserva-propietario/crear-reserva-propietario.component';
 
+import { OblivionComponent } from './components/oblivion/oblivion.component';
+import { PorterComponent } from './components/porter/porter.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,6 +90,8 @@ import { CrearReservaPropietarioComponent } from './components/reservas/crear-re
     FooterComponent,
     DialogComponent,
     CrearReservaPropietarioComponent,
+    OblivionComponent,
+    PorterComponent,
   ],
   imports: [
     BrowserModule,
@@ -124,7 +128,8 @@ import { CrearReservaPropietarioComponent } from './components/reservas/crear-re
     DateInputsModule,
     NgxMaterialTimepickerModule,
     MatProgressSpinnerModule,
-    AutocompleteLibModule
+    AutocompleteLibModule,
+    MatDialogModule
   ],
   entryComponents: [ModalComponent, DialogComponent],
   providers: [
