@@ -47,12 +47,10 @@
               </div>
 
               <mat-label><b>Hora de apertura</b></mat-label>&nbsp;
-              <!-- <input type="time" formControlName="openTime" required> -->
               <kendo-timepicker formControlName="openTime" [(value)]="value1" [format]="format" [incompleteDateValidation]="true"></kendo-timepicker>
               <br>
               <br>
               <mat-label><b>Hora de cierre</b></mat-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <!-- <input type="time" formControlName="closeTime" required> -->
               <kendo-timepicker formControlName="closeTime" [(value)]="value2" [format]="format" [incompleteDateValidation]="true"></kendo-timepicker>
               
               <div formGroupName="option">
