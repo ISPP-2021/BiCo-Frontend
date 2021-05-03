@@ -1,187 +1,159 @@
 <div fxLayout="column" fxLayoutAlign="center">
-  <div fxLayoutAlign="space-around center" class="flex-container">
-    <div *ngIf="(supplier$ | async) as supplier">
-
-      <div *ngIf="supplier.business.length > 0 && supplier.subscription==='FREE' else premium">
-        <mat-card class="premium">
-          <div class="card-header">
-            <mat-card-header>
-              <mat-card-title>Hazte Premium</mat-card-title>
-            </mat-card-header>
-          </div>
-          <div class="card-content">
-            <mat-card-content>
-              <p style="text-align: center;">Con el plan gratuito sólo puedes tener un negocio registrado.</p>
-              <p style="text-align: center;">Si quieres registrar negocios de forma ilimitada puedes pasarte al plan
-                Premium
-                ahora mismo por sólo 9,99€ al mes.</p>
-            </mat-card-content>
-          </div>
-          <div fxLayoutAlign="space-around center">
-            <button mat-raised-button (click)="changeSubscription(supplier.subscription)">Quiero cambiarme
-              a Premium</button>
-          </div>
-        </mat-card>
+  <div fxLayoutAlign="space-around center" class="flex-container" *ngIf="(supplier$ | async) as supplier">
+    <mat-card class="premium" *ngIf="supplier.business.length > 0 && supplier.subscription==='FREE' else premium">
+      <div class="card-header">
+        <mat-card-header>
+          <mat-card-title>Hazte Premium</mat-card-title>
+        </mat-card-header>
       </div>
-    </div>
-
+      <div class="card-content" style="text-align: center;">
+        <mat-card-content>
+          <p>Con el plan gratuito sólo puedes tener un negocio registrado.</p>
+          <p>Si quieres registrar negocios de forma ilimitada puedes pasarte al plan
+            Premium ahora mismo por sólo 9,99€ al mes.</p>
+        </mat-card-content>
+      </div>
+      <div fxLayoutAlign="space-around center">
+        <button mat-raised-button (click)="changeSubscription(supplier.subscription)">Quiero cambiarme
+          a Premium</button>
+      </div>
+    </mat-card>
+  </div>
+</div>
+<div fxLayout="column" fxLayoutAlign="center">
+  <div fxLayoutAlign="space-around center" class="flex-container">
     <ng-template #premium>
-      <div fxLayout="column" fxLayoutAlign="center">
-        <div fxLayoutAlign="space-around center" class="flex-container">
-          <mat-card class="negocio">
-            <mat-horizontal-stepper>
-              <form class="example-form" [formGroup]="form" (ngSubmit)="save()">
-                <mat-step>
-                  <ng-template matStepLabel>Añadir negocio</ng-template>
-                  <div id="neg" class="card-content">
-                    <h2>Datos negocio</h2>
-                    <mat-form-field class="example-full-width" required>
-                      <mat-label>Nombre negocio</mat-label>
-                      <input matInput placeholder="Introduzca el nombre de su Negocio" formControlName="name">
-                    </mat-form-field>
+      <mat-card class="negocio">
+        <mat-horizontal-stepper>
+          <form class="example-form" [formGroup]="form" (ngSubmit)="save()">
+            <mat-step>
+              <ng-template matStepLabel>Añadir negocio</ng-template>
+              <div id="neg" class="card-content">
+                <h2>Datos negocio</h2>
+                <mat-form-field class="example-full-width" required>
+                  <mat-label>Nombre negocio</mat-label>
+                  <input matInput placeholder="Introduzca el nombre de su Negocio" formControlName="name">
+                </mat-form-field>
+                <mat-form-field class="example-full-width" required>
+                  <mat-label>Dirección negocio</mat-label>
+                  <input matInput placeholder="Introduzca la direccion de su Negocio" formControlName="address">
+                </mat-form-field>
+                <mat-label>Hora de apertura: </mat-label>
+                <input type="time" formControlName="openTime">
+                <mat-label>Hora de cierre: </mat-label>
+                <input type="time" formControlName="closeTime">
+                <mat-form-field class="example-full-width" required>
+                  <mat-label>Tipo negocio</mat-label>
+                  <mat-select formControlName="businessType">
+                    <mat-option value="RESTAURANT">Bar/Restaurante</mat-option>
+                    <mat-option value="HAIRDRESSER">Peluquería</mat-option>
+                    <mat-option value="GENERAL">Otros</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div fxLayoutAlign="space-around center">
+                  <button mat-raised-button matStepperPrevious>Volver</button>
+                  <button mat-raised-button matStepperNext>Siguiente</button>
+                </div>
+              </div>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Opciones negocio</ng-template>
+              <div formGroupName="option">
+                <h2>Opciones negocio</h2>
+                <ng-template matStepLabel>Opciones negocio</ng-template>
+                <mat-checkbox (change)="disable()" class="example-margin" formControlName="automatedAccept">
+                  Aceptación automática</mat-checkbox>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Límite de reservas automáticas (valor entre 0-99+)</mat-label>
+                  <input matInput type="number" placeholder="Seleccione el número de reservas automáticas"
+                    formControlName="limitAutomated">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Fianza de reserva (valor entre 0-1)</mat-label>
+                  <input matInput type="number" placeholder="Introduzca la fianza por reservas para todos los servicios"
+                    formControlName="defaultDeposit">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Tiempo de cancelación gratuita (valor en días) </mat-label>
+                  <input matInput type="number"
+                    placeholder="Introduzca el número de días para que la cancelación sea gratuitas"
+                    formControlName="depositTimeLimit">
+                </mat-form-field>
+              </div>
 
-                    <mat-form-field class="example-full-width" required>
-                      <mat-label>Dirección negocio</mat-label>
-                      <input matInput placeholder="Introduzca la direccion de su Negocio" formControlName="address">
-                    </mat-form-field>
+              <div fxLayoutAlign="space-around center">
+                <button mat-raised-button matStepperPrevious>Volver</button>
+                <button mat-raised-button matStepperNext>Siguiente</button>
+              </div>
+            </mat-step>
+            <mat-step>
+              <div formArrayName="services">
+                <ng-template matStepLabel>Servicios negocio</ng-template>
+                <div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
+                  <h3>Servicio {{i+1}}</h3>
+                  <mat-form-field class="example-full -width">
+                    <mat-label>Nombre servicio</mat-label>
+                    <input matInput type="text" placeholder="Introduzca el nombre del servicio" formControlName="name">
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Descripción servicio</mat-label>
+                    <input matInput type="text" placeholder="Introduzca la descripción del servicio"
+                      formControlName="description">
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Precio servicio (x.xx)</mat-label>
+                    <input matInput type="number" placeholder="Introduzca el precio del servicio"
+                      formControlName="price">
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Duración servicio (en minutos) </mat-label>
+                    <input matInput type="number" placeholder="Introduzca la duración del servicio"
+                      formControlName="duration">
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Aforo (valor entre 0-99+)</mat-label>
+                    <input matInput type="number" placeholder="Introduzca el aforo del servicio "
+                      formControlName="capacity">
+                  </mat-form-field>
 
-                    <mat-label>Hora de apertura: </mat-label>
-                    <input type="time" formControlName="openTime">
-                    <mat-label>Hora de cierre: </mat-label>
-                    <input type="time" formControlName="closeTime">
-
-                    <mat-form-field class="example-full-width" required>
-                      <mat-label>Tipo negocio</mat-label>
-                      <mat-select formControlName="businessType">
-                        <mat-option value="RESTAURANT">Bar/Restaurante</mat-option>
-                        <mat-option value="HAIRDRESSER">Peluquería</mat-option>
-                        <mat-option value="GENERAL">Otros</mat-option>
-                      </mat-select>
-                      <br><br>
-
-
-                    </mat-form-field>
-                    <div fxLayoutAlign="space-around center">
-                      <button mat-raised-button matStepperPrevious>Volver</button>
-                      <button mat-raised-button matStepperNext>Siguiente</button>
-                    </div>
-
-
-                  </div>
-
-
-                </mat-step>
-                <mat-step>
-                  <ng-template matStepLabel>Opciones negocio</ng-template>
-
-                  <div formGroupName="option">
-                    <h2>Opciones negocio</h2>
-                    <ng-template matStepLabel>Opciones negocio</ng-template>
-                    <mat-checkbox (change)="disable()" class="example-margin" formControlName="automatedAccept">
-                      Aceptación
-                      automática
-                    </mat-checkbox>
-
-                    <mat-form-field class="example-full-width">
-                      <mat-label>Límite de reservas automáticas (valor entre 0-99+)</mat-label>
-                      <input matInput type="number" placeholder="Seleccione el número de reservas automáticas"
-                        formControlName="limitAutomated">
-                    </mat-form-field>
-
-                    <mat-form-field class="example-full-width">
-                      <mat-label>Fianza de reserva (valor entre 0-1)</mat-label>
-                      <input matInput type="number"
-                        placeholder="Introduzca la fianza por reservas para todos los servicios"
-                        formControlName="defaultDeposit">
-                    </mat-form-field>
-
-                    <mat-form-field class="example-full-width">
-                      <mat-label>Tiempo de cancelación gratuita (valor en días) </mat-label>
-                      <input matInput type="number"
-                        placeholder="Introduzca el número de días para que la cancelación sea gratuitas"
-                        formControlName="depositTimeLimit">
-                    </mat-form-field>
-                  </div>
-                  <br>
-                  <div fxLayoutAlign="space-around center">
-                    <button mat-raised-button matStepperPrevious>Volver</button>
-                    <button mat-raised-button matStepperNext>Siguiente</button>
-                  </div>
-                </mat-step>
-                <mat-step>
-                  <div formArrayName="services">
-                    <ng-template matStepLabel>Servicios negocio</ng-template>
-                    <div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
-                      <h3>Servicio {{i+1}}</h3>
-                      <mat-form-field class="example-full -width">
-                        <mat-label>Nombre servicio</mat-label>
-                        <input matInput type="text" placeholder="Introduzca el nombre del servicio"
-                          formControlName="name">
-                      </mat-form-field>
-
-                      <mat-form-field class="example-full-width">
-                        <mat-label>Descripción servicio</mat-label>
-                        <input matInput type="text" placeholder="Introduzca la descripción del servicio"
-                          formControlName="description">
-                      </mat-form-field>
-
-                      <mat-form-field class="example-full-width">
-                        <mat-label>Precio servicio (x.xx)</mat-label>
-                        <input matInput type="number" placeholder="Introduzca el precio del servicio"
-                          formControlName="price">
-                      </mat-form-field>
-
-                      <mat-form-field class="example-full-width">
-                        <mat-label>Duración servicio (en minutos) </mat-label>
-                        <input matInput type="number" placeholder="Introduzca la duración del servicio"
-                          formControlName="duration">
-                      </mat-form-field>
-                      <br>
-                      <mat-form-field class="example-full-width">
-                        <mat-label>Aforo (valor entre 0-99+)</mat-label>
-                        <input matInput type="number" placeholder="Introduzca el aforo del servicio "
-                          formControlName="capacity">
-                      </mat-form-field>
-                      <br>
-                      <mat-form-field class="example-full-width">
-                        <mat-label>Precio de la reserva (x.xx)</mat-label>
-                        <input matInput type="number" placeholder="Introduzca el precio de la reserva del servicio"
-                          formControlName="deposit">
-                      </mat-form-field>
-                      <br>
-                      <mat-form-field class="example-full-width">
-                        <mat-label>Porcentaje de fianza (valor entre 0-1)</mat-label>
-                        <input matInput type="number" placeholder="Introduzca el porcentaje de la fianza del servicio "
-                          formControlName="tax">
-                      </mat-form-field>
-                      <div>
-                        <button mat-mini-fab fxLayoutAlign="space-around center" (click)="removeService(i)">
-                          <mat-icon>remove_circle_outline</mat-icon>
-                        </button>
-                      </div>
-
-                      <mat-divider></mat-divider>
-                    </div>
-                    <button mat-mini-fab *ngIf="serviceArray.controls.length != 0" (click)="addService()">
-                      <mat-icon>control_point</mat-icon>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Precio de la reserva (x.xx)</mat-label>
+                    <input matInput type="number" placeholder="Introduzca el precio de la reserva del servicio"
+                      formControlName="deposit">
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Porcentaje de fianza (valor entre 0-1)</mat-label>
+                    <input matInput type="number" placeholder="Introduzca el porcentaje de la fianza del servicio "
+                      formControlName="tax">
+                  </mat-form-field>
+                  <div>
+                    <button mat-mini-fab fxLayoutAlign="space-around center" (click)="removeService(i)">
+                      <mat-icon>remove_circle_outline</mat-icon>
                     </button>
                   </div>
-                  <div fxLayoutAlign="space-around center" fxLayoutAlign="space-around center"
-                    *ngIf="serviceArray.controls.length == 0">
-                    <b> No tiene añadido ningún servicio. Si no añade ningún servicio se le añadirá uno por defecto
-                      que podrá personalizar y servirá como reserva general de su negocio.</b>
-                    <br>
-                    <button mat-mini-fab (click)="addService()">
-                      <mat-icon>control_point</mat-icon>
-                    </button>
-                  </div>
-                  <br><br><br>
-                  <div fxLayoutAlign="space-around center">
-                    <button mat-raised-button matStepperPrevious>Volver</button>
-                    <button mat-raised-button [disabled]="form.invalid" (click)="save()">Guardar</button>
-                  </div>
-                </mat-step>
-              </form>
-            </mat-horizontal-stepper>
-          </mat-card>
-        </div>
+                  <mat-divider></mat-divider>
+                </div>
+                <button mat-mini-fab *ngIf="serviceArray.controls.length != 0" (click)="addService()">
+                  <mat-icon>control_point</mat-icon>
+                </button>
+              </div>
+              <div fxLayoutAlign="space-around center" fxLayoutAlign="space-around center"
+                *ngIf="serviceArray.controls.length == 0">
+                <b> No tiene añadido ningún servicio. Si no añade ningún servicio se le añadirá uno por defecto
+                  que podrá personalizar y servirá como reserva general de su negocio.</b>
+                <button mat-mini-fab (click)="addService()">
+                  <mat-icon>control_point</mat-icon>
+                </button>
+              </div>
+              <br><br><br>
+              <div fxLayoutAlign="space-around center">
+                <button mat-raised-button matStepperPrevious>Volver</button>
+                <button mat-raised-button [disabled]="form.invalid" (click)="save()">Guardar</button>
+              </div>
+            </mat-step>
+          </form>
+        </mat-horizontal-stepper>
+      </mat-card>
+    </ng-template>
+  </div>
+</div>

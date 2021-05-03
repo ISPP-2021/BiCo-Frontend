@@ -19,13 +19,17 @@
 }
 
 .card-content {
-  margin-top: 10px;
   background-color: #f2e6ee;
 }
 
 .mat-raised-button {
   background-color: #a3dcb9;
   bottom: 5%;
+}
+
+.mat-mini-fab {
+  margin: 2%;
+  background-color: #8499b1;
 }
 
 .example-form {
@@ -53,8 +57,4 @@
 }
 .mat-stepper-horizontal {
   background-color: #f2e6ee;
-}
-.mat-mini-fab {
-  margin: 2%;
-  background-color: #8499b1;
 }

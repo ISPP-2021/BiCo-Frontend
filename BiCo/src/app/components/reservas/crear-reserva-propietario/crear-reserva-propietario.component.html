@@ -58,7 +58,7 @@
                                 formControlName="consumer">
                             </ng-autocomplete>
                             <ng-template #itemTemplate let-item>
-                                <a [innerHTML]="[item.name, item.lastname]"></a>
+                                <a [innerHTML]="[item.lastname, item.name]"></a>
                             </ng-template>
 
                             <ng-template #notFoundTemplate let-notFound>

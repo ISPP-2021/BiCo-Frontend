@@ -13,10 +13,10 @@ import { Consumer } from 'src/app/model/consumer.interface';
 
 class CustomValidators {
 
-  static validBookDate (control: AbstractControl): ValidationErrors{
+  static validBookDate(control: AbstractControl): ValidationErrors {
     const bookDate = new Date(control.get('bookDate').value)
     let hours = bookDate.getHours();
-    if(hours === 0){
+    if (hours === 0) {
       hours = 24
     }
     const minutes = bookDate.getMinutes();
@@ -25,16 +25,16 @@ class CustomValidators {
     const openTimeMinutes = Number(openTime[1])
     const closeTime = control.get('closeTime').value.split(":")
     let closeTimeHours = Number(closeTime[0])
-    if(closeTimeHours === 0){
+    if (closeTimeHours === 0) {
       closeTimeHours = 24
     }
     const closeTimeMinutes = Number(closeTime[1])
 
-    if(hours < openTimeHours || hours>closeTimeHours){
-      return {invalidBookDate: true};
-    }else if((hours === openTimeHours && minutes < openTimeMinutes) || (hours === closeTimeHours && minutes > closeTimeMinutes)){
-      return {invalidBookDate: true};
-    }else{
+    if (hours < openTimeHours || hours > closeTimeHours) {
+      return { invalidBookDate: true };
+    } else if ((hours === openTimeHours && minutes < openTimeMinutes) || (hours === closeTimeHours && minutes > closeTimeMinutes)) {
+      return { invalidBookDate: true };
+    } else {
       return null;
     }
 
@@ -93,24 +93,24 @@ export class CrearReservaPropietarioComponent implements OnInit {
   ngOnInit() {
     this.minDate.setMinutes(this.value.getMinutes() + 30)
     this.negocioService.findOne(this.negocioId).subscribe(negocio => {
-        this.form = this.formBuilder.group({
-          openTime: [negocio.openTime],
-          closeTime: [negocio.closeTime],
-          bookDate: [null, [Validators.required]],
-          emisionDate: [''],
-          status: ['COMPLETED'],
-          consumer: ['', Validators.required],
-          services: this.formBuilder.array([this.addServiceGroup()]),
-        },{
-          validators: CustomValidators.validBookDate
-        });
-        this.negocio = negocio
-        this.servicios = negocio.services
-        this.getConsumers()
+      this.form = this.formBuilder.group({
+        openTime: [negocio.openTime],
+        closeTime: [negocio.closeTime],
+        bookDate: [null, [Validators.required]],
+        emisionDate: [''],
+        status: ['COMPLETED'],
+        consumer: ['', Validators.required],
+        services: this.formBuilder.array([this.addServiceGroup()]),
+      }, {
+        validators: CustomValidators.validBookDate
       });
+      this.negocio = negocio
+      this.servicios = negocio.services
+      this.getConsumers()
+    });
   }
 
-  getConsumers():void{
+  getConsumers(): void {
     this.consumers$ = this.consumerService.all()
   }
 
@@ -139,11 +139,11 @@ export class CrearReservaPropietarioComponent implements OnInit {
       // console.log(this.form.value.bookDate)
       for (let servicio of servicios) {
         reserva = {
-          bookDate: this.form.value.bookDate.toISOString().substr(0, 16),
+          bookDate: this.form.value.bookDate.setHours(this.form.value.bookDate.getHours() + 2),
           emisionDate: this.form.value.emisionDate,
           status: this.form.value.status,
         };
-        this.reservaService.createFor(servicio.id, this.form.value.consumer.id, reserva).subscribe(()=>{
+        this.reservaService.createFor(servicio.id, this.form.value.consumer.id, reserva).subscribe(() => {
           this.router.navigate(['mis-negocios']);
         });
 
