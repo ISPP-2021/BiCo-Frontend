@@ -1,60 +1,86 @@
-<div *ngIf="(negocio$ | async) as negocio">
-    <form class="example-form" [formGroup]="form" (ngSubmit)="save()">
-        <h2 style="text-align: center;">Nueva reserva</h2>
-        <mat-label>Abre: {{negocio.openTime}}</mat-label><br>
-        <mat-label>Cierra: {{negocio.closeTime}}</mat-label>
-        <input type="hidden" formControlName="openTime">
-        <input type="hidden" formControlName="closeTime">
-        <hr>
-        <div>
-            <mat-label>Fecha:</mat-label>
-            &nbsp;
-            <kendo-datetimepicker formControlName="bookDate" required [readOnlyInput]=true [format]="format" [(value)]="value"
-                [min]="minDate">
-            </kendo-datetimepicker>
-        </div>
-        <mat-error *ngIf="form.hasError('invalidBookDate')">La hora seleccionada para la reserva está fuera del horario de apertura
-        del establecimiento</mat-error>
-        <br>
-        <mat-divider></mat-divider>
-        <br>
-        <div formArrayName="services">
-            <h4>Servicios</h4>
-            <div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Servicio</mat-label>
-                    <mat-select formControlName="id" (selectionChange)="pagoTotal($event.value)">
-                        <mat-option *ngFor="let servicio of servicios" [value]="servicio.id">{{servicio.name}} -
-                        {{servicio.price}} €</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-        </div>
-        <mat-divider></mat-divider>
-        <br>
-        <h4>Cliente</h4>
-        <ng-autocomplete
-            [data]="consumers$ | async"
-            [searchKeyword]="keyword"
-            [itemTemplate]="itemTemplate"
-            [notFoundTemplate]="notFoundTemplate"
-            placeholder="Selecciona un cliente de la lista, puedes filtrar por su nombre para encontrarlo rápidamente"
-            formControlName="consumer">
-        </ng-autocomplete>
-        <ng-template #itemTemplate let-item>
-            <a [innerHTML]="[item.name, item.lastname]"></a>
-        </ng-template>
-            
-        <ng-template #notFoundTemplate let-notFound>
-            <div [innerHTML]="notFound"></div>
-        </ng-template>
-        <!-- <mat-select>
+<div fxLayout="column" fxLayoutAlign="center">
+    <div fxLayoutAlign="space-around center" class="flex-container">
+        <div *ngIf="(negocio$ | async) as negocio">
+            <form class="example-form" [formGroup]="form" (ngSubmit)="save()">
+                <mat-card class="reserva">
+                    <div class="card-header">
+                        <mat-card-header>
+                            <mat-card-title>Nueva reserva</mat-card-title>
+                            <img mat-card-avatar src="./favicon.ico" alt={{negocio.name}}>
+                            <mat-card-subtitle>{{negocio.name}}</mat-card-subtitle>
+                            <mat-card-subtitle>Dirección: {{negocio.address}}</mat-card-subtitle>
+                            <mat-card-subtitle *ngIf="negocio.businessType === 'HAIRDRESSER'"> Peluquería
+                            </mat-card-subtitle>
+                            <mat-card-subtitle *ngIf="negocio.businessType === 'RESTAURANT'"> Bar/Restaurante
+                            </mat-card-subtitle>
+                            <mat-card-subtitle *ngIf="negocio.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
+                            <div class="time">
+                                <mat-card-subtitle>Abre: {{negocio.openTime | slice : 1:5}}</mat-card-subtitle>
+                                <mat-card-subtitle>Cierra: {{negocio.closeTime | slice : 1:5}}</mat-card-subtitle>
+                                <input type="hidden" formControlName="openTime">
+                                <input type="hidden" formControlName="closeTime">
+                            </div>
+
+                        </mat-card-header>
+                    </div>
+                    <div class="card-content">
+                        <mat-card-content>
+                            <div>
+                                <mat-label><b>Fecha: </b></mat-label>
+                                &nbsp;
+                                <kendo-datetimepicker formControlName="bookDate" required [readOnlyInput]=true
+                                    [format]="format" [(value)]="value" [min]="minDate">
+                                </kendo-datetimepicker>
+                            </div>
+                            <mat-error *ngIf="form.hasError('invalidBookDate')">La hora seleccionada para la reserva
+                                está fuera del horario de apertura del establecimiento</mat-error>
+                            <br>
+                            <mat-divider></mat-divider>
+                            <br>
+                            <div formArrayName="services">
+                                <h3>Servicios</h3>
+                                <div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Servicio</mat-label>
+                                        <mat-select formControlName="id" (selectionChange)="pagoTotal($event.value)">
+                                            <mat-option *ngFor="let servicio of servicios" [value]="servicio.id">
+                                                {{servicio.name}} - {{servicio.price}} €</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <br>
+                            <h3>Cliente</h3>
+                            <ng-autocomplete [data]="consumers$ | async" [searchKeyword]="keyword"
+                                [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate"
+                                placeholder="Selecciona un cliente de la lista, puedes filtrar por su nombre para encontrarlo rápidamente"
+                                formControlName="consumer">
+                            </ng-autocomplete>
+                            <ng-template #itemTemplate let-item>
+                                <a [innerHTML]="[item.name, item.lastname]"></a>
+                            </ng-template>
+
+                            <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                            </ng-template>
+                        </mat-card-content>
+                        <div fxLayoutAlign="space-around center">
+                            <button id="boton-reservar" type="submit" mat-raised-button [disabled]="form.invalid"
+                                (click)="fechaActual(form)">Reservar</button>
+                        </div>
+                    </div>
+                </mat-card>
+
+
+                <!-- <mat-select>
             <mat-option *ngFor="let consumer of consumers" value="{{consumer.id}}">
                 {{consumer.name}} {{consumer.lastname}}
             </mat-option>
         </mat-select> -->
-        <br>
-        <button id="boton-reservar" type="submit" mat-raised-button color="primary"
-        [disabled]="form.invalid" (click)="fechaActual(form)">Reservar</button>
-    </form>
+
+
+            </form>
+        </div>
+    </div>
 </div>

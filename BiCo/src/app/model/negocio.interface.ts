@@ -6,8 +6,8 @@ export interface Negocio {
   address?: String;
   businessType?: String;
   automatedAccept?: boolean;
-  openTime?: String;
-  closeTime?: String;
+  openTime?: Date;
+  closeTime?: Date;
   supplier?: {
     id?: Number;
     name?: String;

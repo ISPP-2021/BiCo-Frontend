@@ -46,9 +46,9 @@
               </mat-card-content>
               <div>
                 <mat-error *ngIf="registerForm.get('user.password').hasError('passwordInvalid')">La contraseña no
-                  contiene número</mat-error>
+                  contiene al menos un número.</mat-error>
                 <mat-error *ngIf=" registerForm.hasError('passwordsNotMatching')">Las contraseñas no
-                  coinciden</mat-error>
+                  coinciden.</mat-error>
                 <mat-error *ngIf="err">{{err}}</mat-error>
               </div>
 
@@ -57,9 +57,9 @@
         </div>
         <form class="example-form" [formGroup]="termsForm">
           <div>
-            <mat-checkbox formControlName="term">He leído y acepto los <button mat-button
-                (click)="openDialog()">Terminos y
-                Condiciones</button></mat-checkbox>
+            <mat-checkbox formControlName="term">He leído y acepto los <a style="text-decoration: underline;
+  color: blue;" (click)="openDialog()">términos y
+                condiciones</a>.</mat-checkbox>
           </div>
         </form>
 

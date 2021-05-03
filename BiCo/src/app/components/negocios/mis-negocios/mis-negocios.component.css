@@ -1,20 +1,31 @@
 .flex-container {
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-around;
   padding: 0;
   margin: 0;
   list-style: none;
 }
 .negocio {
-  margin: 2%;
-  background-color: #e1ced4;
-  width: 60%;
+ width: 600px;
+  margin: 5%;
+  border-bottom: solid #44917e;
+  background-color: #f2e6ee;
+  position: relative;
 }
 .servicio {
-  background-color: #f0e7ea;
+  margin: 2%;
+  border-top: solid #44917e;
+  border-bottom: solid #44917e;
+  background-color: #f2e6ee;
+  position: relative;
+  
 }
 .reservas {
   margin: 1%;
+   background-color: #f2e6ee;
+   border-right: solid #44917e;
+   border-left: solid #44917e;
 }
 
 .mat-mini-fab {
@@ -24,9 +35,11 @@
 }
 
 .crearNegocio {
-  margin: 2%;
-  background-color: #e1ced4;
-  width: 60%;
+  width: 600px;
+  margin: 5%;
+  border-bottom: solid #44917e;
+  background-color: #f2e6ee;
+  position: relative;
 }
 
 .time {
@@ -36,4 +49,16 @@
 
 .inner-content {
   margin-left: 2%;
+}
+.card-header {
+  background-color: #f2e6ee;
+}
+
+.card-content {
+  margin-top: 10px;
+  background-color: #f2e6ee;
+}
+.mat-raised-button {
+  background-color: #a3dcb9;
+  bottom: 5%;
 }

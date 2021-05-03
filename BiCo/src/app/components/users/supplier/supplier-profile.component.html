@@ -1,28 +1,26 @@
-
 <div fxLayout="column" fxLayoutAlign="center">
     <div fxLayoutAlign="space-around center" class="flex-container">
-        <mat-card class = "perfil" *ngIf=" (supplier$ | async) as supplier">
+        <mat-card class="perfil" *ngIf=" (supplier$ | async) as supplier">
             <div class="card-header">
                 <mat-card-header>
                     <img mat-card-avatar src="./favicon.ico">
-            <mat-card-title>Usuario: {{supplier.user.username}}</mat-card-title>
-            <mat-card-subtitle>{{supplier.email}}</mat-card-subtitle>
+                    <mat-card-title>Usuario: {{supplier.user.username}}</mat-card-title>
+                    <mat-card-subtitle>{{supplier.email}}</mat-card-subtitle>
                 </mat-card-header>
             </div>
             <div class="card-content">
                 <mat-card-content>
-            <p><b>Nombre:</b> {{supplier.name}}</p>
-            <p><b>Apellidos:</b> {{supplier.lastname}}</p>
-            <p><b>DNI:</b> {{supplier.dni}}</p>
-            <p><b>Email:</b> {{supplier.email}}</p>
-            <p><b>Suscripción:</b> {{supplier.subscription}}</p>
+                    <p><b>Nombre:</b> {{supplier.name}}</p>
+                    <p><b>Apellidos:</b> {{supplier.lastname}}</p>
+                    <p><b>DNI:</b> {{supplier.dni}}</p>
+                    <p><b>Email:</b> {{supplier.email}}</p>
+                    <p><b>Suscripción:</b> {{supplier.subscription}}</p>
                 </mat-card-content>
-
             </div>
-            <div><br>
-                <button id="checkout" mat-raised-button (click)="changeSubscription(supplier.subscription)">Cambiar tarifa</button>
+            <div fxLayoutAlign="space-around center">
+                <button id="checkout" mat-raised-button (click)="changeSubscription(supplier.subscription)">Cambiar
+                    tarifa</button>
             </div>
-                            
         </mat-card>
     </div>
 </div>
