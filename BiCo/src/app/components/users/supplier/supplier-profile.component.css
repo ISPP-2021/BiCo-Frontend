@@ -27,3 +27,9 @@
   background-color: #a3dcb9;
   bottom: 5%;
 }
+
+.mat-mini-fab {
+  float: right;
+  background-color: #8499b1;
+  margin-right: 5%;
+}
