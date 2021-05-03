@@ -28,6 +28,10 @@ export class EditarNegocioComponent implements OnInit {
 })
   )
 
+  public value1: Date = new Date(2000, 2, 10)
+  public value2: Date = new Date(2000, 2, 10)
+  public format = 'HH:mm';
+
   constructor(private http: HttpClient,private formBuilder: FormBuilder,
   private router: Router, private route: ActivatedRoute,
   private negocioService: NegocioService
@@ -40,8 +44,8 @@ export class EditarNegocioComponent implements OnInit {
       name: [negocio.name, Validators.required],
       address: [negocio.address, Validators.required],
       businessType: [negocio.businessType, [Validators.required]],
-      openTime: [negocio.openTime, [Validators.required]],
-      closeTime: [negocio.closeTime, [Validators.required]],
+      openTime: [new Date("December 17, 1995 " + negocio.openTime), [Validators.required]],
+      closeTime: [new Date("December 17, 1995 " + negocio.closeTime), [Validators.required]],
       option:this.formBuilder.group({
         automatedAccept: [negocio.option.automatedAccept, [Validators.required]],
         gas: [{value:negocio.option.gas, disabled:!negocio.option.automatedAccept},  [Validators.required, Validators.min(1)]],
@@ -49,7 +53,6 @@ export class EditarNegocioComponent implements OnInit {
         depositTimeLimit: [negocio.option.depositTimeLimit, [Validators.required, Validators.min(1)]]
         }),
       });
-
 
     })
   }
@@ -61,9 +64,25 @@ export class EditarNegocioComponent implements OnInit {
 
   save() {
     if(this.form.valid){
-    this.negocioService.update(this.negocioId,this.form.value).subscribe(()=>{
-      window.location.replace('/mis-negocios')
-    })
+      let negocio: Negocio
+      let openTime = new Date(this.form.value.openTime.setHours(this.form.value.openTime.getHours() + 1))
+      let closeTime = new Date(this.form.value.closeTime.setHours(this.form.value.closeTime.getHours() + 1))
+      negocio = {
+        name : this.form.value.name,
+        address : this.form.value.address,
+        businessType : this.form.value.businessType,
+        openTime : openTime.toISOString().substring(11, 16),
+        closeTime : closeTime.toISOString().substring(11, 16),
+        option : {
+          automatedAccept : this.form.value.option.automatedAccept,
+          gas : this.form.value.option.gas,
+          defaultDeposit : this.form.value.option.defaultDeposit,
+          depositTimeLimit : this.form.value.option.depositTimeLimit,
+        }
+      }
+      this.negocioService.update(this.negocioId,negocio).subscribe(()=>{
+        window.location.replace('/mis-negocios')
+      })
     }
   }
 
