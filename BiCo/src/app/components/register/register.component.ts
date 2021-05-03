@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors, FormControl } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication-service/authentication.service';
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
+import {MatDialog} from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 class CustomValidators {
   static passwordContainsNumber(control: AbstractControl): ValidationErrors {
@@ -36,12 +37,18 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   err: string;
+  termsForm: FormGroup;
 
   constructor(
     private authService: AuthenticationService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) { }
+
+   openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent);
+  }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -61,6 +68,8 @@ export class RegisterComponent implements OnInit {
     },{
        validators: CustomValidators.passwordsMatch
     })
+
+    this.termsForm =this.formBuilder.group({term: new FormControl('', [Validators.requiredTrue])});
   }
 
   registerOwner(){
@@ -68,10 +77,16 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.registerForm.get('user.confirmPassword').disable()
-    this.authService.registerOwner(this.registerForm.value).pipe(
-      map(user => this.router.navigate(['login']))
-      ).subscribe(data=>{  
-
+    this.authService.registerOwner(this.registerForm.value).subscribe(data=>{
+      let loginForm =new FormGroup({
+			user: new FormControl(data['user']['username'], [Validators.required]),
+			password: new FormControl(data['user']['password'], [Validators.required, Validators.minLength(3)])
+		})
+      let auth = this.authService.login(loginForm.value).subscribe(async data=>{
+        await redirectCreate();
+    }, error => {
+      this.err= error.error.detail
+    })
       }, error => {
         this.err= error.error.title
         this.registerForm.get('user.confirmPassword').enable()
@@ -84,14 +99,23 @@ export class RegisterComponent implements OnInit {
     }
 
     this.registerForm.get('user.confirmPassword').disable()
-    let auth = this.authService.registerUser(this.registerForm.value).pipe(
-      map(user => this.router.navigate(['login']))
-      ).subscribe(data=>{  
-
+    let auth = this.authService.registerUser(this.registerForm.value).subscribe(data=>{
+      let loginForm =new FormGroup({
+			user: new FormControl(data['user']['username'], [Validators.required]),
+			password: new FormControl(data['user']['password'], [Validators.required, Validators.minLength(3)])
+		})
+      let auth = this.authService.login(loginForm.value).subscribe(data=>{
+        this.router.navigate(['home'])
+    }, error => {
+      this.err= error.error.detail
+    })
       }, error => {
         this.err= error.error.title
         this.registerForm.get('user.confirmPassword').enable()
       })
   }
 
+}
+async function redirectCreate() {
+  window.location.replace('/negocio-create');
 }

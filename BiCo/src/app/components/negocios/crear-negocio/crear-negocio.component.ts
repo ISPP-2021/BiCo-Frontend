@@ -59,7 +59,7 @@ export class CrearNegocioComponent implements OnInit {
 				defaultDeposit: ['', [Validators.required, Validators.min(0), Validators.max(1)]],
 				depositTimeLimit: ['', [Validators.required, Validators.min(1)]]
 			}),
-			services: this.formBuilder.array([])
+			services: this.formBuilder.array([this.addServiceGroup()])
 		});
 	}
 
@@ -108,7 +108,7 @@ export class CrearNegocioComponent implements OnInit {
 		return this.formBuilder.group({
 				name: ['Solo Reserva', [Validators.required]],
 				description: ['Reservar en el negocio', [Validators.required]],
-				price: [0.01, [Validators.required, Validators.min(0.01)]],
+				price: [0, [Validators.required, Validators.min(0.01)]],
 				duration: [0, [Validators.required, Validators.min(0)]],
 				capacity: [0, [Validators.required, Validators.min(0)]],
 				deposit: [0, [Validators.required, Validators.min(0)]],
