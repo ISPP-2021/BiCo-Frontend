@@ -66,6 +66,7 @@ import { CrearReservaPropietarioComponent } from './components/reservas/crear-re
 
 import { OblivionComponent } from './components/oblivion/oblivion.component';
 import { PorterComponent } from './components/porter/porter.component';
+import { SubirImagenComponent } from './components/subir-imagen/subir-imagen.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,6 +93,7 @@ import { PorterComponent } from './components/porter/porter.component';
     CrearReservaPropietarioComponent,
     OblivionComponent,
     PorterComponent,
+    SubirImagenComponent,
   ],
   imports: [
     BrowserModule,
