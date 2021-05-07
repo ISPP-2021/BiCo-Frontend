@@ -39,16 +39,21 @@ public onFileSelected(event: any) {
    * Esta funciones se encarga de enviar archivos al servidor
    */
 
-  loadImages = () => {
+  loadProfileImage = () => {
     try {
       const formData = new FormData();
       this.files.forEach((item) => {
         formData.append('image', item)
       });
       this.loading = true;
+      let username = localStorage.getItem('username')
+      console.log(username)
       this.imageService.upload(formData).subscribe(res => {
           this.loading = false;
           console.log('Carga exitosa');
+        }, e =>{
+          this.loading = false;
+          console.log('ERROR', e);
         });
     } catch (e) {
       this.loading = false;

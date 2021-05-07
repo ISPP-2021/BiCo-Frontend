@@ -20,7 +20,7 @@ export class ImageService {
   private url2: string = 'http://localhost:8080/';
 
   upload(formData) {
-     return this.http.post(this.url2 + 'images/upload', formData, this.headers)
+     return this.http.post(this.url2 + 'images/profile/upload', formData, this.headers)
   }
 
 }
