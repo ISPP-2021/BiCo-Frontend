@@ -20,7 +20,7 @@ export class ImageService {
   private url: string = 'http://localhost:8080/';
 
   upload(formData:FormData) {
-     return this.http.post(this.url + 'images/upload', formData, this.headers)
+     return this.http.post(this.url + 'images/profile/upload', formData, this.headers)
   }
 
   getProfilePic(username:string){
