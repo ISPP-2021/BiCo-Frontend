@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Negocio } from 'src/app/model/negocio.interface';
 import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ImageService } from 'src/app/services/image/image.service';
 
 @Component({
   selector: 'app-ver-negocio',
@@ -11,6 +13,7 @@ import { NegocioService } from 'src/app/services/negocio-service/negocio.service
   styleUrls: ['./ver-negocio.component.css'],
 })
 export class VerNegocioComponent implements OnInit {
+  businessPics : any=[];
   rol = localStorage.getItem('rol');
   negocioId = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
   negocio$: Observable<Negocio> = this.activatedRoute.params.pipe(
@@ -25,8 +28,25 @@ export class VerNegocioComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private negocioService: NegocioService
+    private negocioService: NegocioService,
+    private sanitizer: DomSanitizer,
+    private imageService: ImageService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadBusinessImages()
+  }
+
+  loadBusinessImages(){
+    this.imageService.getBusinessPic(this.negocioId).subscribe(imagenes=>{
+      imagenes.forEach(x => {
+        this.imageService.getImage(x.name).subscribe(data => {
+          let unsafeImageUrl = URL.createObjectURL(data);
+          let img = this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
+          this.businessPics.push(img)
+        })
+      })
+    })
+  }
+
 }

@@ -22,6 +22,12 @@ export class ImageService {
         Authorization: this.token,
       },
     };
+    private options = {
+      responseType: 'blob' as const,
+      headers: {
+        Authorization: this.token,
+      },
+    };
 
   // private url: string = 'https://bico-despliegue3.herokuapp.com/';
   private url: string = 'http://localhost:8080/';
