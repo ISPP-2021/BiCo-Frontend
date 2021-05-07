@@ -23,8 +23,9 @@ export class ImageService {
      return this.http.post(this.url + 'images/profile/upload', formData, this.headers)
   }
 
-  getProfilePic(username:string){
-    return this.http.get(this.url + 'images/profile/'+username, this.headers)
+  getProfilePic(){
+    let username = localStorage.getItem('username');
+    return this.http.get(this.url + 'images/profile/'+ username, this.headers)
   }
 
 }
