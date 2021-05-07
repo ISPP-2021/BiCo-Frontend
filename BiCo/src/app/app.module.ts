@@ -18,7 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ConsumerProfileComponent } from './components/users/consumer/consumer-view-profile/consumer-profile.component';
-import { SupplierProfileComponent } from './components/users/supplier/supplier-profile.component';
+import { SupplierProfileComponent } from './components/users/supplier/supplier-view-profile/supplier-profile.component';
 
 import { CercaDeMiComponent } from './components/cerca-de-mi/cerca-de-mi.component';
 //import { GeocodingService } from './services/geocoding-service/geocoding.service';
@@ -67,6 +67,7 @@ import { CrearReservaPropietarioComponent } from './components/reservas/crear-re
 import { OblivionComponent } from './components/oblivion/oblivion.component';
 import { PorterComponent } from './components/porter/porter.component';
 import { ConsumerEditProfileComponent } from './components/users/consumer/consumer-edit-profile/consumer-edit-profile.component';
+import { SupplierEditProfileComponent } from './components/users/supplier/supplier-edit-profile/supplier-edit-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,6 +95,7 @@ import { ConsumerEditProfileComponent } from './components/users/consumer/consum
     OblivionComponent,
     PorterComponent,
     ConsumerEditProfileComponent,
+    SupplierEditProfileComponent,
   ],
   imports: [
     BrowserModule,
