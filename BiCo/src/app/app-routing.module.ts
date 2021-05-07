@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { ConsumerProfileComponent } from './components/users/consumer/consumer-profile.component';
-import { SupplierProfileComponent } from './components/users/supplier/supplier-profile.component';
+import { ConsumerProfileComponent } from './components/users/consumer/consumer-view-profile/consumer-profile.component';
+import { SupplierProfileComponent } from './components/users/supplier/supplier-view-profile/supplier-profile.component';
 import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component';
 import { CrearNegocioComponent } from './components/negocios/crear-negocio/crear-negocio.component';
 import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
@@ -21,6 +21,8 @@ import { AuthenticatedGuard } from './guards/auth/authenticated.guard';
 import { NotAuthGuard } from './guards/not-auth/not-auth.guard';
 import { CrearReservaPropietarioComponent } from './components/reservas/crear-reserva-propietario/crear-reserva-propietario.component';
 import { SubirImagenComponent } from './components/subir-imagen/subir-imagen.component';
+import { ConsumerEditProfileComponent } from './components/users/consumer/consumer-edit-profile/consumer-edit-profile.component';
+import { SupplierEditProfileComponent } from './components/users/supplier/supplier-edit-profile/supplier-edit-profile.component';
 
 const routes: Routes = [
   {
@@ -32,6 +34,16 @@ const routes: Routes = [
     path: 'userProfile',
     component: ConsumerProfileComponent,
     canActivate: [AuthenticatedGuard],
+  },
+  {
+    path: 'userProfile/:id/edit',
+    component: ConsumerEditProfileComponent,
+    canActivate: [AuthenticatedGuard]
+  },
+  {
+    path: 'ownerProfile/:id/edit',
+    component: SupplierEditProfileComponent,
+    canActivate: [AuthenticatedGuard]
   },
   {
     path: 'ownerProfile',
