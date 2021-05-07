@@ -26,7 +26,7 @@ export class SubirImagenComponent implements OnInit {
        /* const blob = b64toBlob(x.name, x.type);
         let unsafeImageUrl = URL.createObjectURL(blob);
         let img = this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
-        this.imagenPrevia.push(img)*/
+        this.imagenPrevia.push(blob)*/
         this.imageService.getImage(x.name).subscribe(data => {
           let unsafeImageUrl = URL.createObjectURL(data);
           let img = this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
@@ -55,6 +55,7 @@ public onFileSelected(event: any) {
 
   removeFoto(i){
     this.imagenPrevia.splice(i, 1);
+    this.files.splice(i, 1);
   }
 
   /**
