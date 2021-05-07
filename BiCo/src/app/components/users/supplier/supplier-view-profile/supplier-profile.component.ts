@@ -11,6 +11,7 @@ import { async } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { OblivionComponent } from 'src/app/components/oblivion/oblivion.component';
 import { PorterComponent } from 'src/app/components/porter/porter.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-supplier-profile',
@@ -40,9 +41,10 @@ export class SupplierProfileComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private supplierService: SupplierService,
-    private imageService: ImageService,
     private stripeService: StripeService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private imageService: ImageService,
+    private sanitizer:DomSanitizer
 
   ) {}
 
@@ -80,14 +82,18 @@ export class SupplierProfileComponent implements OnInit {
   }
   ngOnInit(): void {
 
-  this.imageService.getProfilePic().subscribe(imagen =>{
-    console.log(imagen.base)
-    this.profilePic = imagen
+      this.getImageFromService();
 
-  }, error=>{
-    console.log(error)
-  });
+  }
 
+  getImageFromService() {
+    this.imageService.getProfilePic().subscribe(data => {
+        let unsafeImageUrl = URL.createObjectURL(data);
+        this.profilePic = this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
+    }, error => {
+        console.log(error);
+        this.profilePic = "./favicon.ico"
+    });
   }
 
   openOblivion(){
