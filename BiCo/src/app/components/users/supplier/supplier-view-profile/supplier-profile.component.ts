@@ -81,10 +81,11 @@ export class SupplierProfileComponent implements OnInit {
   ngOnInit(): void {
 
   this.imageService.getProfilePic().subscribe(imagen =>{
-    console.log(imagen)
-    this.profilePic = imagen;
+    console.log(imagen.base)
+    this.profilePic = imagen
+
   }, error=>{
-    console.log( error)
+    console.log(error)
   });
 
   }
