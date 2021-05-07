@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ImageService {
 
+
   token: string = localStorage.getItem('token');
 
   constructor(private http: HttpClient) { }
@@ -29,9 +30,21 @@ export class ImageService {
      return this.http.post(this.url + 'images/profile/upload', formData, this.headers)
   }
 
+  uploadBusiness(formData:FormData, id) {
+     return this.http.post(this.url + 'images/upload/batch/'+id, formData, this.option)
+  }
+
   getProfilePic():any{
     let username = localStorage.getItem('username');
     return this.http.get(this.url + 'images/profile/'+ username,this.option)
+  }
+
+  getBusinessPic(id):any{
+    return this.http.get(this.url + 'images/business/'+ id,this.headers)
+  }
+
+  getImage(name):any{
+    return this.http.get(this.url + 'images/'+ name,this.option)
   }
 
 }
