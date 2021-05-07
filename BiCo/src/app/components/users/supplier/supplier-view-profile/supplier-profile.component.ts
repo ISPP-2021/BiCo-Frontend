@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Supplier } from 'src/app/model/supplier.interface';
 import { SupplierService } from 'src/app/services/supplier-service/supplier.service';
+import { ImageService } from 'src/app/services/image/image.service';
 import { StripeService} from 'ngx-stripe';
 import {loadStripe} from '@stripe/stripe-js';
 import { async } from '@angular/core/testing';
@@ -21,7 +22,7 @@ export class SupplierProfileComponent implements OnInit {
   priceIdFree = "price_1IgusMA32JKQZm0zXIdyzCOy";
   priceIdPremium = "price_1IgurxA32JKQZm0zDkVqgm5q";
   stripe = loadStripe('pk_test_51IeGm1A32JKQZm0zQ9rDl6vL1KuiQYaGHiszd0nJ4dUDy5AW3K9tmHjJLdbdxbsPivHTtQ5JR7uvNlo1tAP1Of6v00oarGizZJ');
-
+  profilePic : Observable<any>
 
   supplier$: Observable<Supplier> = this.activatedRoute.params.pipe(
     switchMap((params: Params) => {
@@ -34,10 +35,12 @@ export class SupplierProfileComponent implements OnInit {
     })
   );
 
+  ;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private supplierService: SupplierService,
+    private imageService: ImageService,
     private stripeService: StripeService,
     private dialog: MatDialog
 
@@ -76,6 +79,7 @@ export class SupplierProfileComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    this.profilePic = this.imageService.getProfilePic(this.supplier$);
 
   }
 
