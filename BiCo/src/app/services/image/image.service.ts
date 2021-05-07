@@ -25,7 +25,11 @@ export class ImageService {
 
   getProfilePic(){
     let username = localStorage.getItem('username');
-    return this.http.get(this.url + 'images/profile/'+ username, this.headers)
+    let image = this.http.get(this.url + 'images/profile/'+ username, {responseType:'text', headers:{
+      Authorization:this.token
+    }});
+    // console.log(image.subscribe())
+    return image;
   }
 
 }

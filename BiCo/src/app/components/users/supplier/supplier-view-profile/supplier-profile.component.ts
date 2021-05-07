@@ -22,7 +22,7 @@ export class SupplierProfileComponent implements OnInit {
   priceIdFree = "price_1IgusMA32JKQZm0zXIdyzCOy";
   priceIdPremium = "price_1IgurxA32JKQZm0zDkVqgm5q";
   stripe = loadStripe('pk_test_51IeGm1A32JKQZm0zQ9rDl6vL1KuiQYaGHiszd0nJ4dUDy5AW3K9tmHjJLdbdxbsPivHTtQ5JR7uvNlo1tAP1Of6v00oarGizZJ');
-  profilePic;
+  profilePic : any;
 
   supplier$: Observable<Supplier> = this.activatedRoute.params.pipe(
     switchMap((params: Params) => {
@@ -84,7 +84,7 @@ export class SupplierProfileComponent implements OnInit {
     console.log(imagen)
     this.profilePic = imagen;
   }, error=>{
-    console.log("error")
+    console.log( error)
   });
 
   }
