@@ -9,6 +9,7 @@
         </div>
         <div class="card-content">
           <mat-card-content>
+            <img mat-card-avatar [src]="profilePic">
             <app-subir-imagen></app-subir-imagen>
             <form class="example-form" [formGroup]="form" (ngSubmit)="save()">
               <div>

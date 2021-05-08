@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Supplier } from 'src/app/model/supplier.interface';
+import { ImageService } from 'src/app/services/image/image.service';
 import { SupplierService } from 'src/app/services/supplier-service/supplier.service';
 
 @Component({
@@ -24,15 +26,20 @@ export class SupplierEditProfileComponent implements OnInit {
     })
   );
 
+  profilePic : any;
+
   form: FormGroup;
-  
+
   constructor(
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private supplierService: SupplierService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private imageService: ImageService,
+    private sanitizer:DomSanitizer) { }
 
   ngOnInit(): void{
+    this.getImageFromService();
     this.supplierService.findOne().subscribe(supplier => {
       this.form = this.formBuilder.group({
         name : [supplier.name, Validators.required],
@@ -41,6 +48,16 @@ export class SupplierEditProfileComponent implements OnInit {
         email : [supplier.email, [Validators.required, Validators.email, Validators.minLength(6)]]
       })
     })
+  }
+
+    getImageFromService() {
+    this.imageService.getProfilePic().subscribe(data => {
+        let unsafeImageUrl = URL.createObjectURL(data);
+        this.profilePic = this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
+    }, error => {
+        console.log(error);
+        this.profilePic = "./favicon.ico"
+    });
   }
 
   save(){

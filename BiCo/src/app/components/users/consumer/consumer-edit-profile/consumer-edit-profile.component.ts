@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Consumer } from 'src/app/model/consumer.interface';
 import { ConsumerService } from 'src/app/services/consumer-service/consumer.service';
+import { ImageService } from 'src/app/services/image/image.service';
 
 @Component({
   selector: 'app-consumer-edit-profile',
@@ -25,14 +27,19 @@ export class ConsumerEditProfileComponent implements OnInit {
   );
 
   form: FormGroup;
-  
+
+  profilePic : any;
+
   constructor(
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private consumerService: ConsumerService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private imageService: ImageService,
+    private sanitizer:DomSanitizer) { }
 
   ngOnInit(): void{
+    this.getImageFromService();
     this.consumerService.findOne().subscribe(consumer => {
       this.form = this.formBuilder.group({
         name : [consumer.name, Validators.required],
@@ -41,6 +48,16 @@ export class ConsumerEditProfileComponent implements OnInit {
         email : [consumer.email, [Validators.required, Validators.email, Validators.minLength(6)]]
       })
     })
+  }
+
+    getImageFromService() {
+    this.imageService.getProfilePic().subscribe(data => {
+        let unsafeImageUrl = URL.createObjectURL(data);
+        this.profilePic = this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
+    }, error => {
+        console.log(error);
+        this.profilePic = "./favicon.ico"
+    });
   }
 
   save(){
