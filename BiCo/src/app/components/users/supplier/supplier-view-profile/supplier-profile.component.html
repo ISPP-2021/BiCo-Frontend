@@ -9,7 +9,7 @@
                     <button mat-mini-fab (click)="openPorter()" matTooltip="Portar mis datos">
                         <mat-icon>get_app</mat-icon>
                     </button>
-                    <img mat-card-avatar src="./favicon.ico">
+                    <img mat-card-avatar [src]="profilePic">
                     <mat-card-title>Usuario: {{supplier.user.username}}</mat-card-title>
                     <mat-card-subtitle>{{supplier.email}}</mat-card-subtitle>
                 </mat-card-header>

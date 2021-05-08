@@ -66,6 +66,7 @@ import { CrearReservaPropietarioComponent } from './components/reservas/crear-re
 
 import { OblivionComponent } from './components/oblivion/oblivion.component';
 import { PorterComponent } from './components/porter/porter.component';
+import { SubirImagenComponent } from './components/subir-imagen/subir-imagen.component';
 import { ConsumerEditProfileComponent } from './components/users/consumer/consumer-edit-profile/consumer-edit-profile.component';
 import { SupplierEditProfileComponent } from './components/users/supplier/supplier-edit-profile/supplier-edit-profile.component';
 @NgModule({
@@ -94,6 +95,7 @@ import { SupplierEditProfileComponent } from './components/users/supplier/suppli
     CrearReservaPropietarioComponent,
     OblivionComponent,
     PorterComponent,
+    SubirImagenComponent,
     ConsumerEditProfileComponent,
     SupplierEditProfileComponent,
   ],
