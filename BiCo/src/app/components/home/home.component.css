@@ -1,0 +1,68 @@
+.home {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background-image: url(https://microsofters.com/wp-content/uploads/2021/01/escritorio-office.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.categorias {
+  display: grid;
+  place-items: center;
+  width: 60%;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.carrusel {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.carrusel div {
+  display: grid;
+  place-items: center;
+}
+
+.carrusel button {
+  background-color: gray;
+}
+
+.mat-icon {
+  color: honeydew;
+}
+
+.user {
+  display: grid;
+  place-items: center;
+  height: 50%;
+  padding-top: 2%;
+  margin-bottom: 1%;
+}
+
+.userbuttons {
+  width: 90%;
+  height: 100%;
+  margin-bottom: 2%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+
+  background-color: rgba(114, 114, 114, 0.5);
+}
+
+.userbuttons div {
+  display: grid;
+  place-items: center;
+  width: 50%;
+}
+
+.butones {
+  height: 70%;
+  width: 80%;
+  background-color: #42c6ae;
+}

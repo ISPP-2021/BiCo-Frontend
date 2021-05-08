@@ -1,6 +1,47 @@
 <div *ngIf="rol != null">
   <app-cerca-de-mi></app-cerca-de-mi>
 </div>
-<div *ngIf="rol === null">
-  <app-login></app-login>
+<div *ngIf="rol === null" style="height: 100%;">
+  <div  class="home">
+    <mat-card class="categorias">
+      <h2>¿Que puedes encontrar en BiCo?</h2>
+      <div class="carrusel">
+        <div>
+          <button mat-fab matTooltip="Peluquerías" disabled>
+            <mat-icon>content_cut</mat-icon>
+          </button>
+        </div>
+        <div>
+          <button mat-fab matTooltip="Bares" disabled>
+            <mat-icon>sports_bar</mat-icon>
+          </button>
+        </div>
+        <div>
+          <button mat-fab matTooltip="Restaurantes" disabled>
+            <mat-icon>restaurant_menu</mat-icon>
+          </button>
+        </div>
+        <div>
+          <button mat-fab matTooltip="Tattoo" disabled>
+            <mat-icon>favorite</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="user">
+    <mat-card class="userbuttons">
+      <div>
+        <button mat-flat-button class="butones" routerLink="/login" style="color: white;" matTooltip="Inicia Sesión">
+        <mat-icon >login</mat-icon>
+      </button>
+      </div>
+      <div>
+        <button mat-flat-button class="butones" routerLink="/register" style="color: white; " matTooltip="Regístrate">
+        <mat-icon>person_add_alt_1</mat-icon>
+      </button>
+      </div>
+    </mat-card>
+  </div>
 </div>
+

@@ -12,7 +12,7 @@ export class CercaDeMiComponent implements OnInit {
   negocios = [];
   errorMessage = '';
   token: string = localStorage.getItem(JWT_NAME);
-  rol = localStorage.getItem('rol')
+  rol = localStorage.getItem('rol');
 
   constructor(
     private negocioService: NegocioService,
@@ -32,7 +32,8 @@ export class CercaDeMiComponent implements OnInit {
     function error() {
       //output.innerHTML = "<p>Su posicion no se pudo obtener</p>"
     }
-    navigator.geolocation.getCurrentPosition(location, error);
+    // Descomentar para localización
+    //navigator.geolocation.getCurrentPosition(location, error);
 
     this.negocioService.findAll().subscribe(
       (data) => (this.negocios = data),
