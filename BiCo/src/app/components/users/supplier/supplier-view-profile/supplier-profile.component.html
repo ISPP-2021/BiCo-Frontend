@@ -14,6 +14,7 @@
                     <mat-card-subtitle>{{supplier.email}}</mat-card-subtitle>
                 </mat-card-header>
             </div>
+            <br>
             <div class="card-content">
                 <mat-card-content>
                     <p><b>Nombre:</b> {{supplier.name}}</p>
@@ -24,8 +25,9 @@
                 </mat-card-content>
             </div>
             <div fxLayoutAlign="space-around center">
-                <button id="checkout" mat-raised-button (click)="changeSubscription(supplier.subscription)">Cambiar
-                    tarifa</button>
+                <button id="checkout" mat-raised-button (click)="changeSubscription(supplier.subscription)">Cambiar tarifa</button>
+                <br>
+                <button mat-raised-button routerLink="/ownerProfile/{{supplier.id}}/edit">Editar perfil</button>
             </div>
 
         </mat-card>

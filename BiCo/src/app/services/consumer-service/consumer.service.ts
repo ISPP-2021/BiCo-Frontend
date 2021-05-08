@@ -29,4 +29,7 @@ export class ConsumerService {
     return this.http.get<Consumer[]>(this.url + 'consumers', this.headers)
   }
   
+  update(id: Number, consumer: Consumer): Observable<Consumer>{
+    return this.http.put<Consumer>(this.url + "consumers/" + id, consumer, this.headers)
+  }
 }

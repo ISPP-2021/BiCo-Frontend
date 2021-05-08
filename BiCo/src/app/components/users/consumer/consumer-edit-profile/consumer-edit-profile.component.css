@@ -1,0 +1,40 @@
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .example-form {
+      width: 90%;
+      max-width: 90%;
+      padding: 2% 2%;
+      box-sizing: border-box;
+      margin-top: 2%;
+      border-radius: 20px;
+    }
+  .example-full-width {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .card-header {
+    background-color: #f2e6ee;
+  }
+  
+  .card-content {
+    background-color: #f2e6ee;
+  }
+  
+  .consumer {
+    width: 600px;
+    margin: 5%;
+    border-bottom: solid #44917e;
+    background-color: #f2e6ee;
+    position: relative;
+  }
+  
+  .mat-raised-button {
+    background-color: #a3dcb9;
+    bottom: 5%;
+  }
