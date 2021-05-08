@@ -39,6 +39,9 @@ export class AuthenticationService {
 
 				let user_id = usuario.authorities[0].id;
 				localStorage.setItem("user_id", user_id);
+			
+				let username = usuario.username
+				localStorage.setItem("username", username);
 
 				window.location.reload();
 

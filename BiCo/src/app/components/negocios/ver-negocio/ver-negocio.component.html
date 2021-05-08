@@ -17,7 +17,9 @@
 
         </mat-card-header>
       </div>
-
+      <div *ngFor="let businessPic of businessPics">
+        <img width="200px" height="200px" [src]="businessPic" alt="foto">
+      </div>
       <div fxLayoutAlign="space-around" class="flex-container">
         <mat-card class="servicio" *ngFor="let servicio of negocio.services">
           <div class="card-header">

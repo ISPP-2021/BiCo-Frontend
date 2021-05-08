@@ -20,6 +20,7 @@ import { ConsumerGuard } from './guards/consumer/consumer.guard';
 import { AuthenticatedGuard } from './guards/auth/authenticated.guard';
 import { NotAuthGuard } from './guards/not-auth/not-auth.guard';
 import { CrearReservaPropietarioComponent } from './components/reservas/crear-reserva-propietario/crear-reserva-propietario.component';
+import { SubirImagenComponent } from './components/subir-imagen/subir-imagen.component';
 import { ConsumerEditProfileComponent } from './components/users/consumer/consumer-edit-profile/consumer-edit-profile.component';
 import { SupplierEditProfileComponent } from './components/users/supplier/supplier-edit-profile/supplier-edit-profile.component';
 
@@ -93,6 +94,10 @@ const routes: Routes = [
     path: 'services-edit/:id',
     component: ServisesComponent,
     canActivate: [OwnerGuard],
+  },
+  {
+    path: 'upload',
+    component: SubirImagenComponent,
   },
   {
     path: '',
