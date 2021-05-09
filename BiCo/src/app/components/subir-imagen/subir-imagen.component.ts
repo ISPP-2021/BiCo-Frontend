@@ -39,7 +39,6 @@ export class SubirImagenComponent implements OnInit {
               let img = this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
               this.imagenPrevia.push(img);
               this.files.push(data)
-              console.log(this.files)
             });
           });
         });
