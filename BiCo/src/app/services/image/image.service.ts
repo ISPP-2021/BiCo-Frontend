@@ -49,6 +49,10 @@ export class ImageService {
     return this.http.get(this.url + 'images/business/'+ id,this.headers)
   }
 
+  deleteBusinessPic(id):any{
+    return this.http.delete(this.url + 'images/business/'+ id,this.headers)
+  }
+
   getImage(name):any{
     return this.http.get(this.url + 'images/'+ name,this.option)
   }
