@@ -37,6 +37,7 @@
     "@progress/kendo-theme-material": "^3.32.0",
     "@stripe/stripe-js": "^1.13.2",
     "angular-ng-autocomplete": "^2.0.5",
+    "angular-responsive-carousel": "^2.0.2",
     "bootstrap": "^4.5.0",
     "codacy-coverage": "^3.4.0",
     "dateformat": "^4.5.1",
