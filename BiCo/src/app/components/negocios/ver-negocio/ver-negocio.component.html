@@ -17,12 +17,14 @@
 
         </mat-card-header>
       </div>
-
-      <carousel dots=true cellWidth=100% loop=true overflowCellsLimit=5 >
-          <div *ngFor="let businessPic of businessPics" class="carousel-cell" >
-              <img [src]="businessPic">
-          </div>
-      </carousel>
+      <br />
+      <div *ngIf="businessPics.length > 0" class="carousel-container">
+        <carousel dots=true cellWidth=100% >
+            <div *ngFor="let businessPic of businessPics" class="carousel-cell">
+                <img [src]="businessPic">
+            </div>
+        </carousel>
+      </div>
 
       <div fxLayoutAlign="space-around" class="flex-container">
         <mat-card class="servicio" *ngFor="let servicio of negocio.services">
