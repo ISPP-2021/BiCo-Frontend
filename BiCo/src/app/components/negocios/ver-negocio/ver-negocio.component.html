@@ -17,9 +17,15 @@
 
         </mat-card-header>
       </div>
-      <div *ngFor="let businessPic of businessPics">
-        <img width="200px" height="200px" [src]="businessPic" alt="foto">
+      <br />
+      <div *ngIf="businessPics.length > 0" class="carousel-container">
+        <carousel dots=true cellWidth=100% >
+            <div *ngFor="let businessPic of businessPics" class="carousel-cell">
+                <img [src]="businessPic">
+            </div>
+        </carousel>
       </div>
+
       <div fxLayoutAlign="space-around" class="flex-container">
         <mat-card class="servicio" *ngFor="let servicio of negocio.services">
           <div class="card-header">
