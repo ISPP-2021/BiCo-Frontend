@@ -4,7 +4,7 @@
 <div *ngIf="rol === null" style="height: 100%;">
   <div  class="home">
     <mat-card class="categorias">
-      <h2>¿Que puedes encontrar en BiCo?</h2>
+      <h2>¿Qué puedes encontrar en BiCo?</h2>
       <div class="carrusel">
         <div>
           <button mat-fab matTooltip="Peluquerías" disabled>
@@ -30,18 +30,24 @@
     </mat-card>
   </div>
   <div class="user">
-    <mat-card class="userbuttons">
+    <div class="userbuttons">
       <div>
-        <button mat-flat-button class="butones" routerLink="/login" matTooltip="Inicia Sesión">
-        <mat-icon >login</mat-icon>
+        <button mat-flat-button routerLink="/login" matTooltip="Inicia Sesión" class="login">
+          <mat-card>
+            <mat-icon>login</mat-icon>
+            <h3>Inicia Sesión</h3>
+          </mat-card>
       </button>
       </div>
       <div>
-        <button mat-flat-button class="butones" routerLink="/register" matTooltip="Regístrate">
-        <mat-icon>person_add_alt_1</mat-icon>
+        <button mat-flat-button routerLink="/register" matTooltip="Regístrate" class="register">
+          <mat-card>
+            <mat-icon>person_add_alt_1</mat-icon>
+            <h3>Regístrate</h3>
+          </mat-card>
       </button>
       </div>
-    </mat-card>
+    </div>
   </div>
 </div>
 
