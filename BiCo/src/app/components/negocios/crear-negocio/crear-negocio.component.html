@@ -38,10 +38,12 @@
                   <mat-label>Dirección negocio</mat-label>
                   <input matInput placeholder="Introduzca la direccion de su Negocio" formControlName="address">
                 </mat-form-field>
-                <mat-label>Hora de apertura: </mat-label>
-                <input type="time" formControlName="openTime">
-                <mat-label>Hora de cierre: </mat-label>
-                <input type="time" formControlName="closeTime">
+                <mat-label><b>Hora de apertura</b></mat-label>&nbsp;
+                <kendo-timepicker formControlName="openTime" [(value)]="value1" [format]="format" [incompleteDateValidation]="true"></kendo-timepicker>
+                <br>
+                <br>
+                <mat-label><b>Hora de cierre</b></mat-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <kendo-timepicker formControlName="closeTime" [(value)]="value2" [format]="format" [incompleteDateValidation]="true"></kendo-timepicker>
                 <mat-form-field class="example-full-width" required>
                   <mat-label>Tipo negocio</mat-label>
                   <mat-select formControlName="businessType">

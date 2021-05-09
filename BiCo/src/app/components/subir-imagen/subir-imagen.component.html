@@ -1,26 +1,45 @@
 <input type="file" id="file" (change)="onFileSelected($event)">
-<br>
-<label for="">Preview</label>
-<div *ngFor="let foto of imagenPrevia, let i = index">
+<div *ngIf="buss">
+  <div class="preview">
+    <h3>Preview</h3>
+    <div *ngIf="imagenPrevia.length <= 0">
+      <b>No tiene ninguna foto seleccionada.</b>
+      <br>
+      <b>Si pulsa el botón subir, su negocio no tendrá
+        fotos para mostrar.</b>
+      <br>
+    </div>
 
-  <div>
-    <img width="100px" [src]="foto" alt="i">
-    <button mat-mini-fab (click)="removeFoto(i)">
-      <mat-icon>remove_circle_outline</mat-icon>
+
+    <div *ngFor="let foto of imagenPrevia, let i = index" class="carrusel">
+      <div class="deletePhoto">
+        <img mat-card-avatar [src]="foto" alt="i">
+        <button mat-mini-fab (click)="removeFoto(i)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <button mat-raised-button [disabled]="loading" (click)="loadBusinessImage()">
+
+      {{(loading) ? 'Cargando...' : 'Subir'}}
     </button>
   </div>
 </div>
 
 <div *ngIf="!buss">
-  <button [disabled]="loading" (click)="loadProfileImage()">
+  <div class="preview" *ngIf="profilePrevia !== null">
+    <h3>Preview</h3>
+    <div class="carrusel">
 
-    {{(loading) ? 'Cargando...' : 'Subir'}}
-  </button>
-</div>
+      <div class="deletePhoto">
+        <img mat-card-avatar [src]="profilePrevia" alt="">
+      </div>
+      <button mat-raised-button [disabled]="loading" (click)="loadProfileImage()">
 
-<div *ngIf="buss">
-  <button [disabled]="loading" (click)="loadBusinessImage()">
-
-    {{(loading) ? 'Cargando...' : 'Subir'}}
-  </button>
+        {{(loading) ? 'Cargando...' : 'Subir'}}
+      </button>
+    </div>
+  </div>
+  <mat-hint *ngIf="error">{{error}}</mat-hint>
 </div>
