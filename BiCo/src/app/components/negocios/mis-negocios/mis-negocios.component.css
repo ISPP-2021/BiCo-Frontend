@@ -6,8 +6,8 @@
   margin: 0;
   list-style: none;
 }
-.negocio {
- width: 600px;
+.negocio{
+  width: 600px;
   margin: 5%;
   border-bottom: solid #44917e;
   background-color: #f2e6ee;
@@ -15,17 +15,17 @@
 }
 .servicio {
   margin: 2%;
-  border-top: solid #44917e;
   border-bottom: solid #44917e;
   background-color: #f2e6ee;
   position: relative;
   
 }
 .reservas {
-  margin: 1%;
-   background-color: #f2e6ee;
-   border-right: solid #44917e;
-   border-left: solid #44917e;
+  margin: 2%;
+  border-bottom: solid #44917e;
+  background-color: #f2e6ee;
+  position: relative;
+  
 }
 
 .mat-mini-fab {
@@ -33,8 +33,7 @@
   background-color: #8499b1;
   margin-right: 5%;
 }
-
-.crearNegocio {
+.crearNegocio{
   width: 600px;
   margin: 5%;
   border-bottom: solid #44917e;
@@ -47,13 +46,9 @@
   margin-top: 2%;
 }
 
-.inner-content {
-  margin-left: 2%;
-}
 .card-header {
   background-color: #f2e6ee;
-}
-
+} 
 .card-content {
   margin-top: 10px;
   background-color: #f2e6ee;
