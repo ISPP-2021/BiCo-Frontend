@@ -2,8 +2,16 @@
 <div *ngIf="buss">
   <div class="preview">
     <h3>Preview</h3>
-    <div *ngFor="let foto of imagenPrevia, let i = index" class="carrusel">
+    <div *ngIf="imagenPrevia.length <= 0">
+      <b>No tiene ninguna foto seleccionada.</b>
+      <br>
+      <b>Si pulsa el botón subir, su negocio no tendrá
+        fotos para mostrar.</b>
+      <br>
+    </div>
 
+
+    <div *ngFor="let foto of imagenPrevia, let i = index" class="carrusel">
       <div class="deletePhoto">
         <img mat-card-avatar [src]="foto" alt="i">
         <button mat-mini-fab (click)="removeFoto(i)">

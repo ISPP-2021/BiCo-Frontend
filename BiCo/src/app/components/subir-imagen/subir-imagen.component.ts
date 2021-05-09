@@ -38,6 +38,8 @@ export class SubirImagenComponent implements OnInit {
               let unsafeImageUrl = URL.createObjectURL(data);
               let img = this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
               this.imagenPrevia.push(img);
+              this.files.push(data)
+              console.log(this.files)
             });
           });
         });
@@ -54,7 +56,6 @@ export class SubirImagenComponent implements OnInit {
         this.imagenPrevia.push(res.base);
         this.profilePrevia = res.base;
       });
-      console.log(this.profileFile)
     }else{
       this.error = "La foto debe tener extensión JPG"
     }
@@ -72,6 +73,7 @@ export class SubirImagenComponent implements OnInit {
    */
 
   loadProfileImage = () => {
+
     try {
       const formData = new FormData();
       formData.append('image', this.profileFile);
@@ -88,26 +90,34 @@ export class SubirImagenComponent implements OnInit {
       );
     } catch (e) {
       this.loading = false;
+      this.error = e
     }
   };
 
   loadBusinessImage = () => {
+
     try {
-      const formData = new FormData();
-      this.files.forEach((item) => {
-        formData.append('files', item);
-      });
-      this.loading = true;
-      this.imageService.uploadBusiness(formData, this.negocio_id).subscribe(
+      this.imageService.deleteBusinessPic(this.negocio_id).subscribe(()=>{
+          const formData = new FormData();
+          this.files.forEach((item) => {
+          formData.append('files', item);
+        });
+          this.loading = true;
+          this.imageService.uploadBusiness(formData, this.negocio_id).subscribe(
         (res) => {
           this.loading = false;
+          window.location.reload();
         },
         (e) => {
           this.loading = false;
+          this.error = e.error.title
         }
-      );
+         );
+      })
+
     } catch (e) {
       this.loading = false;
+      this.error = e
     }
   };
 
