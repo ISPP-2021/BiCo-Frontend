@@ -27,6 +27,10 @@ export class SupplierService {
 
 	}
 
+	update(id: Number, supplier: Supplier): Observable<Supplier>{
+		return this.http.put<Supplier>(this.url + 'suppliers/' + id, supplier, this.headers)
+	}
+
 	change(priceId): Observable<String> {
 
 		return this.http
