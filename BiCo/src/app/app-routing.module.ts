@@ -28,7 +28,6 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [AuthenticatedGuard],
   },
   {
     path: 'userProfile',
@@ -98,6 +97,7 @@ const routes: Routes = [
   {
     path: 'upload',
     component: SubirImagenComponent,
+    canActivate: [AuthenticatedGuard],
   },
   {
     path: '',
