@@ -27,7 +27,9 @@
   position: relative;
   
 }
-
+.mat-card{
+   background-color: #f2e6ee;
+}
 .mat-mini-fab {
   float: right;
   background-color: #8499b1;
