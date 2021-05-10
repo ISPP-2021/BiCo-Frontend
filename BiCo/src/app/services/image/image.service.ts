@@ -29,8 +29,8 @@ export class ImageService {
       },
     };
 
-  // private url: string = 'https://bico-despliegue3.herokuapp.com/';
-  private url: string = 'http://localhost:8080/';
+  // private url: string = 'http://localhost:8080/';
+  private url: string = 'https://bico-despliegue-4.herokuapp.com/';
 
   upload(formData:FormData) {
      return this.http.post(this.url + 'images/profile/upload', formData, this.headers)

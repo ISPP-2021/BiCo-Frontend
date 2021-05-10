@@ -51,6 +51,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DatePipe } from '@angular/common';
@@ -135,7 +136,8 @@ import { SupplierEditProfileComponent } from './components/users/supplier/suppli
     NgxMaterialTimepickerModule,
     MatProgressSpinnerModule,
     AutocompleteLibModule,
-    MatDialogModule
+    MatDialogModule,
+    IvyCarouselModule
   ],
   entryComponents: [ModalComponent, DialogComponent],
   providers: [

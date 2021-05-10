@@ -1,7 +1,7 @@
 <input type="file" id="file" (change)="onFileSelected($event)">
 <div *ngIf="buss">
   <div class="preview">
-    <h3>Preview</h3>
+    <h3>Vista previa</h3>
     <div *ngIf="imagenPrevia.length <= 0">
       <b>No tiene ninguna foto seleccionada.</b>
       <br>
@@ -9,8 +9,6 @@
         fotos para mostrar.</b>
       <br>
     </div>
-
-
     <div *ngFor="let foto of imagenPrevia, let i = index" class="carrusel">
       <div class="deletePhoto">
         <img mat-card-avatar [src]="foto" alt="i">
@@ -24,12 +22,13 @@
 
       {{(loading) ? 'Cargando...' : 'Subir'}}
     </button>
+
   </div>
 </div>
 
 <div *ngIf="!buss">
   <div class="preview" *ngIf="profilePrevia !== null">
-    <h3>Preview</h3>
+    <h3>Vista previa</h3>
     <div class="carrusel">
 
       <div class="deletePhoto">
