@@ -29,6 +29,7 @@ import { CrearNegocioComponent } from './components/negocios/crear-negocio/crear
 import { VerNegocioComponent } from './components/negocios/ver-negocio/ver-negocio.component';
 import { CrearReservaComponent } from './components/reservas/crear-reserva/crear-reserva.component';
 import { EditarNegocioComponent } from './components/negocios/editar-negocio/editar-negocio.component';
+import { CarouselComponent } from "./components/carousel/carousel.component";
 import { RegisterComponent } from './components/register/register.component';
 
 import { ServisesComponent } from './components/servises/servises.component';
@@ -91,6 +92,7 @@ import { SupplierEditProfileComponent } from './components/users/supplier/suppli
     ModalComponent,
     PaymentComponent,
     MisNegociosComponent,
+    CarouselComponent,
     FooterComponent,
     DialogComponent,
     CrearReservaPropietarioComponent,
