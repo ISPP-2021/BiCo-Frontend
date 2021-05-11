@@ -24,6 +24,7 @@
     </button>
 
   </div>
+  <mat-hint style="color: brown;" *ngIf="error">{{error}}</mat-hint>
 </div>
 
 <div *ngIf="!buss">
@@ -40,5 +41,5 @@
       </button>
     </div>
   </div>
-  <mat-hint *ngIf="error">{{error}}</mat-hint>
+  <mat-hint style="color: brown;" *ngIf="error">{{error}}</mat-hint>
 </div>
