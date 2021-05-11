@@ -6,6 +6,7 @@ import { Negocio } from 'src/app/model/negocio.interface';
 import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ImageService } from 'src/app/services/image/image.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-ver-negocio',
@@ -26,6 +27,30 @@ export class VerNegocioComponent implements OnInit {
         .pipe(map((negocio: Negocio) => negocio));
     })
   );
+  customOptions: OwlOptions = {
+      loop: true,
+      mouseDrag: true,
+      touchDrag: true,
+      pullDrag: true,
+      dots: true,
+      navSpeed: 700,
+      navText: ['<', '>'],
+      responsive: {
+        0: {
+          items: 1
+        },
+        400: {
+          items: 1
+        },
+        740: {
+          items: 2
+        },
+        940: {
+          items: 2
+        }
+      },
+      nav: true
+    }
 
   constructor(
     private activatedRoute: ActivatedRoute,

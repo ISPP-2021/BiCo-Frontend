@@ -52,3 +52,10 @@
   margin-left: 10%;
   margin-top: 2%;
 }
+.carousel {
+  object-fit: cover;
+  width: 60%;
+  height: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
