@@ -17,13 +17,13 @@
 
         </mat-card-header>
       </div>
-      
+
       <br />
 
       <div *ngIf="businessPics.length > 0" class="carousel">
         <owl-carousel-o [options]="customOptions">
           <ng-template carouselSlide *ngFor="let slide of businessPics">
-            <img [src]="slide" class="slide">
+            <img [src]="slide" class="carouselSlide">
           </ng-template>
         </owl-carousel-o>
       </div>

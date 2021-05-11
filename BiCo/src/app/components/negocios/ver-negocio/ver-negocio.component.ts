@@ -29,6 +29,7 @@ export class VerNegocioComponent implements OnInit {
   );
   customOptions: OwlOptions = {
       loop: true,
+      margin:20,
       mouseDrag: true,
       touchDrag: true,
       pullDrag: true,
