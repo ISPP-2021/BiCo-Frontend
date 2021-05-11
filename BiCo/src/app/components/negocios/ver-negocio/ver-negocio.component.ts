@@ -14,6 +14,7 @@ import { ImageService } from 'src/app/services/image/image.service';
 })
 export class VerNegocioComponent implements OnInit {
   businessPics : any=[];
+  profilePic : any = null
   rol = localStorage.getItem('rol');
   negocioId = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
   negocio$: Observable<Negocio> = this.activatedRoute.params.pipe(
@@ -39,6 +40,10 @@ export class VerNegocioComponent implements OnInit {
 
   loadBusinessImages(){
     this.imageService.getBusinessPic(this.negocioId).subscribe(imagenes=>{
+      this.imageService.getImage(imagenes[0].name).subscribe(data => {
+      let unsafeImageUrl = URL.createObjectURL(data);
+      this.profilePic = this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
+    })
       imagenes.forEach(x => {
         this.imageService.getImage(x.name).subscribe(data => {
           let unsafeImageUrl = URL.createObjectURL(data);

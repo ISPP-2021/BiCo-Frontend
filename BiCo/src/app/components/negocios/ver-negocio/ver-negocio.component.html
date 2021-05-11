@@ -4,7 +4,7 @@
       <div>
         <button *ngIf="rol === 'user'" mat-raised-button routerLink="/reservar/{{negocio.id}}">Reservar</button>
         <mat-card-header class="header">
-          <img mat-card-avatar src="./favicon.ico" alt={{negocio.name}}>
+          <img mat-card-avatar [src]="profilePic" alt={{negocio.name}}>
           <mat-card-title>{{negocio.name}}</mat-card-title>
           <mat-card-subtitle>Dirección: {{negocio.address}}</mat-card-subtitle>
           <mat-card-subtitle *ngIf="negocio.businessType === 'HAIRDRESSER'"> Peluquería</mat-card-subtitle>
