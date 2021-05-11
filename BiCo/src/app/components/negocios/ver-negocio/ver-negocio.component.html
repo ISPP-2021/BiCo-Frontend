@@ -17,13 +17,15 @@
 
         </mat-card-header>
       </div>
+      
       <br />
-      <div *ngIf="businessPics.length > 0" class="carousel-container">
-        <carousel dots=true cellWidth=100% >
-            <div *ngFor="let businessPic of businessPics" class="carousel-cell">
-                <img [src]="businessPic">
-            </div>
-        </carousel>
+
+      <div *ngIf="businessPics.length > 0" class="carousel">
+        <owl-carousel-o [options]="customOptions">
+          <ng-template carouselSlide *ngFor="let slide of businessPics">
+            <img [src]="slide" class="slide">
+          </ng-template>
+        </owl-carousel-o>
       </div>
 
       <div fxLayoutAlign="space-around" class="flex-container">
