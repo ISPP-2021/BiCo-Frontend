@@ -51,7 +51,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DatePipe } from '@angular/common';
@@ -70,6 +69,8 @@ import { PorterComponent } from './components/porter/porter.component';
 import { SubirImagenComponent } from './components/subir-imagen/subir-imagen.component';
 import { ConsumerEditProfileComponent } from './components/users/consumer/consumer-edit-profile/consumer-edit-profile.component';
 import { SupplierEditProfileComponent } from './components/users/supplier/supplier-edit-profile/supplier-edit-profile.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -137,7 +138,7 @@ import { SupplierEditProfileComponent } from './components/users/supplier/suppli
     MatProgressSpinnerModule,
     AutocompleteLibModule,
     MatDialogModule,
-    IvyCarouselModule
+    CarouselModule
   ],
   entryComponents: [ModalComponent, DialogComponent],
   providers: [
