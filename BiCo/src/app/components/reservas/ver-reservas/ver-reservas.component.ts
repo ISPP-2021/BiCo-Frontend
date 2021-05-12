@@ -21,10 +21,18 @@ export class VerReservasComponent implements OnInit {
 				.findOne()
 				.pipe(map((consumer: Consumer) => {
 					consumer.bookings.sort(this.bookingComparator);
+					consumer.bookings.forEach(booking => {
+						this.bookings.push(booking)
+					})
+				
 					return consumer;
 				}));
 		})
 	);
+
+	bookings: Reserva[] = []
+	show: boolean = false
+	showBookings: any = [];
 
 	constructor(
 		private activatedRoute: ActivatedRoute,
@@ -35,7 +43,63 @@ export class VerReservasComponent implements OnInit {
 	ngOnInit(): void {
 
 	}
+	public isMeeting(date: Date) {
+		let res = "";
+		
+		this.bookings.forEach(booking => {
+			let book = new Date(booking.bookDate)
+			if(book.getDate() == date.getDate() && book.getMonth() == date.getMonth() && book.getFullYear() == date.getFullYear()){
+				res = "meeting"
+			}
+		})
+		return res	
+	}
 
+	public isYearMeeting(date: Date) {
+		let res = "";
+		
+		this.bookings.forEach(booking => {
+			let book = new Date(booking.bookDate)
+			if(book.getMonth() == date.getMonth() && book.getFullYear() == date.getFullYear()){
+				res = "meeting"
+			}
+		})
+		return res	
+	}
+
+	public isDecadeMeeting(date: Date) {
+		let res = "";
+		
+		this.bookings.forEach(booking => {
+			let book = new Date(booking.bookDate)
+			if(book.getFullYear() == date.getFullYear()){
+				res = "meeting"
+			}
+		})
+		return res
+	  }
+	  public isCenturyMeeting(date: Date) {
+		let res = "";
+		
+		this.bookings.forEach(booking => {
+			let book = new Date(booking.bookDate)
+			if(book.getFullYear() == date.getFullYear()){
+				res = "meeting"
+			}
+		})
+	  }
+	  public onChange(date: Date): void {
+		this.showBookings = []
+		this.show = true;
+		let bookDate: Date = new Date()
+		for (let index = 0; index < this.bookings.length; index++) {
+			const book = new Date(this.bookings[index].bookDate);
+			if(book.getDate() == date.getDate() && book.getMonth() == date.getMonth() && book.getFullYear() == date.getFullYear()){
+				this.showBookings.push(this.bookings[index])
+			}
+			
+		}
+	}
 	bookingComparator(a: Reserva, b: Reserva) {
 		if (a.bookDate > b.bookDate)
 			return 1;

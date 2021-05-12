@@ -18,36 +18,95 @@
       </ng-container>
     </mat-card-content>
   </mat-card>
-  </div>
-
+  </div>    
 <div fxLayoutAlign="space-around center" class="flex-container">
-  <mat-card class="reserva" *ngFor="let booking of consumer.bookings">
+  <mat-card class="calendario" >
+    <div class="card-header">
+        <mat-card-header>
+          <mat-card-title>Calendario de Reservas</mat-card-title>
+          <mat-card-subtitle > Seleccione el dia
+          </mat-card-subtitle>
+          </mat-card-header>
+    </div>
+    <div class="card-content">
+        <mat-card-content>
+          <kendo-calendar [bottomView]="'month'"
+          [topView]="'decade'" [weekNumber]="true"
+          (valueChange)="onChange($event)">
+            <ng-template kendoCalendarMonthCellTemplate let-date>
+              <span [ngClass]="isMeeting(date)">{{ date.getDate() }}</span>
+            </ng-template>
+            <ng-template kendoCalendarYearCellTemplate let-context="cellContext">
+              <span [ngClass]="isYearMeeting(context.value)">{{
+                context.formattedValue
+              }}</span>
+            </ng-template>
+            <ng-template kendoCalendarDecadeCellTemplate let-context="cellContext">
+              <span [ngClass]="isDecadeMeeting(context.value)">{{
+                context.formattedValue
+              }}</span>
+            </ng-template>
+            <ng-template kendoCalendarCenturyCellTemplate let-context="cellContext">
+              <span [ngClass]="isCenturyMeeting(context.value)">{{
+                context.formattedValue
+              }}</span>
+            </ng-template>
+            <ng-template
+              kendoCalendarWeekNumberCellTemplate
+              let-context="cellContext"
+            >
+              <span class="weeknumber-cell">{{ context.formattedValue }}</span>
+            </ng-template>
+            <ng-template kendoCalendarHeaderTitleTemplate let-title>
+             Reservas en {{ title }}
+            </ng-template>
+            <ng-template
+              kendoCalendarNavigationItemTemplate
+              let-title
+              let-date="date"
+              let-view="activeView"
+            >
+              {{ view === "month" && date.getMonth() === 0 ? "Jan" : title }}
+            </ng-template>
+        </kendo-calendar>
+        </mat-card-content>
+    </div>
+      </mat-card>
 
-<div class="card-header">
-      <ng-container *ngIf="booking.status === 'IN_PROGRESS'">
-        <button mat-mini-fab  matTooltip="Cancelar la reserva" (click)="cancelBooking(booking.id)">
-          <mat-icon>close</mat-icon>
-        </button>
-      </ng-container>
-      <button mat-mini-fab matTooltip="Ver el negocio"  routerLink="/negocioByReserva/{{booking.id}}"> 
-        <mat-icon>visibility</mat-icon>
-      </button>
-    <mat-card-header>
-      <mat-card-title>Reserva Nº: {{booking.id}}</mat-card-title>
-      <mat-card-subtitle *ngIf="booking.status === 'IN_PROGRESS'"> Pendiente de aprobación
-      </mat-card-subtitle>
-      <mat-card-subtitle *ngIf="booking.status === 'COMPLETED'"> Aprobada</mat-card-subtitle>
-      <mat-card-subtitle *ngIf="booking.status === 'CANCELLED'"> Cancelada por usuario</mat-card-subtitle>
-      <mat-card-subtitle *ngIf="booking.status === 'REJECTED'"> Rechazada por propietario</mat-card-subtitle>
-    </mat-card-header>
+      <div>
+          <p *ngIf="showBookings.length <=0"> No tiene ninguna reserva este dia</p>
+
+      </div>
+  <div *ngIf="show">
+  <mat-card class="reserva" *ngFor="let booking of showBookings">
+    <div class="card-header">
+          <ng-container *ngIf="booking.status === 'IN_PROGRESS'">
+            <button mat-mini-fab  matTooltip="Cancelar la reserva" (click)="cancelBooking(booking.id)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </ng-container>
+          <button mat-mini-fab matTooltip="Ver el negocio"  routerLink="/negocioByReserva/{{booking.id}}"> 
+            <mat-icon>visibility</mat-icon>
+          </button>
+        <mat-card-header>
+          <mat-card-title>Reserva Nº: {{booking.id}}</mat-card-title>
+          <mat-card-subtitle *ngIf="booking.status === 'IN_PROGRESS'"> Pendiente de aprobación
+          </mat-card-subtitle>
+          <mat-card-subtitle *ngIf="booking.status === 'COMPLETED'"> Aprobada</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="booking.status === 'CANCELLED'"> Cancelada por usuario</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="booking.status === 'REJECTED'"> Rechazada por propietario</mat-card-subtitle>
+        </mat-card-header>
+    </div>
+    <div class="card-content">
+        <mat-card-content>
+          <p>Fecha de reserva: {{booking.bookDate | date:'dd-MM-yyyy HH:mm' : '-000'}}</p>
+          <p>Servicio reservado: {{booking.servise}}</p>
+        </mat-card-content>
+    </div>
+      </mat-card>
+
 </div>
-<div class="card-content">
-    <mat-card-content>
-      <p>Fecha de reserva: {{booking.bookDate | date:'dd-MM-yyyy HH:mm' : '-000'}}</p>
-      <p>Servicio reservado: {{booking.servise}}</p>
-    </mat-card-content>
-</div>
-  </mat-card>
+
 </div>
 
 </div>
