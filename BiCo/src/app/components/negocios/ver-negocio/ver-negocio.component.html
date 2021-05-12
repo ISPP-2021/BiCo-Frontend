@@ -4,7 +4,7 @@
       <div>
         <button *ngIf="rol === 'user'" mat-raised-button routerLink="/reservar/{{negocio.id}}">Reservar</button>
         <mat-card-header class="header">
-          <img mat-card-avatar [src]="profilePic" alt={{negocio.name}}>
+          <img mat-card-avatar [src]="profilePic">
           <mat-card-title>{{negocio.name}}</mat-card-title>
           <mat-card-subtitle>Dirección: {{negocio.address}}</mat-card-subtitle>
           <mat-card-subtitle *ngIf="negocio.businessType === 'HAIRDRESSER'"> Peluquería</mat-card-subtitle>
@@ -17,13 +17,13 @@
 
         </mat-card-header>
       </div>
-      
+
       <br />
 
       <div *ngIf="businessPics.length > 0" class="carousel">
         <owl-carousel-o [options]="customOptions">
           <ng-template carouselSlide *ngFor="let slide of businessPics">
-            <img [src]="slide" class="slide">
+            <img [src]="slide" class="carouselSlide">
           </ng-template>
         </owl-carousel-o>
       </div>
