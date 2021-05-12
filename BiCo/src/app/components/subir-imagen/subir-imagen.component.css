@@ -1,0 +1,43 @@
+input {
+  border-style: dashed;
+  border-radius: 5px;
+  border-color: rgb(65, 63, 63);
+  border-width: 2px;
+  background-color: rgb(211, 210, 210);
+  width: 100%;
+  padding: 1%;
+}
+
+.carrusel {
+  display: inline-block;
+  align-items: center;
+}
+
+img {
+  width: 70px;
+  height: 70px;
+}
+
+.preview {
+  width: 100%;
+  text-align: center;
+}
+
+h3 {
+  padding: 1%;
+}
+
+.deletePhoto button {
+  margin-left: 5%;
+}
+
+.mat-raised-button {
+  background-color: #a3dcb9;
+  margin-top: 3%;
+  bottom: 5%;
+}
+.mat-mini-fab {
+  float: right;
+  background-color: #8499b1;
+  margin-right: 5%;
+}

@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class SupplierService {
 	token: string = localStorage.getItem(JWT_NAME);
 	constructor(private http: HttpClient, private router: Router) { }
-	private url: string = 'https://bico-despliegue3.herokuapp.com/';
+	private url: string = 'https://bico-despliegue-4.herokuapp.com/';
 	private url2: string = 'http://localhost:8080/';
 	private headers = {
 		headers: {
@@ -25,6 +25,10 @@ export class SupplierService {
 			.get<Supplier>(this.url + 'users/profile', this.headers)
 			.pipe(map((supplier: Supplier) => supplier));
 
+	}
+
+	update(id: Number, supplier: Supplier): Observable<Supplier>{
+		return this.http.put<Supplier>(this.url + 'suppliers/' + id, supplier, this.headers)
 	}
 
 	change(priceId): Observable<String> {

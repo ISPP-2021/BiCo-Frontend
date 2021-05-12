@@ -23,10 +23,10 @@ export class AuthenticationService {
 		private jwtHelper: JwtHelperService,
 		private router: Router) { }
 
-	private url: string = 'https://bico-despliegue3.herokuapp.com';
+	private url: string = 'https://bico-despliegue-4.herokuapp.com';
   	private url2: string = 'http://localhost:8080';
 
-	login(loginForm: LoginForm) {
+	login(loginForm: LoginForm): Observable<any> {
 
 		return this.http.post<User>(`${this.url}/users/login`, { username: loginForm.user, password: loginForm.password }).pipe(
 			map((usuario) => {
@@ -40,6 +40,9 @@ export class AuthenticationService {
 				let user_id = usuario.authorities[0].id;
 				localStorage.setItem("user_id", user_id);
 
+				let username = usuario.username
+				localStorage.setItem("username", username);
+
 				window.location.reload();
 
 				return usuario;
@@ -51,12 +54,12 @@ export class AuthenticationService {
 		localStorage.clear();
 	}
 
-	registerUser(body) {
+	registerUser(body: any): Observable<any>{
 	  return this.http.post(this.url+'/users/signup/consumers', body)
 
 	}
 
-  registerOwner(body) {
+  registerOwner(body: any): Observable<any> {
 	  return this.http.post(this.url+'/users/signup/suppliers', body)
 
 	}
@@ -64,7 +67,7 @@ export class AuthenticationService {
   isTokenExpired(): boolean {
     const token = localStorage.getItem(JWT_NAME);
     if(token === null){
-      return false;
+      return true;
     }
     return this.jwtHelper.isTokenExpired(token);
   }

@@ -11,7 +11,7 @@ import { JWT_NAME } from '../authentication-service/authentication.service';
 export class ConsumerService {
   token: string = localStorage.getItem(JWT_NAME);
   constructor(private http: HttpClient) {}
-  private url: string = 'https://bico-despliegue3.herokuapp.com/';
+  private url: string = 'https://bico-despliegue-4.herokuapp.com/';
   private url2: string = 'http://localhost:8080/';
   private headers = {
     headers: {
@@ -28,5 +28,8 @@ export class ConsumerService {
   all(): Observable<Consumer[]>{
     return this.http.get<Consumer[]>(this.url + 'consumers', this.headers)
   }
-  
+
+  update(id: Number, consumer: Consumer): Observable<Consumer>{
+    return this.http.put<Consumer>(this.url + "consumers/" + id, consumer, this.headers)
+  }
 }

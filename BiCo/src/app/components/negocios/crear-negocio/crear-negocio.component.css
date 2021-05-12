@@ -1,35 +1,57 @@
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.premium{
+  width: 600px;
+  margin: 5%;
+  border-bottom: solid #44917e;
+  background-color: #f2e6ee;
+  position: relative;
+}
+.negocio{
+  width: 600px;
+  margin: 5%;
+  border-bottom: solid #44917e;
+  background-color: #f2e6ee;
+  position: relative;
+}
+
+.card-header {
+  background-color: #f2e6ee;
+}
+
+.card-content {
+  background-color: #f2e6ee;
+}
+
+.mat-raised-button {
+  background-color: #a3dcb9;
+  bottom: 5%;
+}
+
+.mat-mini-fab {
+  margin: 2%;
+  background-color: #8499b1;
+}
+
 .example-form {
-  width: 80%;
-  max-width: 80%;
-  margin: auto;
-  padding: 2% 2%;
-  box-sizing: border-box;
-  margin-top: 2%;
-  border-radius: 20px;
-  background: #E1CED4;
+  
+  
+  background-color: #f2e6ee;
 }
 
 .example-full-width {
   width: 100%;
-  box-sizing: border-box;
+  background-color: #f2e6ee;
 }
 
-@media (max-width: 480 px) {
-  .example-form {
-    width: 100%;
-  }
-}
-.mat-raised-button{
-  margin-top: 5%;
-  margin-left: 50%;
-  transform: translateX(-50%);
-  font-size: 1vw;
-  justify-content: center;
-  background-color: #6BC78E;
-}
 
-.premium{
-  margin: 2%;
-  background-color: #E1CED4;
-  width: 60%;
+.mat-stepper-vertical {
+  background-color: #f2e6ee;
 }

@@ -20,6 +20,15 @@
 }
 
 .card-content {
-  margin-top: 10px;
   background-color: #f2e6ee;
+}
+
+.mat-raised-button {
+  background-color: #a3dcb9;
+  bottom: 5%;
+}
+
+.mat-mini-fab {
+  background-color: #8499b1;
+  margin-right: 5%;
 }

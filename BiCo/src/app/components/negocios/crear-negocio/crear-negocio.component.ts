@@ -8,6 +8,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { Supplier } from 'src/app/model/supplier.interface';
 import { SupplierService } from 'src/app/services/supplier-service/supplier.service';
 import { loadStripe } from '@stripe/stripe-js';
+import { Negocio } from 'src/app/model/negocio.interface';
 
 
 @Component({
@@ -38,6 +39,11 @@ export class CrearNegocioComponent implements OnInit {
 		})
 	  );
 
+
+	public value1: Date = new Date(2000, 2, 10)
+	public value2: Date = new Date(2000, 2, 10)
+	public format = 'HH:mm';
+	
 	constructor(
 		private formBuilder: FormBuilder,
 		private negocioService: NegocioService,
@@ -51,15 +57,15 @@ export class CrearNegocioComponent implements OnInit {
 			name: ['', [Validators.required]],
 			address: ['', Validators.required],
 			businessType: ['', [Validators.required]],
-			openTime: ['', [Validators.required]],
-			closeTime: ['', [Validators.required]],
+			openTime: [new Date(), [Validators.required]],
+			closeTime: [new Date(), [Validators.required]],
 			option: this.formBuilder.group({
 				automatedAccept: [false, [Validators.required]],
 				limitAutomated: [{ value: '', disabled: true }, [Validators.required, Validators.min(1)]],
 				defaultDeposit: ['', [Validators.required, Validators.min(0), Validators.max(1)]],
 				depositTimeLimit: ['', [Validators.required, Validators.min(1)]]
 			}),
-			services: this.formBuilder.array([])
+			services: this.formBuilder.array([this.addServiceGroup()])
 		});
 	}
 
@@ -94,10 +100,27 @@ export class CrearNegocioComponent implements OnInit {
 	save() {
 		if (this.form.valid) {
 			if(this.serviceArray.length===0){
-			this.serviceArray.push(this.defaultService())
+				this.serviceArray.push(this.defaultService())
 			}
 
-			this.negocioService.create(this.form.value).subscribe( res=>{
+			let openTime = new Date(this.form.value.openTime.setHours(this.form.value.openTime.getHours() + 2))
+			let closeTime = new Date(this.form.value.closeTime.setHours(this.form.value.closeTime.getHours() + 2))
+			let negocio = {
+				name : this.form.value.name,
+				address : this.form.value.address,
+				businessType : this.form.value.businessType,
+				openTime : openTime.toISOString().substring(11, 16),
+				closeTime : closeTime.toISOString().substring(11, 16),
+				option : {
+					automatedAccept : this.form.value.option.automatedAccept,
+					limitAutomated : this.form.value.option.limitAutomated,
+					defaultDeposit : this.form.value.option.defaultDeposit,
+					depositTimeLimit : this.form.value.option.depositTimeLimit,
+				},
+				services : this.form.value.services
+			}
+
+			this.negocioService.create(negocio).subscribe( res=>{
         	this.router.navigate(['mis-negocios'])})
 
 		}
@@ -108,7 +131,7 @@ export class CrearNegocioComponent implements OnInit {
 		return this.formBuilder.group({
 				name: ['Solo Reserva', [Validators.required]],
 				description: ['Reservar en el negocio', [Validators.required]],
-				price: [0.01, [Validators.required, Validators.min(0.01)]],
+				price: [0, [Validators.required, Validators.min(0.01)]],
 				duration: [0, [Validators.required, Validators.min(0)]],
 				capacity: [0, [Validators.required, Validators.min(0)]],
 				deposit: [0, [Validators.required, Validators.min(0)]],

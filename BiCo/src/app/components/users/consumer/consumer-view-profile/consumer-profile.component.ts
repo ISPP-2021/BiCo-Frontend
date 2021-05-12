@@ -7,6 +7,8 @@ import { ConsumerService } from 'src/app/services/consumer-service/consumer.serv
 import { MatDialog } from '@angular/material/dialog';
 import { OblivionComponent } from 'src/app/components/oblivion/oblivion.component';
 import { PorterComponent } from 'src/app/components/porter/porter.component';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ImageService } from 'src/app/services/image/image.service';
 
 @Component({
   selector: 'app-consumer-profile',
@@ -14,6 +16,8 @@ import { PorterComponent } from 'src/app/components/porter/porter.component';
   styleUrls: ['./consumer-profile.component.css'],
 })
 export class ConsumerProfileComponent implements OnInit {
+  profilePic: any;
+
   consumer$: Observable<Consumer> = this.activatedRoute.params.pipe(
     switchMap((params: Params) => {
       const consumerId: number = parseInt(params['id']);
@@ -26,16 +30,31 @@ export class ConsumerProfileComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private consumerService: ConsumerService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private imageService: ImageService,
+    private sanitizer: DomSanitizer
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getImageFromService();
+  }
 
-  openOblivion(){
+  getImageFromService() {
+    this.imageService.getProfilePic().subscribe(
+      (data) => {
+        let unsafeImageUrl = URL.createObjectURL(data);
+        this.profilePic = this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
+      },
+      (error) => {
+        this.profilePic = './favicon.ico';
+      }
+    );
+  }
+  openOblivion() {
     const dialogRef = this.dialog.open(OblivionComponent);
   }
 
-  openPorter(){
+  openPorter() {
     const dialogRef = this.dialog.open(PorterComponent);
   }
 }

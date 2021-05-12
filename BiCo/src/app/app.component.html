@@ -40,17 +40,9 @@
           <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm="true">
             <mat-icon>menu</mat-icon>
           </button>
-          <div class="home" *ngIf="rol === 'owner'">
+          <div class="home">
             <button mat-button routerLink="/home" ><img src="./assets/favicon.png" style="width:2em;"></button>
             <button mat-button routerLink="/home" class="bico">BiCo</button>
-          </div>
-          <div class="home" *ngIf="rol === 'user'">
-            <button mat-button routerLink="/home"><img src="./assets/favicon.png" style="width:2em;"></button>
-            <button mat-button routerLink="/home" class="bico">BiCo</button>
-          </div>
-          <div class="home" *ngIf="rol === null">
-            <button mat-button routerLink="/login"><img src="./assets/favicon.png" style="width:2em;"></button>
-            <button mat-button routerLink="/login" class="bico">BiCo</button>
           </div>
       
           <span class="spacer"></span>

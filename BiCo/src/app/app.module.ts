@@ -7,17 +7,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatStepperModule } from '@angular/material/stepper';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { NgxStripeModule } from 'ngx-stripe';
 import { ToastrModule } from 'ngx-toastr';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { ConsumerProfileComponent } from './components/users/consumer/consumer-profile.component';
-import { SupplierProfileComponent } from './components/users/supplier/supplier-profile.component';
+import { ConsumerProfileComponent } from './components/users/consumer/consumer-view-profile/consumer-profile.component';
+import { SupplierProfileComponent } from './components/users/supplier/supplier-view-profile/supplier-profile.component';
 
 import { CercaDeMiComponent } from './components/cerca-de-mi/cerca-de-mi.component';
 //import { GeocodingService } from './services/geocoding-service/geocoding.service';
@@ -45,8 +46,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -60,10 +61,16 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { MisNegociosComponent } from './components/negocios/mis-negocios/mis-negocios.component';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { FooterComponent } from './components/footer/footer.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 import { CrearReservaPropietarioComponent } from './components/reservas/crear-reserva-propietario/crear-reserva-propietario.component';
 
 import { OblivionComponent } from './components/oblivion/oblivion.component';
 import { PorterComponent } from './components/porter/porter.component';
+import { SubirImagenComponent } from './components/subir-imagen/subir-imagen.component';
+import { ConsumerEditProfileComponent } from './components/users/consumer/consumer-edit-profile/consumer-edit-profile.component';
+import { SupplierEditProfileComponent } from './components/users/supplier/supplier-edit-profile/supplier-edit-profile.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,9 +93,13 @@ import { PorterComponent } from './components/porter/porter.component';
     PaymentComponent,
     MisNegociosComponent,
     FooterComponent,
+    DialogComponent,
     CrearReservaPropietarioComponent,
     OblivionComponent,
     PorterComponent,
+    SubirImagenComponent,
+    ConsumerEditProfileComponent,
+    SupplierEditProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,6 +115,8 @@ import { PorterComponent } from './components/porter/porter.component';
     MatCardModule,
     MatFormFieldModule,
     MatTableModule,
+    MatStepperModule,
+    MatDialogModule,
     HttpClientModule,
     MatDividerModule,
     MatCheckboxModule,
@@ -124,9 +137,10 @@ import { PorterComponent } from './components/porter/porter.component';
     NgxMaterialTimepickerModule,
     MatProgressSpinnerModule,
     AutocompleteLibModule,
-    MatDialogModule
+    MatDialogModule,
+    CarouselModule
   ],
-  entryComponents: [ModalComponent],
+  entryComponents: [ModalComponent, DialogComponent],
   providers: [
     //GeocodingService,
     JwtHelperService,
@@ -135,4 +149,4 @@ import { PorterComponent } from './components/porter/porter.component';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

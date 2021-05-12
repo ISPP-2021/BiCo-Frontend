@@ -1,0 +1,93 @@
+.home {
+  display: grid;
+  place-items: center;
+  height: 90%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background-image: url(https://microsofters.com/wp-content/uploads/2021/01/escritorio-office.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.categorias {
+  display: grid;
+  place-items: center;
+  width: 60%;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.carrusel {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.carrusel div {
+  margin: 2%;
+  display: grid;
+  place-items: center;
+}
+
+.carrusel button {
+  background-color: gray;
+}
+
+.mat-icon {
+  color: honeydew;
+}
+
+.user {
+  display: grid;
+  place-items: center;
+  height: 70%;
+  padding-top: 2%;
+  margin-bottom: 1%;
+}
+
+.userbuttons {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 2%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.userbuttons div {
+  display: grid;
+  place-items: center;
+  width: 50%;
+}
+
+.userbuttons mat-icon {
+  color: black;
+}
+
+.userbuttons h3 {
+  float: right;
+  margin-right: 30%;
+}
+
+.userbuttons mat-card {
+  background-color: rgb(255, 255, 255, 0.5);
+}
+
+.login {
+  height: 80%;
+  width: 80%;
+  background-image: url(https://www.bbva.com/wp-content/uploads/2018/03/usuario-movil-banca-digital-smartphone-bbva-e1520259823593.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.register {
+  height: 80%;
+  width: 80%;
+  background-image: url(https://www.abtabogados.es/wp-content/uploads/2019/02/Puede-el-empresario-obligar-al-empleado-a-utilizar-su-m%C3%B3vil-personal-para-realizar-su-trabajo-1024x961.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

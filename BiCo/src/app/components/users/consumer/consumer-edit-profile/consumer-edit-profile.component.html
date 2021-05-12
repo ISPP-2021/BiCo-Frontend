@@ -1,0 +1,45 @@
+<div fxLayout="column" fxLayoutAlign="center">
+  <div fxLayoutAlign="space-around center" class="flex-container" *ngIf="(consumer$ | async) as consumer">
+    <mat-card class="consumer">
+      <div class="card-header">
+        <mat-card-header>
+          <mat-card-title>Editar perfil</mat-card-title>
+        </mat-card-header>
+      </div>
+      <div class="card-content">
+        <mat-card-content>
+          <div class="image">
+            <img mat-card-avatar [src]="profilePic">
+          </div>
+          <app-subir-imagen></app-subir-imagen>
+          <form class="example-form" [formGroup]="form" (ngSubmit)="save()">
+            <div>
+              <mat-form-field class="example-full-width" required>
+                <mat-label>Nombre</mat-label>
+                <input matInput placeholder="Introduzca su nombre" formControlName="name">
+              </mat-form-field>
+              <br>
+              <mat-form-field class="example-full-width" required>
+                <mat-label>Apellidos</mat-label>
+                <input matInput placeholder="Introduzca sus apellidos" formControlName="lastname">
+              </mat-form-field>
+              <br>
+              <mat-form-field class="example-full-width" required>
+                <mat-label>DNI</mat-label>
+                <input matInput placeholder="Introduzca su DNI" formControlName="dni">
+              </mat-form-field>
+              <br>
+              <mat-form-field class="example-full-width" required>
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Introduzca su email" formControlName="email">
+              </mat-form-field>
+            </div>
+            <div fxLayoutAlign="space-around center">
+              <button type="submit" mat-raised-button [disabled]="form.invalid">Guardar</button>
+            </div>
+          </form>
+        </mat-card-content>
+      </div>
+    </mat-card>
+  </div>
+</div>

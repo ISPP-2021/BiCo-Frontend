@@ -1,63 +1,84 @@
-<form [formGroup]="form" class="example-form" (ngSubmit)="save()">
-  <div formArrayName="servises">
-    <h4>Servicios del Negocio</h4>
-    <div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
-      <h5>Servicio {{i+1}}</h5>
-      <mat-form-field class="example-full -width">
-        <mat-label>Nombre servicio</mat-label>
-        <input matInput type="text" placeholder="Introduzca el nombre del servicio" formControlName="name">
-      </mat-form-field>
+<div fxLayout="column" fxLayoutAlign="center">
+  <div fxLayoutAlign="space-around center" class="flex-container">
+    <form [formGroup]="form" class="example-form" (ngSubmit)="save()">
+      <div formArrayName="servises">
+        <mat-card class="services">
+          <div class="card-header">
+            <mat-card-header>
+              <mat-card-title>Servicios del negocio</mat-card-title>
+            </mat-card-header>
+          </div>
+          <div class="card-content">
+            <mat-card-content>
 
-      <mat-form-field class="example-full-width">
-        <mat-label>Descripción servicio</mat-label>
-        <input matInput type="text" placeholder="Introduzca la descripción del servicio" formControlName="description">
-      </mat-form-field>
+              <div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
+                <h3>Servicio {{i+1}}</h3>
+                <mat-form-field class="example-full -width">
+                  <mat-label>Nombre servicio</mat-label>
+                  <input matInput type="text" placeholder="Introduzca el nombre del servicio" formControlName="name">
+                </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <mat-label>Precio servicio (X.XX)</mat-label>
-        <input matInput tupe="number" placeholder="Introduzca el precio del servicio" formControlName="price">
-      </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Descripción servicio</mat-label>
+                  <input matInput type="text" placeholder="Introduzca la descripción del servicio"
+                    formControlName="description">
+                </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <mat-label>Duracion servicio (en minutos) </mat-label>
-        <input matInput type="number" placeholder="Introduzca la duración del servicio" formControlName="duration">
-      </mat-form-field>
-      <br>
-      <mat-form-field class="example-full-width">
-        <mat-label>Aforo</mat-label>
-        <input matInput type="number" placeholder="Introduzca el aforo del servicio" formControlName="capacity">
-      </mat-form-field>
-      <br>
-      <mat-form-field class="example-full-width">
-        <mat-label>Fianza</mat-label>
-        <input matInput type="number" placeholder="Introduzca la fianza del servicio" formControlName="deposit">
-      </mat-form-field>
-      <br>
-      <mat-form-field class="example-full-width">
-        <mat-label>Porcentaje de Fianza</mat-label>
-        <input matInput type="number" placeholder="Introduzca el porcentaje de la fianza del servicio"
-          formControlName="tax">
-      </mat-form-field>
-      <div>
-        <button mat-icon-button (click)="removeService(i)">
-          <mat-icon>remove_circle_outline</mat-icon>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Precio servicio (x.xx)</mat-label>
+                  <input matInput tupe="number" placeholder="Introduzca el precio del servicio" formControlName="price">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                  <mat-label>Duración servicio (en minutos) </mat-label>
+                  <input matInput type="number" placeholder="Introduzca la duración del servicio"
+                    formControlName="duration">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Aforo</mat-label>
+                  <input matInput type="number" placeholder="Introduzca el aforo del servicio"
+                    formControlName="capacity">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Fianza (x.xx)</mat-label>
+                  <input matInput type="number" placeholder="Introduzca la fianza del servicio"
+                    formControlName="deposit">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Fianza de reserva (valor entre 0-1)</mat-label>
+                  <input matInput type="number" placeholder="Introduzca el porcentaje de la fianza del servicio"
+                    formControlName="tax">
+                </mat-form-field>
+                <div>
+                  <button mat-mini-fab (click)="removeService(i)">
+                    <mat-icon>remove_circle_outline</mat-icon>
+                  </button>
+                </div>
+                <mat-divider></mat-divider>
+              </div>
+            </mat-card-content>
+          </div>
+        </mat-card>
+
+
+
+
+        <button mat-mini-fab *ngIf="serviceArray.controls.length != 0" (click)="addService()">
+          <mat-icon>control_point</mat-icon>
         </button>
       </div>
-      <mat-divider></mat-divider>
-    </div>
-    <button mat-icon-button *ngIf="serviceArray.controls.length != 0" (click)="addService()">
-      <mat-icon>control_point</mat-icon>
-    </button>
+      <div *ngIf="serviceArray.controls.length == 0">
+        <b> No tiene añadido nigún servicio. Si no añade ningún servicio se le añadirá uno por defecto que podrá
+          personalizar y servira como reserva general de su negocio.</b>
+        <br>
+        <button mat-mini-fab (click)="addService()">
+          <mat-icon>control_point</mat-icon>
+        </button>
+      </div>
+      <button type="submit" mat-raised-button [disabled]="form.invalid">Guardar</button>
+    </form>
   </div>
-  <div *ngIf="serviceArray.controls.length == 0">
-    <b> No tiene añadido nigún servicio. Si no añade ningún servicio se le añadirá uno por defecto
-      que
-      podrá
-      personalizar y servira como reserva general de su negocio.</b>
-    <br>
-    <button mat-icon-button (click)="addService()">
-      <mat-icon>control_point</mat-icon>
-    </button>
-  </div>
-  <button type="submit" mat-raised-button [disabled]="form.invalid">Guardar</button>
-</form>
+</div>

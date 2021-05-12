@@ -22,6 +22,6 @@ export class AppComponent {
 
   logout() {
     this.authService.logout();
-    window.location.replace('/login');
+    window.location.replace('/home');
   }
 }
