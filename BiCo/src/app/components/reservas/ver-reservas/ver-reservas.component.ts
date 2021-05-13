@@ -8,6 +8,7 @@ import { ReservaService } from 'src/app/services/reserva-service/reserva.service
 import { Reserva } from 'src/app/model/reserva.interface';
 import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
 import { Servicio } from 'src/app/model/service.interface';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
 	selector: 'app-ver-reservas',
@@ -34,11 +35,13 @@ export class VerReservasComponent implements OnInit {
 				.pipe(map((consumer: Consumer) => {
 					consumer.bookings.sort(this.bookingComparator);
 					this.setData(consumer)
+					let data:{} = {}
 					consumer.bookings.forEach(booking => {
 						this.bookings.push(booking)
 
 					})
-				
+					
+					this.dataSource.data.push(this.bookings)
 					return consumer;
 				}));
 		})
@@ -47,6 +50,14 @@ export class VerReservasComponent implements OnInit {
 	bookings: Reserva[] = []
 	show: boolean = false
 	showBookings: any = [];
+	calendar: boolean = true
+	dataSource = new MatTableDataSource();
+	displayedColumns: string[] = ['bussiness', 'service', 'day', 'price'];
+
+	applyFilter(event: Event) {
+	  const filterValue = (event.target as HTMLInputElement).value;
+	  this.dataSource.filter = filterValue.trim().toLowerCase();
+	}
 
 	constructor(
 		private activatedRoute: ActivatedRoute,
@@ -56,7 +67,6 @@ export class VerReservasComponent implements OnInit {
 	) { }
 
 	ngOnInit(): void {
-		
 	}
 	public isMeeting(date: Date) {
 		let res = "";
