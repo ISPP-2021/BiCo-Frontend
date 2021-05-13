@@ -31,7 +31,6 @@ export class PaymentComponent implements OnInit {
   @Input() status;
   @Input() openTime;
   @Input() closeTime;
-  @Input() invalidDate;
 
 
   error: any;
@@ -48,8 +47,6 @@ export class PaymentComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.checkTime()
-    console.log(this.invalidDate)
     this.stripeService.elements(this.elementsOptions).subscribe(
       elements => {
         this.elements = elements;
@@ -76,27 +73,13 @@ export class PaymentComponent implements OnInit {
     );
   }
 
-  // checkTime():Boolean{
-  //   let res : Boolean = true;
-  //   let openD = new Date("December 17, 1995 " + this.openTime)
-  //   let closeD = new Date("December 17, 1995 " + this.closeTime)
-  //   let bookD = new Date(this.bookDate)
+  checkTime():Boolean{
+    let res : Boolean = true;
+    let openD = new Date("December 17, 1995 " + this.openTime)
+    let closeD = new Date("December 17, 1995 " + this.closeTime)
+    let bookD = new Date(this.bookDate)
 
-  //   console.log(openD)
-  //   console.log(bookD)
-  //   console.log(closeD)
-
-  //   if(bookD.getHours() > closeD.getHours() || bookD.getHours() < openD.getHours() ){
-  //     res = false;
-  //     console.log("holita wey")
-  //   }
-  //   return res;
-  // }
-
-  checkTime(): Boolean{
-    let res: Boolean = true;
-    if(this.invalidDate==true){
-      console.log("hey ehey ehy you")
+    if(bookD.getHours() > closeD.getHours() || bookD.getHours() < openD.getHours() ){
       res = false;
     }
     return res;
