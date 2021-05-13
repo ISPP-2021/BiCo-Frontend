@@ -6,6 +6,8 @@ import { Consumer } from 'src/app/model/consumer.interface';
 import { ConsumerService } from 'src/app/services/consumer-service/consumer.service';
 import { ReservaService } from 'src/app/services/reserva-service/reserva.service';
 import { Reserva } from 'src/app/model/reserva.interface';
+import { NegocioService } from 'src/app/services/negocio-service/negocio.service';
+import { Servicio } from 'src/app/model/service.interface';
 
 @Component({
 	selector: 'app-ver-reservas',
@@ -13,6 +15,16 @@ import { Reserva } from 'src/app/model/reserva.interface';
 	styleUrls: ['./ver-reservas.component.css'],
 })
 export class VerReservasComponent implements OnInit {
+	setData(consumer: Consumer) {
+		consumer.bookings.forEach(booking => {
+			this.negocioService.findService(new Number(booking.servise)).subscribe(service =>{
+				booking.service = service;
+				this.negocioService.findOne(new Number(booking.service.business)).subscribe(negocio =>{
+					booking.negocio = negocio;
+				})
+			})
+		})		
+	}
 	consumer$: Observable<Consumer> = this.activatedRoute.params.pipe(
 		switchMap((params: Params) => {
 			const consumerId: number = parseInt(params['id']);
@@ -21,15 +33,17 @@ export class VerReservasComponent implements OnInit {
 				.findOne()
 				.pipe(map((consumer: Consumer) => {
 					consumer.bookings.sort(this.bookingComparator);
+					this.setData(consumer)
 					consumer.bookings.forEach(booking => {
 						this.bookings.push(booking)
+
 					})
 				
 					return consumer;
 				}));
 		})
 	);
-
+	services:  Servicio[]= []
 	bookings: Reserva[] = []
 	show: boolean = false
 	showBookings: any = [];
@@ -37,11 +51,12 @@ export class VerReservasComponent implements OnInit {
 	constructor(
 		private activatedRoute: ActivatedRoute,
 		private consumerService: ConsumerService,
-		private bookingService: ReservaService
+		private bookingService: ReservaService,
+		private negocioService: NegocioService
 	) { }
 
 	ngOnInit(): void {
-
+		
 	}
 	public isMeeting(date: Date) {
 		let res = "";
@@ -93,7 +108,8 @@ export class VerReservasComponent implements OnInit {
 		this.show = true;
 		let bookDate: Date = new Date()
 		for (let index = 0; index < this.bookings.length; index++) {
-			const book = new Date(this.bookings[index].bookDate);
+			const booking = this.bookings[index]
+			const book = new Date(booking.bookDate);
 			if(book.getDate() == date.getDate() && book.getMonth() == date.getMonth() && book.getFullYear() == date.getFullYear()){
 				this.showBookings.push(this.bookings[index])
 			}

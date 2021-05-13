@@ -89,7 +89,7 @@
             <mat-icon>visibility</mat-icon>
           </button>
         <mat-card-header>
-          <mat-card-title>Reserva Nº: {{booking.id}}</mat-card-title>
+          <mat-card-title>Reserva en {{booking.negocio.name}} para {{booking.service.name}}</mat-card-title>
           <mat-card-subtitle *ngIf="booking.status === 'IN_PROGRESS'"> Pendiente de aprobación
           </mat-card-subtitle>
           <mat-card-subtitle *ngIf="booking.status === 'COMPLETED'"> Aprobada</mat-card-subtitle>
@@ -99,8 +99,9 @@
     </div>
     <div class="card-content">
         <mat-card-content>
-          <p>Fecha de reserva: {{booking.bookDate | date:'dd-MM-yyyy HH:mm' : '-000'}}</p>
-          <p>Servicio reservado: {{booking.servise}}</p>
+          <p style="color: brown;"><b style="color: black;">Fecha de reserva:</b> {{booking.bookDate | date:'dd-MM-yyyy HH:mm' : '-000'}}</p>
+          <p style="color: brown;"><b style="color: black;">Hora de reserva:</b> {{booking.bookDate | date:'HH:mm' : '-000'}}</p>
+          <p style="color: brown;"><b style="color: black;">Precio del Servicio reservado:</b> {{booking.service.price}}</p>
         </mat-card-content>
     </div>
       </mat-card>
