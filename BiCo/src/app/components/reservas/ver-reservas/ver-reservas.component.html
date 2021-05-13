@@ -18,6 +18,9 @@
       </ng-container>
     </mat-card-content>
   </mat-card>
+  <button (click)="changeView()">
+    Cambiar vista
+  </button>
   </div>    
 <div *ngIf="calendar; else proxReservas" fxLayoutAlign="space-around center" class="flex-container">
   <mat-card class="calendario" >
@@ -112,30 +115,30 @@
 
 <ng-template #proxReservas>
   <mat-form-field>
-    <mat-label>Filter</mat-label>
+    <mat-label>Filtro</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. comer" #input>
   </mat-form-field>
   
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   
     <ng-container matColumnDef="bussiness">
-      <th mat-header-cell *matHeaderCellDef>Negocio </th>
-      <td mat-cell *matCellDef="let element"> {{element}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Negocio </th>
+      <td mat-cell *matCellDef="let element"> {{element.bussiness.name}} </td>
     </ng-container>
   
     <ng-container matColumnDef="service">
-      <th mat-header-cell *matHeaderCellDef>Servicio </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Servicio </th>
       <td mat-cell *matCellDef="let element"> {{element.service.name}} </td>
     </ng-container>
   
     <ng-container matColumnDef="day">
-      <th mat-header-cell *matHeaderCellDef> Dia de la Reserva </th>
-      <td mat-cell *matCellDef="let element"> {{element.bookDate}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Dia de la Reserva </th>
+      <td mat-cell *matCellDef="let element"> {{element.day | date:'dd-MM-yyyy' : '-000'}} </td>
     </ng-container>
   
     <ng-container matColumnDef="price">
       <th mat-header-cell *matHeaderCellDef> Precio </th>
-      <td mat-cell *matCellDef="let element"> {{element.service.price}} </td>
+      <td mat-cell *matCellDef="let element" mat-sort-header> {{element.price}} </td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
