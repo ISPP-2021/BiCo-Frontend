@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable,  throwError as observableThrowError } from 'rxjs';
 import { Supplier } from 'src/app/model/supplier.interface';
 import { catchError, map } from 'rxjs/operators';
 import { JWT_NAME } from '../authentication-service/authentication.service';
@@ -23,18 +23,22 @@ export class SupplierService {
 	findOne(): Observable<Supplier> {
 		return this.http
 			.get<Supplier>(this.url + 'users/profile', this.headers)
-			.pipe(map((supplier: Supplier) => supplier));
+			.pipe(map((supplier: Supplier) => supplier),
+				catchError(this.errorHandler)
+			);
 
 	}
 
 	update(id: Number, supplier: Supplier): Observable<Supplier>{
 		return this.http.put<Supplier>(this.url + 'suppliers/' + id, supplier, this.headers)
+			.pipe(catchError(this.errorHandler))
 	}
 
 	change(priceId): Observable<String> {
 
 		return this.http
-		.post<String>(this.url + 'stripe/create-checkout-session', priceId, this.headers);
+		.post<String>(this.url + 'stripe/create-checkout-session', priceId, this.headers)
+		.pipe(catchError(this.errorHandler));
 	}
 
   isOwnerBusiness(id: Number): Promise<boolean>{
@@ -47,5 +51,9 @@ export class SupplierService {
           return false;
         }
       })).toPromise()
+  }
+
+  errorHandler(err: HttpErrorResponse) {
+    return observableThrowError(err.message);
   }
 }

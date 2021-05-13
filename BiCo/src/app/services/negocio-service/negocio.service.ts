@@ -32,13 +32,17 @@ export class NegocioService {
   findOneByBooking(id: Number): Observable<Negocio> {
     return this.http
       .get<Negocio>(this.url + 'business/booking/' + id, this.headers)
-      .pipe(map((negocio: Negocio) => negocio));
+      .pipe(map((negocio: Negocio) => negocio), 
+            catchError(this.errorHandler)
+          );
   }
 
   findOne(id: Number): Observable<Negocio> {
     return this.http
       .get<Negocio>(this.url + 'business/' + id, this.headers)
-      .pipe(map((negocio: Negocio) => negocio));
+      .pipe(map((negocio: Negocio) => negocio),
+            catchError(this.errorHandler)
+      );
   }
 
   create(negocio: Negocio): Observable<Negocio> {
@@ -46,7 +50,7 @@ export class NegocioService {
       this.url + 'business',
       negocio,
       this.headers
-    );
+    ).pipe(catchError(this.errorHandler));
   }
 
   update(id: Number, negocio: Negocio): Observable<Negocio> {
@@ -54,11 +58,12 @@ export class NegocioService {
       this.url + 'business/' + id,
       negocio,
       this.headers
-    );
+    ).pipe(catchError(this.errorHandler));
   }
 
   delete(id: Number) {
-    return this.http.delete(this.url + 'business/' + id, this.headers);
+    return this.http.delete(this.url + 'business/' + id, this.headers)
+      .pipe(catchError(this.errorHandler));
   }
 
   updateServices(id: Number, body) {
@@ -66,10 +71,11 @@ export class NegocioService {
       this.url + 'business/' + id + '/addition',
       body,
       this.headers
-    );
+    ).pipe(catchError(this.errorHandler));
   }
 
   deleteServices(id: Number) {
-    return this.http.delete(this.url + 'servises/' + id, this.headers);
+    return this.http.delete(this.url + 'servises/' + id, this.headers)
+      .pipe(catchError(this.errorHandler));
   }
 }
