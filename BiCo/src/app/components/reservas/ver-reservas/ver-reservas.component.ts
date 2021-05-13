@@ -81,10 +81,7 @@ export class VerReservasComponent implements OnInit {
 	dataSource = new MatTableDataSource();
 	displayedColumns: string[] = ['bussiness', 'service', 'day', 'price'];
 
-	applyFilter(event: Event) {
-	  const filterValue = (event.target as HTMLInputElement).value || new String();
-	  this.dataSource.filter = filterValue.trim().toLowerCase();
-	}
+	
 
 	constructor(
 		private activatedRoute: ActivatedRoute,

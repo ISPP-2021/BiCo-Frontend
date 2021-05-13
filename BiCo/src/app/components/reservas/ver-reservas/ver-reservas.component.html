@@ -19,7 +19,23 @@
     </mat-card-content>
   </mat-card>
   <button (click)="changeView()">
-    Cambiar vista
+    <div *ngIf="calendar">
+      <button mat-button>
+        <mat-icon >list</mat-icon>
+      </button>
+      <button mat-button disabled>
+        <mat-icon >calendar_today</mat-icon>
+      </button>
+    </div>
+    <div *ngIf="!calendar">
+      <button mat-button disabled>
+        <mat-icon >list</mat-icon>
+      </button>
+      <button mat-button>
+        <mat-icon >calendar_today</mat-icon>
+      </button>
+    </div>
+    
   </button>
   </div>    
 <div *ngIf="calendar; else proxReservas" fxLayoutAlign="space-around center" class="flex-container">
@@ -114,11 +130,6 @@
 </div>
 
 <ng-template #proxReservas>
-  <mat-form-field>
-    <mat-label>Filtro</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. comer" #input>
-  </mat-form-field>
-  
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   
     <ng-container matColumnDef="bussiness">
