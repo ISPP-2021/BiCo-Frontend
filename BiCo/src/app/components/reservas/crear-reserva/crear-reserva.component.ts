@@ -54,7 +54,7 @@ export class CrearReservaComponent implements OnInit {
   serviciosReservados: any;
   errorMessage = '';
   negocio = {};
-  pago: number;
+  pago: number = 0;
   nombre: string;
   reserva: Reserva;
   servicioId: number;
@@ -158,13 +158,23 @@ export class CrearReservaComponent implements OnInit {
           (this.status = this.form.value.status);
       }
     }
-    if (this.pago == 0) {
+    if (this.pago == 0 && !this.form.hasError('invalidBookDate')) {
       document.getElementById('boton-reservar').style.display = 'inline';
       document.getElementById('formulario-pago').style.display = 'none';
-    } else {
+    } else if (this.pago != 0 && !this.form.hasError('invalidBookDate')){
       document.getElementById('boton-reservar').style.display = 'none';
       document.getElementById('formulario-pago').style.display = 'inline';
     }
+  }
+
+  hideOrShowPaymentForm(): void{
+      if(document.getElementById('formulario-pago').style.display == 'inline' &&
+        this.form.hasError('invalidBookDate')){
+        document.getElementById('formulario-pago').style.display = 'none';
+      }else if(document.getElementById('formulario-pago').style.display == 'none' &&
+        !this.form.hasError('invalidBookDate') && this.pago != 0){
+        document.getElementById('formulario-pago').style.display = 'inline';
+      }
   }
 
   fechaActual(formulario: FormGroup) {
