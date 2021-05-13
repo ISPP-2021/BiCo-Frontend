@@ -10,6 +10,7 @@ import { Negocio } from 'src/app/model/negocio.interface';
 import { map, switchMap } from 'rxjs/operators';
 
 class CustomValidators {
+  public static invalidDate: Boolean = false;
 
   static validBookDate (control: AbstractControl): ValidationErrors{
     const bookDate = new Date(control.get('bookDate').value)
@@ -29,10 +30,16 @@ class CustomValidators {
     const closeTimeMinutes = Number(closeTime[1])
 
     if(hours < openTimeHours || hours>closeTimeHours){
+      this.invalidDate = true;
+      console.log(this.invalidDate)
       return {invalidBookDate: true};
     }else if((hours === openTimeHours && minutes < openTimeMinutes) || (hours === closeTimeHours && minutes > closeTimeMinutes)){
+      this.invalidDate = true;
+      console.log(this.invalidDate)
       return {invalidBookDate: true}; 
     }else{
+      this.invalidDate = false;
+      console.log(this.invalidDate)
       return null;
     }
 
@@ -63,6 +70,7 @@ export class CrearReservaComponent implements OnInit {
   status: string;
   description: String;
   public servicios;
+  invalid_date = CustomValidators.invalidDate
 
   rol: string = localStorage.getItem('rol');
   negocioId = parseInt(this.route.snapshot.paramMap.get('id'));

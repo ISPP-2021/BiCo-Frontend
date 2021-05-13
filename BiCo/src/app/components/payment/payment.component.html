@@ -9,7 +9,7 @@
         {{error}}
     </div>
     <div style="text-align: center;">
-    <button class="btn btn-outline-success" type="submit" [disabled]="(!f.valid) && (!checkTime())">
+    <button class="btn btn-outline-success" type="submit" [disabled]="!checkTime()">
         Pagar
     </button>
 </div>
