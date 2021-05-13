@@ -8,8 +8,8 @@
     <div *ngIf="error" class="alert alert-danger">
         {{error}}
     </div>
-    <div style="text-align: center;"> 
-    <button class="btn btn-outline-success" type="submit" [disabled]="!f.valid">
+    <div style="text-align: center;">
+    <button class="btn btn-outline-success" type="submit" [disabled]="(!f.valid) && (!checkTime())">
         Pagar
     </button>
 </div>
