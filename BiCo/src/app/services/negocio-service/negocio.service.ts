@@ -72,4 +72,10 @@ export class NegocioService {
   deleteServices(id: Number) {
     return this.http.delete(this.url + 'servises/' + id, this.headers);
   }
+
+  
+  findService(id: Number) {
+    return this.http
+      .get(this.url + 'servises/' + id, this.headers);
+  }
 }
