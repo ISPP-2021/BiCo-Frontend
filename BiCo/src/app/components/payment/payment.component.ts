@@ -29,9 +29,6 @@ export class PaymentComponent implements OnInit {
   @Input() bookDate;
   @Input() emisionDate;
   @Input() status;
-  @Input() openTime;
-  @Input() closeTime;
-
 
   error: any;
 
@@ -63,7 +60,7 @@ export class PaymentComponent implements OnInit {
                 '::placeholder': {
                   color: '#909090'
                 }
-
+                
               }
             }
           });
@@ -71,18 +68,6 @@ export class PaymentComponent implements OnInit {
         }
       }
     );
-  }
-
-  checkTime():Boolean{
-    let res : Boolean = true;
-    let openD = new Date("December 17, 1995 " + this.openTime)
-    let closeD = new Date("December 17, 1995 " + this.closeTime)
-    let bookD = new Date(this.bookDate)
-
-    if(bookD.getHours() > closeD.getHours() || bookD.getHours() < openD.getHours() ){
-      res = false;
-    }
-    return res;
   }
 
   buy() {
@@ -116,7 +101,7 @@ export class PaymentComponent implements OnInit {
     modalRef.componentInstance.descripcion = descripcion;
     modalRef.componentInstance.precio = precio;
     modalRef.componentInstance.bookDate = this.bookDate;
-    modalRef.componentInstance.emisionDate = this.emisionDate;
+    modalRef.componentInstance.emisionDate = this.emisionDate; 
     modalRef.componentInstance.status = this.status;
     modalRef.componentInstance.servicio = this.servicio;
   }
