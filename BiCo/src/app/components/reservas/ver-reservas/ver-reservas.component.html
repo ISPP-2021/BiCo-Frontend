@@ -18,37 +18,149 @@
       </ng-container>
     </mat-card-content>
   </mat-card>
-  </div>
-
-<div fxLayoutAlign="space-around center" class="flex-container">
-  <mat-card class="reserva" *ngFor="let booking of consumer.bookings">
-
-<div class="card-header">
-      <ng-container *ngIf="booking.status === 'IN_PROGRESS'">
-        <button mat-mini-fab  matTooltip="Cancelar la reserva" (click)="cancelBooking(booking.id)">
-          <mat-icon>close</mat-icon>
-        </button>
-      </ng-container>
-      <button mat-mini-fab matTooltip="Ver el negocio"  routerLink="/negocioByReserva/{{booking.id}}"> 
-        <mat-icon>visibility</mat-icon>
+  <button (click)="changeView()">
+    <div *ngIf="calendar">
+      <button mat-button>
+        <mat-icon >list</mat-icon>
       </button>
-    <mat-card-header>
-      <mat-card-title>Reserva Nº: {{booking.id}}</mat-card-title>
-      <mat-card-subtitle *ngIf="booking.status === 'IN_PROGRESS'"> Pendiente de aprobación
-      </mat-card-subtitle>
-      <mat-card-subtitle *ngIf="booking.status === 'COMPLETED'"> Aprobada</mat-card-subtitle>
-      <mat-card-subtitle *ngIf="booking.status === 'CANCELLED'"> Cancelada por usuario</mat-card-subtitle>
-      <mat-card-subtitle *ngIf="booking.status === 'REJECTED'"> Rechazada por propietario</mat-card-subtitle>
-    </mat-card-header>
+      <button mat-button disabled>
+        <mat-icon >calendar_today</mat-icon>
+      </button>
+    </div>
+    <div *ngIf="!calendar">
+      <button mat-button disabled>
+        <mat-icon >list</mat-icon>
+      </button>
+      <button mat-button>
+        <mat-icon >calendar_today</mat-icon>
+      </button>
+    </div>
+    
+  </button>
+  </div>    
+<div *ngIf="calendar; else proxReservas" fxLayoutAlign="space-around center" class="flex-container">
+  <mat-card class="calendario" >
+    <div class="card-header">
+        <mat-card-header>
+          <mat-card-title>Calendario de Reservas</mat-card-title>
+          <mat-card-subtitle > Seleccione el dia
+          </mat-card-subtitle>
+          </mat-card-header>
+    </div>
+    <div class="card-content">
+        <mat-card-content>
+          <kendo-calendar [bottomView]="'month'"
+          [topView]="'decade'" [weekNumber]="true"
+          (valueChange)="onChange($event)">
+            <ng-template kendoCalendarMonthCellTemplate let-date>
+              <span [ngClass]="isMeeting(date)">{{ date.getDate() }}</span>
+            </ng-template>
+            <ng-template kendoCalendarYearCellTemplate let-context="cellContext">
+              <span [ngClass]="isYearMeeting(context.value)">{{
+                context.formattedValue
+              }}</span>
+            </ng-template>
+            <ng-template kendoCalendarDecadeCellTemplate let-context="cellContext">
+              <span [ngClass]="isDecadeMeeting(context.value)">{{
+                context.formattedValue
+              }}</span>
+            </ng-template>
+            <ng-template kendoCalendarCenturyCellTemplate let-context="cellContext">
+              <span [ngClass]="isCenturyMeeting(context.value)">{{
+                context.formattedValue
+              }}</span>
+            </ng-template>
+            <ng-template
+              kendoCalendarWeekNumberCellTemplate
+              let-context="cellContext"
+            >
+              <span class="weeknumber-cell">{{ context.formattedValue }}</span>
+            </ng-template>
+            <ng-template kendoCalendarHeaderTitleTemplate let-title>
+             Reservas en {{ title }}
+            </ng-template>
+            <ng-template
+              kendoCalendarNavigationItemTemplate
+              let-title
+              let-date="date"
+              let-view="activeView"
+            >
+              {{ view === "month" && date.getMonth() === 0 ? "Jan" : title }}
+            </ng-template>
+        </kendo-calendar>
+        </mat-card-content>
+    </div>
+      </mat-card>
+
+      <div>
+          <p *ngIf="showBookings.length <=0"> No tiene ninguna reserva este dia</p>
+
+      </div>
+  <div *ngIf="show">
+  <mat-card class="reserva" *ngFor="let booking of showBookings">
+    <div class="card-header">
+          <ng-container *ngIf="booking.status === 'IN_PROGRESS'">
+            <button mat-mini-fab  matTooltip="Cancelar la reserva" (click)="cancelBooking(booking.id)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </ng-container>
+          <button mat-mini-fab matTooltip="Ver el negocio"  routerLink="/negocio/{{booking.negocio.id}}"> 
+            <mat-icon>visibility</mat-icon>
+          </button>
+        <mat-card-header>
+          <mat-card-title>Reserva en {{booking.negocio.name}} para {{booking.service.name}}</mat-card-title>
+          <mat-card-subtitle *ngIf="booking.status === 'IN_PROGRESS'"> Pendiente de aprobación
+          </mat-card-subtitle>
+          <mat-card-subtitle *ngIf="booking.status === 'COMPLETED'"> Aprobada</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="booking.status === 'CANCELLED'"> Cancelada por usuario</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="booking.status === 'REJECTED'"> Rechazada por propietario</mat-card-subtitle>
+        </mat-card-header>
+    </div>
+    <div class="card-content">
+        <mat-card-content>
+          <p style="color: brown;"><b style="color: black;">Fecha de reserva:</b> {{booking.bookDate | date:'dd-MM-yyyy' : '-000'}}</p>
+          <p style="color: brown;"><b style="color: black;">Hora de reserva:</b> {{booking.bookDate | date:'HH:mm' : '-000'}}</p>
+          <p style="color: brown;"><b style="color: black;">Precio del Servicio reservado:</b> {{booking.service.price}}</p>
+        </mat-card-content>
+    </div>
+      </mat-card>
+
 </div>
-<div class="card-content">
-    <mat-card-content>
-      <p>Fecha de reserva: {{booking.bookDate | date:'dd-MM-yyyy HH:mm' : '-000'}}</p>
-      <p>Servicio reservado: {{booking.servise}}</p>
-    </mat-card-content>
+
 </div>
-  </mat-card>
-</div>
+
+<ng-template #proxReservas>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <ng-container matColumnDef="bussiness">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Negocio </th>
+      <td mat-cell *matCellDef="let element"> {{element.bussiness.name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="service">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Servicio </th>
+      <td mat-cell *matCellDef="let element"> {{element.service.name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="day">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Dia de la Reserva </th>
+      <td mat-cell *matCellDef="let element"> {{element.day | date:'dd-MM-yyyy' : '-000'}}  a las {{element.day | date:'HH:mm' : '-000'}}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Precio </th>
+      <td mat-cell *matCellDef="let element" mat-sort-header> {{element.price}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">Ninguna reserva coincide "{{input.value}}"</td>
+    </tr>
+  </table>
+</ng-template>
 
 </div>
 </div>
