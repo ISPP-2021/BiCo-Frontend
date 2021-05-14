@@ -31,7 +31,7 @@ class CustomValidators {
     if(hours < openTimeHours || hours>closeTimeHours){
       return {invalidBookDate: true};
     }else if((hours === openTimeHours && minutes < openTimeMinutes) || (hours === closeTimeHours && minutes > closeTimeMinutes)){
-      return {invalidBookDate: true}; 
+      return {invalidBookDate: true};
     }else{
       return null;
     }
@@ -100,7 +100,7 @@ export class CrearReservaComponent implements OnInit {
         this.negocio = negocio
         this.servicios = negocio.services
       });
-    
+
   }
 
   get serviceArray() {
@@ -174,6 +174,9 @@ export class CrearReservaComponent implements OnInit {
       }else if(document.getElementById('formulario-pago').style.display == 'none' &&
         !this.form.hasError('invalidBookDate') && this.pago != 0){
         document.getElementById('formulario-pago').style.display = 'inline';
+      }else if(document.getElementById('formulario-pago').style.display == 'none' &&
+        !this.form.hasError('invalidBookDate') && this.pago == 0){
+        document.getElementById('boton-reservar').style.display = 'inline';
       }
   }
 

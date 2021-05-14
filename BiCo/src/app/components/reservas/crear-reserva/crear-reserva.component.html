@@ -46,7 +46,7 @@
                 emisionDate="{{emisionDate}}" status="{{status}}" servicio="{{servicioId}}" openTime="{{negocio.openTime}}" closeTime="{{negocio.closeTime}}">
               </app-payment>
             </div>
-            <button id="boton-reservar" type="submit" mat-raised-button color="primary" [disabled]="form.invalid"
+            <button id="boton-reservar" style="display: none;" type="submit" mat-raised-button color="primary" [disabled]="form.invalid"
               (click)="fechaActual(form)">Reservar</button>
             <button type="button" mat-raised-button routerLink="/home" style="margin: 2%;">Cancelar</button>
           </mat-card-content>
