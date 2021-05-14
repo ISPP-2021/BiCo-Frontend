@@ -10,27 +10,6 @@ import { NegocioService } from 'src/app/services/negocio-service/negocio.service
 import { Servicio } from 'src/app/model/service.interface';
 import { MatTableDataSource } from '@angular/material/table';
 
-export interface PeriodicElement {
-	name: string;
-	position: number;
-	weight: number;
-	symbol: string;
-  }
-  
-  const ELEMENT_DATA: PeriodicElement[] = [
-	{position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-	{position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-	{position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-	{position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-	{position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-	{position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-	{position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-	{position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-	{position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-	{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  ];
-  
-
 @Component({
 	selector: 'app-ver-reservas',
 	templateUrl: './ver-reservas.component.html',
@@ -44,15 +23,17 @@ export class VerReservasComponent implements OnInit {
 				this.negocioService.findOne(new Number(booking.service.business)).subscribe(negocio =>{
 					booking.negocio = negocio;
 					let book = {
+            id: booking.id,
 						bussiness: booking.negocio,
 						service: booking.service,
 						day: booking.bookDate,
-						price: booking.service.price
+						price: booking.service.price,
+            status: booking.status
 					}
 					this.data.push(book)
 				})
 			})
-		})		
+		})
 	}
 	consumer$: Observable<Consumer> = this.activatedRoute.params.pipe(
 		switchMap((params: Params) => {
@@ -65,7 +46,7 @@ export class VerReservasComponent implements OnInit {
 					this.setData(consumer);
 					consumer.bookings.forEach(booking => {
 						this.bookings.push(booking)
-					})		
+					})
 					this.dataSource.data = this.data
 					console.log(this.data)
 					return consumer;
@@ -79,9 +60,9 @@ export class VerReservasComponent implements OnInit {
 	calendar: boolean = true
 	data:any=[]
 	dataSource = new MatTableDataSource();
-	displayedColumns: string[] = ['bussiness', 'service', 'day', 'price'];
+	displayedColumns: string[] = ['bussiness', 'service', 'day', 'price', 'status', 'actions'];
 
-	
+
 
 	constructor(
 		private activatedRoute: ActivatedRoute,
@@ -94,31 +75,31 @@ export class VerReservasComponent implements OnInit {
 	}
 	public isMeeting(date: Date) {
 		let res = "";
-		
+
 		this.bookings.forEach(booking => {
 			let book = new Date(booking.bookDate)
 			if(book.getDate() == date.getDate() && book.getMonth() == date.getMonth() && book.getFullYear() == date.getFullYear()){
 				res = "meeting"
 			}
 		})
-		return res	
+		return res
 	}
 
 	public isYearMeeting(date: Date) {
 		let res = "";
-		
+
 		this.bookings.forEach(booking => {
 			let book = new Date(booking.bookDate)
 			if(book.getMonth() == date.getMonth() && book.getFullYear() == date.getFullYear()){
 				res = "meeting"
 			}
 		})
-		return res	
+		return res
 	}
 
 	public isDecadeMeeting(date: Date) {
 		let res = "";
-		
+
 		this.bookings.forEach(booking => {
 			let book = new Date(booking.bookDate)
 			if(book.getFullYear() == date.getFullYear()){
@@ -129,7 +110,7 @@ export class VerReservasComponent implements OnInit {
 	  }
 	  public isCenturyMeeting(date: Date) {
 		let res = "";
-		
+
 		this.bookings.forEach(booking => {
 			let book = new Date(booking.bookDate)
 			if(book.getFullYear() == date.getFullYear()){
@@ -147,7 +128,7 @@ export class VerReservasComponent implements OnInit {
 			if(book.getDate() == date.getDate() && book.getMonth() == date.getMonth() && book.getFullYear() == date.getFullYear()){
 				this.showBookings.push(this.bookings[index])
 			}
-			
+
 		}
 	}
 	bookingComparator(a: Reserva, b: Reserva) {
