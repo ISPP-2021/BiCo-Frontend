@@ -21,7 +21,7 @@
             <mat-label><b>Fecha:</b></mat-label>
             &nbsp;
             <kendo-datetimepicker formControlName="bookDate" required [readOnlyInput]=true [format]="format"
-              [(value)]="value" [min]="minDate" placeholder="día/mes/año hora">
+              [(value)]="value" [min]="minDate" placeholder="día/mes/año hora:minuto">
             </kendo-datetimepicker>
             <mat-error *ngIf="form.hasError('invalidBookDate')">La hora seleccionada para la reserva está fuera del
               horario de apertura del establecimiento</mat-error>
