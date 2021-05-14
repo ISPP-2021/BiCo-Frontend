@@ -145,7 +145,7 @@ export class CrearReservaComponent implements OnInit {
   pagoTotal(event) {
     for (let servicio of this.negocio['services']) {
       if (servicio.id == event) {
-        this.pago = servicio.price * (servicio.deposit / 100);
+        this.pago = servicio.price * servicio.tax;
         this.pago = Math.round(this.pago * 100) / 100;
         this.nombre = servicio.name;
         this.servicioId = servicio.id;
