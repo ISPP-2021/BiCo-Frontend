@@ -10,8 +10,8 @@
     </div>
     <br>
     <div style="text-align: center;"> 
-        <button class="btn btn-outline-success" type="submit" [disabled]="!f.valid">
-            Pagar
+        <button class="btn btn-outline-success" type="submit" [disabled]="!f.valid || loading">
+            {{(loading) ? 'Cargando...' : 'Pagar'}}
         </button>
     </div>
 </form>
