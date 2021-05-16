@@ -78,4 +78,10 @@ export class NegocioService {
     return this.http.delete(this.url + 'servises/' + id, this.headers)
       .pipe(catchError(this.errorHandler));
   }
+
+  
+  findService(id: Number) {
+    return this.http
+      .get(this.url + 'servises/' + id, this.headers);
+  }
 }

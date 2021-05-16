@@ -21,7 +21,7 @@
             <mat-label><b>Fecha:</b></mat-label>
             &nbsp;
             <kendo-datetimepicker formControlName="bookDate" required [readOnlyInput]=true [format]="format"
-              [(value)]="value" [min]="minDate">
+              [(value)]="value" [min]="minDate" placeholder="día/mes/año hora:minuto" (valueChange)="hideOrShowPaymentForm()">
             </kendo-datetimepicker>
             <mat-error *ngIf="form.hasError('invalidBookDate')">La hora seleccionada para la reserva está fuera del
               horario de apertura del establecimiento</mat-error>
@@ -29,26 +29,26 @@
             <mat-divider></mat-divider>
             <div formArrayName="services">
               <br>
-              <h3>Servicios</h3>
               <div *ngFor="let servicio of serviceArray.controls; index as i" [formGroupName]="i">
                 <mat-form-field class="example-full-width">
                   <mat-label>Servicio</mat-label>
-                  <mat-select formControlName="id" (selectionChange)="pagoTotal($event.value)">
+                  <mat-select id="select-service" formControlName="id" (selectionChange)="pagoTotal($event.value)">
                     <mat-option *ngFor="let servicio of servicios" [value]="servicio.id">{{servicio.name}} -
                       {{servicio.price}} €</mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
             </div>
+            <br>
             <span><b>Fianza de la reserva:</b> {{pago}} €</span><br>
             <div id="formulario-pago" style="display: none;">
               <app-payment nombre="{{nombre}}" precio="{{pago}}" descripcion="{{description}}" bookDate="{{bookDate}}"
-                emisionDate="{{emisionDate}}" status="{{status}}" servicio="{{servicioId}}">
+                emisionDate="{{emisionDate}}" status="{{status}}" servicio="{{servicioId}}" openTime="{{negocio.openTime}}" closeTime="{{negocio.closeTime}}">
               </app-payment>
             </div>
-            <button id="boton-reservar" type="submit" mat-raised-button color="primary" [disabled]="form.invalid"
+            <button id="boton-reservar" style="display: none;" type="submit" mat-raised-button color="primary" [disabled]="form.invalid"
               (click)="fechaActual(form)">Reservar</button>
-            <button type="button" mat-raised-button routerLink="/home" style="margin: 2%">Cancelar</button>
+            <button type="button" mat-raised-button routerLink="/home" style="margin: 2%;">Cancelar</button>
           </mat-card-content>
         </div>
       </mat-card>
