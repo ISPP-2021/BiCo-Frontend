@@ -1,37 +1,81 @@
-.flex-container {
+/*Estilo botonera cambio vista*/
+.button-box {
+  margin-left: auto;
+  margin-right: 5%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  width: fit-content;
+  border-style: none;
+  border-radius: 15px;
+  background-color: white;
+}
+.butones {
+  border-radius: 10px;
+  background-color: white;
+}
+/*Estilo vista calendario*/
+.calendario {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 340px;
+  max-width: 40%;
+  border-bottom: solid #44917e;
+  background-color: #f2e6ee;
+}
+.calendar-card {
+  display: grid;
+  justify-content: center;
+  margin-top: 5%;
+}
+/*Mensaje de que no hay reservas*/
+.no-booking {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  text-align: center;
+  color: red;
+}
+/*Reservas*/
+.reservas-display {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  padding: 0;
-  margin: 0;
-  list-style: none;
 }
-
-.calendario {
-  width: 470px;
-  margin: 5%;
-  border-bottom: solid #44917e;
-  background-color: #f2e6ee;
-  position: relative;
-}
-
 .reserva {
-  width: 350px;
-  margin: 5%;
+  min-width: 340px;
+  max-width: 40%;
+  margin-top: 1%;
+  margin-bottom: 5%;
   border-bottom: solid #44917e;
   background-color: #f2e6ee;
   position: relative;
 }
-
+/*Encabezado*/
 .card-header {
   background-color: #f2e6ee;
 }
-
+.pendiente {
+  color: orange;
+}
+.aprobado {
+  color: green;
+}
+.cancelado {
+  color: red;
+}
+.booking-actions {
+  float: right;
+}
+/*Contenido*/
 .card-content {
   margin-top: 10px;
   background-color: #f2e6ee;
 }
-
+.text {
+  color: brown;
+}
+.text b {
+  color: black;
+}
 .mat-mini-fab {
   float: right;
   background-color: #8499b1;
@@ -74,4 +118,43 @@ table {
 .mat-form-field {
   font-size: 14px;
   width: 100%;
+}
+
+/*Estilo tabla sola*/
+.lone-table-container {
+  background-color: white;
+  margin: 2%;
+  padding: 1%;
+  min-width: 350px;
+  height: 100%;
+  border-radius: 10px;
+  border-bottom: solid #44917e;
+}
+.lone-table {
+  min-width: 350px;
+}
+.lone-table th {
+  text-align: center;
+}
+.lone-table td {
+  text-align: center;
+}
+/*Butones de la tabla*/
+.actions-box div {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+@media screen and (min-width: 0px) and (max-width: 696px) {
+  #unwraped-buttons {
+    display: none;
+  }
+  .bussiness {
+    display: none;
+  }
+}
+@media screen and (min-width: 697px) {
+  #wrap-buttons {
+    display: none;
+  }
 }
