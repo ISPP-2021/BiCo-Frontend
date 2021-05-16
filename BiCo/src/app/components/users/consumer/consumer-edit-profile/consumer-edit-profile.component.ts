@@ -26,6 +26,7 @@ export class ConsumerEditProfileComponent implements OnInit {
   );
 
   form: FormGroup;
+  err: String;
 
   profilePic: any;
 
@@ -74,6 +75,8 @@ export class ConsumerEditProfileComponent implements OnInit {
         .update(this.consumerId, this.form.value)
         .subscribe(() => {
           window.location.replace('/userProfile');
+        }, error => {
+          this.err= error.error.detail
         });
     }
   }

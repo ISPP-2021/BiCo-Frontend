@@ -25,7 +25,7 @@ export class ReservaService {
 			this.url + 'bookings/' + id,
 			reserva,
 			this.headers
-		).pipe(catchError(this.errorHandler));
+		)
 	}
 
 	createFor(serviceId: Number, consumerId: Number, reserva: Reserva): Observable<Reserva> {
@@ -33,7 +33,7 @@ export class ReservaService {
 			this.url + 'bookings/' + serviceId + '/' + consumerId,
 			reserva,
 			this.headers
-		).pipe(catchError(this.errorHandler));
+		)
 	}
 
 	findOne(id: Number): Observable<Reserva> {

@@ -26,20 +26,15 @@ export class PaymentService {
       this.url + 'paymentintent',
       paymentIntentDto,
       cabecera
-    ).pipe(catchError(this.errorHandler));
+    )
   }
 
   public confirmar(id: string): Observable<string> {
     return this.http.post<string>(this.url + `confirm/${id}`, {}, cabecera)
-      .pipe(catchError(this.errorHandler));
   }
 
   public cancelar(id: string): Observable<string> {
     return this.http.post<string>(this.url + `cancel/${id}`, {}, cabecera)
-      .pipe(catchError(this.errorHandler));
   }
 
-  errorHandler(err: HttpErrorResponse) {
-    return observableThrowError(err.message);
-  }
 }

@@ -27,6 +27,8 @@ export class CrearNegocioComponent implements OnInit {
   	rol = localStorage.getItem('rol')
 	token: string = localStorage.getItem(JWT_NAME);
 	form: FormGroup;
+	err: String;
+	negociomalo = {}
 
 	supplier$: Observable<Supplier> = this.activatedRoute.params.pipe(
 		switchMap((params: Params) => {
@@ -120,8 +122,11 @@ export class CrearNegocioComponent implements OnInit {
 				services : this.form.value.services
 			}
 
-			this.negocioService.create(negocio).subscribe( res=>{
-        	this.router.navigate(['mis-negocios'])})
+			this.negocioService.create(negocio).subscribe(res=>{
+        		this.router.navigate(['mis-negocios'])
+			}, error => {
+				this.err= error.error.detail
+			})
 
 		}
 

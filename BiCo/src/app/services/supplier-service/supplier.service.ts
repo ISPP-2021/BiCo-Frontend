@@ -23,22 +23,18 @@ export class SupplierService {
 	findOne(): Observable<Supplier> {
 		return this.http
 			.get<Supplier>(this.url + 'users/profile', this.headers)
-			.pipe(map((supplier: Supplier) => supplier),
-				catchError(this.errorHandler)
-			);
+			.pipe(map((supplier: Supplier) => supplier));
 
 	}
 
 	update(id: Number, supplier: Supplier): Observable<Supplier>{
 		return this.http.put<Supplier>(this.url + 'suppliers/' + id, supplier, this.headers)
-			.pipe(catchError(this.errorHandler))
 	}
 
 	change(priceId): Observable<String> {
 
 		return this.http
 		.post<String>(this.url + 'stripe/create-checkout-session', priceId, this.headers)
-		.pipe(catchError(this.errorHandler));
 	}
 
   isOwnerBusiness(id: Number): Promise<boolean>{
@@ -53,7 +49,4 @@ export class SupplierService {
       })).toPromise()
   }
 
-  errorHandler(err: HttpErrorResponse) {
-    return observableThrowError(err.message);
-  }
 }
