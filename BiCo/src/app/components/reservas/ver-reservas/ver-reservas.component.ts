@@ -51,7 +51,6 @@ export class VerReservasComponent implements OnInit {
             this.bookings.push(booking);
           });
           this.dataSource.data = this.data;
-          console.log(this.data);
           return consumer;
         })
       );
