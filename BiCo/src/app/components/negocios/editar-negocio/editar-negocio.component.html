@@ -83,6 +83,7 @@
 
 
               </div>
+              <mat-error *ngIf="err">{{err}}</mat-error>
               <div fxLayoutAlign="space-around center">
                 <button type="button" mat-raised-button (click)="editServices()">Editar Servicios</button>
                 <button type="submit" mat-raised-button [disabled]="form.invalid">Guardar</button>

@@ -6,9 +6,9 @@ Codacy Code coverage analysis.
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/4b1ef5f107924513a3f1e62b93680212)](https://www.codacy.com/gh/ISPP-2021/BiCo-Frontend/dashboard?utm_source=github.com&utm_medium=referral&utm_content=ISPP-2021/BiCo-Frontend&utm_campaign=Badge_Coverage)
 
-Netlify status on Continuous Deployment configured for branch despliegue3.
+Netlify status on Continuous Deployment configured for branch despliegue4.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/6b91be37-42de-4f39-8010-f0e45dc1c7a4/deploy-status)](https://app.netlify.com/sites/bico-ds3/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fe3b951d-edd4-4904-9875-47928dc1a2b7/deploy-status)](https://app.netlify.com/sites/bico-ds4/deploys)
 
 Netlify status on Continuous Deployment configured for branch main.
 

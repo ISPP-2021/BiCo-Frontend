@@ -46,7 +46,7 @@ export class NegocioService {
       this.url + 'business',
       negocio,
       this.headers
-    );
+    )
   }
 
   update(id: Number, negocio: Negocio): Observable<Negocio> {
@@ -54,11 +54,11 @@ export class NegocioService {
       this.url + 'business/' + id,
       negocio,
       this.headers
-    );
+    )
   }
 
   delete(id: Number) {
-    return this.http.delete(this.url + 'business/' + id, this.headers);
+    return this.http.delete(this.url + 'business/' + id, this.headers)
   }
 
   updateServices(id: Number, body) {
@@ -66,11 +66,11 @@ export class NegocioService {
       this.url + 'business/' + id + '/addition',
       body,
       this.headers
-    );
+    )
   }
 
   deleteServices(id: Number) {
-    return this.http.delete(this.url + 'servises/' + id, this.headers);
+    return this.http.delete(this.url + 'servises/' + id, this.headers)
   }
 
   

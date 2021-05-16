@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable,  throwError as observableThrowError } from 'rxjs';
 import { Supplier } from 'src/app/model/supplier.interface';
 import { catchError, map } from 'rxjs/operators';
 import { JWT_NAME } from '../authentication-service/authentication.service';
@@ -34,7 +34,7 @@ export class SupplierService {
 	change(priceId): Observable<String> {
 
 		return this.http
-		.post<String>(this.url + 'stripe/create-checkout-session', priceId, this.headers);
+		.post<String>(this.url + 'stripe/create-checkout-session', priceId, this.headers)
 	}
 
   isOwnerBusiness(id: Number): Promise<boolean>{
@@ -48,4 +48,5 @@ export class SupplierService {
         }
       })).toPromise()
   }
+
 }

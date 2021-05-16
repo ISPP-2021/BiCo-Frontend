@@ -26,6 +26,7 @@ export class SupplierEditProfileComponent implements OnInit {
   );
 
   profilePic: any;
+  err:String;
 
   form: FormGroup;
 
@@ -74,6 +75,8 @@ export class SupplierEditProfileComponent implements OnInit {
         .update(this.supplierÏd, this.form.value)
         .subscribe(() => {
           window.location.replace('/ownerProfile');
+        }, error => {
+          this.err= error.error.detail
         });
     }
   }

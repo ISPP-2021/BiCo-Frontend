@@ -104,6 +104,7 @@
             <button id="boton-reservar" style="display: none;" type="submit" mat-raised-button color="primary" [disabled]="form.invalid"
               (click)="fechaActual(form)">Reservar</button>
             <button type="button" mat-raised-button routerLink="/home" style="margin: 2%;">Cancelar</button>
+            <mat-error *ngIf="err">{{err}}</mat-error>
           </mat-card-content>
         </div>
       </mat-card>

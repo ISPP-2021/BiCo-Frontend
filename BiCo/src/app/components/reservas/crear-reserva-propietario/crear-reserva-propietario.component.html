@@ -70,6 +70,7 @@
                 (click)="fechaActual(form)">Reservar</button>
               <button type="button" mat-raised-button routerLink="/mis-negocios" style="margin: 2%">Cancelar</button>
             </div>
+            <mat-error *ngIf="err">{{err}}</mat-error>
           </div>
         </mat-card>
 
