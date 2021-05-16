@@ -140,8 +140,6 @@ table {
   text-align: center;
 }
 /*Butones de la tabla*/
-.actions-box {
-}
 .actions-box div {
   display: flex;
   flex-flow: row wrap;
