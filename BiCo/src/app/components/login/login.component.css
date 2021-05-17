@@ -32,6 +32,11 @@
 .mat-raised-button {
   background-color: #a3dcb9;
   bottom: 5%;
-  display: inline;
+  display: inline-flex;
   margin-top: 5%;
+}
+.botones{
+  display: flex;
+  flex-flow: wrap;
+  place-items: center;
 }

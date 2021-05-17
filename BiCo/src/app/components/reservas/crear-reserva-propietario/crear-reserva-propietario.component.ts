@@ -64,6 +64,7 @@ export class CrearReservaPropietarioComponent implements OnInit {
   status: string;
   description: String;
   public servicios;
+  err: String;
 
   rol: string = localStorage.getItem('rol');
   negocioId = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -145,6 +146,8 @@ export class CrearReservaPropietarioComponent implements OnInit {
         };
         this.reservaService.createFor(servicio.id, this.form.value.consumer.id, reserva).subscribe(() => {
           this.router.navigate(['mis-negocios']);
+        }, error => {
+          this.err= error.error.detail
         });
 
       }

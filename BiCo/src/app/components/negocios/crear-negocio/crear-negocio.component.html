@@ -162,6 +162,7 @@
                     <button mat-raised-button [disabled]="form.invalid" (click)="save()">Guardar</button>
                   </div>
                 </mat-step>
+                <mat-error *ngIf="err">{{err}}</mat-error>
               </form>
             </mat-vertical-stepper>
           </mat-card-content>

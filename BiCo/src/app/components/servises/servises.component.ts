@@ -54,7 +54,7 @@ export class ServisesComponent implements OnInit {
       price: ['', [Validators.required, Validators.min(0)]],
       duration: ['', [Validators.required, Validators.min(0)]],
       capacity: ['', [Validators.required, Validators.min(0)]],
-      deposit: ['', [Validators.required, Validators.min(0)]],
+     // deposit: ['', [Validators.required, Validators.min(0)]],
       tax: ['', [Validators.required, Validators.min(0), Validators.max(1)]],
     });
   }
@@ -79,7 +79,7 @@ export class ServisesComponent implements OnInit {
       price: [0, [Validators.required, Validators.min(0.01)]],
       duration: [0, [Validators.required, Validators.min(0)]],
       capacity: [0, [Validators.required, Validators.min(0)]],
-      deposit: [0, [Validators.required, Validators.min(0)]],
+    //  deposit: [0, [Validators.required, Validators.min(0)]],
       tax: [0, [Validators.required, Validators.min(0), Validators.max(1)]],
       bookings: this.formBuilder.array([]),
     });

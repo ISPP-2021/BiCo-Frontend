@@ -70,6 +70,7 @@ import { SubirImagenComponent } from './components/subir-imagen/subir-imagen.com
 import { ConsumerEditProfileComponent } from './components/users/consumer/consumer-edit-profile/consumer-edit-profile.component';
 import { SupplierEditProfileComponent } from './components/users/supplier/supplier-edit-profile/supplier-edit-profile.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -138,7 +139,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     MatProgressSpinnerModule,
     AutocompleteLibModule,
     MatDialogModule,
-    CarouselModule
+    CarouselModule,
+    MatMenuModule,
   ],
   entryComponents: [ModalComponent, DialogComponent],
   providers: [
@@ -149,4 +151,4 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
