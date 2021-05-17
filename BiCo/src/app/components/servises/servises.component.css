@@ -1,26 +1,21 @@
-.flex-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
 .example-form {
-    width: 600px;
-  margin: 5%;
-  padding: 2% 2%;
-  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 2%;
-  border-radius: 20px;
+  margin-bottom: 5%;
+  border-radius: 25px;
   background-color: #f2e6ee;
 }
-
+.services {
+  border-bottom: solid #44917e;
+  background-color: #f2e6ee;
+  margin-bottom: 5%;
+}
 .example-full-width {
   width: 100%;
   box-sizing: border-box;
 }
-
+/*Botones*/
 .mat-raised-button {
   background-color: #a3dcb9;
 
@@ -30,10 +25,44 @@
   margin: 2%;
   background-color: #8499b1;
 }
-.services{
-  width: 600px;
-  margin: 5%;
-  border-bottom: solid #44917e;
-  background-color: #f2e6ee;
-  position: relative;
+.center-button {
+  margin-left: auto;
+  margin-right: auto;
+}
+.guardar-button {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+@media screen and (min-width: 0px) and (max-width: 450px) {
+  .example-form {
+    width: 300px;
+  }
+  .services {
+    width: 300px;
+  }
+  .guardar-button {
+    width: 300px;
+  }
+}
+@media screen and (min-width: 451px) and (max-width: 696px) {
+  .example-form {
+    width: 430px;
+  }
+  .services {
+    width: 430px;
+  }
+  .guardar-button {
+    width: 430px;
+  }
+}
+@media screen and (min-width: 697px) {
+  .example-form {
+    width: 600px;
+  }
+  .services {
+    width: 600px;
+  }
+  .guardar-button {
+    width: 600px;
+  }
 }
