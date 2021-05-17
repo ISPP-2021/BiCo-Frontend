@@ -63,6 +63,7 @@ export class CrearReservaComponent implements OnInit {
   status: string;
   description: String;
   public servicios;
+  err: String;
 
   rol: string = localStorage.getItem('rol');
   negocioId = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -134,6 +135,8 @@ export class CrearReservaComponent implements OnInit {
         };
         this.reservaService.create(servicio.id, reserva).subscribe(()=>{
           this.router.navigate(['reservas']);
+        }, error => {
+          this.err= error.error.detail
         });
 
         //

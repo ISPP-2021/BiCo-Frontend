@@ -17,6 +17,7 @@ export class EditarNegocioComponent implements OnInit {
 //Para navegar a esta pagina, habria que crear una funcion que ejecute this.router.navigate(['/negocio-edit/',id]), pasandole a la funcion el id del negocio
   rol = localStorage.getItem('rol')
   form: FormGroup;
+  err: String;
   negocioId = parseInt(this.route.snapshot.paramMap.get('id'));
   negocio$: Observable<Negocio> = this.route.params.pipe(
     switchMap((params: Params) => {
@@ -82,7 +83,9 @@ export class EditarNegocioComponent implements OnInit {
       }
       this.negocioService.update(this.negocioId,negocio).subscribe(()=>{
         window.location.replace('/mis-negocios')
-      })
+      }, error => {
+				this.err= error.error.detail
+			})
     }
   }
 
