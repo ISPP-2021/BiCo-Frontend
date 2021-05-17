@@ -17,6 +17,7 @@ export class PaymentComponent implements OnInit {
 
   elements: Elements;
   card: StripeElement;
+  loading = false
 
   elementsOptions: ElementsOptions = {
     locale: 'es'
@@ -75,6 +76,7 @@ export class PaymentComponent implements OnInit {
     this.stripeService
       .createToken(this.card, { name })
       .subscribe(result => {
+        this.loading = true;
         if (result.token) {
           const paymentIntentDto: PaymentIntentDto = {
             token: result.token.id,
@@ -85,11 +87,13 @@ export class PaymentComponent implements OnInit {
           this.paymentService.pagar(paymentIntentDto).subscribe(
             data => {
               this.abrirModal(data[`id`], this.nombre, data[`description`], data[`amount`]);
+              this.loading = false;
             }
           );
           this.error = undefined;
         } else if (result.error) {
           this.error = result.error.message;
+          this.loading = false;
         }
       });
   }
