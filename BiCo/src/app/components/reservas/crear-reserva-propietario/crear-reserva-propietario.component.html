@@ -29,7 +29,7 @@
                 <mat-label><b>Fecha: </b></mat-label>
                 &nbsp;
                 <kendo-datetimepicker formControlName="bookDate" required [readOnlyInput]=true [format]="format"
-                  [(value)]="value" [min]="minDate">
+                  [(value)]="value" [min]="minDate" placeholder="día/mes/año hora:minuto">
                 </kendo-datetimepicker>
               </div>
               <mat-error *ngIf="form.hasError('invalidBookDate')">La hora seleccionada para la reserva
@@ -70,6 +70,7 @@
                 (click)="fechaActual(form)">Reservar</button>
               <button type="button" mat-raised-button routerLink="/mis-negocios" style="margin: 2%">Cancelar</button>
             </div>
+            <mat-error *ngIf="err">{{err}}</mat-error>
           </div>
         </mat-card>
 

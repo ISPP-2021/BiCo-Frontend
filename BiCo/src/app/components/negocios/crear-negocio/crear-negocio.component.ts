@@ -27,6 +27,8 @@ export class CrearNegocioComponent implements OnInit {
   	rol = localStorage.getItem('rol')
 	token: string = localStorage.getItem(JWT_NAME);
 	form: FormGroup;
+	err: String;
+	negociomalo = {}
 
 	supplier$: Observable<Supplier> = this.activatedRoute.params.pipe(
 		switchMap((params: Params) => {
@@ -62,7 +64,7 @@ export class CrearNegocioComponent implements OnInit {
 			option: this.formBuilder.group({
 				automatedAccept: [false, [Validators.required]],
 				limitAutomated: [{ value: '', disabled: true }, [Validators.required, Validators.min(1)]],
-				defaultDeposit: ['', [Validators.required, Validators.min(0), Validators.max(1)]],
+			//	defaultDeposit: ['', [Validators.required, Validators.min(0), Validators.max(1)]],
 				depositTimeLimit: ['', [Validators.required, Validators.min(1)]]
 			}),
 			services: this.formBuilder.array([this.addServiceGroup()])
@@ -80,7 +82,7 @@ export class CrearNegocioComponent implements OnInit {
 			price: ['', [Validators.required, Validators.min(0.01)]],
 			duration: ['', [Validators.required, Validators.min(0)]],
 			capacity: ['', [Validators.required, Validators.min(0)]],
-			deposit: ['', [Validators.required, Validators.min(0)]],
+		//	deposit: ['', [Validators.required, Validators.min(0)]],
 			tax: ['',[Validators.required, Validators.min(0), Validators.max(1)]],
 			bookings: this.formBuilder.array([])
 			});
@@ -114,14 +116,17 @@ export class CrearNegocioComponent implements OnInit {
 				option : {
 					automatedAccept : this.form.value.option.automatedAccept,
 					limitAutomated : this.form.value.option.limitAutomated,
-					defaultDeposit : this.form.value.option.defaultDeposit,
+				//	defaultDeposit : this.form.value.option.defaultDeposit,
 					depositTimeLimit : this.form.value.option.depositTimeLimit,
 				},
 				services : this.form.value.services
 			}
 
-			this.negocioService.create(negocio).subscribe( res=>{
-        	this.router.navigate(['mis-negocios'])})
+			this.negocioService.create(negocio).subscribe(res=>{
+        		this.router.navigate(['mis-negocios'])
+			}, error => {
+				this.err= error.error.detail
+			})
 
 		}
 
@@ -134,7 +139,7 @@ export class CrearNegocioComponent implements OnInit {
 				price: [0, [Validators.required, Validators.min(0.01)]],
 				duration: [0, [Validators.required, Validators.min(0)]],
 				capacity: [0, [Validators.required, Validators.min(0)]],
-				deposit: [0, [Validators.required, Validators.min(0)]],
+			//	deposit: [0, [Validators.required, Validators.min(0)]],
 				tax: [0,[Validators.required, Validators.min(0), Validators.max(1)]],
 				bookings: this.formBuilder.array([])
 			});

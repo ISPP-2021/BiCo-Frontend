@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Observable,  throwError as observableThrowError } from 'rxjs';
 import { JWT_NAME } from '../authentication-service/authentication.service';
 import { PaymentIntentDto } from 'src/app/model/payment-intent-dto';
+import { catchError } from 'rxjs/operators';
 
 const cabecera = {
   headers: new HttpHeaders({
@@ -25,14 +26,15 @@ export class PaymentService {
       this.url + 'paymentintent',
       paymentIntentDto,
       cabecera
-    );
+    )
   }
 
   public confirmar(id: string): Observable<string> {
-    return this.http.post<string>(this.url + `confirm/${id}`, {}, cabecera);
+    return this.http.post<string>(this.url + `confirm/${id}`, {}, cabecera)
   }
 
   public cancelar(id: string): Observable<string> {
-    return this.http.post<string>(this.url + `cancel/${id}`, {}, cabecera);
+    return this.http.post<string>(this.url + `cancel/${id}`, {}, cabecera)
   }
+
 }

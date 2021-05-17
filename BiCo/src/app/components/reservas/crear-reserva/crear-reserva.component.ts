@@ -31,7 +31,7 @@ class CustomValidators {
     if(hours < openTimeHours || hours>closeTimeHours){
       return {invalidBookDate: true};
     }else if((hours === openTimeHours && minutes < openTimeMinutes) || (hours === closeTimeHours && minutes > closeTimeMinutes)){
-      return {invalidBookDate: true}; 
+      return {invalidBookDate: true};
     }else{
       return null;
     }
@@ -54,7 +54,7 @@ export class CrearReservaComponent implements OnInit {
   serviciosReservados: any;
   errorMessage = '';
   negocio = {};
-  pago: number;
+  pago: number = 0;
   nombre: string;
   reserva: Reserva;
   servicioId: number;
@@ -63,6 +63,7 @@ export class CrearReservaComponent implements OnInit {
   status: string;
   description: String;
   public servicios;
+  err: String;
 
   rol: string = localStorage.getItem('rol');
   negocioId = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -100,7 +101,7 @@ export class CrearReservaComponent implements OnInit {
         this.negocio = negocio
         this.servicios = negocio.services
       });
-    
+
   }
 
   get serviceArray() {
@@ -134,6 +135,8 @@ export class CrearReservaComponent implements OnInit {
         };
         this.reservaService.create(servicio.id, reserva).subscribe(()=>{
           this.router.navigate(['reservas']);
+        }, error => {
+          this.err= error.error.detail
         });
 
         //
@@ -145,7 +148,7 @@ export class CrearReservaComponent implements OnInit {
   pagoTotal(event) {
     for (let servicio of this.negocio['services']) {
       if (servicio.id == event) {
-        this.pago = servicio.price * (servicio.deposit / 100);
+        this.pago = servicio.price * servicio.tax;
         this.pago = Math.round(this.pago * 100) / 100;
         this.nombre = servicio.name;
         this.servicioId = servicio.id;
@@ -158,13 +161,26 @@ export class CrearReservaComponent implements OnInit {
           (this.status = this.form.value.status);
       }
     }
-    if (this.pago == 0) {
+    if (this.pago == 0 && !this.form.hasError('invalidBookDate')) {
       document.getElementById('boton-reservar').style.display = 'inline';
       document.getElementById('formulario-pago').style.display = 'none';
-    } else {
+    } else if (this.pago != 0 && !this.form.hasError('invalidBookDate')){
       document.getElementById('boton-reservar').style.display = 'none';
       document.getElementById('formulario-pago').style.display = 'inline';
     }
+  }
+
+  hideOrShowPaymentForm(): void{
+      if(document.getElementById('formulario-pago').style.display == 'inline' &&
+        this.form.hasError('invalidBookDate')){
+        document.getElementById('formulario-pago').style.display = 'none';
+      }else if(document.getElementById('formulario-pago').style.display == 'none' &&
+        !this.form.hasError('invalidBookDate') && this.pago != 0){
+        document.getElementById('formulario-pago').style.display = 'inline';
+      }else if(document.getElementById('formulario-pago').style.display == 'none' &&
+        !this.form.hasError('invalidBookDate') && this.pago == 0){
+        document.getElementById('boton-reservar').style.display = 'inline';
+      }
   }
 
   fechaActual(formulario: FormGroup) {

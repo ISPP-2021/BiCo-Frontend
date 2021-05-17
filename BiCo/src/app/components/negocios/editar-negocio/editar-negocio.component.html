@@ -67,12 +67,12 @@
                     formControlName="gas">
                 </mat-form-field>
 
-                <mat-form-field class="example-full-width">
+               <!-- <mat-form-field class="example-full-width">
                   <mat-label>Fianza de reserva (valor entre 0-1)</mat-label>
                   <input matInput type="number"
                     placeholder="Introduzca la fianza por reservas para todos los servicios (0-1)"
                     formControlName="defaultDeposit">
-                </mat-form-field>
+                </mat-form-field>-->
 
                 <mat-form-field class="example-full-width">
                   <mat-label>Tiempo de cancelación gratuita (valor en días) </mat-label>
@@ -83,6 +83,7 @@
 
 
               </div>
+              <mat-error *ngIf="err">{{err}}</mat-error>
               <div fxLayoutAlign="space-around center">
                 <button type="button" mat-raised-button (click)="editServices()">Editar Servicios</button>
                 <button type="submit" mat-raised-button [disabled]="form.invalid">Guardar</button>

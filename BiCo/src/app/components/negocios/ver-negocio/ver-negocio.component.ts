@@ -66,10 +66,15 @@ export class VerNegocioComponent implements OnInit {
 
   loadBusinessImages(){
     this.imageService.getBusinessPic(this.negocioId).subscribe(imagenes=>{
-      this.imageService.getImage(imagenes[0].name).subscribe(data => {
-      let unsafeImageUrl = URL.createObjectURL(data);
-      this.profilePic = this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
-    })
+      try{
+        this.imageService.getImage(imagenes[0].name).subscribe(data => {
+          let unsafeImageUrl = URL.createObjectURL(data);
+          this.profilePic = this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
+        })} catch(err){
+          // console.log(err);
+          this.profilePic = './favicon.ico'
+        }
+
       imagenes.forEach(x => {
         this.imageService.getImage(x.name).subscribe(data => {
           let unsafeImageUrl = URL.createObjectURL(data);
