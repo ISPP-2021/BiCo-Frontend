@@ -136,10 +136,8 @@ export class CrearReservaComponent implements OnInit {
           emisionDate: new Date(emision).toISOString(),
           status: this.form.value.status,
         };
-        console.log(reserva)
         this.reservaService.create(servicio.id, reserva).subscribe(res=>{
           this.router.navigate(['reservas']);
-          console.log(res)
         }, error => {
           this.err= error.error.detail
         });
