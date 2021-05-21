@@ -27,10 +27,11 @@ class CustomValidators {
       closeTimeHours = 24
     }
     const closeTimeMinutes = Number(closeTime[1])
-
     if(hours < openTimeHours || hours>closeTimeHours){
       return {invalidBookDate: true};
     }else if((hours === openTimeHours && minutes < openTimeMinutes) || (hours === closeTimeHours && minutes > closeTimeMinutes)){
+      return {invalidBookDate: true};
+    }else if((hours === openTimeHours && minutes === openTimeMinutes) || (hours === closeTimeHours && minutes === closeTimeMinutes)){
       return {invalidBookDate: true};
     }else{
       return null;
@@ -92,7 +93,7 @@ export class CrearReservaComponent implements OnInit {
           openTime: [negocio.openTime],
           closeTime: [negocio.closeTime],
           bookDate: [null, [Validators.required]],
-          emisionDate: [new Date],
+          emisionDate: [new Date()],
           status: ['IN_PROGRESS'],
           services: this.formBuilder.array([this.addServiceGroup()]),
         },{
@@ -125,16 +126,20 @@ export class CrearReservaComponent implements OnInit {
   save() {
     if (this.form.valid) {
     //  if(this.form.value.bookDate.getHours())
-      let reserva: Reserva;
+      let reserva: any;
       let servicios = this.form.value.services;
+      let hour = new Date().getHours()
+      let emision = new Date().setHours(hour + 2)
       for (let servicio of servicios) {
         reserva = {
-          bookDate: this.form.value.bookDate,
-          emisionDate: this.form.value.emisionDate.setHours(this.form.value.emisionDate.getHours() + 2),
+          bookDate: new Date(this.form.value.bookDate).toISOString(),
+          emisionDate: new Date(emision).toISOString(),
           status: this.form.value.status,
         };
-        this.reservaService.create(servicio.id, reserva).subscribe(()=>{
+        console.log(reserva)
+        this.reservaService.create(servicio.id, reserva).subscribe(res=>{
           this.router.navigate(['reservas']);
+          console.log(res)
         }, error => {
           this.err= error.error.detail
         });
