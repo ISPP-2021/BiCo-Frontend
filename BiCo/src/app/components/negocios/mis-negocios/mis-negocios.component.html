@@ -2,6 +2,7 @@
       <mat-card class="negocio" *ngFor="let business of supplier.business">
         <div class="card-header-prime">
           <mat-card-header class="header">
+            <img mat-card-avatar [src]="business.profilePic">
             <mat-card-title>{{business.name}}</mat-card-title>
             <mat-card-subtitle>Dirección: {{business.address}}</mat-card-subtitle>
             <mat-card-subtitle *ngIf="business.businessType === 'HAIRDRESSER'"> Peluquería
