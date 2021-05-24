@@ -8,6 +8,9 @@ import { NegocioService } from 'src/app/services/negocio-service/negocio.service
 import { ReservaService } from 'src/app/services/reserva-service/reserva.service';
 import { Negocio } from 'src/app/model/negocio.interface';
 import { Servicio } from 'src/app/model/service.interface';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ImageService } from 'src/app/services/image/image.service';
 
 @Component({
   selector: 'app-mis-negocios',
@@ -22,19 +25,66 @@ export class MisNegociosComponent implements OnInit {
       return this.supplierService.findOne().pipe(
         map((supplier: Supplier) => {
           supplier.business.sort(this.businessComparator);
-          supplier.business.forEach((a) =>
+          supplier.business.forEach((a) => {
+            this.setProfilePic(a)
             a.services.sort(this.servicesComparator)
-          );
+          });
           return supplier;
         })
       );
     })
   );
+
+  async setProfilePic(negocio:Negocio){
+    this.imageService.getBusinessPic(negocio.id).subscribe((imagenes : any[])=>{
+      try{
+        imagenes = imagenes.sort()
+        this.imageService.getImage(imagenes[0].name).subscribe(data => {
+          let unsafeImageUrl = URL.createObjectURL(data);
+          negocio.profilePic =  this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
+        })} catch(err){
+          // console.log(err);
+          negocio.profilePic = './favicon.ico'
+        }
+    })
+  }
+
+  businessPics : any=[];
+  profilePic : any = null
+  
+  customOptions: OwlOptions = {
+    loop: true,
+    margin:20,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: true,
+    navSpeed: 700,
+    navText: ['<', '>'],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 1
+      },
+      740: {
+        items: 2
+      },
+      940: {
+        items: 2
+      }
+    },
+    nav: true
+  }
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private negocioService: NegocioService,
     private reservaService: ReservaService,
-    private supplierService: SupplierService
+    private supplierService: SupplierService,
+    private sanitizer: DomSanitizer,
+    private imageService: ImageService
   ) {}
 
   ngOnInit(): void {}
@@ -77,4 +127,19 @@ export class MisNegociosComponent implements OnInit {
       });
     }
   }
+
+  async loadBusinessImages(negocioId){
+    this.imageService.getBusinessPic(negocioId).subscribe(imagenes=>{
+      try{
+        this.imageService.getImage(imagenes[0].name).subscribe(data => {
+          let unsafeImageUrl = URL.createObjectURL(data);
+          return this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
+        })} catch(err){
+          // console.log(err);
+          return './favicon.ico'
+        }
+    })
+  }
+
+
 }
