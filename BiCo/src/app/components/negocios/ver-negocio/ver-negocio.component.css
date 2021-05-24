@@ -40,13 +40,17 @@
   float: right;
   background-color: #8499b1;
 }
-.mat-raised-button {
+.big-button {
   /* margin-left: 50%;
   transform: translateX(-50%); */
   background-color: #a3dcb9;
   /* position: absolute; */
   bottom: 5%;
-  float:right;
+  float: right;
+}
+.small-button {
+  margin-bottom: 5%;
+  background-color: #a3dcb9;
 }
 .time {
   margin-left: 10%;
@@ -58,7 +62,26 @@
   margin-left: auto;
   margin-right: auto;
 }
-.carouselSlide{
+.carouselSlide {
   object-fit: contain;
-  height: 300px
+  height: 300px;
+}
+@media screen and (min-width: 0px) and (max-width: 441px) {
+  #big-button {
+    display: none;
+  }
+  .container {
+    height: fit-content;
+  }
+  #profile-pic {
+    float: right;
+  }
+  .header {
+    display: block;
+  }
+}
+@media screen and (min-width: 442px) {
+  #small-button {
+    display: none;
+  }
 }
