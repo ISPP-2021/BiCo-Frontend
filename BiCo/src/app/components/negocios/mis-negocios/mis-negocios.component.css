@@ -69,14 +69,3 @@
   background-color: #a3dcb9;
   bottom: 5%;
 }
-
-@media screen and (min-width: 0px) and (max-width: 570px) {
-  #unwraped-buttons {
-    display: none;
-  }
-}
-@media screen and (min-width: 571px) {
-  #wrap-buttons {
-    display: none;
-  }
-}
