@@ -71,7 +71,6 @@ import { ConsumerEditProfileComponent } from './components/users/consumer/consum
 import { SupplierEditProfileComponent } from './components/users/supplier/supplier-edit-profile/supplier-edit-profile.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MatMenuModule } from '@angular/material/menu';
-import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +101,6 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     SubirImagenComponent,
     ConsumerEditProfileComponent,
     SupplierEditProfileComponent,
-    CarouselComponent,
   ],
   imports: [
     BrowserModule,
