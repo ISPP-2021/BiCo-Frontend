@@ -2,6 +2,7 @@
       <mat-card class="negocio" *ngFor="let business of supplier.business">
         <div class="card-header-prime">
           <mat-card-header class="header">
+            <img mat-card-avatar [src]="business.profilePic">
             <mat-card-title>{{business.name}}</mat-card-title>
             <mat-card-subtitle>Dirección: {{business.address}}</mat-card-subtitle>
             <mat-card-subtitle *ngIf="business.businessType === 'HAIRDRESSER'"> Peluquería
@@ -14,7 +15,7 @@
               <mat-card-subtitle><b>Cierra: </b>{{business.closeTime | slice : 0:5}}</mat-card-subtitle>
             </div>
           </mat-card-header>
-          <div id="wrap-buttons" class="header-left-wrap">
+          <div class="header-left-wrap">
             <button mat-button [matMenuTriggerFor]="menu">
               <mat-icon>list</mat-icon>
             </button>
@@ -26,20 +27,9 @@
                 <mat-icon>edit</mat-icon> Editar
               </button>
               <button mat-menu-item routerLink="/nueva-reserva/{{business.id}}">
-                <mat-icon>add</mat-icon> Añadir Servicio
+                <mat-icon>add</mat-icon> Añadir reserva para usuario
               </button>
             </mat-menu>
-          </div>
-          <div id="unwraped-buttons" class="header-left">
-            <button type="button" mat-mini-fab (click)="deleteBusiness(business.id)">
-              <mat-icon>delete</mat-icon>
-            </button>
-            <button mat-mini-fab routerLink="/negocio-edit/{{business.id}}">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-mini-fab routerLink="/nueva-reserva/{{business.id}}">
-              <mat-icon>add</mat-icon>
-            </button>
           </div>
         </div>
 

@@ -96,3 +96,20 @@
     display: none;
   }
 }
+
+@media screen and (min-width: 0px) and (max-width: 336px) {
+  .user {
+    height: 35%;
+  }
+}
+
+@media screen and (min-width: 337px) and (max-width: 368px) {
+  .user {
+    height: 50%;
+  }
+}
+@media screen and (min-width: 369px) and (max-width: 608px) {
+  .user {
+    height: 45%;
+  }
+}
