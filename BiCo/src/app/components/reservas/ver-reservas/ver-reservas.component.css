@@ -125,13 +125,9 @@ table {
   background-color: white;
   margin: 2%;
   padding: 1%;
-  min-width: 350px;
   height: 100%;
   border-radius: 10px;
   border-bottom: solid #44917e;
-}
-.lone-table {
-  min-width: 350px;
 }
 .lone-table th {
   text-align: center;
@@ -144,6 +140,20 @@ table {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+}
+@media screen and (min-width: 0px) and (max-width: 320px) {
+  .lone-table-container {
+    width: 97%;
+  }
+  .lone-table {
+    width: 97 %;
+  }
+  .calendario {
+    min-width: 100%;
+  }
+  .reserva {
+    min-width: 90%;
+  }
 }
 @media screen and (min-width: 0px) and (max-width: 696px) {
   #unwraped-buttons {
