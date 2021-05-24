@@ -32,3 +32,22 @@
   background-color: #8499b1;
   margin-right: 5%;
 }
+.unwraped-buttons {
+  justify-content: space-around;
+  float: right;
+  width: 90px;
+}
+.wrap-buttons {
+  float: right;
+  width: 50px;
+}
+@media screen and (min-width: 0px) and (max-width: 416px) {
+  #unwraped-buttons {
+    display: none;
+  }
+}
+@media screen and (min-width: 417px) {
+  #wrap-buttons {
+    display: none;
+  }
+}

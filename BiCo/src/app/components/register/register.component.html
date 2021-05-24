@@ -56,9 +56,9 @@
           </mat-card>
         </div>
         <form class="example-form" [formGroup]="termsForm">
-          <div>
-            <mat-checkbox formControlName="term">He leído y acepto los <a style="text-decoration: underline;
-  color: blue;" (click)="openDialog()">términos y
+          <div fxLayout="column" fxLayoutAlign="center">
+            <mat-checkbox formControlName="term">Acepto los <a style="text-decoration: underline;
+              color: blue;" (click)="openDialog()">términos y
                 condiciones</a>.</mat-checkbox>
           </div>
         </form>
@@ -69,11 +69,11 @@
 
         <div fxLayoutAlign="center">
           <button mat-raised-button [disabled]="registerForm.invalid || termsForm.invalid" type="submit">
-            <mat-icon>emoji_people</mat-icon> Soy usuario
+            <mat-icon  id="icon">emoji_people</mat-icon> Soy usuario
           </button>
           <button mat-raised-button [disabled]="registerForm.invalid || termsForm.invalid" type="button"
             (click)="registerOwner()">
-            Soy propietario <mat-icon>hail</mat-icon>
+            Soy propietario <mat-icon id="icon">hail</mat-icon>
           </button>
         </div>
 

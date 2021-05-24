@@ -8,7 +8,8 @@
 }
 
 .perfil {
-  width: 600px;
+  width: 90%;
+  max-width: 600px;
   margin: 5%;
   border-bottom: solid #44917e;
   background-color: #f2e6ee;
@@ -27,8 +28,25 @@
   background-color: #a3dcb9;
   bottom: 5%;
 }
-
 .mat-mini-fab {
   background-color: #8499b1;
   margin-right: 5%;
+}
+.unwraped-buttons {
+  justify-content: space-around;
+  float: right;
+  width: 90px;
+}
+.wrap-buttons {
+  float: right;
+}
+@media screen and (min-width: 0px) and (max-width: 416px) {
+  #unwraped-buttons {
+    display: none;
+  }
+}
+@media screen and (min-width: 417px) {
+  #wrap-buttons {
+    display: none;
+  }
 }
