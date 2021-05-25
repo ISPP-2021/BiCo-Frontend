@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class SupplierService {
 	token: string = localStorage.getItem(JWT_NAME);
 	constructor(private http: HttpClient, private router: Router) { }
-	private url: string = 'https://backend-bico.herokuapp.com';
+	private url: string = 'https://backend-bico.herokuapp.com/';
 	private url2: string = 'http://localhost:8080/';
 	private headers = {
 		headers: {

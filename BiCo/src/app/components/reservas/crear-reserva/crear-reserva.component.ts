@@ -92,7 +92,7 @@ export class CrearReservaComponent implements OnInit {
         this.form = this.formBuilder.group({
           openTime: [negocio.openTime],
           closeTime: [negocio.closeTime],
-          bookDate: [null, [Validators.required]],
+          bookDate: [this.minDate, [Validators.required]],
           emisionDate: [new Date()],
           status: ['IN_PROGRESS'],
           services: this.formBuilder.array([this.addServiceGroup()]),
@@ -128,11 +128,13 @@ export class CrearReservaComponent implements OnInit {
     //  if(this.form.value.bookDate.getHours())
       let reserva: any;
       let servicios = this.form.value.services;
-      let hour = new Date().getHours()
-      let emision = new Date().setHours(hour + 2)
+      let hourEmision = new Date().getHours()
+      let emision = new Date().setHours(hourEmision + 2)
+      let hourBook= new Date(this.form.value.bookDate).getHours()
+      let book = new Date(this.form.value.bookDate).setHours(hourBook+2)
       for (let servicio of servicios) {
         reserva = {
-          bookDate: new Date(this.form.value.bookDate).toISOString(),
+          bookDate: new Date(book).toISOString(),
           emisionDate: new Date(emision).toISOString(),
           status: this.form.value.status,
         };
@@ -184,14 +186,6 @@ export class CrearReservaComponent implements OnInit {
         !this.form.hasError('invalidBookDate') && this.pago == 0){
         document.getElementById('boton-reservar').style.display = 'inline';
       }
+      
   }
-
-  fechaActual(formulario: FormGroup) {
-    let date: Date = new Date();
-    this.form.patchValue({
-      emisionDate: date,
-    });
-  }
-
-
 }
