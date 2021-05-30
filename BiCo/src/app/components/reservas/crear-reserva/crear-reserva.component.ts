@@ -92,7 +92,7 @@ export class CrearReservaComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.minDate.setMinutes(this.value.getMinutes() + 30)
+    this.minDate.setDate(this.value.getDate()+1)
     this.negocioService.findOne(this.negocioId).subscribe(negocio => {
         let openHour = negocio.openTime.split(":")[0]
         let openMinutes = negocio.openTime.split(":")[1]
