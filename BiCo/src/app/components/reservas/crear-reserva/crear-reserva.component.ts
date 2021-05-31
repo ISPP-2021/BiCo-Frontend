@@ -210,14 +210,6 @@ export class CrearReservaComponent implements OnInit {
         !this.form.hasError('invalidBookDate') && this.pago == 0){
         document.getElementById('boton-reservar').style.display = 'inline';
       }
+
   }
-
-  fechaActual(formulario: FormGroup) {
-    let date: Date = new Date();
-    this.form.patchValue({
-      emisionDate: date,
-    });
-  }
-
-
 }
