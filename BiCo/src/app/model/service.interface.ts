@@ -1,7 +1,7 @@
 import { Reserva } from './reserva.interface';
 
 export interface Servicio {
-	id?: Number;
+	index?: Number;
 	name?: String;
 	description?: String;
 	price?: Number;

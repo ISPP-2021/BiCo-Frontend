@@ -27,7 +27,7 @@ export class VerReservasComponent implements OnInit {
             .subscribe((negocio) => {
               booking.negocio = negocio;
               let book = {
-                id: booking.id,
+                index: booking.index,
                 bussiness: booking.negocio,
                 service: booking.service,
                 day: booking.bookDate,

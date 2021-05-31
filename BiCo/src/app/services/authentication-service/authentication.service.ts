@@ -23,7 +23,7 @@ export class AuthenticationService {
 		private jwtHelper: JwtHelperService,
 		private router: Router) { }
 
-	private url: string = 'https://bico-despliegue-4.herokuapp.com';
+	private url: string = 'https://backend-bico.herokuapp.com';
   	private url2: string = 'http://localhost:8080';
 
 	login(loginForm: LoginForm): Observable<any> {
@@ -37,7 +37,7 @@ export class AuthenticationService {
 				localStorage.setItem("rol", rol);
 
 
-				let user_id = usuario.authorities[0].id;
+				let user_id = usuario.authorities[0].index;
 				localStorage.setItem("user_id", user_id);
 
 				let username = usuario.username

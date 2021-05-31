@@ -36,7 +36,7 @@ export class MisNegociosComponent implements OnInit {
   );
 
   async setProfilePic(negocio:Negocio){
-    this.imageService.getBusinessPic(negocio.id).subscribe((imagenes : any[])=>{
+    this.imageService.getBusinessPic(negocio.index).subscribe((imagenes : any[])=>{
       try{
         imagenes = imagenes.sort()
         this.imageService.getImage(imagenes[0].name).subscribe(data => {
@@ -51,7 +51,7 @@ export class MisNegociosComponent implements OnInit {
 
   businessPics : any=[];
   profilePic : any = null
-  
+
   customOptions: OwlOptions = {
     loop: true,
     margin:20,

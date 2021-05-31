@@ -1,7 +1,7 @@
 import { Negocio } from "./negocio.interface";
 
 export interface Supplier {
-  id?: Number;
+  index?: Number;
   name?: String;
   lastname?: String;
   dni?: String;

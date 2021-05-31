@@ -2,22 +2,23 @@
   <div fxLayoutAlign="space-around center">
     <mat-card class="negocio">
       <div>
-        <button id="big-button" class="big-button" *ngIf="rol === 'user'" mat-raised-button routerLink="/reservar/{{negocio.id}}">Reservar</button>
+        <button id="big-button" class="big-button" *ngIf="rol === 'user'" mat-raised-button
+          routerLink="/reservar/{{negocio.index}}">Reservar</button>
         <mat-card-header class="header">
-            <img mat-card-avatar [src]="profilePic" id="profile-pic">
-            <mat-card-title>{{negocio.name}}</mat-card-title>
-            <mat-card-subtitle>Dirección: {{negocio.address}}</mat-card-subtitle>
-            <mat-card-subtitle *ngIf="negocio.businessType === 'HAIRDRESSER'"> Peluquería</mat-card-subtitle>
-            <mat-card-subtitle *ngIf="negocio.businessType === 'RESTAURANT'"> Bar/Restaurante</mat-card-subtitle>
-            <mat-card-subtitle *ngIf="negocio.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
-            <div class="time">
-              <mat-card-subtitle>Abre: {{negocio.openTime | slice : 0:5}}</mat-card-subtitle>
-              <mat-card-subtitle>Cierra: {{negocio.closeTime | slice : 0:5}}</mat-card-subtitle>
-            </div>
-            <div fxLayoutAlign="space-around center">
-              <button id="small-button" class="small-button" *ngIf="rol === 'user'" mat-raised-button
-                routerLink="/reservar/{{negocio.id}}">Reservar</button>
-            </div>
+          <img mat-card-avatar [src]="profilePic" id="profile-pic">
+          <mat-card-title>{{negocio.name}}</mat-card-title>
+          <mat-card-subtitle>Dirección: {{negocio.address}}</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="negocio.businessType === 'HAIRDRESSER'"> Peluquería</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="negocio.businessType === 'RESTAURANT'"> Bar/Restaurante</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="negocio.businessType === 'GENERAL'"> Otros</mat-card-subtitle>
+          <div class="time">
+            <mat-card-subtitle>Abre: {{negocio.openTime | slice : 0:5}}</mat-card-subtitle>
+            <mat-card-subtitle>Cierra: {{negocio.closeTime | slice : 0:5}}</mat-card-subtitle>
+          </div>
+          <div fxLayoutAlign="space-around center">
+            <button id="small-button" class="small-button" *ngIf="rol === 'user'" mat-raised-button
+              routerLink="/reservar/{{negocio.index}}">Reservar</button>
+          </div>
         </mat-card-header>
       </div>
 

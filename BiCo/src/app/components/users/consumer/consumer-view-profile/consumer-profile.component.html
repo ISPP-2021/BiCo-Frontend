@@ -1,48 +1,48 @@
 <div fxLayout="column" fxLayoutAlign="center">
-    <div fxLayoutAlign="space-around center" class="flex-container">
-        <mat-card class="perfil" *ngIf=" (consumer$ | async) as consumer">
-            <div class="card-header">
-                <div id="unwraped-buttons" class="unwraped-buttons">
-                    <button mat-mini-fab (click)="openOblivion()" matTooltip="Borrar mis datos">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                    <button mat-mini-fab (click)="openPorter()" matTooltip="Portar mis datos">
-                        <mat-icon>get_app</mat-icon>
-                    </button>
-                </div>
-                <div id="wrap-buttons" class="wrap-buttons">
-                    <button mat-button [matMenuTriggerFor]="menu">
-                        <mat-icon>list</mat-icon>
-                    </button>
-                    <mat-menu #menu="matMenu">
-                        <button mat-menu-item (click)="openOblivion()" class="menu-button">
-                            <mat-icon>delete</mat-icon> Borrar mis datos
-                        </button>
-                        <button mat-menu-item (click)="openPorter()" class="menu-button">
-                            <mat-icon>get_app</mat-icon> Portar mis datos
-                        </button>
-                    </mat-menu>
-                </div>
-                <mat-card-header>
-                    <img mat-card-avatar [src]="profilePic">
-                    <mat-card-title>Usuario: {{consumer.user.username}}</mat-card-title>
-                    <mat-card-subtitle>{{consumer.email}}</mat-card-subtitle>
-                </mat-card-header>
+  <div fxLayoutAlign="space-around center" class="flex-container">
+    <mat-card class="perfil" *ngIf=" (consumer$ | async) as consumer">
+      <div class="card-header">
+        <div id="unwraped-buttons" class="unwraped-buttons">
+          <button mat-mini-fab (click)="openOblivion()" matTooltip="Borrar mis datos">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-mini-fab (click)="openPorter()" matTooltip="Portar mis datos">
+            <mat-icon>get_app</mat-icon>
+          </button>
+        </div>
+        <div id="wrap-buttons" class="wrap-buttons">
+          <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon>list</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openOblivion()" class="menu-button">
+              <mat-icon>delete</mat-icon> Borrar mis datos
+            </button>
+            <button mat-menu-item (click)="openPorter()" class="menu-button">
+              <mat-icon>get_app</mat-icon> Portar mis datos
+            </button>
+          </mat-menu>
+        </div>
+        <mat-card-header>
+          <img mat-card-avatar [src]="profilePic">
+          <mat-card-title>Usuario: {{consumer.user.username}}</mat-card-title>
+          <mat-card-subtitle>{{consumer.email}}</mat-card-subtitle>
+        </mat-card-header>
 
-            </div>
-            <br>
-            <div class="card-content">
-                <mat-card-content>
-                    <p><b>Nombre:</b> {{consumer.name}}</p>
-                    <p><b>Apellidos:</b> {{consumer.lastname}}</p>
-                    <p><b>DNI:</b> {{consumer.dni}}</p>
-                    <p><b>Email:</b> {{consumer.email}}</p>
-                </mat-card-content>
-            </div>
-            <div fxLayoutAlign="space-around center">
-                <button mat-raised-button routerLink="/userProfile/{{consumer.id}}/edit">Editar perfil</button>
-            </div>
-        </mat-card>
-    </div>
+      </div>
+      <br>
+      <div class="card-content">
+        <mat-card-content>
+          <p><b>Nombre:</b> {{consumer.name}}</p>
+          <p><b>Apellidos:</b> {{consumer.lastname}}</p>
+          <p><b>DNI:</b> {{consumer.dni}}</p>
+          <p><b>Email:</b> {{consumer.email}}</p>
+        </mat-card-content>
+      </div>
+      <div fxLayoutAlign="space-around center">
+        <button mat-raised-button routerLink="/userProfile/{{consumer.index}}/edit">Editar perfil</button>
+      </div>
+    </mat-card>
+  </div>
 </div>
 <router-outlet></router-outlet>

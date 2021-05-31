@@ -11,7 +11,7 @@ import { JWT_NAME } from '../authentication-service/authentication.service';
 export class NegocioService {
   token: string = localStorage.getItem(JWT_NAME);
   constructor(private http: HttpClient) {}
-  private url: string = 'https://bico-despliegue-4.herokuapp.com/';
+  private url: string = 'https://backend-bico.herokuapp.com/';
   // private url: string = 'http://localhost:8080/';
   private headers = {
     headers: {
@@ -73,7 +73,7 @@ export class NegocioService {
     return this.http.delete(this.url + 'servises/' + id, this.headers)
   }
 
-  
+
   findService(id: Number) {
     return this.http
       .get(this.url + 'servises/' + id, this.headers);

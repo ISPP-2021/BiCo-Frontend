@@ -49,7 +49,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -141,6 +142,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatDialogModule,
     CarouselModule,
     MatMenuModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
   ],
   entryComponents: [ModalComponent, DialogComponent],
   providers: [

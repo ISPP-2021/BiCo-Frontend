@@ -18,7 +18,7 @@ const cabecera = {
 export class PaymentService {
   token: string = localStorage.getItem(JWT_NAME);
   constructor(private http: HttpClient) {}
-  private url: string = 'https://bico-despliegue-4.herokuapp.com/stripe/';
+  private url: string = 'https://backend-bico.herokuapp.com/stripe/';
   // private url: string = 'http://localhost:8080/stripe/';
 
   public pagar(paymentIntentDto: PaymentIntentDto): Observable<string> {

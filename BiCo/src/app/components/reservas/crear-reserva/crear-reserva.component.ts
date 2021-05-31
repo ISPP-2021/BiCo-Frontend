@@ -8,16 +8,16 @@ import { Reserva } from 'src/app/model/reserva.interface';
 import { Observable } from 'rxjs';
 import { Negocio } from 'src/app/model/negocio.interface';
 import { map, switchMap } from 'rxjs/operators';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 class CustomValidators {
 
   static validBookDate (control: AbstractControl): ValidationErrors{
-    const bookDate = new Date(control.get('bookDate').value)
-    let hours = bookDate.getHours();
+    let hours = new Date(control.get('hour').value).getHours();
     if(hours === 0){
       hours = 24
     }
-    const minutes = bookDate.getMinutes();
+    const minutes =  new Date(control.get('hour').value).getMinutes();
     const openTime = control.get('openTime').value.split(":")
     const openTimeHours = Number(openTime[0])
     const openTimeMinutes = Number(openTime[1])
@@ -50,7 +50,12 @@ class CustomValidators {
 export class CrearReservaComponent implements OnInit {
   public value: Date = new Date();
   public format = 'dd/MM/yyyy HH:mm';
+  public formatHour = 'HH:mm';
   public minDate: Date = new Date()
+  public steps: any = {minute: 15};
+  minHour:Date = new Date()
+  maxHour:Date = new Date()
+  showHour:boolean = false
   form: FormGroup;
   serviciosReservados: any;
   errorMessage = '';
@@ -59,7 +64,7 @@ export class CrearReservaComponent implements OnInit {
   nombre: string;
   reserva: Reserva;
   servicioId: number;
-  bookDate: Date;
+  bookDate: any;
   emisionDate: Date;
   status: string;
   description: String;
@@ -87,12 +92,22 @@ export class CrearReservaComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.minDate.setMinutes(this.value.getMinutes() + 30)
+    this.minDate.setDate(this.value.getDate()+1)
     this.negocioService.findOne(this.negocioId).subscribe(negocio => {
+        let openHour = negocio.openTime.split(":")[0]
+        let openMinutes = negocio.openTime.split(":")[1]
+        this.minHour.setHours(Number(openHour))
+        this.minHour.setMinutes(Number(openMinutes)+15)
+        let closeHour = negocio.closeTime.split(":")[0]
+        let closeMinutes = negocio.closeTime.split(":")[1]
+        this.maxHour.setHours(Number(closeHour))
+        this.maxHour.setMinutes(Number(closeMinutes)-15)
+        this.showHour = true
         this.form = this.formBuilder.group({
           openTime: [negocio.openTime],
           closeTime: [negocio.closeTime],
           bookDate: [null, [Validators.required]],
+          hour:[this.minHour, [Validators.required]],
           emisionDate: [new Date()],
           status: ['IN_PROGRESS'],
           services: this.formBuilder.array([this.addServiceGroup()]),
@@ -101,6 +116,9 @@ export class CrearReservaComponent implements OnInit {
         });
         this.negocio = negocio
         this.servicios = negocio.services
+      }, error =>{
+        this.showHour = true
+        this.err= error.error.detail
       });
 
   }
@@ -130,9 +148,14 @@ export class CrearReservaComponent implements OnInit {
       let servicios = this.form.value.services;
       let hour = new Date().getHours()
       let emision = new Date().setHours(hour + 2)
+      let book = new Date(this.form.value.bookDate)
+      let hourBook = this.form.value.hour.getHours()
+      let minuteBook = this.form.value.hour.getMinutes()
+      book.setHours(hourBook+2)
+      book.setMinutes(minuteBook)
       for (let servicio of servicios) {
         reserva = {
-          bookDate: new Date(this.form.value.bookDate).toISOString(),
+          bookDate: new Date(book).toISOString(),
           emisionDate: new Date(emision).toISOString(),
           status: this.form.value.status,
         };
@@ -150,14 +173,16 @@ export class CrearReservaComponent implements OnInit {
 
   pagoTotal(event) {
     for (let servicio of this.negocio['services']) {
-      if (servicio.id == event) {
+      if (servicio.index == event) {
         this.pago = servicio.price * servicio.tax;
         this.pago = Math.round(this.pago * 100) / 100;
         this.nombre = servicio.name;
-        this.servicioId = servicio.id;
+        this.servicioId = servicio.index;
         this.description = servicio.description;
-        (this.bookDate = this.form.value.bookDate.setHours(this.form.value.bookDate.getHours() + 2)),
-        (this.bookDate = this.form.value.bookDate.toISOString().substr(0, 16)),
+        (this.bookDate = new Date(this.form.value.bookDate)),
+        (this.bookDate.setHours(this.form.value.hour.getHours()+2)),
+        (this.bookDate.setMinutes(this.form.value.hour.getMinutes())),
+        (this.bookDate = this.bookDate.toISOString()),
         (this.emisionDate = new Date()),
         (this.emisionDate = this.form.value.emisionDate.setHours(this.form.value.emisionDate.getHours() + 2)),
           (this.emisionDate = this.form.value.emisionDate.toISOString().substr(0, 16)),
@@ -174,6 +199,7 @@ export class CrearReservaComponent implements OnInit {
   }
 
   hideOrShowPaymentForm(): void{
+      this.err = "";
       if(document.getElementById('formulario-pago').style.display == 'inline' &&
         this.form.hasError('invalidBookDate')){
         document.getElementById('formulario-pago').style.display = 'none';
@@ -184,14 +210,6 @@ export class CrearReservaComponent implements OnInit {
         !this.form.hasError('invalidBookDate') && this.pago == 0){
         document.getElementById('boton-reservar').style.display = 'inline';
       }
+
   }
-
-  fechaActual(formulario: FormGroup) {
-    let date: Date = new Date();
-    this.form.patchValue({
-      emisionDate: date,
-    });
-  }
-
-
 }

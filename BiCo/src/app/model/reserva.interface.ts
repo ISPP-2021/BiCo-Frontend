@@ -2,7 +2,7 @@ import { Negocio } from "./negocio.interface";
 import { Servicio } from "./service.interface";
 
 export interface Reserva {
-  id?: Number
+  index?: Number
 	emisionDate?: Date;
 	bookDate?: Date;
 	status?: String;
