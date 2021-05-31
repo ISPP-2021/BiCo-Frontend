@@ -144,7 +144,7 @@ export class CrearReservaPropietarioComponent implements OnInit {
           emisionDate: this.form.value.emisionDate,
           status: this.form.value.status,
         };
-        this.reservaService.createFor(servicio.id, this.form.value.consumer.id, reserva).subscribe(() => {
+        this.reservaService.createFor(servicio.index, this.form.value.consumer.index, reserva).subscribe(() => {
           this.router.navigate(['mis-negocios']);
         }, error => {
           this.err= error.error.detail

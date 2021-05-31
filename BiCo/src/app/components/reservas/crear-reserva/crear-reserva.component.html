@@ -54,7 +54,7 @@
                 <mat-form-field class="example-full-width">
                   <ng-template matStepLabel>Servicio a Reservar</ng-template>
                   <mat-select id="select-service" formControlName="id" (selectionChange)="pagoTotal($event.value)">
-                    <mat-option *ngFor="let servicio of servicios" [value]="servicio.id">{{servicio.name}} -
+                    <mat-option *ngFor="let servicio of servicios" [value]="servicio.index">{{servicio.name}} -
                       {{servicio.price}} €</mat-option>
                   </mat-select>
                 </mat-form-field>

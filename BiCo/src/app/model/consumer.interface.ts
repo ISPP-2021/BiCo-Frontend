@@ -1,7 +1,7 @@
 import { Reserva } from './reserva.interface';
 
 export interface Consumer {
-	id?: Number;
+	index?: Number;
 	name?: String;
 	lastname?: String;
 	dni?: String;

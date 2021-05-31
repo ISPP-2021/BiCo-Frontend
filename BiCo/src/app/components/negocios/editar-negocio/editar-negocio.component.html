@@ -10,7 +10,7 @@
         </div>
         <div class="card-content">
           <mat-card-content>
-            <app-subir-imagen [negocio_id]="negocio.id"></app-subir-imagen>
+            <app-subir-imagen [negocio_id]="negocio.index"></app-subir-imagen>
             <form class="example-form" [formGroup]="form" (ngSubmit)="save()">
               <div>
                 <h3>Datos negocio</h3>
@@ -24,7 +24,7 @@
                   <input matInput placeholder="Introduzca la dirección de su negocio" formControlName="address">
                 </mat-form-field>
 
-<!--                 
+                <!--
               <div class="24hr-example">
                 <mat-label>Hora de apertura</mat-label>&nbsp;
                  <input placeholder="24hr format" aria-label="24hr format" [ngxTimepicker]="fullTime" [format]="24">
@@ -48,12 +48,14 @@
               </div>
 
               <mat-label><b>Hora de apertura</b></mat-label>&nbsp;
-              <kendo-timepicker formControlName="openTime" [(value)]="value1" [format]="format" [incompleteDateValidation]="true"></kendo-timepicker>
+              <kendo-timepicker formControlName="openTime" [(value)]="value1" [format]="format"
+                [incompleteDateValidation]="true"></kendo-timepicker>
               <br>
               <br>
               <mat-label><b>Hora de cierre</b></mat-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <kendo-timepicker formControlName="closeTime" [(value)]="value2" [format]="format" [incompleteDateValidation]="true"></kendo-timepicker>
-              
+              <kendo-timepicker formControlName="closeTime" [(value)]="value2" [format]="format"
+                [incompleteDateValidation]="true"></kendo-timepicker>
+
               <div formGroupName="option">
                 <br>
                 <h3>Opciones negocio</h3>
@@ -67,7 +69,7 @@
                     formControlName="gas">
                 </mat-form-field>
 
-               <!-- <mat-form-field class="example-full-width">
+                <!-- <mat-form-field class="example-full-width">
                   <mat-label>Fianza de reserva (valor entre 0-1)</mat-label>
                   <input matInput type="number"
                     placeholder="Introduzca la fianza por reservas para todos los servicios (0-1)"

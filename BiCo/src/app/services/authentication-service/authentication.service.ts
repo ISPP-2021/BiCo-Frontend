@@ -37,7 +37,7 @@ export class AuthenticationService {
 				localStorage.setItem("rol", rol);
 
 
-				let user_id = usuario.authorities[0].id;
+				let user_id = usuario.authorities[0].index;
 				localStorage.setItem("user_id", user_id);
 
 				let username = usuario.username

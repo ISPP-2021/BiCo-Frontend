@@ -1,7 +1,7 @@
 import { Servicio } from './service.interface';
 
 export interface Negocio {
-  id?: Number;
+  index?: Number;
   profilePic?: any;
   name?: String;
   address?: String;

@@ -40,7 +40,7 @@ export class SupplierService {
   isOwnerBusiness(id: Number): Promise<boolean>{
     return this.findOne().pipe(
       map((user) => {
-        if (user.business.find(x => x.id == id)) {
+        if (user.business.find(x => x.index == id)) {
           return true;
         }else{
           this.router.navigate(['home'])
