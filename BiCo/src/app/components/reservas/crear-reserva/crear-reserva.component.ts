@@ -70,6 +70,8 @@ export class CrearReservaComponent implements OnInit {
   description: String;
   public servicios;
   err: String;
+  showPago:boolean;
+  showErrorHour: boolean = false;
 
   rol: string = localStorage.getItem('rol');
   negocioId = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -82,6 +84,8 @@ export class CrearReservaComponent implements OnInit {
   )
 })
   )
+  showFree: boolean;
+
   constructor(
     private http: HttpClient,
     private formBuilder: FormBuilder,
@@ -92,8 +96,11 @@ export class CrearReservaComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.minDate.setDate(this.value.getDate()+1)
+    this.showPago=false;
+    this.showErrorHour=false;
+    this.minDate.setDate(this.value.getDate())
     this.negocioService.findOne(this.negocioId).subscribe(negocio => {
+        this.minDate.setHours(this.value.getHours())
         let openHour = negocio.openTime.split(":")[0]
         let openMinutes = negocio.openTime.split(":")[1]
         this.minHour.setHours(Number(openHour))
@@ -106,9 +113,8 @@ export class CrearReservaComponent implements OnInit {
         this.form = this.formBuilder.group({
           openTime: [negocio.openTime],
           closeTime: [negocio.closeTime],
-          bookDate: [null, [Validators.required]],
+          bookDate: [new Date(), [Validators.required]],
           hour:[this.minHour, [Validators.required]],
-          emisionDate: [new Date()],
           status: ['IN_PROGRESS'],
           services: this.formBuilder.array([this.addServiceGroup()]),
         },{
@@ -156,10 +162,11 @@ export class CrearReservaComponent implements OnInit {
       for (let servicio of servicios) {
         reserva = {
           bookDate: new Date(book).toISOString(),
-          emisionDate: new Date(emision).toISOString(),
           status: this.form.value.status,
         };
+          console.log(reserva)
         this.reservaService.create(servicio.id, reserva).subscribe(res=>{
+          console.log(res)
           this.router.navigate(['reservas']);
         }, error => {
           this.err= error.error.detail
@@ -171,7 +178,7 @@ export class CrearReservaComponent implements OnInit {
     }
   }
 
-  pagoTotal(event) {
+  pagoTotal(type,event) {
     for (let servicio of this.negocio['services']) {
       if (servicio.index == event) {
         this.pago = servicio.price * servicio.tax;
@@ -183,33 +190,43 @@ export class CrearReservaComponent implements OnInit {
         (this.bookDate.setHours(this.form.value.hour.getHours()+2)),
         (this.bookDate.setMinutes(this.form.value.hour.getMinutes())),
         (this.bookDate = this.bookDate.toISOString()),
-        (this.emisionDate = new Date()),
-        (this.emisionDate = this.form.value.emisionDate.setHours(this.form.value.emisionDate.getHours() + 2)),
-          (this.emisionDate = this.form.value.emisionDate.toISOString().substr(0, 16)),
-          (this.status = this.form.value.status);
+        (this.status = this.form.value.status);
       }
+    }
+    if(type === "time" ||type === "date"){
+      let formHour = new Date(this.form.value.hour)
+      this.bookDate = new Date(this.form.value.bookDate)
+      this.bookDate.setHours(formHour.getHours()+2)
+      this.bookDate.setMinutes(formHour.getMinutes())
+      this.bookDate = this.bookDate.toISOString()
     }
     if (this.pago == 0 && !this.form.hasError('invalidBookDate')) {
-      document.getElementById('boton-reservar').style.display = 'inline';
-      document.getElementById('formulario-pago').style.display = 'none';
-    } else if (this.pago != 0 && !this.form.hasError('invalidBookDate')){
-      document.getElementById('boton-reservar').style.display = 'none';
-      document.getElementById('formulario-pago').style.display = 'inline';
-    }
-  }
-
-  hideOrShowPaymentForm(): void{
-      this.err = "";
-      if(document.getElementById('formulario-pago').style.display == 'inline' &&
-        this.form.hasError('invalidBookDate')){
-        document.getElementById('formulario-pago').style.display = 'none';
-      }else if(document.getElementById('formulario-pago').style.display == 'none' &&
-        !this.form.hasError('invalidBookDate') && this.pago != 0){
-        document.getElementById('formulario-pago').style.display = 'inline';
-      }else if(document.getElementById('formulario-pago').style.display == 'none' &&
-        !this.form.hasError('invalidBookDate') && this.pago == 0){
-        document.getElementById('boton-reservar').style.display = 'inline';
+      this.showPago = false
+      let book = new Date(this.form.value.bookDate)
+      book.setHours(this.form.value.hour.getHours())
+      book.setMinutes(this.form.value.hour.getMinutes())
+      let now = new Date()
+      if(book<now){
+       this.showFree = false
+       this.showErrorHour = true
+      }else{
+        this.showFree = true
+        this.showErrorHour = false
       }
-
+      //document.getElementById('boton-reservar').style.display = 'inline';
+      //document.getElementById('formulario-pago').style.display = 'none';
+    }else if (this.pago != 0 && !this.form.hasError('invalidBookDate')){
+      let book = new Date(this.form.value.bookDate)
+      book.setHours(this.form.value.hour.getHours())
+      book.setMinutes(this.form.value.hour.getMinutes())
+      let now = new Date()
+      if(book<now){
+       this.showPago = false
+       this.showErrorHour = true
+      }else{
+        this.showPago = true
+        this.showErrorHour = false
+      }
+    }
   }
 }

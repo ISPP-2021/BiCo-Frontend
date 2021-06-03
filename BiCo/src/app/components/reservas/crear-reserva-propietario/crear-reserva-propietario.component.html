@@ -66,8 +66,7 @@
               </ng-template>
             </mat-card-content>
             <div fxLayoutAlign="space-around center">
-              <button id="boton-reservar" type="submit" mat-raised-button [disabled]="form.invalid"
-                (click)="fechaActual(form)">Reservar</button>
+              <button id="boton-reservar" type="submit" mat-raised-button [disabled]="form.invalid">Reservar</button>
               <button type="button" mat-raised-button routerLink="/mis-negocios" style="margin: 2%">Cancelar</button>
             </div>
             <mat-error *ngIf="err">{{err}}</mat-error>
