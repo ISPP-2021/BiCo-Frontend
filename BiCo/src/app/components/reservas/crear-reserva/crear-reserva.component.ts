@@ -164,9 +164,7 @@ export class CrearReservaComponent implements OnInit {
           bookDate: new Date(book).toISOString(),
           status: this.form.value.status,
         };
-          console.log(reserva)
         this.reservaService.create(servicio.id, reserva).subscribe(res=>{
-          console.log(res)
           this.router.navigate(['reservas']);
         }, error => {
           this.err= error.error.detail
