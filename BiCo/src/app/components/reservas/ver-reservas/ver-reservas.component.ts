@@ -27,7 +27,7 @@ export class VerReservasComponent implements OnInit {
             .subscribe((negocio) => {
               booking.negocio = negocio;
               let book = {
-                id: booking.id,
+                index: booking.index,
                 bussiness: booking.negocio,
                 service: booking.service,
                 day: booking.bookDate,
@@ -85,7 +85,8 @@ export class VerReservasComponent implements OnInit {
     let res = '';
 
     this.bookings.forEach((booking) => {
-      let book = new Date(booking.bookDate);
+      let book = new Date(booking.bookDate.toString());
+      book.setHours(book.getHours()-2)
       if (
         book.getDate() == date.getDate() &&
         book.getMonth() == date.getMonth() &&
@@ -101,7 +102,8 @@ export class VerReservasComponent implements OnInit {
     let res = '';
 
     this.bookings.forEach((booking) => {
-      let book = new Date(booking.bookDate);
+      let book = new Date(booking.bookDate.toString());
+      book.setHours(book.getHours()-2)
       if (
         book.getMonth() == date.getMonth() &&
         book.getFullYear() == date.getFullYear()
@@ -116,7 +118,8 @@ export class VerReservasComponent implements OnInit {
     let res = '';
 
     this.bookings.forEach((booking) => {
-      let book = new Date(booking.bookDate);
+      let book = new Date(booking.bookDate.toString());
+      book.setHours(book.getHours()-2)
       if (book.getFullYear() == date.getFullYear()) {
         res = 'meeting';
       }
@@ -127,7 +130,8 @@ export class VerReservasComponent implements OnInit {
     let res = '';
 
     this.bookings.forEach((booking) => {
-      let book = new Date(booking.bookDate);
+      let book = new Date(booking.bookDate.toString());
+      book.setHours(book.getHours()-2)
       if (book.getFullYear() == date.getFullYear()) {
         res = 'meeting';
       }
@@ -139,7 +143,8 @@ export class VerReservasComponent implements OnInit {
     let bookDate: Date = new Date();
     for (let index = 0; index < this.bookings.length; index++) {
       const booking = this.bookings[index];
-      const book = new Date(booking.bookDate);
+      const book = new Date(booking.bookDate.toString());
+      book.setHours(book.getHours()-2)
       if (
         book.getDate() == date.getDate() &&
         book.getMonth() == date.getMonth() &&

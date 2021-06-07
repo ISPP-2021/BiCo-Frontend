@@ -12,10 +12,10 @@
     </mat-card>
   </div>
 
-  <div fxLayoutAlign="space-around center"  class="flex-container">
+  <div fxLayoutAlign="space-around center" class="flex-container">
     <mat-card class="negocio" *ngFor="let negocio of negocios">
       <div class="card-header">
-        <button mat-mini-fab routerLink="/negocio/{{negocio.id}}">
+        <button mat-mini-fab routerLink="/negocio/{{negocio.index}}">
           <mat-icon>visibility</mat-icon>
         </button>
         <mat-card-header>
@@ -29,14 +29,15 @@
         <mat-card-content *ngFor="let servicio of negocio.services">
           <div style="display: flex; flex-flow: row wrap;">
             <h3 style="margin-top: auto; margin-bottom: auto; margin-left: 2%;">{{servicio.name}}</h3>
-            <h3 style="margin-top: auto; margin-bottom: auto; position: absolute; right: 7%; font-weight: bold;">{{servicio.price}} €</h3>
+            <h3 style="margin-top: auto; margin-bottom: auto; position: absolute; right: 7%; font-weight: bold;">
+              {{servicio.price}} €</h3>
           </div>
         </mat-card-content>
       </div>
       <div>
-        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/reservar/{{negocio.id}}">Reservar</button>
+        <button *ngIf="rol === 'user'" mat-raised-button routerLink="/reservar/{{negocio.index}}">Reservar</button>
       </div>
-      
+
     </mat-card>
   </div>
 

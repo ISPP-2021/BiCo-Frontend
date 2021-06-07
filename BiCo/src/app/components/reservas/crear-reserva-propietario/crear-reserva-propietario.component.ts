@@ -98,7 +98,6 @@ export class CrearReservaPropietarioComponent implements OnInit {
         openTime: [negocio.openTime],
         closeTime: [negocio.closeTime],
         bookDate: [null, [Validators.required]],
-        emisionDate: [''],
         status: ['COMPLETED'],
         consumer: ['', Validators.required],
         services: this.formBuilder.array([this.addServiceGroup()]),
@@ -137,44 +136,19 @@ export class CrearReservaPropietarioComponent implements OnInit {
     if (this.form.valid) {
       let reserva: Reserva;
       let servicios = this.form.value.services;
-      // console.log(this.form.value.bookDate)
+      let book = new Date(this.form.value.bookDate)
+      book.setHours(book.getHours() + 2)
       for (let servicio of servicios) {
         reserva = {
-          bookDate: this.form.value.bookDate.setHours(this.form.value.bookDate.getHours() + 2),
-          emisionDate: this.form.value.emisionDate,
+          bookDate: book.toISOString(),
           status: this.form.value.status,
         };
-        this.reservaService.createFor(servicio.id, this.form.value.consumer.id, reserva).subscribe(() => {
+        this.reservaService.createFor(servicio.id, this.form.value.consumer.index, reserva).subscribe(() => {
           this.router.navigate(['mis-negocios']);
         }, error => {
           this.err= error.error.detail
         });
-
-      }
-      //window.location.replace('reservas')
-    }
-  }
-
-  pagoTotal(event) {
-    for (let servicio of this.negocio['services']) {
-      if (servicio.id == event) {
-        this.pago = servicio.price * (servicio.deposit / 100);
-        this.pago = Math.round(this.pago * 100) / 100;
-        this.nombre = servicio.name;
-        this.servicioId = servicio.id;
-        this.description = servicio.description;
-        (this.bookDate = this.form.value.bookDate.toISOString().substr(0, 16)),
-          (this.emisionDate = new Date().toISOString().substr(0, 16)),
-          (this.status = this.form.value.status);
       }
     }
   }
-
-  fechaActual(formulario: FormGroup) {
-    let date: Date = new Date();
-    this.form.patchValue({
-      emisionDate: date,
-    });
-  }
-
 }

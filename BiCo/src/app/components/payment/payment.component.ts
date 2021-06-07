@@ -28,8 +28,8 @@ export class PaymentComponent implements OnInit {
   @Input() nombre;
   @Input() servicio;
   @Input() bookDate;
-  @Input() emisionDate;
   @Input() status;
+  @Input() hour;
 
   error: any;
 
@@ -45,6 +45,7 @@ export class PaymentComponent implements OnInit {
   });
 
   ngOnInit() {
+    this.error = ""
     this.stripeService.elements(this.elementsOptions).subscribe(
       elements => {
         this.elements = elements;
@@ -61,7 +62,7 @@ export class PaymentComponent implements OnInit {
                 '::placeholder': {
                   color: '#909090'
                 }
-                
+
               }
             }
           });
@@ -72,6 +73,7 @@ export class PaymentComponent implements OnInit {
   }
 
   buy() {
+    this.error = ""
     const name = this.stripeForm.get('name').value;
     this.stripeService
       .createToken(this.card, { name })
@@ -96,6 +98,7 @@ export class PaymentComponent implements OnInit {
           this.loading = false;
         }
       });
+
   }
 
   abrirModal(id: string, nombre: string, descripcion: string, precio: number) {
@@ -105,7 +108,6 @@ export class PaymentComponent implements OnInit {
     modalRef.componentInstance.descripcion = descripcion;
     modalRef.componentInstance.precio = precio;
     modalRef.componentInstance.bookDate = this.bookDate;
-    modalRef.componentInstance.emisionDate = this.emisionDate; 
     modalRef.componentInstance.status = this.status;
     modalRef.componentInstance.servicio = this.servicio;
   }

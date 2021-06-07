@@ -67,7 +67,7 @@ export class ServisesComponent implements OnInit {
     let res = window.confirm('¿Esta seguro de que desea borrar el servicio?');
     if (res) {
       let servises = this.serviceArray.value;
-      let serviceId = servises[index].id;
+      let serviceId = servises[index].index;
       this.negocioService.deleteServices(serviceId).subscribe();
       this.serviceArray.removeAt(index);
     }
